@@ -5,14 +5,19 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public bool canMove = true;
-
     public float playerSpeed = 1.5f;
+    public float jumpHeight = 5.0f;
+    public float gravity = 9.8f;
+    public float groundDistance = 0.4f;
 
+    public LayerMask groundMask;
     public CharacterController playerController;
+    public Transform groundCheck;
 
+    Vector3 velocity;
     float xTotal = 0.0f;
-
     float zTotal = 0.0f;
+    bool isGrounded;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +29,19 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (!canMove) return;
-        
+
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        // If grounded and has a negative velocity, set velocity to some small negative amount to force character down. Else apply gravity
+        if (isGrounded && velocity.y < 0.0f) {
+            velocity.y = -2.0f;
+        } else {
+            velocity.y -= gravity * Time.deltaTime;
+        }
+
+        if (Input.GetButtonDown("Jump")) {
+            Jump();
+        }
+
         if (Input.GetKey(KeyCode.A)) {
             xTotal += -0.02f;
         }
@@ -41,23 +58,35 @@ public class PlayerMovement : MonoBehaviour
             zTotal += 0.02f;
         }
 
+        // If W and S are both not pressed or both are pressed
         if ((!Input.GetKey(KeyCode.W) && !Input.GetKey(KeyCode.S)) || (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.S))) {
             if (zTotal > 0.0f) zTotal -= 0.02f;
             else if (zTotal < 0.0f) zTotal += 0.02f;
         }
 
+        // If A and D are both not pressed or both are pressed
         if ((!Input.GetKey(KeyCode.A) && !Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D) ) ) {
             if (xTotal > 0.0f) xTotal -= 0.02f;
             else if (xTotal < 0.0f) xTotal += 0.02f;
         }
 
+        // Resolve float rounding errors
         if (xTotal < 0.02f && xTotal > -0.02f) xTotal = 0.0f;
         if (zTotal < 0.02f && zTotal > -0.02f) zTotal = 0.0f;
 
+        // Clamp speed
         xTotal = Mathf.Clamp(xTotal, -1.0f, 1.0f);
         zTotal = Mathf.Clamp(zTotal, -1.0f, 1.0f);
 
+        // Apply moveVector and velocity from jumping/grav
         Vector3 moveVector = transform.right * xTotal + transform.forward * zTotal;
         playerController.Move(moveVector * playerSpeed * Time.deltaTime);
+        playerController.Move(velocity * Time.deltaTime);
+    }
+
+    void Jump() {
+        if (isGrounded) {
+            velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
+        }
     }
 }
