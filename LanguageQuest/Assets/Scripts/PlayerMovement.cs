@@ -9,15 +9,18 @@ public class PlayerMovement : MonoBehaviour
     public float jumpHeight = 5.0f;
     public float gravity = 9.8f;
     public float groundDistance = 0.4f;
+    public float headDistance = 0.4f;
 
-    public LayerMask groundMask;
+    public LayerMask terrainMask;
     public CharacterController playerController;
     public Transform groundCheck;
+    public Transform headCheck;
 
     Vector3 velocity;
     float xTotal = 0.0f;
     float zTotal = 0.0f;
     bool isGrounded;
+    bool hitHead;
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +33,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!canMove) return;
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, terrainMask);
+        hitHead = Physics.CheckSphere(headCheck.position, headDistance, terrainMask);
         // If grounded and has a negative velocity, set velocity to some small negative amount to force character down. Else apply gravity
         if (isGrounded && velocity.y < 0.0f) {
             velocity.y = -2.0f;
@@ -38,7 +42,12 @@ public class PlayerMovement : MonoBehaviour
             velocity.y -= gravity * Time.deltaTime;
         }
 
-        if (Input.GetButtonDown("Jump")) {
+        if (hitHead && velocity.y > 0) {
+            Debug.Log("hit head");
+            velocity.y = -1.0f;
+        }
+
+        if (Input.GetButtonDown("Jump") && isGrounded) {
             Jump();
         }
 
@@ -85,8 +94,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump() {
-        if (isGrounded) {
-            velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
-        }
+        velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
     }
 }
