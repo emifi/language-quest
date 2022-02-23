@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public bool canMove = true;
+    public bool smooth = true;
     public float playerSpeed = 1.5f;
     public float jumpHeight = 5.0f;
     public float gravity = 9.8f;
@@ -51,20 +52,27 @@ public class PlayerMovement : MonoBehaviour
             Jump();
         }
 
+        float x = 0f;
+        float z = 0f;
+
         if (Input.GetKey(KeyCode.A)) {
             xTotal += -0.02f;
+            x += -1.0f;
         }
 
         if (Input.GetKey(KeyCode.D)) {
             xTotal += 0.02f;
+            x += 1.0f;
         }
 
         if (Input.GetKey(KeyCode.S)) {
             zTotal += -0.02f;
+            z += -1.0f;
         }
 
         if (Input.GetKey(KeyCode.W)) {
             zTotal += 0.02f;
+            z += 1.0f;
         }
 
         // If W and S are both not pressed or both are pressed
@@ -87,10 +95,16 @@ public class PlayerMovement : MonoBehaviour
         xTotal = Mathf.Clamp(xTotal, -1.0f, 1.0f);
         zTotal = Mathf.Clamp(zTotal, -1.0f, 1.0f);
 
-        // Apply moveVector and velocity from jumping/grav
-        Vector3 moveVector = transform.right * xTotal + transform.forward * zTotal;
-        playerController.Move(moveVector * playerSpeed * Time.deltaTime);
-        playerController.Move(velocity * Time.deltaTime);
+        if (smooth) {
+            // Apply moveVector and velocity from jumping/grav
+            Vector3 moveVector = transform.right * xTotal + transform.forward * zTotal;
+            playerController.Move(moveVector * playerSpeed * Time.deltaTime);
+            playerController.Move(velocity * Time.deltaTime);
+        } else {
+            Vector3 moveVector = transform.right * x + transform.forward * z;
+            playerController.Move(moveVector * playerSpeed * Time.deltaTime);
+            playerController.Move(velocity * Time.deltaTime);
+        }
     }
 
     void Jump() {
