@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    // Test [remove]
     public bool canMove = true;
     public bool showGroundDetection = true;
     public float playerSpeed = 1.5f;
