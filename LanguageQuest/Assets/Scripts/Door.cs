@@ -44,10 +44,10 @@ public class Door : Interactable
 
     public void Update() {
         if (isOpen && openDegrees > 0) {
-            transform.RotateAround(transform.position, Vector3.up, openStep);
+            transform.RotateAround(transform.position, Vector3.up, -openStep);
             openDegrees -= openStep;
         } else if (!isOpen && openDegrees > 0) {
-            transform.RotateAround(transform.position, Vector3.up, -openStep);
+            transform.RotateAround(transform.position, Vector3.up, openStep);
             openDegrees -= openStep;
         }
     }

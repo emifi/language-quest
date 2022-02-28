@@ -16,6 +16,9 @@ public class Item : Interactable
 
     public override string GetInteractString()
     {
+        if (interactionString != "") {
+            return interactionString;
+        }
         return $"to interact with {transform.name}";
     }
 

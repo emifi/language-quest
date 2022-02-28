@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
-    public float interactionRange = 3f;
-    public float highlightRange = 6f;
+    public float interactionRange = 2f;
+    public float highlightRange = 4f;
     public LayerMask rayMask;
     public Canvas tempUI;
     GameObject highlightTrigger;
@@ -45,14 +45,12 @@ public class PlayerInteraction : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        Debug.Log($"Entering: {other.name}");
         if (other.GetComponent<Interactable>()) {
             other.GetComponent<Interactable>().Highlight();
         }
     }
 
     private void OnTriggerExit(Collider other) {
-        Debug.Log($"Exiting: {other.name}");
         if (other.GetComponent<Interactable>()) {
             other.GetComponent<Interactable>().Unhighlight();
         }

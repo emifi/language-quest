@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
+    public string interactionString = "";
     protected Outline outline; 
     public void Start() {
         transform.gameObject.AddComponent<Outline>();

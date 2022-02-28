@@ -53,8 +53,6 @@ public class PlayerMovement : MonoBehaviour
             } else {
                 renderer.material.color = Color.red;
             }
-        } else {
-            groundDectector.SetActive(false);
         }
         // If grounded and has a negative velocity, set velocity to some small negative amount to force character down. Else apply gravity
         if (isGrounded && velocity.y < 0.0f) {
