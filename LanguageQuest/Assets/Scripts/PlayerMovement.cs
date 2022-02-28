@@ -18,8 +18,6 @@ public class PlayerMovement : MonoBehaviour
     public Transform headCheck;
 
     Vector3 velocity;
-    float xTotal = 0.0f;
-    float zTotal = 0.0f;
     bool isGrounded;
     bool hitHead;
 
