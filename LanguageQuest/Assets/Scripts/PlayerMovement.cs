@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (showGroundDetection) {
             groundDectector = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            groundDectector.name = "Debug Ground Detector";
             groundDectector.transform.parent = transform;
         }
     }
