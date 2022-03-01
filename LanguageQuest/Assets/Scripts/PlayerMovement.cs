@@ -11,11 +11,11 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = 9.8f;
     public float groundDistance = 0.4f;
     public float headDistance = 0.4f;
-
     public LayerMask terrainMask;
-    public CharacterController playerController;
-    public Transform groundCheck;
-    public Transform headCheck;
+
+    CharacterController playerController;
+    Transform groundCheck;
+    Transform headCheck;
 
     Vector3 velocity;
     bool isGrounded;
@@ -26,6 +26,9 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        groundCheck = transform.Find("GroundCheck");
+        headCheck = transform.Find("HeadCheck");
+        playerController = transform.GetComponent<CharacterController>();
         if (showGroundDetection) {
             groundDectector = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             groundDectector.name = "Debug Ground Detector";
