@@ -17,8 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController playerController;
     public Transform groundCheck;
     public Transform headCheck;
-    public Transform camera;
-    public Transform playerCollider;
+    public Transform cam;
 
     Vector3 velocity;
     float xTotal = 0.0f;
@@ -26,8 +25,9 @@ public class PlayerMovement : MonoBehaviour
     bool isGrounded;
     bool hitHead;
     bool isCrouch;
+    bool forcedDown;
 
-    Vector3 positionChange = new Vector3(0, 1, 0);
+    Vector3 positionChange = new Vector3(0, 0.5f, 0);
 
     GameObject groundDectector;
     GameObject playerModel;
@@ -98,22 +98,41 @@ public class PlayerMovement : MonoBehaviour
             z += 1.0f;
         }
 
-        if (Input.GetKeyDown("left shift")) {
-            camera.position-=positionChange;
+        if (!forcedDown&&Input.GetKeyDown("left shift")) {
             playerModel.SetActive(false);
-            headCheck.position-=positionChange;
+            playerController.height=1;
+            groundCheck.position+=positionChange;
+            cam.position-=positionChange;
             isCrouch = true;
             playerSpeed = 3.0f;
         }
 
-        if (Input.GetKeyUp("left shift")) {
-            camera.position+=positionChange;
-            playerModel.SetActive(true);
-            headCheck.position+=positionChange;
-            isCrouch = false;
-            playerSpeed = 6.0f;
+        if (!forcedDown&&Input.GetKeyUp("left shift")) {
+            playerController.height=2;
+            if(Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
+                playerController.height=1;
+                forcedDown = true;
+            }else{
+                cam.position+=positionChange;
+                groundCheck.position-=positionChange;
+                forcedDown = false;
+                isCrouch = false;
+                playerSpeed = 6.0f;
+            }
+            
         }
 
+        if(forcedDown){
+            if(!Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
+                playerController.height=2;
+                cam.position+=positionChange;
+                groundCheck.position-=positionChange;
+                forcedDown = false;
+                isCrouch = false;
+                playerSpeed = 6.0f;
+                
+            }
+        }
         Vector3 moveVector = transform.right * x + transform.forward * z;
         playerController.Move(moveVector * playerSpeed * Time.deltaTime);
         playerController.Move(velocity * Time.deltaTime);
