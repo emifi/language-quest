@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : Interactable
+public class DoorInteractable : Interactable
 {
     protected bool isOpen = false;
     protected bool isLocked = false;
     protected float openDegrees = 0f;
-    protected float openStep = 0.5f;
+    protected float openStep = 0.2f;
 
     public override void Interact()
     {
         if (isLocked) return;
 
-        if (isOpen && openDegrees == 0f) {
+        if (isOpen && openDegrees <= 0f) {
             Debug.Log("Closing door...");
             isOpen = false;
             openDegrees = 90f;
-        } else if (!isOpen && openDegrees == 0f) {
+        } else if (!isOpen && openDegrees <= 0f) {
             Debug.Log("Opening door...");
             isOpen = true;
             openDegrees = 90f;

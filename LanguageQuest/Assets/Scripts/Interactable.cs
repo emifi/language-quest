@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    public string interactionString = "";
     protected Outline outline; 
     public void Start() {
         transform.gameObject.AddComponent<Outline>();
@@ -19,14 +18,25 @@ public abstract class Interactable : MonoBehaviour
     }
 
     public virtual string GetInteractString() {
-        return $"Interaction string not set for {transform.name}";
+        return $"to interact with {transform.name}";
     }
 
+    // Default glows/unglows for interactable objects. See PlayerInteraction in player
     public virtual void Highlight(){
-        Debug.Log($"Attempting to highlight {transform.name}, but Highlight() method has not been set up for this object.");
+        outline.enabled = true;
     }
 
     public virtual void Unhighlight(){
-        Debug.Log($"Attempting to unhighlight {transform.name}, but Highlight() method has not been set up for this object.");
+        outline.enabled = false;
+    }
+
+    public virtual void Focus(){
+        outline.OutlineColor = Color.blue;
+        outline.OutlineWidth = 7f;
+    }
+
+    public virtual void Unfocus() {
+        outline.OutlineColor = Color.cyan;
+        outline.OutlineWidth = 5f;
     }
 }
