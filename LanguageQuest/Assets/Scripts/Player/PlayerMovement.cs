@@ -11,13 +11,11 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = 9.8f;
     public float groundDistance = 0.4f;
     public float headDistance = 0.4f;
-
     public LayerMask terrainMask;
     public CharacterController playerController;
     public Transform groundCheck;
     public Transform headCheck;
     public Transform cam;
-
     Vector3 velocity;
     bool isGrounded;
     bool hitHead;
@@ -35,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
         playerModel = GameObject.Find("Player");
         if (showGroundDetection) {
             groundDectector = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            groundDectector.name = "Debug Ground Detector";
             groundDectector.transform.parent = transform;
         }
     }
@@ -60,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
                 renderer.material.color = Color.red;
             }
         } 
+
         // If grounded and has a negative velocity, set velocity to some small negative amount to force character down. Else apply gravity
         if (isGrounded && velocity.y < 0.0f) {
             velocity.y = -2.0f;
