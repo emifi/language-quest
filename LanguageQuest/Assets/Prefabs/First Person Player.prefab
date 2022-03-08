@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5529872398680410034}
   - component: {fileID: 3719815922060414026}
   m_Layer: 0
-  m_Name: Cylinder
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,6 +275,7 @@ MonoBehaviour:
   playerController: {fileID: 4387959200457928966}
   groundCheck: {fileID: 7869563883295213817}
   headCheck: {fileID: 7021756612848159993}
+  cam: {fileID: 4387959198819781436}
 --- !u!1 &5075913452888430370
 GameObject:
   m_ObjectHideFlags: 0
@@ -332,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b09a9f33794b5b499e741a98a427fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
   interactionRange: 3
   highlightRange: 6
   rayMask:
