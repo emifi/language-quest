@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+
+For an interactable to have an outline shader, it must have a Rigid body (and I think it needs to have "Is Kinematic" checked)
+
+*/
+
 public abstract class Interactable : MonoBehaviour
 {
     protected Outline outline; 

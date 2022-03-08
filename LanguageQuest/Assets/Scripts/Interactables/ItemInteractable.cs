@@ -26,6 +26,6 @@ public class ItemInteractable : Interactable
         if (overrideInteractionString != "") {
             return overrideInteractionString;
         }
-        return item.interactionString;
+        return item.interactionString + " " + item.displayName;
     }
 }

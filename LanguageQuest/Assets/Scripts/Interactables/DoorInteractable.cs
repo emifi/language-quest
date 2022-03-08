@@ -7,25 +7,28 @@ public class DoorInteractable : Interactable
     protected bool isOpen = false;
     protected bool isLocked = false;
     protected float openDegrees = 0f;
-    protected float openStep = 0.2f;
+    protected float openStep = 120.0f;
 
     public override void Interact()
     {
         if (isLocked) return;
 
-        if (isOpen && openDegrees <= 0f) {
+        if (isOpen) {
             Debug.Log("Closing door...");
             isOpen = false;
-            openDegrees = 90f;
-        } else if (!isOpen && openDegrees <= 0f) {
+            openDegrees = 90f - openDegrees;
+        } else if (!isOpen) {
             Debug.Log("Opening door...");
             isOpen = true;
-            openDegrees = 90f;
+            openDegrees = 90f - openDegrees;
         }
     }
 
     public override string GetInteractString()
     {   
+        if (isLocked) {
+            return $"locked {transform.name}";
+        }
         if (isOpen) {
             return $"to close {transform.name}";
         }
@@ -44,11 +47,13 @@ public class DoorInteractable : Interactable
 
     public void Update() {
         if (isOpen && openDegrees > 0) {
-            transform.RotateAround(transform.position, Vector3.up, -openStep);
-            openDegrees -= openStep;
+            float min = Mathf.Min(openStep*Time.deltaTime, openDegrees);
+            transform.RotateAround(transform.position, Vector3.up, -min);
+            openDegrees -= min;
         } else if (!isOpen && openDegrees > 0) {
-            transform.RotateAround(transform.position, Vector3.up, openStep);
-            openDegrees -= openStep;
+            float min = Mathf.Min(openStep*Time.deltaTime, openDegrees);
+            transform.RotateAround(transform.position, Vector3.up, min);
+            openDegrees -=min;
         }
     }
 }
