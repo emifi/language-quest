@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour
                 renderer.material.color = Color.red;
             }
         } 
-        
+
         // If grounded and has a negative velocity, set velocity to some small negative amount to force character down. Else apply gravity
         if (isGrounded && velocity.y < 0.0f) {
             velocity.y = -2.0f;
