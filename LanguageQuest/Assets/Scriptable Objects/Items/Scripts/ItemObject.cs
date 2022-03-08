@@ -12,7 +12,9 @@ public abstract class ItemObject : ScriptableObject
     public GameObject prefab;
     public GameObject image;
     public ItemType type;
-    public string displayName;
+    public bool canBeAddedToNotebook;
+    public string nativeName;
+    public string englishName;
     [TextArea(15,20)]
     public string description;
     public string interactionString = "to interact";

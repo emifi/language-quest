@@ -15,6 +15,8 @@ MonoBehaviour:
   prefab: {fileID: 0}
   image: {fileID: 0}
   type: 0
-  displayName: tyah
-  description: 
+  canBeAddedToNotebook: 1
+  nativeName: "ty\u0105h"
+  englishName: bucket
+  description: A container for carrying various things.
   interactionString: to pickup
