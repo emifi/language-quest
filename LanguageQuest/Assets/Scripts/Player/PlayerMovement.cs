@@ -95,13 +95,17 @@ public class PlayerMovement : MonoBehaviour
             z += 1.0f;
         }
 
-        if (!forcedDown&&Input.GetKeyDown("left shift")) {
-            playerModel.SetActive(false);
-            playerController.height=1;
-            groundCheck.position+=positionChange;
-            cam.position-=positionChange;
-            isCrouch = true;
-            playerSpeed = 3.0f;
+        if (Input.GetKeyDown("left shift")) {
+            if(forcedDown){
+                forcedDown = false;
+            }else{
+                playerModel.SetActive(false);
+                playerController.height=1;
+                groundCheck.position+=positionChange;
+                cam.position-=positionChange;
+                isCrouch = true;
+                playerSpeed = 3.0f;
+            }
         }
 
         if (!forcedDown&&Input.GetKeyUp("left shift")) {
