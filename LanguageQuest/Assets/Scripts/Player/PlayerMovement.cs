@@ -13,9 +13,11 @@ public class PlayerMovement : MonoBehaviour
     public float headDistance = 0.4f;
     public LayerMask terrainMask;
     public CharacterController playerController;
+    public Transform playerTransform;
     public Transform groundCheck;
     public Transform headCheck;
     public Transform cam;
+    public Transform spawnpoint;
     Vector3 velocity;
     bool isGrounded;
     bool hitHead;
@@ -36,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
             groundDectector.name = "Debug Ground Detector";
             groundDectector.transform.parent = transform;
         }
+
+        playerTransform.position = spawnpoint.position;
     }
 
     // Update is called once per frame
@@ -95,13 +99,17 @@ public class PlayerMovement : MonoBehaviour
             z += 1.0f;
         }
 
-        if (!forcedDown&&Input.GetKeyDown("left shift")) {
-            playerModel.SetActive(false);
-            playerController.height=1;
-            groundCheck.position+=positionChange;
-            cam.position-=positionChange;
-            isCrouch = true;
-            playerSpeed = 3.0f;
+        if (Input.GetKeyDown("left shift")) {
+            if(forcedDown){
+                forcedDown = false;
+            }else{
+                playerModel.SetActive(false);
+                playerController.height=1;
+                groundCheck.position+=positionChange;
+                cam.position-=positionChange;
+                isCrouch = true;
+                playerSpeed = 3.0f;
+            }
         }
 
         if (!forcedDown&&Input.GetKeyUp("left shift")) {
@@ -133,6 +141,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 moveVector = transform.right * x + transform.forward * z;
         playerController.Move(moveVector * playerSpeed * Time.deltaTime);
         playerController.Move(velocity * Time.deltaTime);
+
+        if(playerTransform.position.y<-20){
+            playerTransform.position = spawnpoint.position;
+        }
     }
 
     void Jump() {
