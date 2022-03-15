@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public bool canMove = true;
+    public static bool canMove = true;
     public bool showGroundDetection = true;
     public float playerSpeed = 1.5f;
     public float jumpHeight = 5.0f;
@@ -137,5 +137,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Jump() {
         velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
+    }
+
+    public static void dictOpen(){
+        canMove = false;
+    }
+
+    public static void dictClose(){
+        canMove = true;
     }
 }

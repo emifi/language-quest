@@ -47,7 +47,7 @@ public class PlayerInteraction : MonoBehaviour
                 actionUI.transform.Find("EIndicator/Text").GetComponent<Text>().text = interactable.GetInteractString();
 
                 // On interact
-                if (Input.GetKeyDown(KeyCode.E)) {
+                if (!notebookUI.enabled&&Input.GetKeyDown(KeyCode.E)) {
                     if (interactable is ItemInteractable) {
                         ItemObject item = (interactable as ItemInteractable).item;
                         if (item.canBeAddedToNotebook) notebook.AddItem(item);
@@ -77,8 +77,20 @@ public class PlayerInteraction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N)) {
             if (notebookUI.isActiveAndEnabled) {
                 notebookUI.enabled = false;
+                MouseLook.dictClose();
+                PlayerMovement.dictClose();
             } else {
                 notebookUI.enabled = true;
+                MouseLook.dictOpen();
+                PlayerMovement.dictOpen();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (notebookUI.isActiveAndEnabled) {
+                notebookUI.enabled = false;
+                MouseLook.dictClose();
+                PlayerMovement.dictClose();
             }
         }
     }
