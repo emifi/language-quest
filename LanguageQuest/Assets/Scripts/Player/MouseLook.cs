@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseLook : MonoBehaviour
 {
-    public bool canLook = true;
+    public static bool canLook = true;
 
     public float mouseSensitivity = 100f;
 
@@ -31,5 +31,15 @@ public class MouseLook : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerTransform.Rotate(Vector3.up * mouseX);
+    }
+
+    public static void dictOpen(){
+        canLook = false;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public static void dictClose(){
+        canLook = true;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

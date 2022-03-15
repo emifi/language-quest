@@ -9,7 +9,7 @@ public class ItemInteractable : Interactable
     public override void Interact()
     {
         if (item.type == ItemType.Default) {
-            Material material = transform.GetComponent<Renderer>().material;
+            Material material = transform.GetComponentInChildren<Renderer>().material;
             material.color = new Color(
                 Random.Range(0f,1f),
                 Random.Range(0f,1f),
@@ -26,6 +26,6 @@ public class ItemInteractable : Interactable
         if (overrideInteractionString != "") {
             return overrideInteractionString;
         }
-        return item.interactionString + " " + item.displayName;
+        return item.interactionString + " " + item.nativeName;
     }
 }

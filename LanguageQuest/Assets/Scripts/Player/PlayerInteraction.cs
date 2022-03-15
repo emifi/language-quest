@@ -6,11 +6,13 @@ using UnityEngine.UI;
 public class PlayerInteraction : MonoBehaviour
 {
     public InventoryObject inventory;
+    public NotebookObject notebook;
 
     public float interactionRange = 2f;
     public float highlightRange = 4f;
     public LayerMask rayMask;
-    public Canvas tempUI;
+    public Canvas actionUI;
+    public Canvas notebookUI;
     GameObject highlightTrigger;
     SphereCollider highlightCollider;
     Transform playerCamera;
@@ -41,13 +43,14 @@ public class PlayerInteraction : MonoBehaviour
             Interactable interactable = hit.collider.GetComponentInParent<Interactable>();
             if (interactable) {
                 interactable.Focus();
-                tempUI.enabled = true;
-                tempUI.transform.Find("EIndicator/Text").GetComponent<Text>().text = interactable.GetInteractString();
+                actionUI.enabled = true;
+                actionUI.transform.Find("EIndicator/Text").GetComponent<Text>().text = interactable.GetInteractString();
 
                 // On interact
-                if (Input.GetKeyDown(KeyCode.E)) {
+                if (!notebookUI.enabled&&Input.GetKeyDown(KeyCode.E)) {
                     if (interactable is ItemInteractable) {
                         ItemObject item = (interactable as ItemInteractable).item;
+                        if (item.canBeAddedToNotebook) notebook.AddItem(item);
                         if (item.type == ItemType.Pickup) {
                             if (inventory.AddItem(item)) {
                                 interactable.Interact();
@@ -64,12 +67,32 @@ public class PlayerInteraction : MonoBehaviour
                     }
                 }
             } else {
-                tempUI.enabled = false;
+                actionUI.enabled = false;
             }
         } else {
-            tempUI.enabled = false;
+            actionUI.enabled = false;
         }
         last = hit.collider;
+
+        if (Input.GetKeyDown(KeyCode.N)) {
+            if (notebookUI.isActiveAndEnabled) {
+                notebookUI.enabled = false;
+                MouseLook.dictClose();
+                PlayerMovement.dictClose();
+            } else {
+                notebookUI.enabled = true;
+                MouseLook.dictOpen();
+                PlayerMovement.dictOpen();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if (notebookUI.isActiveAndEnabled) {
+                notebookUI.enabled = false;
+                MouseLook.dictClose();
+                PlayerMovement.dictClose();
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -86,5 +109,6 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnApplicationQuit() {
         inventory.container.Clear();
+        notebook.container.Clear();
     }
 }
