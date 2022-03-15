@@ -22,7 +22,7 @@ public class PlayerInteraction : MonoBehaviour
 
     void Start() {
         highlightTrigger = gameObject;
-        highlightCollider = highlightTrigger.AddComponent<SphereCollider>();
+        highlightCollider = highlightTrigger.GetComponent<SphereCollider>();
         highlightTrigger.transform.localScale = new Vector3(highlightRange*2, highlightRange*2, highlightRange*2);
         firstPersonPlayer = transform.parent;
         playerCamera = firstPersonPlayer.Find("Main Camera");
