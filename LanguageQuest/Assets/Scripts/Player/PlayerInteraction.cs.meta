@@ -5,7 +5,9 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - inventory: {fileID: 11400000, guid: 2e2f744b6345fda45bbb6efd28f1b613, type: 2}
-  - tempUI: {instanceID: 0}
+  - notebook: {fileID: 11400000, guid: 5b111a7f8833c0f458638173c6bc0852, type: 2}
+  - actionUI: {instanceID: 0}
+  - notebookUI: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

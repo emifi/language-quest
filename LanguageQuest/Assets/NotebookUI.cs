@@ -11,11 +11,14 @@ public class NotebookUI : MonoBehaviour
     public static GameObject dictButtons;
     public Button[] buttons;
     public Button homeButton;
+    public static GameObject leftButton;
+    public static GameObject rightButton;
     private Text page1;
     private Text page2;
     private static bool atHome;
     private static char currPage;
-    private int posPtr;
+    private static int posPtr;
+    private static float timeout;
     private string str1;
     private string str2;
 
@@ -32,6 +35,9 @@ public class NotebookUI : MonoBehaviour
         buttons = dictUI.GetComponentsInChildren<Button>();
         dictButtons = GameObject.Find("DictButtonFrame");
         homeButton = GameObject.Find("DictHomeButton").GetComponent<Button>();
+        leftButton = GameObject.Find("DictLeftButton");
+        rightButton = GameObject.Find("DictRightButton");
+        timeout = 0;
 
         foreach(Button btn in buttons){
             if(btn.name.Length==1){
@@ -39,6 +45,8 @@ public class NotebookUI : MonoBehaviour
             }
         }
         homeButton.onClick.AddListener(() => navHome());
+        leftButton.GetComponent<Button>().onClick.AddListener(() => turnPage(-6));
+        rightButton.GetComponent<Button>().onClick.AddListener(() => turnPage(6));
     }
 
     // Update is called once per frame
@@ -60,8 +68,8 @@ public class NotebookUI : MonoBehaviour
             }
         }else{
             str1+= $"Words that start with \"{currPage}\": \n";
-            if(currPage>=65&&currPage<=90&&notebook.dictionary[NotebookObject.mapper(currPage)]!=null){
-                List<NotebookSlot> dictionaryEntry = notebook.dictionary[NotebookObject.mapper(currPage)];
+            List<NotebookSlot> dictionaryEntry = notebook.dictionary[NotebookObject.mapper(currPage)];
+            if(currPage>=65&&currPage<=90&&dictionaryEntry!=null){
                 for(int i = 0; i<6;i++){
                     if(posPtr + i < dictionaryEntry.Count){
                         ItemObject item = dictionaryEntry[posPtr+i].item;
@@ -72,6 +80,23 @@ public class NotebookUI : MonoBehaviour
                         }
                     }
                 }
+
+                if(posPtr!=0){
+                    leftButton.SetActive(true);
+                }else{
+                    leftButton.SetActive(false);
+                }
+
+                if(posPtr+6<=(dictionaryEntry.Count)){
+                    rightButton.SetActive(true);
+                }else{
+                    rightButton.SetActive(false);
+                }
+            }
+
+            if(dictionaryEntry==null){
+                    rightButton.SetActive(false);
+                    leftButton.SetActive(false);
             }
         }
 
@@ -91,5 +116,12 @@ public class NotebookUI : MonoBehaviour
         atHome = true;
         dictUI.SetActive(true);
         dictButtons.SetActive(false);
+    }
+
+    public static void turnPage(int input){
+        if(Time.time-timeout>0.25f){//prevents double-calls
+            timeout = Time.time;
+            posPtr += input;
+        }
     }
 }
