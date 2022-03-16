@@ -17,7 +17,6 @@ public class NotebookObject : ScriptableObject
         container.Add(new NotebookSlot(item));
 
         if(dictionary[mapper(item.englishName[0])]==null){
-            Debug.Log("SHOULD be here");
             dictionary[mapper(item.englishName[0])] = new List<NotebookSlot>();
             dictionary[mapper(item.englishName[0])].Add(new NotebookSlot(item));
             return;
@@ -66,6 +65,18 @@ public class NotebookObject : ScriptableObject
             return c - 97;
         }
         return 36; //should never be reached
+    }
+
+    public void debugger(int x){
+        Debug.Log("SRC: " + x);
+        for(int i = 0; i<dictionary.Length;i++){
+                Debug.Log("LETTER: "+((char)(i+65)));
+                if(dictionary[i]!=null){
+                    foreach(NotebookSlot thing in dictionary[i]){
+                    Debug.Log(thing.item.englishName);
+                    }
+                }
+            }
     }
 
 }

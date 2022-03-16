@@ -8,7 +8,9 @@ public class NotebookUI : MonoBehaviour
     public NotebookObject notebook;
     public Canvas notebookUI;
     public static GameObject dictUI;
+    public static GameObject dictHomeButton;
     public Button[] buttons;
+    public Button homeButton;
     private Text page1;
     private Text page2;
     private static bool atHome;
@@ -25,15 +27,18 @@ public class NotebookUI : MonoBehaviour
         str1 = "";
         str2 = "";
         dictUI = GameObject.Find("DictLetters");
-        page1 = notebookUI.transform.Find("Frame/Page1/Entries/Text").GetComponent<Text>();
-        page2 = notebookUI.transform.Find("Frame/Page2/Entries/Text").GetComponent<Text>();
+        page1 = notebookUI.transform.Find("Canv/Frame/Page1/Entries/Text").GetComponent<Text>();
+        page2 = notebookUI.transform.Find("Canv/Frame/Page2/Entries/Text").GetComponent<Text>();
         buttons = dictUI.GetComponentsInChildren<Button>();
+        dictHomeButton = GameObject.Find("DictHomeButton");
+        homeButton = dictHomeButton.GetComponent<Button>();
 
         foreach(Button btn in buttons){
             if(btn.name.Length==1){
                 btn.onClick.AddListener(() => navToPage(btn.name[0]));
             }
         }
+        homeButton.onClick.AddListener(() => navHome());
     }
 
     // Update is called once per frame
@@ -59,7 +64,7 @@ public class NotebookUI : MonoBehaviour
                 List<NotebookSlot> dictionaryEntry = notebook.dictionary[NotebookObject.mapper(currPage)];
                 for(int i = 0; i<6;i++){
                     if(posPtr + i < dictionaryEntry.Count){
-                        ItemObject item = notebook.container[notebook.container.Count-i-1].item;
+                        ItemObject item = dictionaryEntry[posPtr+i].item;
                         if(i<3){
                             str1 += $"(image){item.nativeName}/{item.englishName}: {item.description}\n";
                         }else{
@@ -79,10 +84,12 @@ public class NotebookUI : MonoBehaviour
         currPage = c;
         atHome = false;
         dictUI.SetActive(false);
+        dictHomeButton.SetActive(true);
     }
 
     public static void navHome(){
         atHome = true;
         dictUI.SetActive(true);
+        dictHomeButton.SetActive(false);
     }
 }
