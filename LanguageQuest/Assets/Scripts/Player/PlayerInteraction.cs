@@ -75,6 +75,7 @@ public class PlayerInteraction : MonoBehaviour
         last = hit.collider;
 
         if (Input.GetKeyDown(KeyCode.N)) {
+            NotebookUI.navHome();
             if (notebookUI.isActiveAndEnabled) {
                 notebookUI.enabled = false;
                 MouseLook.dictClose();
