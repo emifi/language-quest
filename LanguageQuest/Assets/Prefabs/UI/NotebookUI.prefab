@@ -5275,7 +5275,7 @@ GameObject:
   - component: {fileID: 9103853739838398946}
   - component: {fileID: 2155758673925128829}
   m_Layer: 5
-  m_Name: DictLeftButton (1)
+  m_Name: DictRightButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5595,7 +5595,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: <-
+  m_Text: ->
 --- !u!1 &6495494934344722900
 GameObject:
   m_ObjectHideFlags: 0
