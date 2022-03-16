@@ -8,7 +8,7 @@ public class NotebookUI : MonoBehaviour
     public NotebookObject notebook;
     public Canvas notebookUI;
     public static GameObject dictUI;
-    public static GameObject dictHomeButton;
+    public static GameObject dictButtons;
     public Button[] buttons;
     public Button homeButton;
     private Text page1;
@@ -30,8 +30,8 @@ public class NotebookUI : MonoBehaviour
         page1 = notebookUI.transform.Find("Canv/Frame/Page1/Entries/Text").GetComponent<Text>();
         page2 = notebookUI.transform.Find("Canv/Frame/Page2/Entries/Text").GetComponent<Text>();
         buttons = dictUI.GetComponentsInChildren<Button>();
-        dictHomeButton = GameObject.Find("DictHomeButton");
-        homeButton = dictHomeButton.GetComponent<Button>();
+        dictButtons = GameObject.Find("DictButtonFrame");
+        homeButton = GameObject.Find("DictHomeButton").GetComponent<Button>();
 
         foreach(Button btn in buttons){
             if(btn.name.Length==1){
@@ -84,12 +84,12 @@ public class NotebookUI : MonoBehaviour
         currPage = c;
         atHome = false;
         dictUI.SetActive(false);
-        dictHomeButton.SetActive(true);
+        dictButtons.SetActive(true);
     }
 
     public static void navHome(){
         atHome = true;
         dictUI.SetActive(true);
-        dictHomeButton.SetActive(false);
+        dictButtons.SetActive(false);
     }
 }
