@@ -7,7 +7,8 @@ public class NPCInteractable : Interactable
     public string[] tempScript;
     public override void Interact()
     {
-        tempScript = new string[2]{$"Hello, my name is {gameObject.name}!",$"I have {gameObject.GetComponent<NpcNavMesh>().getDestinations()} destinations!"};
-        DialogueUI.setScript(tempScript);
+        NpcNavMesh npc = gameObject.GetComponent<NpcNavMesh>();
+        tempScript = new string[2]{$"Hello, my name is {gameObject.name}!",$"I have {npc.getDestinations()} destinations!"};
+        DialogueUI.setScript(tempScript,npc);
     }
 }

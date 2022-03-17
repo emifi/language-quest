@@ -80,4 +80,12 @@ public class NpcNavMesh : MonoBehaviour
     public int getDestinations(){
         return dest.Length;
     }
+
+    public void stopMovement(){
+        mesh.velocity = Vector3.zero;
+    }
+
+    public NpcType getType(){
+        return walkType;
+    }
 }

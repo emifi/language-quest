@@ -7,6 +7,7 @@ public class DialogueUI : MonoBehaviour
 {
     public Canvas dialogueUI;
     private Text dialogue;
+    private static NpcNavMesh currNPC;
     private static int posPtr;
     private static int textPos;
     private static string[] lines; 
@@ -43,6 +44,10 @@ public class DialogueUI : MonoBehaviour
         if(textPos>=lines[posPtr].Length){
             lineComplete = true;
         }
+
+        if(currNPC!=null&&currNPC.getType()!=NpcNavMesh.NpcType.Proximity){
+            currNPC.stopMovement();
+        }
         
         dialogue.text = str;
     }
@@ -54,11 +59,12 @@ public class DialogueUI : MonoBehaviour
         textPos=0;
     }
 
-    public static void setScript(string[] script){
+    public static void setScript(string[] script, NpcNavMesh n){
         speechComplete = false;
         lineComplete = false;
         posPtr = 0;
         lines = script;
+        currNPC = n;
     }
 
     public static bool textComplete(){
