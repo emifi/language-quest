@@ -13,6 +13,7 @@ public class PlayerInteraction : MonoBehaviour
     public LayerMask rayMask;
     public Canvas actionUI;
     public Canvas notebookUI;
+    public Canvas dialogueUI;
     GameObject highlightTrigger;
     SphereCollider highlightCollider;
     Transform playerCamera;
@@ -26,12 +27,21 @@ public class PlayerInteraction : MonoBehaviour
         highlightTrigger.transform.localScale = new Vector3(highlightRange*2, highlightRange*2, highlightRange*2);
         firstPersonPlayer = transform.parent;
         playerCamera = firstPersonPlayer.Find("Main Camera");
+        dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
+        if(!DialogueUI.dialogueComplete()){ //if dialogue occurring, interaction is disallowed
+            actionUI.enabled = false;
+            if (DialogueUI.textComplete()&&Input.GetKeyDown(KeyCode.E)) {
+                DialogueUI.turnPage();
+            }
+            return;
+        }
+
         RaycastHit hit;
         Ray interactionRay = new Ray(playerCamera.position, playerCamera.forward);
         // If the last raycast was an interactable, unfocus it
@@ -62,6 +72,9 @@ public class PlayerInteraction : MonoBehaviour
                         } else if (item.type == ItemType.Default) {
                             interactable.Interact();
                         }
+                    } else if(interactable is NPCInteractable) {
+                        dialogueUI.enabled = true;
+                        interactable.Interact();
                     } else {
                         interactable.Interact();
                     }

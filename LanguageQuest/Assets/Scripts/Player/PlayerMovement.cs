@@ -33,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerModel = GameObject.Find("Player");
+        spawnpoint = GameObject.Find("Spawnpoint").GetComponent<Transform>();
         if (showGroundDetection) {
             groundDectector = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             groundDectector.name = "Debug Ground Detector";

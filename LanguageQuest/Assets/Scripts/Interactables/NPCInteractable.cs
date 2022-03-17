@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class NPCInteractable : Interactable
 {
+    public string[] tempScript;
     public override void Interact()
     {
-        Debug.Log("Dialogue not implemented");
+        tempScript = new string[2]{$"Hello, my name is {gameObject.name}!",$"I have {gameObject.GetComponent<NpcNavMesh>().getDestinations()} destinations!"};
+        DialogueUI.setScript(tempScript);
     }
 }
