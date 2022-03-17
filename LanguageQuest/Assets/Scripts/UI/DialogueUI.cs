@@ -45,7 +45,7 @@ public class DialogueUI : MonoBehaviour
             lineComplete = true;
         }
 
-        if(currNPC!=null&&currNPC.getType()!=NpcNavMesh.NpcType.Proximity){
+        if(currNPC!=null&&currNPC.getType()!=NpcNavMesh.NpcType.Proximity&&currNPC.getType()!=NpcNavMesh.NpcType.Stationary){
             currNPC.stopMovement();
         }
         
