@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Default NPC Text
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 243c2235-27bb-4770-8915-77f5d7426f3d
+    PortName: Next
+    TargetNodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
+  - BaseNodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
+    PortName: none
+    TargetNodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
+  - BaseNodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
+    PortName: none
+    TargetNodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
+  - BaseNodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
+    PortName: Yes!
+    TargetNodeGUID: 5577bb85-719d-40bf-9048-46ca92b86915
+  - BaseNodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
+    PortName: NO!
+    TargetNodeGUID: 212e6bcd-711a-4213-a66b-2cdc80128f78
+  - BaseNodeGUID: 5577bb85-719d-40bf-9048-46ca92b86915
+    PortName: none
+    TargetNodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
+  - BaseNodeGUID: 212e6bcd-711a-4213-a66b-2cdc80128f78
+    PortName: none
+    TargetNodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
+  DialogueNodeData:
+  - NodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
+    DialogueText: Hello, my name is {gameObject.name}.
+    Position: {x: 225, y: 205}
+  - NodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
+    DialogueText: I have {npc.getDestinations()} locations!
+    Position: {x: 495, y: 205}
+  - NodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
+    DialogueText: Did you enjoy this conversation?
+    Position: {x: 777, y: 205}
+  - NodeGUID: 5577bb85-719d-40bf-9048-46ca92b86915
+    DialogueText: :)
+    Position: {x: 1140, y: 122}
+  - NodeGUID: 212e6bcd-711a-4213-a66b-2cdc80128f78
+    DialogueText: :'(
+    Position: {x: 1144, y: 291}
+  - NodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
+    DialogueText: Goodbye! ! !
+    Position: {x: 1339, y: 205}
+  ExposedProperties:
+  - PropertyName: name
+    PropertyValue: Jim
+  CommentBlockData: []

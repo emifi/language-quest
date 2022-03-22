@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.subtegral.dialoguesystem": {
+      "version": "file:C:/Users/Bonhomme J/Documents/GitHub/NodeBasedDialogueSystem",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
+    },
     "com.unity.collab-proxy": {
       "version": "1.15.7",
       "depth": 0,
