@@ -11,6 +11,10 @@ public class DialogueUI : MonoBehaviour
     public Canvas dialogueUI;
     private Text dialogue;
     private static GameObject decisionSpace;
+    private static Text decisionA;
+    private static Text decisionB;
+    private static Text decisionC;
+    private static Text decisionD;
     private static DialogueContainer dialogueContainer;
     private static NpcNavMesh currNPC;
     private static int textPos;
@@ -23,8 +27,10 @@ public class DialogueUI : MonoBehaviour
     private static IEnumerable<NodeLinkData> choices;
     private static string fullText;
 
+    private static Text[,] decisionGrid;
     private static int numChoices;
-    private static int currChoice;
+    private static int currChoiceX;
+    private static int currChoiceY;
 
     // Start is called before the first frame update
     void Start()
@@ -96,10 +102,33 @@ public class DialogueUI : MonoBehaviour
         Debug.Log("S + " + numChoices);
         if(numChoices==0){
             decisionSpace.SetActive(false);
+            decisionGrid = null;
         }else if(numChoices==1){
             decisionSpace.SetActive(false);
+            decisionGrid = null;
         }else{
             decisionSpace.SetActive(true);
+            int copyNumChoices = numChoices;
+
+            decisionGrid = new Text[2,2]; //Feel free to resize decision grid based on your maximum # of responses. 
+                                      //Methods will react to this without issue
+            decisionGrid[0,0] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row1/A").GetComponent<Text>();
+            decisionGrid[0,1] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row1/B").GetComponent<Text>();
+            decisionGrid[1,0] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row2/C").GetComponent<Text>();
+            decisionGrid[1,1] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row2/D").GetComponent<Text>();
+            
+            foreach(Text t in decisionGrid){
+                    if(copyNumChoices<=0){
+                        t.enabled = false;
+                    }
+                    copyNumChoices--;
+            }
+        }
+
+        if(decisionGrid!=null){
+            currChoiceX = 0;
+            currChoiceY = 0;
+            decisionGrid[0,0].color = Color.cyan;
         }
     }
 
@@ -117,6 +146,10 @@ public class DialogueUI : MonoBehaviour
 
     public static bool dialogueComplete(){
         return speechComplete;
+    }
+
+    public static NpcNavMesh.NpcType getNpcType(){
+        return currNPC.getType();
     }
 
 }
