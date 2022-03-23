@@ -38,9 +38,6 @@ MonoBehaviour:
   - NodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
     DialogueText: Hello, my name is {gameObject.name}.
     Position: {x: 225, y: 205}
-  - NodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
-    DialogueText: I have {npc.getDestinations()} locations!
-    Position: {x: 495, y: 205}
   - NodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
     DialogueText: Did you enjoy this conversation?
     Position: {x: 777, y: 205}
@@ -53,6 +50,9 @@ MonoBehaviour:
   - NodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
     DialogueText: Goodbye! ! !
     Position: {x: 1339, y: 205}
+  - NodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
+    DialogueText: I have {npc.getDestinations()} locations!
+    Position: {x: 417, y: 54}
   ExposedProperties:
   - PropertyName: name
     PropertyValue: Jim

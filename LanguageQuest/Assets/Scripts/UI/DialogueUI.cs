@@ -10,6 +10,7 @@ public class DialogueUI : MonoBehaviour
 {
     public Canvas dialogueUI;
     private Text dialogue;
+    private static GameObject decisionSpace;
     private static DialogueContainer dialogueContainer;
     private static NpcNavMesh currNPC;
     private static int textPos;
@@ -21,6 +22,10 @@ public class DialogueUI : MonoBehaviour
     private static NodeLinkData narrativeData;
     private static IEnumerable<NodeLinkData> choices;
     private static string fullText;
+
+    private static int numChoices;
+    private static int currChoice;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +37,7 @@ public class DialogueUI : MonoBehaviour
         choices = null;
         fullText = null;
         dialogue = dialogueUI.transform.Find("DialogueBox/Paper/Text").GetComponent<Text>();
+        decisionSpace = GameObject.Find("SelectionSpace");
         textDelay = .15f;
     }
 
@@ -39,8 +45,14 @@ public class DialogueUI : MonoBehaviour
     void Update()
     {
         if(narrativeData==null||fullText==null){
+            lineComplete = false;
             speechComplete = true;
+            narrativeData = null;
+            choices = null;
+            fullText = null;
             dialogueUI.enabled = false;
+            displayedText = "";
+            textPos = 0;
             return;
         }
         if(Time.time-textDelay>.05f&&!speechComplete&&textPos<fullText.Length){
@@ -60,6 +72,10 @@ public class DialogueUI : MonoBehaviour
     }
 
     public static void turnPage(){
+        if(choices.Count()==0){
+            nextDialogue(null);
+            return;
+        }
         foreach(var choice in choices){
             nextDialogue(choice.TargetNodeGUID);
             return;
@@ -68,28 +84,31 @@ public class DialogueUI : MonoBehaviour
 
     private static void nextDialogue(string narrativeDataGUID){
         if(narrativeDataGUID==null){
-            lineComplete = false;
-            speechComplete = true;
             narrativeData = null;
-            choices = null;
-            fullText = null;
             return;
         }
         lineComplete = false;
         displayedText = "";
         textPos=0;
         fullText = dialogueContainer.DialogueNodeData.Find(x => x.NodeGUID == narrativeDataGUID).DialogueText;
-        choices = dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == narrativeData.TargetNodeGUID);
+        choices = dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID);
+        numChoices = choices.Count();
+        Debug.Log("S + " + numChoices);
+        if(numChoices==0){
+            decisionSpace.SetActive(false);
+        }else if(numChoices==1){
+            decisionSpace.SetActive(false);
+        }else{
+            decisionSpace.SetActive(true);
+        }
     }
 
     public static void setScript(NpcNavMesh n){
         speechComplete = false;
-        lineComplete = false;
         currNPC = n;
         dialogueContainer = currNPC.getCurrDialogue();
         narrativeData = dialogueContainer.NodeLinks.First(); //Entrypoint node
-        fullText = dialogueContainer.DialogueNodeData.Find(x => x.NodeGUID == narrativeData.TargetNodeGUID).DialogueText;
-        choices = dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == narrativeData.TargetNodeGUID);
+        nextDialogue(narrativeData.TargetNodeGUID);
     }
 
     public static bool textComplete(){
