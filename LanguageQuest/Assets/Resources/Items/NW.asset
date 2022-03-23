@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36a12c09c8a025e4eb10c51145c4a759, type: 3}
-  m_Name: Book
+  m_Script: {fileID: 11500000, guid: 850359f6cb15b8a44a6ded5183e1b154, type: 3}
+  m_Name: NW
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   image: {fileID: 0}
-  type: 1
-  displayName: 
+  type: 2
+  canBeAddedToNotebook: 0
+  nativeName: 
+  englishName: 
   description: 
+  interactionString: to interact

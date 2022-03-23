@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+using TMPro;
 
 [System.Serializable]
 public class Objective
@@ -13,9 +15,11 @@ public class Objective
     public int current;
     public int required;
     [Header("MoveTo-type Paramaters")]
-    public GameObject destination;
+    public DestinationObject destination;
     [Header("Trigger-type Paramaters")]
     public TriggerObject trigger;
+    [HideInInspector]
+    public GameObject panelUI;
 
     public Objective(ObjectiveType type, string objectiveString, PickupObject item, int current, int required) {
         this.type = type;
@@ -31,7 +35,7 @@ public class Objective
         }
     }
 
-    public Objective(ObjectiveType type, string objectiveString, GameObject destination) {
+    public Objective(ObjectiveType type, string objectiveString, DestinationObject destination) {
         this.type = type;
         this.objectiveString = objectiveString;
         this.status = ObjectiveStatus.Incomplete;

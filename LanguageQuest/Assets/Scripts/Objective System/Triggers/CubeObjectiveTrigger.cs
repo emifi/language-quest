@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SphereObjectiveTrigger : MonoBehaviour
+public class CubeObjectiveTrigger : MonoBehaviour
 {
     public DestinationObject trigger;
     // Start is called before the first frame update
