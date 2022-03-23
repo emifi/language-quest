@@ -7,6 +7,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     public InventoryObject inventory;
     public NotebookObject notebook;
+    public ObjectiveSystem objectiveSystem;
 
     public float interactionRange = 2f;
     public float highlightRange = 4f;
@@ -54,11 +55,10 @@ public class PlayerInteraction : MonoBehaviour
                         if (item.type == ItemType.Pickup) {
                             if (inventory.AddItem(item)) {
                                 interactable.Interact();
+                                objectiveSystem.pickupEvent(item as PickupObject);
                             }
-                        } else if (item.type == ItemType.Entry) {
-
                         } else if (item.type == ItemType.Trigger) {
-
+                            objectiveSystem.triggerEvent(item as TriggerObject);
                         } else if (item.type == ItemType.Default) {
                             interactable.Interact();
                         }
