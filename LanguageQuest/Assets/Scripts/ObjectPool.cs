@@ -5,7 +5,7 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     public static ObjectPool SharedInstance;
-    public GameObject cloudObject;
+    public List<GameObject> cloudObjects;
     public int clouds;
     List<GameObject> cloudPool;
     void  Awake() {
@@ -16,18 +16,20 @@ public class ObjectPool : MonoBehaviour
     {
         cloudPool = new List<GameObject>();
         GameObject tmp;
+        int rotation = 0;
         for (int i = 0; i < clouds; i++) {
-            tmp = Instantiate(cloudObject);
+            if (rotation >= cloudObjects.Count) rotation = 0;
+            tmp = Instantiate(cloudObjects[rotation]);
             tmp.SetActive(false);
             tmp.AddComponent<Cloud>();
             cloudPool.Add(tmp);
+            rotation++;
         }
     }
 
     public GameObject getPooledObject() {
         Debug.Log("- Inside gPO");
         for (int i = 0 ; i < clouds ; i++) {
-            Debug.Log(i);
             if (cloudPool[i].activeSelf == false) {
                 return cloudPool[i];
             }

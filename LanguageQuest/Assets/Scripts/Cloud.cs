@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Cloud : MonoBehaviour
 {
-    public float speed = 50f;
+    public float speed = 20f;
+    public float range = 5f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        speed = speed + Random.Range(-range, range);
     }
 
     // Update is called once per frame

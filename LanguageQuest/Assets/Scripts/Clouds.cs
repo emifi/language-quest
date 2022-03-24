@@ -6,6 +6,8 @@ public class Clouds : MonoBehaviour
 {
     public float x, y, z;
     public float range;
+    public float minGenerationTime = 5f;
+    public float maxGenerationTime = 20f;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,17 +23,17 @@ public class Clouds : MonoBehaviour
     private IEnumerator Generator() {
         while(true) {
             Debug.Log("New cloud...");
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(Random.Range(minGenerationTime, maxGenerationTime));
             Debug.Log("Getting cloud...");
             GameObject cloud = ObjectPool.SharedInstance.getPooledObject();
-            cloud.transform.localScale = new Vector3(Random.Range(1f,3f), Random.Range(-1f,1f), Random.Range(-1f,5f));
+            cloud.transform.localScale = new Vector3(Random.Range(1f,2f), Random.Range(0.5f,1.0f), Random.Range(1f,2f));
             if (cloud == null) {
                 Debug.Log("Cloud was null");
                 yield break;
             }
             cloud.SetActive(true);
             float new_x = Random.Range(-range, range);
-            float new_y = Random.Range(-100f, 100f);
+            float new_y = Random.Range(-100f, 250f);
             cloud.transform.position = new Vector3(new_x, y + new_y, z);
         }
     }
