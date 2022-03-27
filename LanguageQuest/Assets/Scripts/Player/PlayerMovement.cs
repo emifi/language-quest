@@ -99,16 +99,32 @@ public class PlayerMovement : MonoBehaviour
             x += -1.0f;
         }
 
+        if(Input.GetKeyDown(KeyCode.A)&&!chatBlock){
+            DialogueUI.scrollX(-1);
+        }
+
         if (Input.GetKey(KeyCode.D)&&chatBlock) {
             x += 1.0f;
+        }
+
+        if(Input.GetKeyDown(KeyCode.D)&&!chatBlock){
+            DialogueUI.scrollX(1);
         }
 
         if (Input.GetKey(KeyCode.S)&&chatBlock) {
             z += -1.0f;
         }
 
+        if(Input.GetKeyDown(KeyCode.S)&&!chatBlock){
+            DialogueUI.scrollY(1);
+        }
+
         if (Input.GetKey(KeyCode.W)&&chatBlock) {
             z += 1.0f;
+        }
+
+        if(Input.GetKeyDown(KeyCode.W)&&!chatBlock){
+            DialogueUI.scrollY(-1);
         }
 
         if (Input.GetKeyDown("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity)) {
