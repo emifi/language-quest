@@ -1,10 +1,11 @@
 {
   "dependencies": {
     "com.subtegral.dialoguesystem": {
-      "version": "file:C:/Users/Bonhomme J/Documents/GitHub/NodeBasedDialogueSystem",
+      "version": "https://github.com/merpheus-dev/NodeBasedDialogueSystem.git",
       "depth": 0,
-      "source": "local",
-      "dependencies": {}
+      "source": "git",
+      "dependencies": {},
+      "hash": "f68ebfcd02ba877ed7137ba1163f216497bea47c"
     },
     "com.unity.collab-proxy": {
       "version": "1.15.7",
