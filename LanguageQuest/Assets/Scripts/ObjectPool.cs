@@ -28,13 +28,11 @@ public class ObjectPool : MonoBehaviour
     }
 
     public GameObject getPooledObject() {
-        Debug.Log("- Inside gPO");
         for (int i = 0 ; i < clouds ; i++) {
             if (cloudPool[i].activeSelf == false) {
                 return cloudPool[i];
             }
         }
-        Debug.Log("Got nuthin");
         return null;
     }
 }
