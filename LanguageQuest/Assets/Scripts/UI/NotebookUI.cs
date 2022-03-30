@@ -30,7 +30,6 @@ public class NotebookUI : MonoBehaviour
         posPtr = 0;
         str1 = "";
         str2 = "";
-                Debug.Log("erweg");
         dictUI = GameObject.Find("DictLetters");
         page1 = GameObject.Find("Canv/Frame/Page1/Entries/Text").GetComponent<TMP_Text>();
         page2 = GameObject.Find("Canv/Frame/Page2/Entries/Text").GetComponent<TMP_Text>();
