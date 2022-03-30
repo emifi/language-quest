@@ -40,9 +40,10 @@ public class NotebookUI : MonoBehaviour
         rightButton = GameObject.Find("DictRightButton");
         timeout = 0;
 
-        foreach(Button btn in buttons){ //While this IS flexible, additional buttons
-            if(btn.name.Length==1){     //will have to continue the ASCII sequence so that the array can remain squential
-                btn.onClick.AddListener(() => navToChapter(btn.name[0])); //Please note new logic will need to be made in the dictionary
+        foreach(Button btn in buttons){ //While this IS flexible, any additional buttons 0th character
+            if(btn.name.Length==1){     //will have to continue the ASCII sequence so that the array can remain squential 
+                                        //- buttons can be renamed after this point
+                btn.onClick.AddListener(() => navToChapter(btn.name[0])); //Please note new logic will also need to be made in the dictionary
             }
         }
         homeButton.onClick.AddListener(() => navHome());
