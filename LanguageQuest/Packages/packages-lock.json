@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.subtegral.dialoguesystem": {
+      "version": "https://github.com/merpheus-dev/NodeBasedDialogueSystem.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "f68ebfcd02ba877ed7137ba1163f216497bea47c"
+    },
     "com.unity.collab-proxy": {
       "version": "1.15.13",
       "depth": 0,

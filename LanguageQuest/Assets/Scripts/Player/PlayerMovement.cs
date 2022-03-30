@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform headCheck;
     public Transform cam;
     public Transform spawnpoint;
+    public Canvas dialogueUI;
     Vector3 velocity;
     bool isGrounded;
     bool hitHead;
@@ -33,11 +34,14 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerModel = GameObject.Find("Player");
+        spawnpoint = GameObject.Find("Spawnpoint").GetComponent<Transform>();
         if (showGroundDetection) {
             groundDectector = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             groundDectector.name = "Debug Ground Detector";
             groundDectector.transform.parent = transform;
         }
+
+        dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
 
         playerTransform.position = spawnpoint.position;
     }
@@ -83,23 +87,47 @@ public class PlayerMovement : MonoBehaviour
         float x = 0f;
         float z = 0f;
 
-        if (Input.GetKey(KeyCode.A)) {
+        NpcNavMesh.NpcType npcType = NpcNavMesh.NpcType.Stationary;
+        bool chatBlock = true;
+
+        if(dialogueUI.enabled){
+            npcType = DialogueUI.getNpcType();
+            chatBlock = !(dialogueUI.enabled&&npcType!=NpcNavMesh.NpcType.Proximity);
+        }
+
+        if (Input.GetKey(KeyCode.A)&&chatBlock) {
             x += -1.0f;
         }
 
-        if (Input.GetKey(KeyCode.D)) {
+        if(Input.GetKeyDown(KeyCode.A)&&!chatBlock){
+            DialogueUI.scrollX(-1);
+        }
+
+        if (Input.GetKey(KeyCode.D)&&chatBlock) {
             x += 1.0f;
         }
 
-        if (Input.GetKey(KeyCode.S)) {
+        if(Input.GetKeyDown(KeyCode.D)&&!chatBlock){
+            DialogueUI.scrollX(1);
+        }
+
+        if (Input.GetKey(KeyCode.S)&&chatBlock) {
             z += -1.0f;
         }
 
-        if (Input.GetKey(KeyCode.W)) {
+        if(Input.GetKeyDown(KeyCode.S)&&!chatBlock){
+            DialogueUI.scrollY(1);
+        }
+
+        if (Input.GetKey(KeyCode.W)&&chatBlock) {
             z += 1.0f;
         }
 
-        if (Input.GetKeyDown("left shift")) {
+        if(Input.GetKeyDown(KeyCode.W)&&!chatBlock){
+            DialogueUI.scrollY(-1);
+        }
+
+        if (Input.GetKeyDown("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity)) {
             if(forcedDown){
                 forcedDown = false;
             }else{
@@ -112,7 +140,7 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-        if (!forcedDown&&Input.GetKeyUp("left shift")) {
+        if (!forcedDown&&Input.GetKeyUp("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity)) {
             playerController.height=2;
             if(Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
                 playerController.height=1;

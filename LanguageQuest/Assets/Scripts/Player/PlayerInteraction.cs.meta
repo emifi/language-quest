@@ -5,7 +5,11 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - inventory: {fileID: 11400000, guid: 2e2f744b6345fda45bbb6efd28f1b613, type: 2}
-  - tempUI: {instanceID: 0}
+  - notebook: {fileID: 11400000, guid: 5b111a7f8833c0f458638173c6bc0852, type: 2}
+  - actionUI: {fileID: 448425236423843458, guid: dbe49e89ca428eb47b48b70b51c6f22d, type: 3}
+  - notebookUI: {fileID: 7502733317708643365, guid: 3af3fa86dd13ef64ea2160edcac70e0e, type: 3}
+  - dialogueParent: {fileID: 4265512650312520003, guid: 2a07da2163e11a344a8c2f488cc2596c, type: 3}
+  - dialogueUI: {fileID: 7330066170401504151, guid: 2a07da2163e11a344a8c2f488cc2596c, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
