@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class NotebookUI : MonoBehaviour
 {
@@ -9,12 +10,12 @@ public class NotebookUI : MonoBehaviour
     public Canvas notebookUI;
     public static GameObject dictUI;
     public static GameObject dictButtons; //Button space
-    public Button[] buttons;
-    public Button homeButton;
-    public static GameObject leftButton;
-    public static GameObject rightButton;
-    private Text page1;
-    private Text page2;
+    private Button[] buttons;
+    private Button homeButton;
+    private static GameObject leftButton;
+    private static GameObject rightButton;
+    private TMP_Text page1;
+    private TMP_Text page2;
     private static bool atHome; //On "home" dictionary page
     private static char currPage; //Current page (in ASCII)
     private static int posPtr; //Further page pointer for ASCII pages that overflow
@@ -29,9 +30,10 @@ public class NotebookUI : MonoBehaviour
         posPtr = 0;
         str1 = "";
         str2 = "";
+                Debug.Log("erweg");
         dictUI = GameObject.Find("DictLetters");
-        page1 = notebookUI.transform.Find("Canv/Frame/Page1/Entries/Text").GetComponent<Text>();
-        page2 = notebookUI.transform.Find("Canv/Frame/Page2/Entries/Text").GetComponent<Text>();
+        page1 = GameObject.Find("Canv/Frame/Page1/Entries/Text").GetComponent<TMP_Text>();
+        page2 = GameObject.Find("Canv/Frame/Page2/Entries/Text").GetComponent<TMP_Text>();
         buttons = dictUI.GetComponentsInChildren<Button>();
         dictButtons = GameObject.Find("DictButtonFrame");
         homeButton = GameObject.Find("DictHomeButton").GetComponent<Button>();
