@@ -10,10 +10,10 @@ public class NotebookUI : MonoBehaviour
     public Canvas notebookUI;
     public static GameObject dictUI;
     public static GameObject dictButtons; //Button space
-    public Button[] buttons;
-    public Button homeButton;
-    public static GameObject leftButton;
-    public static GameObject rightButton;
+    private Button[] buttons;
+    private Button homeButton;
+    private static GameObject leftButton;
+    private static GameObject rightButton;
     private TMP_Text page1;
     private TMP_Text page2;
     private static bool atHome; //On "home" dictionary page
@@ -30,6 +30,7 @@ public class NotebookUI : MonoBehaviour
         posPtr = 0;
         str1 = "";
         str2 = "";
+                Debug.Log("erweg");
         dictUI = GameObject.Find("DictLetters");
         page1 = GameObject.Find("Canv/Frame/Page1/Entries/Text").GetComponent<TMP_Text>();
         page2 = GameObject.Find("Canv/Frame/Page2/Entries/Text").GetComponent<TMP_Text>();
