@@ -38,6 +38,8 @@ public class PlayerInteraction : MonoBehaviour
             actionUI.enabled = false;
             if (DialogueUI.textComplete()&&Input.GetKeyDown(KeyCode.E)) {
                 DialogueUI.turnPage();
+            }else if (!DialogueUI.textComplete()&&Input.GetKeyDown(KeyCode.E)) {
+                DialogueUI.skip();
             }
             return;
         }

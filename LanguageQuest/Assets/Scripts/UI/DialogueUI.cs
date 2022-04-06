@@ -90,6 +90,12 @@ public class DialogueUI : MonoBehaviour
         nextDialogue(choices[(currChoiceY*decisionGrid.GetLength(1))+currChoiceX].TargetNodeGUID);
     }
 
+    public static void skip(){
+        displayedText = fullText;
+        textPos = displayedText.Count();
+        lineComplete = true;
+    }
+
     private static void nextDialogue(string narrativeDataGUID){
         if(narrativeDataGUID==null){
             narrativeData = null;
