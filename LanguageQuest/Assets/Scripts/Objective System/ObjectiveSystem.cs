@@ -19,28 +19,13 @@ public class ObjectiveSystem : MonoBehaviour
         foreach (Objective obj in objectives) {
             addObjective(obj);
         }
-        // example of a 'collect' objective
-        example = new Objective(ObjectiveType.Collect, "Pick up bucket", Resources.Load<PickupObject>("Items/Bucket"), 0, 1);
-        // example of a 'moveto' objective
-        example_2 = new Objective(ObjectiveType.MoveTo, "Move to the NW corner", Resources.Load<DestinationObject>("Destinations/NW"));
-        // example of a 'trigger' objective
-        example_3 = new Objective(ObjectiveType.Trigger, "Read the book", Resources.Load<TriggerObject>("Items/Book"));
     }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Keypad0)) {
-            addObjective(example);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad1)) {
-            addObjective(example_2);
-        }
-        if (Input.GetKeyDown(KeyCode.Keypad2)) {
-            addObjective(example_3);
-        }
-        if (Input.GetKeyDown(KeyCode.O)) {
-            removeAllObjectives();
+            Debug.Log(Resources.Load<ObjectiveCollect>("Objective System/Collect-jak-3").status);
         }
     }
 
@@ -51,7 +36,12 @@ public class ObjectiveSystem : MonoBehaviour
         objective.panelUI = Instantiate(panelUI);
         string objstr = objective.objectiveString;
         if (objective.type == ObjectiveType.Collect) {
-            objective.panelUI.GetComponent<TMP_Text>().text = $" • {objstr} {objective.current}/{objective.required}";
+            if ((objective as ObjectiveCollect).current >= (objective as ObjectiveCollect).required) {
+                (objective as ObjectiveCollect).panelUI.GetComponent<TMP_Text>().text = $" • <s>{objstr} {(objective as ObjectiveCollect).current}/{(objective as ObjectiveCollect).required}</s>";
+            }
+            else {
+                (objective as ObjectiveCollect).panelUI.GetComponent<TMP_Text>().text = $" • {objstr} {(objective as ObjectiveCollect).current}/{(objective as ObjectiveCollect).required}";
+            }
         }
         else {
             objective.panelUI.GetComponent<TMP_Text>().text = $" • {objstr}";
@@ -85,11 +75,11 @@ public class ObjectiveSystem : MonoBehaviour
     // Fires from PlayerInteraction.cs when a pickup interaction is detected
     public void pickupEvent(PickupObject item) {
         foreach (Objective objective in objectives) {
-            if (objective.status == ObjectiveStatus.Complete) continue;
+            //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.Collect) continue;
-            if (objective.item == item) {
-                objective.current += 1;
-                if (objective.current == objective.required) {
+            if ((objective as ObjectiveCollect).item == item) {
+                (objective as ObjectiveCollect).current += 1;
+                if ((objective as ObjectiveCollect).current >= (objective as ObjectiveCollect).required) {
                     objective.status = ObjectiveStatus.Complete;
                     StartCoroutine(fadeAndRemove(0.0f, objective));
                 }
@@ -101,9 +91,9 @@ public class ObjectiveSystem : MonoBehaviour
     // Fires from PlayerInteraction.cs when an interaction with a trigger item is detected
     public void triggerEvent(TriggerObject trigger) {
         foreach (Objective objective in objectives) {
-            if (objective.status == ObjectiveStatus.Complete) continue;
+            //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.Trigger) continue;
-            if (objective.trigger == trigger) {
+            if ((objective as ObjectiveTrigger).trigger == trigger) {
                 objective.status = ObjectiveStatus.Complete;
                 StartCoroutine(fadeAndRemove(0.0f, objective));
                 updateUI(objective);
@@ -114,9 +104,9 @@ public class ObjectiveSystem : MonoBehaviour
     // Fires from PlayerInteraction.cs when the player enters a collision trigger
     public void destinationEvent(DestinationObject destination) {
         foreach (Objective objective in objectives) {
-            if (objective.status == ObjectiveStatus.Complete) continue;
+            //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.MoveTo) continue;
-            if (objective.destination == destination) {
+            if ((objective as ObjectiveMoveTo).destination == destination) {
                 objective.status = ObjectiveStatus.Complete;
                 StartCoroutine(fadeAndRemove(0.0f, objective));
                 updateUI(objective);
@@ -128,10 +118,10 @@ public class ObjectiveSystem : MonoBehaviour
         string objstr = objective.objectiveString;
         if (objective.type == ObjectiveType.Collect) {
             if (objective.status == ObjectiveStatus.Complete) {
-                objective.panelUI.GetComponent<TMP_Text>().text = $" • <s>{objstr} {objective.current}/{objective.required}</s>";
+                objective.panelUI.GetComponent<TMP_Text>().text = $" • <s>{objstr} {(objective as ObjectiveCollect).current}/{(objective as ObjectiveCollect).required}</s>";
             }
             else {
-                objective.panelUI.GetComponent<TMP_Text>().text = $" • {objstr} {objective.current}/{objective.required}";
+                objective.panelUI.GetComponent<TMP_Text>().text = $" • {objstr} {(objective as ObjectiveCollect).current}/{(objective as ObjectiveCollect).required}";
             }
         }
         else {
