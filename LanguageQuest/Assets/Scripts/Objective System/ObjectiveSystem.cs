@@ -6,24 +6,38 @@ using TMPro;
 public class ObjectiveSystem : MonoBehaviour
 {
     public List<Objective> objectives = new List<Objective>();
+    public List<Objective> completeObjectives = new List<Objective>();
     public GameObject objectiveUI;
     public GameObject panelUI;
 
     Objective example;
+    Objective example_2;
+    Objective example_3;
     // Start is called before the first frame update
     void Start()
     {
         foreach (Objective obj in objectives) {
             addObjective(obj);
         }
+        // example of a 'collect' objective
         example = new Objective(ObjectiveType.Collect, "Pick up bucket", Resources.Load<PickupObject>("Items/Bucket"), 0, 1);
+        // example of a 'moveto' objective
+        example_2 = new Objective(ObjectiveType.MoveTo, "Move to the NW corner", Resources.Load<DestinationObject>("Destinations/NW"));
+        // example of a 'trigger' objective
+        example_3 = new Objective(ObjectiveType.Trigger, "Read the book", Resources.Load<TriggerObject>("Items/Book"));
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) {
+        if (Input.GetKeyDown(KeyCode.Keypad0)) {
             addObjective(example);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad1)) {
+            addObjective(example_2);
+        }
+        if (Input.GetKeyDown(KeyCode.Keypad2)) {
+            addObjective(example_3);
         }
         if (Input.GetKeyDown(KeyCode.O)) {
             removeAllObjectives();
@@ -59,6 +73,7 @@ public class ObjectiveSystem : MonoBehaviour
         }
         Destroy(objective.panelUI);
         objectives.Remove(objective);
+        completeObjectives.Add(objective);
     }
 
     public void removeAllObjectives() {
