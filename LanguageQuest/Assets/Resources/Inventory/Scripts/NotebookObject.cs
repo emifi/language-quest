@@ -8,7 +8,7 @@ public class NotebookObject : ScriptableObject
     public List<NotebookSlot> container = new List<NotebookSlot>();
     public List<NotebookSlot>[] dictionary = new List<NotebookSlot>[37];//A-Z + 0-9 + Misc. Space
 
-    public async void AddItem(ItemObject item) {
+    public void AddItem(ItemObject item) {
         for (int i = 0; i < container.Count; i++) {
             if (item == container[i].item) {
                 return;
