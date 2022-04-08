@@ -20,7 +20,7 @@ public class NpcNavMesh : MonoBehaviour
     public static int numDests = 0;
     
     private UnityEngine.AI.NavMeshAgent mesh;
-    private int dialoguePtr = 0; //points to which dialogue in the dialogue container is active
+    public int dialoguePtr = 0; //points to which dialogue in the dialogue container is active
     float timeout = 0;
     int destListLength = 0;
     int targetedDest = 0;
@@ -98,5 +98,9 @@ public class NpcNavMesh : MonoBehaviour
 
     public DialogueContainer getCurrDialogue(){
         return dialogue[dialoguePtr];
+    }
+
+    public void setDialoguePointer(int ptr) {
+        dialoguePtr = ptr;
     }
 }

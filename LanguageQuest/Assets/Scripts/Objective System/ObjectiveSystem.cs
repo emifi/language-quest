@@ -9,13 +9,12 @@ public class ObjectiveSystem : MonoBehaviour
     public List<Objective> completeObjectives = new List<Objective>();
     public GameObject objectiveUI;
     public GameObject panelUI;
+    DialogueUI dialogueUI;
 
-    Objective example;
-    Objective example_2;
-    Objective example_3;
     // Start is called before the first frame update
     void Start()
     {
+        dialogueUI = GameObject.Find("DialogueUI").GetComponent<DialogueUI>();
         foreach (Objective obj in objectives) {
             addObjective(obj);
         }

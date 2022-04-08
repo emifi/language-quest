@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf0d49ea6a8776428881e6e41b4bbf0, type: 3}
   m_Name: Trigger-Book
   m_EditorClassIdentifier: 
-  type: 0
-  objectiveString: 
+  type: 2
+  objectiveString: Read the book
   panelUI: {fileID: 0}
-  trigger: {fileID: 0}
+  objectiveGiver: {fileID: 0}
+  trigger: {fileID: 11400000, guid: 53c3b8f7671bc6a40ba35b08e7cdaa92, type: 2}

@@ -219,5 +219,4 @@ public class DialogueUI : MonoBehaviour
     public static NpcNavMesh.NpcType getNpcType(){
         return currNPC.getType();
     }
-
 }

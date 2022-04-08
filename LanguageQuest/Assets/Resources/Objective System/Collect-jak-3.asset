@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: Collect-jak-3
   m_EditorClassIdentifier: 
   type: 0
-  objectiveString: 
-  status: 0
+  objectiveString: Collect 3 'jak'
   panelUI: {fileID: 0}
-  item: {fileID: 0}
-  current: 0
-  required: 0
+  objectiveGiver: {fileID: 0}
+  item: {fileID: 11400000, guid: 02463bfb01de38a498ceea126f1c067f, type: 2}
+  required: 3
