@@ -13,7 +13,6 @@ public class Objective : ScriptableObject
     public ObjectiveStatus status;
     [HideInInspector]
     public GameObject panelUI;
-    public Transform objectiveGiver;
 }
 
 public enum ObjectiveStatus {
@@ -25,4 +24,5 @@ public enum ObjectiveType {
     Collect,
     MoveTo,
     Trigger,
+    TalkTo,
 }

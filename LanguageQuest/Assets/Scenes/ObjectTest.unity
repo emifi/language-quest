@@ -123,29 +123,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 5b5e396999ebe074f9f5b4f9b1db5a53, type: 2}
---- !u!1 &57474540 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3357019967353041865, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
-  m_PrefabInstance: {fileID: 1944455336}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &57474541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57474540}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce6f16477318e9d4e85fef60ac1a2634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &57474543 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
   m_PrefabInstance: {fileID: 1944455336}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57474540}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36b04f01af7ce374e8aaf19ba4d41161, type: 3}
@@ -240,6 +223,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ffbaf065f98c744fa09e617f0a0c5d6, type: 2}
   - {fileID: 11400000, guid: 5bd1252eadc0dba499143071c34abc37, type: 2}
   - {fileID: 11400000, guid: 6ff7f4fa898354d4b9e2985fe9e8c9b5, type: 2}
+  - {fileID: 11400000, guid: c30578c0e461b504b886790b1da6e597, type: 2}
   completeObjectives: []
   objectiveUI: {fileID: 875539570}
   panelUI: {fileID: 6681959469956127733, guid: 309b21238747ff749a3caf2642853799, type: 3}
@@ -1782,6 +1766,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6f16477318e9d4e85fef60ac1a2634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: {fileID: 0}
 --- !u!223 &497337297 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 7502733317708643365, guid: 3af3fa86dd13ef64ea2160edcac70e0e, type: 3}
@@ -9197,6 +9182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5456241202023645299, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
+      propertyPath: id
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b25651eac8e8ee429a22f1b16952480, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
 --- !u!4 &1951144890 stripped

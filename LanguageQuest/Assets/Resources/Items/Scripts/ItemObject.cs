@@ -5,7 +5,6 @@ public enum ItemType{
     Pickup,
     Entry,
     Trigger,
-    Destination,
     Default,
 }
 public abstract class ItemObject : ScriptableObject

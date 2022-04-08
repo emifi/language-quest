@@ -24,7 +24,10 @@ public class ObjectiveSystem : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Keypad0)) {
-            Debug.Log(Resources.Load<ObjectiveCollect>("Objective System/Collect-jak-3").status);
+            List<Objective> objs = new List<Objective>();
+            objs.Add(Resources.Load<ObjectiveCollect>("Objective System/Collect-jak-3"));
+            objs.Add(Resources.Load<ObjectiveCollect>("Objective System/MoveTo-NW"));
+            addObjectiveList(objs);
         }
     }
 
@@ -46,6 +49,13 @@ public class ObjectiveSystem : MonoBehaviour
             objective.panelUI.GetComponent<TMP_Text>().text = $" • {objstr}";
         }
         objective.panelUI.transform.SetParent(objectiveUI.transform);
+    }
+
+    public void addObjectiveList(List<Objective> objectives) {
+        removeAllObjectives();
+        foreach (Objective objective in objectives) {
+            addObjective(objective);
+        }
     }
 
     // Starts coroutine to fade out and remove the specified objective
@@ -106,6 +116,17 @@ public class ObjectiveSystem : MonoBehaviour
             //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.MoveTo) continue;
             if ((objective as ObjectiveMoveTo).destination == destination) {
+                objective.status = ObjectiveStatus.Complete;
+                StartCoroutine(fadeAndRemove(0.0f, objective));
+                updateUI(objective);
+            }
+        }
+    }
+
+    public void talkToEvent(NPCIdentifierObject npc) {
+        foreach (Objective objective in objectives) {
+            if (objective.type != ObjectiveType.TalkTo) continue;
+            if ((objective as ObjectiveTalkTo).npcID == npc) {
                 objective.status = ObjectiveStatus.Complete;
                 StartCoroutine(fadeAndRemove(0.0f, objective));
                 updateUI(objective);

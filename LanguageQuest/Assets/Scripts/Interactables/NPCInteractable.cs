@@ -7,6 +7,8 @@ using Subtegral.DialogueSystem.DataContainers;
 
 public class NPCInteractable : Interactable
 {
+    public NPCIdentifierObject id;
+    
     public override void Interact()
     {
         NpcNavMesh npc = gameObject.GetComponent<NpcNavMesh>();
