@@ -15,11 +15,15 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        List<ObjectiveDialogueGroup> groupsToRemove = new List<ObjectiveDialogueGroup>();
         foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
             if (odg.CheckForCompletion()) {
                 odg.PushDialoguePointer();
-                objectiveDialogueGroups.Remove(odg);
+                groupsToRemove.Add(odg);
             }
+        }
+        foreach (ObjectiveDialogueGroup odg in groupsToRemove) {
+            objectiveDialogueGroups.Remove(odg);
         }
     }
 
