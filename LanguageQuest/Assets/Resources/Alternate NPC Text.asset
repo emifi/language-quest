@@ -17,22 +17,20 @@ MonoBehaviour:
     PortName: Next
     TargetNodeGUID: ea943475-119c-4584-abab-e44532c51e53
   - BaseNodeGUID: ea943475-119c-4584-abab-e44532c51e53
-    PortName: Whatever
-    TargetNodeGUID: 5a6b27f6-3b05-4327-b318-3a5203fda07d
-  - BaseNodeGUID: ea943475-119c-4584-abab-e44532c51e53
     PortName: Piece of cake
-    TargetNodeGUID: e67b841f-8b82-4412-a66c-01eeeb82218c
+    TargetNodeGUID: 5a6b27f6-3b05-4327-b318-3a5203fda07d
   DialogueNodeData:
   - NodeGUID: e67b841f-8b82-4412-a66c-01eeeb82218c
     DialogueText: Thanks!
-    Position: {x: 589, y: -12}
+    Position: {x: 0, y: 0}
   - NodeGUID: 5a6b27f6-3b05-4327-b318-3a5203fda07d
-    DialogueText: Still, did me a big favor
-    Position: {x: 589, y: 102}
+    DialogueText: GOTO{4}ADDQUESTS{TalkTo-npc2-1}Still, did me a big favor. Go talk
+      to npc2
+    Position: {x: 400, y: 49}
   - NodeGUID: ea943475-119c-4584-abab-e44532c51e53
     DialogueText: You did all 3 objectives!
-    Position: {x: 276, y: 41}
+    Position: {x: 221, y: 261}
   ExposedProperties:
-  - PropertyName: New String
-    PropertyValue: New Value
+  - PropertyName: 
+    PropertyValue: Jim
   CommentBlockData: []
