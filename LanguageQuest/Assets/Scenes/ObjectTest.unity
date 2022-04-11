@@ -208,11 +208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e326e5263e241694cac7b5acaea39175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectives:
-  - {fileID: 11400000, guid: 9ffbaf065f98c744fa09e617f0a0c5d6, type: 2}
-  - {fileID: 11400000, guid: 5bd1252eadc0dba499143071c34abc37, type: 2}
-  - {fileID: 11400000, guid: 6ff7f4fa898354d4b9e2985fe9e8c9b5, type: 2}
-  - {fileID: 11400000, guid: c30578c0e461b504b886790b1da6e597, type: 2}
+  objectives: []
   completeObjectives: []
   objectiveUI: {fileID: 875539570}
   panelUI: {fileID: 6681959469956127733, guid: 309b21238747ff749a3caf2642853799, type: 3}

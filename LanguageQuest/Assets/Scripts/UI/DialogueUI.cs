@@ -142,7 +142,7 @@ public class DialogueUI : MonoBehaviour
                 newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i]));
             }
             ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,currNPC,int.Parse(questList[questList.Count()-1]));
-            GameObject.Find("Game Controller").GetComponent<GameController>().addObjGroup(newObjGroup);
+            GameObject.Find("Game Controller").GetComponent<GameController>().CreateGrouping(newObjGroup);
             fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
         }
 

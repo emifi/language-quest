@@ -23,10 +23,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void addObjGroup(ObjectiveDialogueGroup o){
-        objectiveDialogueGroups.Add(o);
-    }
-
     // Can use to check if there is an active ObjectiveDialogue grouping prior to inserting a new one
     public bool HasActiveGrouping() {
         if (objectiveDialogueGroups.Count > 0) {
@@ -39,6 +35,11 @@ public class GameController : MonoBehaviour
     public void CreateGrouping(List<Objective> objectives, NpcNavMesh npc, int pointer) {
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, npc, pointer);
         objectiveSystem.addObjectiveList(objectives);
+        objectiveDialogueGroups.Add(group);
+    }
+
+    public void CreateGrouping(ObjectiveDialogueGroup group) {
+        objectiveSystem.addObjectiveList(group.objectives);
         objectiveDialogueGroups.Add(group);
     }
 }
