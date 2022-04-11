@@ -1734,24 +1734,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7869563883295213817, guid: 2948f68d9e02e364a99cd3853786008d, type: 3}
   m_PrefabInstance: {fileID: 223996217}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &420790416 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3357019967353041865, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
-  m_PrefabInstance: {fileID: 721848476}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &420790417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 420790416}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce6f16477318e9d4e85fef60ac1a2634, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: {fileID: 0}
 --- !u!223 &497337297 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 7502733317708643365, guid: 3af3fa86dd13ef64ea2160edcac70e0e, type: 3}
@@ -2968,7 +2950,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: dialogue.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: dialogue.Array.data[0]
@@ -2978,10 +2960,18 @@ PrefabInstance:
       propertyPath: dialogue.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 1bf8a8e9b2762e14e86f95c170c814aa, type: 2}
+    - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
+      propertyPath: dialogue.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 69797a9603a1e904baff9fba73cd280e, type: 2}
     - target: {fileID: 3357019967353041865, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: m_Name
       value: NPC (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5456241202023645299, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
+      propertyPath: id
+      value: 
+      objectReference: {fileID: 11400000, guid: 99e1c332354a1ec4e9c9d2c8891e516e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
 --- !u!1 &778083750
@@ -9160,7 +9150,7 @@ PrefabInstance:
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: dialogue.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 1bf8a8e9b2762e14e86f95c170c814aa, type: 2}
+      objectReference: {fileID: 11400000, guid: 69797a9603a1e904baff9fba73cd280e, type: 2}
     - target: {fileID: 3357019967353041865, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: m_Name
       value: NPC (1)
