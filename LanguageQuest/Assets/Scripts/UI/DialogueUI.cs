@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,11 +33,14 @@ public class DialogueUI : MonoBehaviour
     private static int currChoiceX; //Used for highlight/selection of choices
     private static int currChoiceY;
 
+    private static bool isEnabled;
+
     // Start is called before the first frame update
     void Start()
     {
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
         dialogueUI.enabled = false;
+        isEnabled = false;
         textPos = 0;
         displayedText = "";
         narrativeData = null;
@@ -50,6 +54,10 @@ public class DialogueUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isEnabled){
+            dialogueUI.enabled = true;
+        }
+
         if(narrativeData==null||fullText==null){
             lineComplete = false;
             speechComplete = true;
@@ -57,6 +65,7 @@ public class DialogueUI : MonoBehaviour
             choices = null;
             fullText = null;
             dialogueUI.enabled = false;
+            isEnabled = false;
             displayedText = "";
             textPos = 0;
             return;
@@ -111,11 +120,53 @@ public class DialogueUI : MonoBehaviour
         //MAKE THEM THE SAME AS THEY ARE IN DIALOGUE GRAPHS.
         fullText = fullText.Replace("{replacename}",currNPC.name);
 
+        //Objective Parsing
+        int startPos = fullText.IndexOf("ADDQUESTS{");
+        int addLen = 10; //Length of ADDQUESTS{
+        if(startPos==-1){
+            startPos = fullText.IndexOf("ADDQUEST{");
+            addLen = 9; //Length of ADDQUEST{
+        }
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add quests
+            string[] questList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            List<Objective> newObjs = new List<Objective>();
+            for(int i = 0; i<questList.Count()-1;i++){
+                Debug.Log(questList[i]);
+                newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i]));
+            }
+            ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,currNPC,int.Parse(questList[questList.Count()-1]));
+            GameObject.Find("Game Controller").GetComponent<GameController>().addObjGroup(newObjGroup);
+            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+        }
+
 
         choices = dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID).ToList();
         numChoices = choices.Count();
 
         if(numChoices==0){
+            //Objective Parsing
+            startPos = fullText.IndexOf("GOTO{");
+            addLen = 5; //Length of GOTO{
+
+            endPos = -1;
+
+            if(startPos>-1){ //Check for closing bracket
+                endPos = fullText.IndexOf("}",startPos+addLen);
+            }
+
+            if(endPos>-1){ //If all requirements have passed, add quests
+                currNPC.setDialoguePointer(int.Parse(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
+
+            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+        }
+
             decisionSpace.SetActive(false);
             decisionGrid = null;
         }else if(numChoices==1){
@@ -146,6 +197,8 @@ public class DialogueUI : MonoBehaviour
             }
 
         }
+
+        isEnabled = true;
 
         if(decisionGrid!=null){
             currChoiceX = 0;

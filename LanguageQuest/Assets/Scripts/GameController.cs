@@ -23,6 +23,10 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void addObjGroup(ObjectiveDialogueGroup o){
+        objectiveDialogueGroups.Add(o);
+    }
+
     // Can use to check if there is an active ObjectiveDialogue grouping prior to inserting a new one
     public bool HasActiveGrouping() {
         if (objectiveDialogueGroups.Count > 0) {

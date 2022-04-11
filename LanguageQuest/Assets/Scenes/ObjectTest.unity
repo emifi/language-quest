@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 5b5e396999ebe074f9f5b4f9b1db5a53, type: 2}
---- !u!114 &57474543 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
-  m_PrefabInstance: {fileID: 1944455336}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36b04f01af7ce374e8aaf19ba4d41161, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &75676146
 GameObject:
   m_ObjectHideFlags: 0
@@ -5340,13 +5329,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2741ea6871a6eaf42ad788cc817d662f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectiveDialogueGroups:
-  - objectives:
-    - {fileID: 11400000, guid: 9ffbaf065f98c744fa09e617f0a0c5d6, type: 2}
-    - {fileID: 11400000, guid: 5bd1252eadc0dba499143071c34abc37, type: 2}
-    - {fileID: 11400000, guid: 6ff7f4fa898354d4b9e2985fe9e8c9b5, type: 2}
-    npc: {fileID: 57474543}
-    dialoguePointer: 1
+  objectiveDialogueGroups: []
 --- !u!4 &1605669156
 Transform:
   m_ObjectHideFlags: 0
@@ -9168,7 +9151,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: dialogue.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: dialogue.Array.data[0]
@@ -9176,6 +9159,10 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 458510185e1102b4fbed11bef263147d, type: 2}
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: dialogue.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 093a7fb9070c92542af27f6c0d8c8962, type: 2}
+    - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
+      propertyPath: dialogue.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 1bf8a8e9b2762e14e86f95c170c814aa, type: 2}
     - target: {fileID: 3357019967353041865, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}

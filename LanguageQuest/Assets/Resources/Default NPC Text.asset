@@ -19,15 +19,9 @@ MonoBehaviour:
   - BaseNodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
     PortName: none
     TargetNodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
-  - BaseNodeGUID: 5577bb85-719d-40bf-9048-46ca92b86915
-    PortName: none
-    TargetNodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
   - BaseNodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
     PortName: none
     TargetNodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
-  - BaseNodeGUID: 212e6bcd-711a-4213-a66b-2cdc80128f78
-    PortName: none
-    TargetNodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
   - BaseNodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
     PortName: Yes!
     TargetNodeGUID: 5577bb85-719d-40bf-9048-46ca92b86915
@@ -49,29 +43,41 @@ MonoBehaviour:
   - BaseNodeGUID: 218ba50d-d1b9-4bb4-a96f-893f6caad645
     PortName: I can't read!
     TargetNodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
+  - BaseNodeGUID: bd6dc56d-0775-4c2b-9ebe-aec89bb795e2
+    PortName: Option 1
+    TargetNodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
   - BaseNodeGUID: f22b72e9-1e25-4642-866f-78588c75d762
     PortName: Option 1
     TargetNodeGUID: bd6dc56d-0775-4c2b-9ebe-aec89bb795e2
+  - BaseNodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
+    PortName: Option 1
+    TargetNodeGUID: 690eea8e-f5c1-4403-abd3-4842192eba9b
+  - BaseNodeGUID: 690eea8e-f5c1-4403-abd3-4842192eba9b
+    PortName: Yes
+    TargetNodeGUID: ed79f979-bf10-4c2c-b8c6-44e10a078dd6
+  - BaseNodeGUID: 690eea8e-f5c1-4403-abd3-4842192eba9b
+    PortName: No
+    TargetNodeGUID: 64a17058-88bb-449f-9f9e-1909c3d463bc
+  - BaseNodeGUID: 212e6bcd-711a-4213-a66b-2cdc80128f78
+    PortName: none
+    TargetNodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
+  - BaseNodeGUID: 5577bb85-719d-40bf-9048-46ca92b86915
+    PortName: none
+    TargetNodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
+  - BaseNodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
+    PortName: Option 1
+    TargetNodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
   DialogueNodeData:
   - NodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
     DialogueText: Hello, my name is {replacename}.
     Position: {x: 225, y: 205}
-  - NodeGUID: 5577bb85-719d-40bf-9048-46ca92b86915
-    DialogueText: :)
-    Position: {x: 1140, y: 122}
   - NodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
     DialogueText: I wanted to speak with you about very important and very cool matters
       that I would like to talk to you about via this long dialogue box!
     Position: {x: 417, y: 54}
-  - NodeGUID: 212e6bcd-711a-4213-a66b-2cdc80128f78
-    DialogueText: :'(
-    Position: {x: 1139, y: 228}
   - NodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
     DialogueText: Did you enjoy this conversation?
     Position: {x: 771, y: 189}
-  - NodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
-    DialogueText: Goodbye! ! !
-    Position: {x: 1759, y: 138}
   - NodeGUID: 218ba50d-d1b9-4bb4-a96f-893f6caad645
     DialogueText: Just curious :) Do u think that is fair? Only 3 choices!!
     Position: {x: 1425, y: 268}
@@ -81,6 +87,28 @@ MonoBehaviour:
   - NodeGUID: f22b72e9-1e25-4642-866f-78588c75d762
     DialogueText: '*GASP* HOW DARE YOU!!!'
     Position: {x: 1436, y: 482}
+  - NodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
+    DialogueText: Actually... Wait. Before you go...
+    Position: {x: 2031, y: 241}
+  - NodeGUID: 690eea8e-f5c1-4403-abd3-4842192eba9b
+    DialogueText: I have a QUEST for you! Do you accept?
+    Position: {x: 2381, y: 242}
+  - NodeGUID: ed79f979-bf10-4c2c-b8c6-44e10a078dd6
+    DialogueText: 'GOTO{1} ADDQUESTS{Collect-jak-3,MoveTo-NW,Trigger-Book,2} Oh thank
+      you! This is so #BLESSED '
+    Position: {x: 2777, y: 163}
+  - NodeGUID: 64a17058-88bb-449f-9f9e-1909c3d463bc
+    DialogueText: GOTO{1} That's too bad. Goodbye.
+    Position: {x: 2776, y: 291}
+  - NodeGUID: 212e6bcd-711a-4213-a66b-2cdc80128f78
+    DialogueText: :'(
+    Position: {x: 1357, y: 164}
+  - NodeGUID: 5577bb85-719d-40bf-9048-46ca92b86915
+    DialogueText: :)
+    Position: {x: 1413, y: 46}
+  - NodeGUID: d59cac25-33fb-480f-9741-0af0d4dbc914
+    DialogueText: Goodbye! ! !
+    Position: {x: 1847, y: 49}
   ExposedProperties:
   - PropertyName: 
     PropertyValue: Jim
