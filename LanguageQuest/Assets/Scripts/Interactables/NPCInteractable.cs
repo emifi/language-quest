@@ -12,6 +12,6 @@ public class NPCInteractable : Interactable
     public override void Interact()
     {
         NpcNavMesh npc = gameObject.GetComponent<NpcNavMesh>();
-        DialogueUI.setScript(npc);
+        DialogueUI.initScript(npc);
     }
 }

@@ -150,8 +150,7 @@ public class DialogueUI : MonoBehaviour
         choices = dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID).ToList();
         numChoices = choices.Count();
 
-        if(numChoices==0){
-            //Objective Parsing
+        //Next Dialogue Parsing
             startPos = fullText.IndexOf("GOTO{");
             addLen = 5; //Length of GOTO{
 
@@ -161,12 +160,13 @@ public class DialogueUI : MonoBehaviour
                 endPos = fullText.IndexOf("}",startPos+addLen);
             }
 
-            if(endPos>-1){ //If all requirements have passed, add quests
+            if(endPos>-1){ //If all requirements have passed, set next dialogue
                 currNPC.setDialoguePointer(int.Parse(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
 
-            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
-        }
+                fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+            }
 
+        if(numChoices==0){
             decisionSpace.SetActive(false);
             decisionGrid = null;
         }else if(numChoices==1){
@@ -175,6 +175,7 @@ public class DialogueUI : MonoBehaviour
         }else{
             decisionSpace.SetActive(true);
             int copyNumChoices = numChoices;
+            Debug.Log(numChoices);
 
             decisionGrid = new Text[2,2]; //Feel free to resize decision grid based on your maximum # of responses. 
                                       //Methods will react to this without issue
@@ -188,6 +189,7 @@ public class DialogueUI : MonoBehaviour
                     if(copyNumChoices<=0){
                         t.enabled = false;
                     }else{
+                        t.enabled = true;
                         int posX = pos%decisionGrid.GetLength(1);
                         int posY = pos/decisionGrid.GetLength(1);
                         decisionGrid[posY,posX].text = choices[pos].PortName;
@@ -253,7 +255,7 @@ public class DialogueUI : MonoBehaviour
         decisionGrid[currChoiceY,currChoiceX].color = Color.cyan;
     }
 
-    public static void setScript(NpcNavMesh n){
+    public static void initScript(NpcNavMesh n){
         speechComplete = false;
         currNPC = n;
         dialogueContainer = currNPC.getCurrDialogue();

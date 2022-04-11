@@ -9137,7 +9137,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: dialogue.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: dialogue.Array.data[0]
@@ -9151,6 +9151,10 @@ PrefabInstance:
       propertyPath: dialogue.Array.data[2]
       value: 
       objectReference: {fileID: 11400000, guid: 69797a9603a1e904baff9fba73cd280e, type: 2}
+    - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
+      propertyPath: dialogue.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a4e7b037cde2a841be6d04893c28db2, type: 2}
     - target: {fileID: 3357019967353041865, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: m_Name
       value: NPC (1)
