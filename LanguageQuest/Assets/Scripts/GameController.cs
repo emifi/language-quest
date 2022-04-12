@@ -20,6 +20,9 @@ public class GameController : MonoBehaviour
             if (odg.CheckForCompletion()) {
                 odg.PushDialoguePointer();
                 groupsToRemove.Add(odg);
+                if (odg.finalObjective != null) {
+                    objectiveSystem.addObjective(odg.finalObjective);
+                }
             }
         }
         foreach (ObjectiveDialogueGroup odg in groupsToRemove) {
@@ -38,11 +41,13 @@ public class GameController : MonoBehaviour
     // Creates a new ObjDiagGroup, sends it to the objective system and adds it to the GameController container
     public void CreateGrouping(List<Objective> objectives, NpcNavMesh npc, int pointer) {
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, npc, pointer);
+        objectiveSystem.removeCompletedObjectives();
         objectiveSystem.addObjectiveList(objectives);
         objectiveDialogueGroups.Add(group);
     }
 
     public void CreateGrouping(ObjectiveDialogueGroup group) {
+        objectiveSystem.removeCompletedObjectives();
         objectiveSystem.addObjectiveList(group.objectives);
         objectiveDialogueGroups.Add(group);
     }
@@ -53,13 +58,21 @@ public class GameController : MonoBehaviour
 public class ObjectiveDialogueGroup
 {
     public List<Objective> objectives = new List<Objective>();
-    public NpcNavMesh npc;
-    public int dialoguePointer;
+    public Objective finalObjective;
+    public List<DialoguePointerMap> ptrMap = new List<DialoguePointerMap>();
 
-    public ObjectiveDialogueGroup(List<Objective> objectives, NpcNavMesh npc, int pointer) {
+    // Construct a group from a single npc ptr pair
+    public ObjectiveDialogueGroup(List<Objective> objectives, NpcNavMesh npc, int pointer, Objective final = null) {
         this.objectives = objectives;
-        this.npc = npc;
-        this.dialoguePointer = pointer;
+        this.finalObjective = final;
+        this.ptrMap.Add(new DialoguePointerMap(npc, pointer));
+    }
+
+    // Construct a group from a list of DialoguePointerMap
+    public ObjectiveDialogueGroup(List<Objective> objectives, List<DialoguePointerMap> map, Objective final = null) {
+        this.objectives = objectives;
+        this.finalObjective = final;
+        this.ptrMap = map;
     }
 
     public bool CheckForCompletion() {
@@ -72,6 +85,22 @@ public class ObjectiveDialogueGroup
     }
 
     public void PushDialoguePointer() {
-        npc.setDialoguePointer(this.dialoguePointer);
+        foreach (DialoguePointerMap pair in ptrMap)
+            pair.npc.setDialoguePointer(pair.ptr);
+    }
+}
+
+public class DialoguePointerMap {
+    public NpcNavMesh npc;
+    public int ptr;
+
+    public DialoguePointerMap(NpcNavMesh npc, int ptr) {
+        this.npc = npc;
+        this.ptr = ptr;
+    }
+
+    public DialoguePointerMap(string npcStr, int ptr) {
+        this.npc = GameObject.Find(npcStr).GetComponent<NpcNavMesh>();
+        this.ptr = ptr;
     }
 }

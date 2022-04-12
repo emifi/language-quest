@@ -52,7 +52,6 @@ public class ObjectiveSystem : MonoBehaviour
     }
 
     public void addObjectiveList(List<Objective> objectives) {
-        removeAllObjectives();
         foreach (Objective objective in objectives) {
             addObjective(objective);
         }
@@ -80,6 +79,11 @@ public class ObjectiveSystem : MonoBehaviour
         }
     }
 
+    public void removeCompletedObjectives() {
+        foreach (Objective objective in completeObjectives) {
+            removeObjective(objective);
+        }
+    }
     // Fires from PlayerInteraction.cs when a pickup interaction is detected
     public void pickupEvent(PickupObject item) {
         List<Objective> objectivesToRemove = new List<Objective>();
@@ -90,51 +94,66 @@ public class ObjectiveSystem : MonoBehaviour
                 (objective as ObjectiveCollect).current += 1;
                 if ((objective as ObjectiveCollect).current >= (objective as ObjectiveCollect).required) {
                     objective.status = ObjectiveStatus.Complete;
-                    //objectivesToRemove.Add(objective);
+                    objectivesToRemove.Add(objective);
                 }
                 updateUI(objective);
             }
         }
-        /*
         foreach (Objective objective in objectivesToRemove) {
             objectives.Remove(objective);
             completeObjectives.Add(objective);
-            StartCoroutine(fadeAndRemove(0.0f, objective));
         }
-        */
     }
 
     // Fires from PlayerInteraction.cs when an interaction with a trigger item is detected
     public void triggerEvent(TriggerObject trigger) {
+        List<Objective> objectivesToRemove = new List<Objective>();
         foreach (Objective objective in objectives) {
             //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.Trigger) continue;
             if ((objective as ObjectiveTrigger).trigger == trigger) {
                 objective.status = ObjectiveStatus.Complete;
+                objectivesToRemove.Add(objective);
                 updateUI(objective);
             }
+        }
+        foreach (Objective objective in objectivesToRemove) {
+            objectives.Remove(objective);
+            completeObjectives.Add(objective);
         }
     }
 
     // Fires from PlayerInteraction.cs when the player enters a collision trigger
     public void destinationEvent(DestinationObject destination) {
+        List<Objective> objectivesToRemove = new List<Objective>();
         foreach (Objective objective in objectives) {
             //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.MoveTo) continue;
             if ((objective as ObjectiveMoveTo).destination == destination) {
                 objective.status = ObjectiveStatus.Complete;
+                objectivesToRemove.Add(objective);
                 updateUI(objective);
             }
+        }
+        foreach (Objective objective in objectivesToRemove) {
+            objectives.Remove(objective);
+            completeObjectives.Add(objective);
         }
     }
 
     public void talkToEvent(NPCIdentifierObject npc) {
+        List<Objective> objectivesToRemove = new List<Objective>();
         foreach (Objective objective in objectives) {
             if (objective.type != ObjectiveType.TalkTo) continue;
             if ((objective as ObjectiveTalkTo).npcID == npc) {
                 objective.status = ObjectiveStatus.Complete;
+                objectivesToRemove.Add(objective);
                 updateUI(objective);
             }
+        }
+        foreach (Objective objective in objectivesToRemove) {
+            objectives.Remove(objective);
+            completeObjectives.Add(objective);
         }
     }
 
