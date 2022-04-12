@@ -13,10 +13,10 @@ public class DialogueUI : MonoBehaviour
     public static NotebookObject notebook; //Used to add keywords to dictionary
     private TMP_Text dialogue;
     private static GameObject decisionSpace; //The physical UI space
-    private static Text decisionA;
-    private static Text decisionB;
-    private static Text decisionC;
-    private static Text decisionD;
+    private static TMP_Text decisionA;
+    private static TMP_Text decisionB;
+    private static TMP_Text decisionC;
+    private static TMP_Text decisionD;
     private static DialogueContainer dialogueContainer; //Dialogue tree
     private static NpcNavMesh currNPC; 
     private static int textPos; //Controls text reveal
@@ -29,7 +29,7 @@ public class DialogueUI : MonoBehaviour
     private static List<NodeLinkData> choices; //Is set to hold dialogue choices
     private static string fullText; //Full dialogue line
 
-    private static Text[,] decisionGrid; // Array representation of dialogue space
+    private static TMP_Text[,] decisionGrid; // Array representation of dialogue space
     private static int numChoices; //Used to hold count of choices
     private static int currChoiceX; //Used for highlight/selection of choices
     private static int currChoiceY;
@@ -104,7 +104,7 @@ public class DialogueUI : MonoBehaviour
             nextDialogue(choices[0].TargetNodeGUID);
             return;
         }
-        decisionGrid[currChoiceY,currChoiceX].color = Color.black;
+        decisionGrid[currChoiceY,currChoiceX].color = new Color(.078f,.078f,.078f);
         nextDialogue(choices[(currChoiceY*decisionGrid.GetLength(1))+currChoiceX].TargetNodeGUID);
     }
 
@@ -127,7 +127,7 @@ public class DialogueUI : MonoBehaviour
 
         //ADD ANY REPLACEMENT VALUES YOU WOULD LIKE HERE.
         //MAKE THEM THE SAME AS THEY ARE IN DIALOGUE GRAPHS.
-        fullText = fullText.Replace("{replacename}",currNPC.name);
+        fullText = fullText.Replace("{replacename}",("<#3afa14>" + currNPC.name + "<#141414>"));
 
         //Objective Parsing
         fullText = objectiveParse(fullText,currNPC);
@@ -157,15 +157,15 @@ public class DialogueUI : MonoBehaviour
             int copyNumChoices = numChoices;
             Debug.Log(numChoices);
 
-            decisionGrid = new Text[2,2]; //Feel free to resize decision grid based on your maximum # of responses. 
+            decisionGrid = new TMP_Text[2,2]; //Feel free to resize decision grid based on your maximum # of responses. 
                                       //Methods will react to this without issue
-            decisionGrid[0,0] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row1/A").GetComponent<Text>();
-            decisionGrid[0,1] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row1/B").GetComponent<Text>();
-            decisionGrid[1,0] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row2/C").GetComponent<Text>();
-            decisionGrid[1,1] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row2/D").GetComponent<Text>();
+            decisionGrid[0,0] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row1/A").GetComponent<TMP_Text>();
+            decisionGrid[0,1] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row1/B").GetComponent<TMP_Text>();
+            decisionGrid[1,0] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row2/C").GetComponent<TMP_Text>();
+            decisionGrid[1,1] = GameObject.Find("DialogueBox/Paper/SelectionSpace/Row2/D").GetComponent<TMP_Text>();
             
             int pos = 0;
-            foreach(Text t in decisionGrid){
+            foreach(TMP_Text t in decisionGrid){
                     if(copyNumChoices<=0){
                         t.enabled = false;
                     }else{
@@ -193,7 +193,7 @@ public class DialogueUI : MonoBehaviour
         if(numChoices<=1){
             return;
         }
-        decisionGrid[currChoiceY,currChoiceX].color = Color.black;
+        decisionGrid[currChoiceY,currChoiceX].color = new Color(.078f,.078f,.078f);;
         currChoiceX += i;
         if(currChoiceX<0){
             currChoiceX = decisionGrid.GetLength(1)-1;
@@ -222,7 +222,7 @@ public class DialogueUI : MonoBehaviour
         if(numChoices<=1){
             return;
         }
-        decisionGrid[currChoiceY,currChoiceX].color = Color.black;
+        decisionGrid[currChoiceY,currChoiceX].color = new Color(.078f,.078f,.078f);;
         currChoiceY += i;
         if(currChoiceY<0){
             currChoiceY = decisionGrid.GetLength(0)-1;
@@ -278,7 +278,7 @@ public class DialogueUI : MonoBehaviour
             }
             ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,currNPC,int.Parse(questList[questList.Count()-1]));
             GameObject.Find("Game Controller").GetComponent<GameController>().CreateGrouping(newObjGroup);
-            fullText = fullText.Substring(0,startPos).Trim() + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText;
     }
@@ -300,25 +300,31 @@ public class DialogueUI : MonoBehaviour
         if(endPos>-1){ //If all requirements have passed, add quests
             string[] termList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
             ItemObject item = null;
+            ItemObject item2 = null;
             int count = termList.Count();
             string termstoString = "<#51fafc>";
             for(int i = 0; i<count;i++){
+                item = Resources.Load<ItemObject>("Items/"+termList[i].Trim());
                 if(count==1){
-                    termstoString+=(termList[i]);
+                    termstoString+=(item.englishName + "(" + item.nativeName + ")");
                 }else if(i==0&&count==2){
-                    termstoString+=(termList[i]+ " <color=\"white\">and <#51fafc>" + termList[i+1]);
+                    item2 = Resources.Load<ItemObject>("Items/"+termList[i+1].Trim());
+                    termstoString+=(item.englishName + "(" + item.nativeName + ") <#141414>and <#51fafc>" + item2.englishName + "(" + item2.nativeName + ")");
+                    notebook.AddItem(item2);
                 }else{
                     if(i==count-2){
-                        termstoString+=(termList[i]+ "<color=\"white\">, and <#51fafc>" + termList[i+1]);
+                        item2 = Resources.Load<ItemObject>("Items/"+termList[i+1].Trim());
+                        termstoString+=(item.englishName + "(" + item.nativeName + ")<#141414>, and <#51fafc>" + item2.englishName + "(" + item2.nativeName + ")");
+                        notebook.AddItem(item2);
                     }else if(i<count-2){
-                        termstoString+=(termList[i]+ "<color=\"white\">, <#51fafc>");
+                        termstoString+=(item.englishName + "(" + item.nativeName + ")<#141414>, <#51fafc>");
                     }
                 }
-                notebook.AddItem(Resources.Load<ItemObject>("Items/"+termList[i].Trim()));
+                notebook.AddItem(item);
             }
-            termstoString += "<color=\"white\">";
+            termstoString += "<#141414>";
 
-            fullText = fullText.Substring(0,startPos).Trim() + termstoString  + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+            fullText = fullText.Substring(0,startPos) + termstoString  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText;
     }
@@ -344,7 +350,7 @@ public class DialogueUI : MonoBehaviour
                 notebook.AddItem(Resources.Load<ItemObject>("Items/"+termList[i].Trim()));
             }
 
-            fullText = fullText.Substring(0,startPos).Trim()  + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+            fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText;
     }
@@ -362,7 +368,7 @@ public class DialogueUI : MonoBehaviour
             if(endPos>-1){ //If all requirements have passed, set next dialogue
                 currNPC.setDialoguePointer(int.Parse(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
 
-                fullText = fullText.Substring(0,startPos).Trim() + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+                fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
             }
             return fullText;
     }
