@@ -69,11 +69,11 @@ MonoBehaviour:
     TargetNodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
   DialogueNodeData:
   - NodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
-    DialogueText: Hello, my name is {replacename}.
+    DialogueText: Hello, my name is {replacename}. Adding ADDTERM{Tree}.
     Position: {x: 225, y: 205}
   - NodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
     DialogueText: I wanted to speak with you about very important and very cool matters
-      that I would like to talk to you about via this long dialogue box!
+      that I would like to talk to you about via this long dialogue box! Adding ADDTERM{Book,Donut}.
     Position: {x: 417, y: 54}
   - NodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
     DialogueText: Did you enjoy this conversation?
@@ -88,7 +88,7 @@ MonoBehaviour:
     DialogueText: '*GASP* HOW DARE YOU!!!'
     Position: {x: 1436, y: 482}
   - NodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
-    DialogueText: Actually... Wait. Before you go...
+    DialogueText: Actually... Wait. Before you go... Adding ADDTERM{Bucket,Berries,Cherries}
     Position: {x: 2031, y: 241}
   - NodeGUID: 690eea8e-f5c1-4403-abd3-4842192eba9b
     DialogueText: I have a QUEST for you! Do you accept?

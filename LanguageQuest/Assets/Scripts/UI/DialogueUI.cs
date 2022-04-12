@@ -10,7 +10,8 @@ using Subtegral.DialogueSystem.DataContainers;
 public class DialogueUI : MonoBehaviour
 {
     public Canvas dialogueUI;
-    private Text dialogue;
+    public static NotebookObject notebook; //Used to add keywords to dictionary
+    private TMP_Text dialogue;
     private static GameObject decisionSpace; //The physical UI space
     private static Text decisionA;
     private static Text decisionB;
@@ -38,6 +39,7 @@ public class DialogueUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        notebook = Resources.Load<NotebookObject>("Inventory/Player Notebook");
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
         dialogueUI.enabled = false;
         isEnabled = false;
@@ -46,7 +48,7 @@ public class DialogueUI : MonoBehaviour
         narrativeData = null;
         choices = null;
         fullText = null;
-        dialogue = dialogueUI.transform.Find("DialogueBox/Paper/Text").GetComponent<Text>();
+        dialogue = dialogueUI.transform.Find("DialogueBox/Paper/Text").GetComponent<TMP_Text>();
         decisionSpace = GameObject.Find("SelectionSpace");
         textDelay = .15f;
     }
@@ -72,8 +74,15 @@ public class DialogueUI : MonoBehaviour
         }
         if(Time.time-textDelay>.05f&&!speechComplete&&textPos<fullText.Length){
             textDelay = Time.time;
-            displayedText+=fullText[textPos];
-            textPos++;
+            if(fullText[textPos]=='<'){
+                int endPos = fullText.IndexOf(">",textPos);
+                displayedText+=fullText.Substring(textPos,endPos-textPos);
+                textPos+=(endPos-textPos);
+            }
+            if(textPos<fullText.Length){ //May look redundant, but ensures that upon <tag> element disappearing, a new character
+                displayedText+=fullText[textPos]; //is added in its absence
+                textPos++;
+            }
         }
         if(textPos>=fullText.Length){
             lineComplete = true;
@@ -121,50 +130,21 @@ public class DialogueUI : MonoBehaviour
         fullText = fullText.Replace("{replacename}",currNPC.name);
 
         //Objective Parsing
-        int startPos = fullText.IndexOf("ADDQUESTS{");
-        int addLen = 10; //Length of ADDQUESTS{
-        if(startPos==-1){
-            startPos = fullText.IndexOf("ADDQUEST{");
-            addLen = 9; //Length of ADDQUEST{
-        }
+        fullText = objectiveParse(fullText,currNPC);
 
-        int endPos = -1;
+        //Term Parsing (no print variation)
+        fullText = addTermParse(fullText);
 
-        if(startPos>-1){ //Check for closing bracket
-            endPos = fullText.IndexOf("}",startPos+addLen);
-        }
-
-        if(endPos>-1){ //If all requirements have passed, add quests
-            string[] questList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
-            List<Objective> newObjs = new List<Objective>();
-            for(int i = 0; i<questList.Count()-1;i++){
-                Debug.Log(questList[i]);
-                newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i]));
-            }
-            ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,currNPC,int.Parse(questList[questList.Count()-1]));
-            GameObject.Find("Game Controller").GetComponent<GameController>().CreateGrouping(newObjGroup);
-            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
-        }
+        //Term Parsing (print variation)
+        fullText = addTermPrintParse(fullText);
 
 
         choices = dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID).ToList();
         numChoices = choices.Count();
 
         //Next Dialogue Parsing
-            startPos = fullText.IndexOf("GOTO{");
-            addLen = 5; //Length of GOTO{
+        fullText = goToParse(fullText,currNPC);
 
-            endPos = -1;
-
-            if(startPos>-1){ //Check for closing bracket
-                endPos = fullText.IndexOf("}",startPos+addLen);
-            }
-
-            if(endPos>-1){ //If all requirements have passed, set next dialogue
-                currNPC.setDialoguePointer(int.Parse(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
-
-                fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
-            }
 
         if(numChoices==0){
             decisionSpace.SetActive(false);
@@ -273,5 +253,117 @@ public class DialogueUI : MonoBehaviour
 
     public static NpcNavMesh.NpcType getNpcType(){
         return currNPC.getType();
+    }
+
+    private static string objectiveParse(string fullText, NpcNavMesh currNPC){
+        int startPos = fullText.IndexOf("ADDQUESTS{");
+        int addLen = 10; //Length of ADDQUESTS{
+        if(startPos==-1){
+            startPos = fullText.IndexOf("ADDQUEST{");
+            addLen = 9; //Length of ADDQUEST{
+        }
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add quests
+            string[] questList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            List<Objective> newObjs = new List<Objective>();
+            for(int i = 0; i<questList.Count()-1;i++){
+                Debug.Log(questList[i]);
+                newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
+            }
+            ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,currNPC,int.Parse(questList[questList.Count()-1]));
+            GameObject.Find("Game Controller").GetComponent<GameController>().CreateGrouping(newObjGroup);
+            fullText = fullText.Substring(0,startPos).Trim() + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+        }
+        return fullText;
+    }
+
+    private static string addTermPrintParse(string fullText){
+        int startPos = fullText.IndexOf("ADDTERMSPRINT{");
+        int addLen = 14; //Length of ADDQUESTS{
+        if(startPos==-1){
+            startPos = fullText.IndexOf("ADDTERMPRINT{");
+            addLen = 13; //Length of ADDQUEST{
+        }
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add quests
+            string[] termList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            ItemObject item = null;
+            int count = termList.Count();
+            string termstoString = "<#51fafc>";
+            for(int i = 0; i<count;i++){
+                if(count==1){
+                    termstoString+=(termList[i]);
+                }else if(i==0&&count==2){
+                    termstoString+=(termList[i]+ " <color=\"white\">and <#51fafc>" + termList[i+1]);
+                }else{
+                    if(i==count-2){
+                        termstoString+=(termList[i]+ "<color=\"white\">, and <#51fafc>" + termList[i+1]);
+                    }else if(i<count-2){
+                        termstoString+=(termList[i]+ "<color=\"white\">, <#51fafc>");
+                    }
+                }
+                notebook.AddItem(Resources.Load<ItemObject>("Items/"+termList[i].Trim()));
+            }
+            termstoString += "<color=\"white\">";
+
+            fullText = fullText.Substring(0,startPos).Trim() + termstoString  + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+        }
+        return fullText;
+    }
+
+    private static string addTermParse(string fullText){
+        int startPos = fullText.IndexOf("ADDTERMS{");
+        int addLen = 9; //Length of ADDQUESTS{
+        if(startPos==-1){
+            startPos = fullText.IndexOf("ADDTERM{");
+            addLen = 8; //Length of ADDQUEST{
+        }
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add quests
+            string[] termList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            int count = termList.Count();
+            for(int i = 0; i<count;i++){
+                notebook.AddItem(Resources.Load<ItemObject>("Items/"+termList[i].Trim()));
+            }
+
+            fullText = fullText.Substring(0,startPos).Trim()  + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+        }
+        return fullText;
+    }
+
+    private static string goToParse(string fullText, NpcNavMesh currNPC){
+        int startPos = fullText.IndexOf("GOTO{");
+            int addLen = 5; //Length of GOTO{
+
+            int endPos = -1;
+
+            if(startPos>-1){ //Check for closing bracket
+                endPos = fullText.IndexOf("}",startPos+addLen);
+            }
+
+            if(endPos>-1){ //If all requirements have passed, set next dialogue
+                currNPC.setDialoguePointer(int.Parse(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
+
+                fullText = fullText.Substring(0,startPos).Trim() + fullText.Substring(endPos+1,fullText.Length-endPos-1).Trim();
+            }
+            return fullText;
     }
 }

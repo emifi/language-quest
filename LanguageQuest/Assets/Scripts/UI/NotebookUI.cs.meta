@@ -3,7 +3,9 @@ guid: 5a2ef6342c6193e46a832757db7549d5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - notebook: {fileID: 11400000, guid: 5b111a7f8833c0f458638173c6bc0852, type: 2}
+  - notebookUI: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
