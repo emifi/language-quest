@@ -153,7 +153,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 5000
   field of view: 60
   orthographic: 0
   orthographic size: 5
@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 4387959200457928967}
   - component: {fileID: 4387959200457928966}
   - component: {fileID: 4387959200457928984}
+  - component: {fileID: 201709536}
   m_Layer: 0
   m_Name: First Person Player
   m_TagString: Untagged
@@ -261,7 +262,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6837efbcf572714486259be1fbe67ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showGroundDetection: 1
+  showGroundDetection: 0
   playerSpeed: 5
   jumpHeight: 5
   gravity: 20
@@ -275,7 +276,24 @@ MonoBehaviour:
   groundCheck: {fileID: 7869563883295213817}
   headCheck: {fileID: 7021756612848159993}
   cam: {fileID: 4387959198819781436}
-  spawnpoint: {fileID: 0}
+  spawnpoint: {fileID: 129198529364522661, guid: 58f87a8a7f147b149ad25623e777e291, type: 3}
+  dialogueUI: {fileID: 0}
+--- !u!114 &201709536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387959200457928965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e326e5263e241694cac7b5acaea39175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectives: []
+  completeObjectives: []
+  objectiveUI: {fileID: 0}
+  panelUI: {fileID: 6681959469956127733, guid: 309b21238747ff749a3caf2642853799, type: 3}
 --- !u!1 &5075913452888430370
 GameObject:
   m_ObjectHideFlags: 0
@@ -333,15 +351,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b09a9f33794b5b499e741a98a427fbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  notebook: {fileID: 0}
+  inventory: {fileID: 11400000, guid: 2e2f744b6345fda45bbb6efd28f1b613, type: 2}
+  notebook: {fileID: 11400000, guid: 5b111a7f8833c0f458638173c6bc0852, type: 2}
+  objectiveSystem: {fileID: 201709536}
   interactionRange: 3
-  highlightRange: 6
+  highlightRange: 3
   rayMask:
     serializedVersion: 2
     m_Bits: 128
   actionUI: {fileID: 0}
   notebookUI: {fileID: 0}
+  dialogueUI: {fileID: 0}
 --- !u!1 &7445549895143396394
 GameObject:
   m_ObjectHideFlags: 0
