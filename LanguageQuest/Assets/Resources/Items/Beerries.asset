@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Beerries
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  image: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
+  imageSprite: blueberry-sprite
   nativeName: jaak
   englishName: beerries
   description: Naturally occuring fruit of the wild.

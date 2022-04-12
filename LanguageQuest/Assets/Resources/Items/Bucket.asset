@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Bucket
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  image: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
+  imageSprite: bucket-sprite
   nativeName: "ty\u0105h"
   englishName: bucket
   description: A container for carrying various things.
