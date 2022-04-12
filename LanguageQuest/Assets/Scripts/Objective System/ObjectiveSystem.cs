@@ -23,12 +23,7 @@ public class ObjectiveSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Keypad0)) {
-            List<Objective> objs = new List<Objective>();
-            objs.Add(Resources.Load<ObjectiveCollect>("Objective System/Collect-jak-3"));
-            objs.Add(Resources.Load<ObjectiveCollect>("Objective System/MoveTo-NW"));
-            addObjectiveList(objs);
-        }
+        
     }
 
     // Adds an Objective to the UI and to the current objectives container
@@ -70,7 +65,6 @@ public class ObjectiveSystem : MonoBehaviour
             yield return null;
         }
         Destroy(objective.panelUI);
-
     }
 
     public void removeAllObjectives() {

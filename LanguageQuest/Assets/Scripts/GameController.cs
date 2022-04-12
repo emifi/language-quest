@@ -99,6 +99,7 @@ public class DialoguePointerMap {
         this.ptr = ptr;
     }
 
+    // Takes a raw string and locates the NPC 
     public DialoguePointerMap(string npcStr, int ptr) {
         this.npc = GameObject.Find(npcStr).GetComponent<NpcNavMesh>();
         this.ptr = ptr;
