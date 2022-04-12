@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f4d8d8e3b60348bfea5e230184d05, type: 3}
   m_Name: Caribou
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 1567582185033856, guid: 3a9b422ae305e3b49aadf8ece0bfa915, type: 3}
   image: {fileID: 0}
-  type: 4
+  type: 0
   canBeAddedToNotebook: 0
   nativeName: caribou
   englishName: caribou
-  description: this is just a test sorry
+  description: important animal, so i've heard
   interactionString: to hunt
