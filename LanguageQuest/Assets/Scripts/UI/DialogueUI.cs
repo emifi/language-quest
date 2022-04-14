@@ -190,6 +190,12 @@ public class DialogueUI : MonoBehaviour
         //Next Dialogue Parsing - GOTOMULT{NPC0:dialoguePTR...NPC1:dialoguePTR}
         fullText = goToMultParse(fullText);
 
+        //Change Type Parsing - CHANGETYPE{WalkType}
+        fullText = changeTypeParse(fullText,currNPC);
+
+        //Next Change Destination Group - CHANGEDEST{destinationPtr}
+        fullText = changeDestParse(fullText,currNPC);
+
 
         if(numChoices==0){
             decisionSpace.SetActive(false);
@@ -491,5 +497,44 @@ public class DialogueUI : MonoBehaviour
                 fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
             }
             return fullText.Trim();
-    }    
+    } 
+
+    private static string changeTypeParse(string fullText, NpcNavMesh currNPC){
+        int startPos = fullText.IndexOf("CHANGETYPE{");
+            int addLen = 11; //Length of CHANGETYPE{
+
+            int endPos = -1;
+
+            if(startPos>-1){ //Check for closing bracket
+                endPos = fullText.IndexOf("}",startPos+addLen);
+            }
+
+            if(endPos>-1){ //If all requirements have passed, set next dialogue
+
+                currNPC.setType((NpcNavMesh.NpcType)System.Enum.Parse( typeof(NpcNavMesh.NpcType),fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
+
+                Debug.Log("B4 " + fullText);
+                fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+               Debug.Log("AvDr " + fullText); 
+            }
+            return fullText.Trim();
+    }   
+
+    private static string changeDestParse(string fullText, NpcNavMesh currNPC){
+        int startPos = fullText.IndexOf("CHANGEDEST{");
+            int addLen = 11; //Length of CHANGEDEST{
+
+            int endPos = -1;
+
+            if(startPos>-1){ //Check for closing bracket
+                endPos = fullText.IndexOf("}",startPos+addLen);
+            }
+
+            if(endPos>-1){ //If all requirements have passed, set next dialogue for multiple NPCs
+                currNPC.setDestinationPointer(int.Parse(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
+
+                fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+            }
+            return fullText.Trim();
+    } 
 }
