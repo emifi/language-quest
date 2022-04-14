@@ -64,23 +64,26 @@ public class DialogueUI : MonoBehaviour
         if(mainColor.Length==7){
             mainCol = "<"+mainColor+">";
             mainColForDialogue = mainColor;
-        }else{
+        }else{ //Defaults
             mainCol = "<#141414>";
             mainColForDialogue = "#141414";
         }
+        
         if(npcColor.Length==7){
             npcCol = "<"+npcColor+">";
-        }else{
+        }else{ //Defaults
             npcCol = "<#3afa14>";
         }
+
         if(itemColor.Length==7){
             itemCol = "<"+itemColor+">";
-        }else{
+        }else{ //Defaults
             itemCol = "<#51fafc>";
         }
+
         if(choiceColor.Length==7){
             choiceCol = choiceColor;
-        }else{
+        }else{ //Defaults
             choiceCol = "cyan";
         }
     }
@@ -92,7 +95,7 @@ public class DialogueUI : MonoBehaviour
             dialogueUI.enabled = true;
         }
 
-        if(narrativeData==null||fullText==null){
+        if(narrativeData==null||fullText==null){ //If null, the end of map has been reached
             lineComplete = false;
             speechComplete = true;
             narrativeData = null;
@@ -104,9 +107,9 @@ public class DialogueUI : MonoBehaviour
             textPos = 0;
             return;
         }
-        if(Time.time-textDelay>.05f&&!speechComplete&&textPos<fullText.Length){
+        if(Time.time-textDelay>.05f&&!speechComplete&&textPos<fullText.Length){ //Write text one char at a time based on textDelay
             textDelay = Time.time;
-            if(fullText[textPos]=='<'){
+            if(fullText[textPos]=='<'){ //Exclude Html TAGs from char-based additions
                 int endPos = fullText.IndexOf(">",textPos);
                 displayedText+=fullText.Substring(textPos,endPos-textPos);
                 textPos+=(endPos-textPos);
@@ -121,38 +124,38 @@ public class DialogueUI : MonoBehaviour
         }
 
         if(currNPC!=null&&currNPC.getType()!=NpcNavMesh.NpcType.Proximity&&currNPC.getType()!=NpcNavMesh.NpcType.Stationary){
-            currNPC.stopMovement();
+            currNPC.stopMovement(); //Ensure NPC does not run away while speaking (save for proximity/stationary types)
         }
         
         dialogue.text = displayedText;
     }
 
-    public static void turnPage(){
-        if(choices.Count()==0){
+    public static void turnPage(){ //Proceed to next dialogue node
+        if(choices.Count()==0){ //End dialogue
             nextDialogue(null);
             return;
         }
-        if(choices.Count()==1){
+        if(choices.Count()==1){ //Proceed to next dialogue
             nextDialogue(choices[0].TargetNodeGUID);
             return;
         }
-        decisionGrid[currChoiceY,currChoiceX].color = new Color(.078f,.078f,.078f);
-        nextDialogue(choices[(currChoiceY*decisionGrid.GetLength(1))+currChoiceX].TargetNodeGUID);
+        decisionGrid[currChoiceY,currChoiceX].color = new Color(.078f,.078f,.078f); //Reset decision grid colors
+        nextDialogue(choices[(currChoiceY*decisionGrid.GetLength(1))+currChoiceX].TargetNodeGUID); //Proceed to chosen dialogue
     }
 
-    public static void skip(){
+    public static void skip(){ //Skip text scrolling
         displayedText = mainCol+fullText;
         textPos = displayedText.Count();
         lineComplete = true;
     }
 
-    private static void nextDialogue(string narrativeDataGUID){
+    private static void nextDialogue(string narrativeDataGUID){ //Display and set up new dialogue node
         if(narrativeDataGUID==null){
             narrativeData = null;
             return;
         }
         lineComplete = false;
-        displayedText = mainCol+"";
+        displayedText = mainCol+""; //Start text with chosen main color
         textPos=0;
         fullText = dialogueContainer.DialogueNodeData.Find(x => x.NodeGUID == narrativeDataGUID).DialogueText;
         
@@ -161,26 +164,30 @@ public class DialogueUI : MonoBehaviour
         //MAKE THEM THE SAME AS THEY ARE IN DIALOGUE GRAPHS.
         fullText = fullText.Replace("{replacename}",(npcCol + currNPC.name + mainCol));
 
-        //Objective Parsing
+
+
+
+        //Objective Parsing - ADDQUEST{quest0,quest1...questN,dialoguePTR}/ADDQUEST{quest0,quest1...questN,dialoguePTR}
         fullText = objectiveParse(fullText,currNPC);
 
-        //Objective Parsing
+        //Objective Parsing -   ADDQUEST++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
+        //                      ADDQUESTS++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
         fullText = objectiveParseMultNPC(fullText); //++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2, NPC (2):2}
 
-        //Term Parsing (no print variation)
+        //Term Parsing (no print variation) - ADDTERM{item0,item1...itemN}/ADDTERMS{item0,item1...itemN}
         fullText = addTermParse(fullText);
 
-        //Term Parsing (print variation)
+        //Term Parsing (print variation) - ADDTERMPRINT{item0,item1...itemN}/ADDTERMSPRINT{item0,item1...itemN}
         fullText = addTermPrintParse(fullText);
 
 
         choices = dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID).ToList();
         numChoices = choices.Count();
 
-        //Next Dialogue Parsing
+        //Next Dialogue Parsing - GOTO{dialoguePtr}
         fullText = goToParse(fullText,currNPC);
 
-        //Next Dialogue Parsing
+        //Next Dialogue Parsing - GOTOMULT{NPC0:dialoguePTR...NPC1:dialoguePTR}
         fullText = goToMultParse(fullText);
 
 
@@ -236,30 +243,33 @@ public class DialogueUI : MonoBehaviour
         if(numChoices<=1){
             return;
         }
+
         if(ColorUtility.TryParseHtmlString(mainColForDialogue,out Color newCol)){
                 decisionGrid[currChoiceY,currChoiceX].color = newCol;
         }
+
         currChoiceX += i;
-        if(currChoiceX<0){
+        if(currChoiceX<0){ //If less than 0, wraparound
             currChoiceX = decisionGrid.GetLength(1)-1;
             currChoiceY -= 1;
-            if(currChoiceY<0){
+            if(currChoiceY<0){ //Wrapround on Y
                 currChoiceY = decisionGrid.GetLength(0)-1;
             }
-        }else if(currChoiceX>=decisionGrid.GetLength(1)||decisionGrid[currChoiceY,currChoiceX].enabled==false){
+        }else if(currChoiceX>=decisionGrid.GetLength(1)||decisionGrid[currChoiceY,currChoiceX].enabled==false){ //If greater than size, wraparound
             currChoiceX = 0;
             currChoiceY += 1;
-            if(currChoiceY>=decisionGrid.GetLength(0)){
+            if(currChoiceY>=decisionGrid.GetLength(0)){ //Wraparound on Y
                 currChoiceY = 0;
             }
         }
-        while(decisionGrid[currChoiceY,currChoiceX].enabled==false){
+        while(decisionGrid[currChoiceY,currChoiceX].enabled==false){ //ensure choice is valid
             currChoiceX-=1;
             if(currChoiceX<0){
                 currChoiceX = decisionGrid.GetLength(1)-1;
                 currChoiceY -= 1;
             }
         }
+
         if(ColorUtility.TryParseHtmlString(choiceCol,out Color newCol2)){
                 decisionGrid[currChoiceY,currChoiceX].color = newCol2;
         }
@@ -269,24 +279,27 @@ public class DialogueUI : MonoBehaviour
         if(numChoices<=1){
             return;
         }
+
         if(ColorUtility.TryParseHtmlString(mainColForDialogue,out Color newCol)){
                 decisionGrid[currChoiceY,currChoiceX].color = newCol;
         }
+
         currChoiceY += i;
-        if(currChoiceY<0){
+        if(currChoiceY<0){ //Wrapround Y<0
             currChoiceY = decisionGrid.GetLength(0)-1;
-        }else if(currChoiceY>=decisionGrid.GetLength(0)||decisionGrid[currChoiceY,currChoiceX].enabled==false){
+        }else if(currChoiceY>=decisionGrid.GetLength(0)||decisionGrid[currChoiceY,currChoiceX].enabled==false){ //Wrapround Y>size
             currChoiceY = 0;
         }
-        while(decisionGrid[currChoiceY,currChoiceX].enabled==false){
+        while(decisionGrid[currChoiceY,currChoiceX].enabled==false){ //Ensure value is valid
             currChoiceY-=1;
         }
+
         if(ColorUtility.TryParseHtmlString(choiceCol,out Color newCol2)){
                 decisionGrid[currChoiceY,currChoiceX].color = newCol2;
         }
     }
 
-    public static void initScript(NpcNavMesh n){
+    public static void initScript(NpcNavMesh n){ //Initialize dialogue map
         speechComplete = false;
         currNPC = n;
         dialogueContainer = currNPC.getCurrDialogue();
@@ -294,15 +307,15 @@ public class DialogueUI : MonoBehaviour
         nextDialogue(narrativeData.TargetNodeGUID);
     }
 
-    public static bool textComplete(){
+    public static bool textComplete(){ //Get if current dialogue line is complete
         return lineComplete;
     }
 
-    public static bool dialogueComplete(){
+    public static bool dialogueComplete(){ //Get if dialogue map has terminated
         return speechComplete;
     }
 
-    public static NpcNavMesh.NpcType getNpcType(){
+    public static NpcNavMesh.NpcType getNpcType(){ //Get type of NPC in conversation with
         return currNPC.getType();
     }
 
@@ -323,7 +336,7 @@ public class DialogueUI : MonoBehaviour
         if(endPos>-1){ //If all requirements have passed, add quests
             string[] questList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
             List<Objective> newObjs = new List<Objective>();
-            for(int i = 0; i<questList.Count()-1;i++){
+            for(int i = 0; i<questList.Count()-1;i++){ //Add all quests (exclude last position)
                 Debug.Log(questList[i]);
                 newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
             }
@@ -354,10 +367,10 @@ public class DialogueUI : MonoBehaviour
             List<DialoguePointerMap> npcMap = new List<DialoguePointerMap>();
             for(int i = 0; i<questList.Count();i++){
                 Debug.Log(questList[i]);
-                if(questList[i].Contains(':')){
+                if(questList[i].Contains(':')){ //Add NPC and dialogue ptr
                     string[] npcInfo = questList[i].Trim().Split(':');
                     npcMap.Add(new DialoguePointerMap(npcInfo[0],int.Parse(npcInfo[1])));
-                }else{
+                }else{ //Add objectives
                     newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
                 }
             }
@@ -388,7 +401,7 @@ public class DialogueUI : MonoBehaviour
             ItemObject item2 = null;
             int count = termList.Count();
             string termstoString = ""+itemCol;
-            for(int i = 0; i<count;i++){
+            for(int i = 0; i<count;i++){ //Complexity here comes from string manipulation. Add item to known items + add to string
                 item = Resources.Load<ItemObject>("Items/"+termList[i].Trim());
                 if(count==1){
                     termstoString+=(item.englishName + "(" + item.nativeName + ")");
@@ -428,7 +441,7 @@ public class DialogueUI : MonoBehaviour
             endPos = fullText.IndexOf("}",startPos+addLen);
         }
 
-        if(endPos>-1){ //If all requirements have passed, add quests
+        if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
             string[] termList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
             int count = termList.Count();
             for(int i = 0; i<count;i++){
@@ -468,7 +481,7 @@ public class DialogueUI : MonoBehaviour
                 endPos = fullText.IndexOf("}",startPos+addLen);
             }
 
-            if(endPos>-1){ //If all requirements have passed, set next dialogue
+            if(endPos>-1){ //If all requirements have passed, set next dialogue for multiple NPCs
                 string[] gotoList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
                 foreach(string str in gotoList){
                     string[] gotoInfo = str.Trim().Split(':');
