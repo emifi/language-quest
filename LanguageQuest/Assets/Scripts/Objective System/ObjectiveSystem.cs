@@ -6,7 +6,7 @@ using TMPro;
 public class ObjectiveSystem : MonoBehaviour
 {
     public List<Objective> objectives = new List<Objective>();
-    public List<Objective> completeObjectives = new List<Objective>();
+    private List<Objective> completeObjectives = new List<Objective>();
     public GameObject objectiveUI;
     public GameObject panelUI;
     DialogueUI dialogueUI;

@@ -25,4 +25,5 @@ public enum ObjectiveType {
     MoveTo,
     Trigger,
     TalkTo,
+    Follow,
 }

@@ -191,27 +191,17 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 448425236423843458, guid: dbe49e89ca428eb47b48b70b51c6f22d, type: 3}
   m_PrefabInstance: {fileID: 448425236390259247}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &201709535 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4387959200457928965, guid: 2948f68d9e02e364a99cd3853786008d, type: 3}
+--- !u!114 &201709536 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5419815025354324361, guid: 2948f68d9e02e364a99cd3853786008d, type: 3}
   m_PrefabInstance: {fileID: 223996217}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &201709536
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 201709535}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e326e5263e241694cac7b5acaea39175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectives: []
-  completeObjectives: []
-  objectiveUI: {fileID: 875539570}
-  panelUI: {fileID: 6681959469956127733, guid: 309b21238747ff749a3caf2642853799, type: 3}
 --- !u!1001 &223996217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -287,6 +277,10 @@ PrefabInstance:
       propertyPath: showGroundDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5419815025354324361, guid: 2948f68d9e02e364a99cd3853786008d, type: 3}
+      propertyPath: objectiveUI
+      value: 
+      objectReference: {fileID: 875539570}
     - target: {fileID: 8301461888169408502, guid: 2948f68d9e02e364a99cd3853786008d, type: 3}
       propertyPath: tempUI
       value: 
@@ -319,8 +313,7 @@ PrefabInstance:
       propertyPath: objectiveSystem
       value: 
       objectReference: {fileID: 201709536}
-    m_RemovedComponents:
-    - {fileID: 201709536, guid: 2948f68d9e02e364a99cd3853786008d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2948f68d9e02e364a99cd3853786008d, type: 3}
 --- !u!1 &248939250
 GameObject:
@@ -5679,7 +5672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720303135201160504, guid: 641857ecbb592014f8fd2af35a558be8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.08
+      value: 6.92
       objectReference: {fileID: 0}
     - target: {fileID: 2720303135201160504, guid: 641857ecbb592014f8fd2af35a558be8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5687,7 +5680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2720303135201160504, guid: 641857ecbb592014f8fd2af35a558be8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 12.49
+      value: 11.82
       objectReference: {fileID: 0}
     - target: {fileID: 2720303135201160504, guid: 641857ecbb592014f8fd2af35a558be8, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5716,6 +5709,10 @@ PrefabInstance:
     - target: {fileID: 2720303135201160504, guid: 641857ecbb592014f8fd2af35a558be8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6600529046650723924, guid: 641857ecbb592014f8fd2af35a558be8, type: 3}
+      propertyPath: npc
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6600529046650723924, guid: 641857ecbb592014f8fd2af35a558be8, type: 3}
       propertyPath: trigger
@@ -6616,6 +6613,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58210dd07a24bc44d9c591815322c4a0, type: 3}
+--- !u!1 &1790745090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3357019967353041865, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
+  m_PrefabInstance: {fileID: 1944455336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1790745098
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790745090}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1821245421
 GameObject:
   m_ObjectHideFlags: 0
