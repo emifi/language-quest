@@ -132,6 +132,9 @@ public class DialogueUI : MonoBehaviour
         //Objective Parsing
         fullText = objectiveParse(fullText,currNPC);
 
+        //Objective Parsing
+        fullText = objectiveParseMultNPC(fullText); //++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2, NPC (2):2}
+
         //Term Parsing (no print variation)
         fullText = addTermParse(fullText);
 
@@ -144,6 +147,9 @@ public class DialogueUI : MonoBehaviour
 
         //Next Dialogue Parsing
         fullText = goToParse(fullText,currNPC);
+
+        //Next Dialogue Parsing
+        fullText = goToMultParse(fullText);
 
 
         if(numChoices==0){
@@ -280,7 +286,41 @@ public class DialogueUI : MonoBehaviour
             GameObject.Find("Game Controller").GetComponent<GameController>().CreateGrouping(newObjGroup);
             fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
-        return fullText;
+        return fullText.Trim();
+    }
+
+    private static string objectiveParseMultNPC(string fullText){ //ADDQUESTS{q1, q2, q3, npc1:1, npc2:4}
+        int startPos = fullText.IndexOf("ADDQUESTS++{");
+        int addLen = 12; //Length of ADDQUESTS++{
+        if(startPos==-1){
+            startPos = fullText.IndexOf("ADDQUEST++{");
+            addLen = 11; //Length of ADDQUEST++{
+        }
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add quests
+            string[] questList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            List<Objective> newObjs = new List<Objective>();
+            List<DialoguePointerMap> npcMap = new List<DialoguePointerMap>();
+            for(int i = 0; i<questList.Count();i++){
+                Debug.Log(questList[i]);
+                if(questList[i].Contains(':')){
+                    string[] npcInfo = questList[i].Trim().Split(':');
+                    npcMap.Add(new DialoguePointerMap(npcInfo[0],int.Parse(npcInfo[1])));
+                }else{
+                    newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
+                }
+            }
+            ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,npcMap);
+            GameObject.Find("Game Controller").GetComponent<GameController>().CreateGrouping(newObjGroup);
+            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
     }
 
     private static string addTermPrintParse(string fullText){
@@ -326,7 +366,7 @@ public class DialogueUI : MonoBehaviour
 
             fullText = fullText.Substring(0,startPos) + termstoString  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
-        return fullText;
+        return fullText.Trim();
     }
 
     private static string addTermParse(string fullText){
@@ -352,7 +392,7 @@ public class DialogueUI : MonoBehaviour
 
             fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
-        return fullText;
+        return fullText.Trim();
     }
 
     private static string goToParse(string fullText, NpcNavMesh currNPC){
@@ -370,6 +410,28 @@ public class DialogueUI : MonoBehaviour
 
                 fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
             }
-            return fullText;
+            return fullText.Trim();
     }
+
+    private static string goToMultParse(string fullText){
+        int startPos = fullText.IndexOf("GOTOMULT{");
+            int addLen = 9; //Length of GOTOMULT{
+
+            int endPos = -1;
+
+            if(startPos>-1){ //Check for closing bracket
+                endPos = fullText.IndexOf("}",startPos+addLen);
+            }
+
+            if(endPos>-1){ //If all requirements have passed, set next dialogue
+                string[] gotoList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+                foreach(string str in gotoList){
+                    string[] gotoInfo = str.Trim().Split(':');
+                    GameObject.Find(gotoInfo[0]).GetComponent<NpcNavMesh>().setDialoguePointer(int.Parse(gotoInfo[1]));
+                }
+
+                fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+            }
+            return fullText.Trim();
+    }    
 }

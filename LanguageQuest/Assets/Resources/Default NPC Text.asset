@@ -88,11 +88,11 @@ MonoBehaviour:
     DialogueText: I have a QUEST for you! Do you accept?
     Position: {x: 2381, y: 242}
   - NodeGUID: ed79f979-bf10-4c2c-b8c6-44e10a078dd6
-    DialogueText: 'GOTO{1} ADDQUESTS{Collect-jak-3,MoveTo-NW,Trigger-Book,2} Oh thank
-      you! This is so #BLESSED '
+    DialogueText: 'GOTO{1} ADDQUESTS++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2,
+      NPC (2):2} Oh thank you! This is so #BLESSED '
     Position: {x: 2777, y: 163}
   - NodeGUID: 64a17058-88bb-449f-9f9e-1909c3d463bc
-    DialogueText: GOTO{1} That's too bad. Goodbye.
+    DialogueText: GOTOMULT{NPC (1):2, NPC (2):2} That's too bad. Goodbye.
     Position: {x: 2776, y: 291}
   - NodeGUID: 212e6bcd-711a-4213-a66b-2cdc80128f78
     DialogueText: :'(
