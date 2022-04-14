@@ -3793,6 +3793,18 @@ PrefabInstance:
       value: 0.078431375
       objectReference: {fileID: 0}
     - target: {fileID: 6367922107983361157, guid: 2a07da2163e11a344a8c2f488cc2596c, type: 3}
+      propertyPath: npcColor
+      value: '#3afa14'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367922107983361157, guid: 2a07da2163e11a344a8c2f488cc2596c, type: 3}
+      propertyPath: itemColor
+      value: '#51fafc'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367922107983361157, guid: 2a07da2163e11a344a8c2f488cc2596c, type: 3}
+      propertyPath: mainColor
+      value: '#141414'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6367922107983361157, guid: 2a07da2163e11a344a8c2f488cc2596c, type: 3}
       propertyPath: textDelay
       value: 3
       objectReference: {fileID: 0}
@@ -3800,6 +3812,10 @@ PrefabInstance:
       propertyPath: dialogueUI
       value: 
       objectReference: {fileID: 7330066170401504151, guid: 2a07da2163e11a344a8c2f488cc2596c, type: 3}
+    - target: {fileID: 6367922107983361157, guid: 2a07da2163e11a344a8c2f488cc2596c, type: 3}
+      propertyPath: choiceColor
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6795865157503016186, guid: 2a07da2163e11a344a8c2f488cc2596c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

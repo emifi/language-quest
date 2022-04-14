@@ -24,6 +24,15 @@ public class DialogueUI : MonoBehaviour
     private static string displayedText; //Revealed text
     public static bool lineComplete = false;
     public static bool speechComplete = true;
+    public string mainColor; //public facing
+    public string npcColor;
+    public string itemColor;
+    public string choiceColor;
+    private static string mainCol; //private/static use
+    private static string npcCol;
+    private static string itemCol;
+    private static string choiceCol;
+    private static string mainColForDialogue;
 
     private static NodeLinkData narrativeData; //Current dialogue node
     private static List<NodeLinkData> choices; //Is set to hold dialogue choices
@@ -51,6 +60,29 @@ public class DialogueUI : MonoBehaviour
         dialogue = dialogueUI.transform.Find("DialogueBox/Paper/Text").GetComponent<TMP_Text>();
         decisionSpace = GameObject.Find("SelectionSpace");
         textDelay = .15f;
+
+        if(mainColor.Length==7){
+            mainCol = "<"+mainColor+">";
+            mainColForDialogue = mainColor;
+        }else{
+            mainCol = "<#141414>";
+            mainColForDialogue = "#141414";
+        }
+        if(npcColor.Length==7){
+            npcCol = "<"+npcColor+">";
+        }else{
+            npcCol = "<#3afa14>";
+        }
+        if(itemColor.Length==7){
+            itemCol = "<"+itemColor+">";
+        }else{
+            itemCol = "<#51fafc>";
+        }
+        if(choiceColor.Length==7){
+            choiceCol = choiceColor;
+        }else{
+            choiceCol = "cyan";
+        }
     }
 
     // Update is called once per frame
@@ -109,7 +141,7 @@ public class DialogueUI : MonoBehaviour
     }
 
     public static void skip(){
-        displayedText = fullText;
+        displayedText = mainCol+fullText;
         textPos = displayedText.Count();
         lineComplete = true;
     }
@@ -120,14 +152,14 @@ public class DialogueUI : MonoBehaviour
             return;
         }
         lineComplete = false;
-        displayedText = "";
+        displayedText = mainCol+"";
         textPos=0;
         fullText = dialogueContainer.DialogueNodeData.Find(x => x.NodeGUID == narrativeDataGUID).DialogueText;
         
 
         //ADD ANY REPLACEMENT VALUES YOU WOULD LIKE HERE.
         //MAKE THEM THE SAME AS THEY ARE IN DIALOGUE GRAPHS.
-        fullText = fullText.Replace("{replacename}",("<#3afa14>" + currNPC.name + "<#141414>"));
+        fullText = fullText.Replace("{replacename}",(npcCol + currNPC.name + mainCol));
 
         //Objective Parsing
         fullText = objectiveParse(fullText,currNPC);
@@ -179,6 +211,9 @@ public class DialogueUI : MonoBehaviour
                         int posX = pos%decisionGrid.GetLength(1);
                         int posY = pos/decisionGrid.GetLength(1);
                         decisionGrid[posY,posX].text = choices[pos].PortName;
+                        if(ColorUtility.TryParseHtmlString(mainColForDialogue,out Color newCol)){
+                            decisionGrid[posX,posY].color = newCol;
+                        }
                     }
                     copyNumChoices--;
                     pos++;
@@ -191,7 +226,9 @@ public class DialogueUI : MonoBehaviour
         if(decisionGrid!=null){
             currChoiceX = 0;
             currChoiceY = 0;
-            decisionGrid[0,0].color = Color.cyan;
+            if(ColorUtility.TryParseHtmlString(choiceCol,out Color newCol)){
+                decisionGrid[0,0].color = newCol;
+            }
         }
     }
 
@@ -199,7 +236,9 @@ public class DialogueUI : MonoBehaviour
         if(numChoices<=1){
             return;
         }
-        decisionGrid[currChoiceY,currChoiceX].color = new Color(.078f,.078f,.078f);;
+        if(ColorUtility.TryParseHtmlString(mainColForDialogue,out Color newCol)){
+                decisionGrid[currChoiceY,currChoiceX].color = newCol;
+        }
         currChoiceX += i;
         if(currChoiceX<0){
             currChoiceX = decisionGrid.GetLength(1)-1;
@@ -221,14 +260,18 @@ public class DialogueUI : MonoBehaviour
                 currChoiceY -= 1;
             }
         }
-        decisionGrid[currChoiceY,currChoiceX].color = Color.cyan;
+        if(ColorUtility.TryParseHtmlString(choiceCol,out Color newCol2)){
+                decisionGrid[currChoiceY,currChoiceX].color = newCol2;
+        }
     }
 
     public static void scrollY(int i){ //Scroll through choices with W and S. Wraparound on overflow.
         if(numChoices<=1){
             return;
         }
-        decisionGrid[currChoiceY,currChoiceX].color = new Color(.078f,.078f,.078f);;
+        if(ColorUtility.TryParseHtmlString(mainColForDialogue,out Color newCol)){
+                decisionGrid[currChoiceY,currChoiceX].color = newCol;
+        }
         currChoiceY += i;
         if(currChoiceY<0){
             currChoiceY = decisionGrid.GetLength(0)-1;
@@ -238,7 +281,9 @@ public class DialogueUI : MonoBehaviour
         while(decisionGrid[currChoiceY,currChoiceX].enabled==false){
             currChoiceY-=1;
         }
-        decisionGrid[currChoiceY,currChoiceX].color = Color.cyan;
+        if(ColorUtility.TryParseHtmlString(choiceCol,out Color newCol2)){
+                decisionGrid[currChoiceY,currChoiceX].color = newCol2;
+        }
     }
 
     public static void initScript(NpcNavMesh n){
@@ -342,27 +387,27 @@ public class DialogueUI : MonoBehaviour
             ItemObject item = null;
             ItemObject item2 = null;
             int count = termList.Count();
-            string termstoString = "<#51fafc>";
+            string termstoString = ""+itemCol;
             for(int i = 0; i<count;i++){
                 item = Resources.Load<ItemObject>("Items/"+termList[i].Trim());
                 if(count==1){
                     termstoString+=(item.englishName + "(" + item.nativeName + ")");
                 }else if(i==0&&count==2){
                     item2 = Resources.Load<ItemObject>("Items/"+termList[i+1].Trim());
-                    termstoString+=(item.englishName + "(" + item.nativeName + ") <#141414>and <#51fafc>" + item2.englishName + "(" + item2.nativeName + ")");
+                    termstoString+=(item.englishName + "(" + item.nativeName + ") "+ mainCol +"and " + itemCol + item2.englishName + "(" + item2.nativeName + ")");
                     notebook.AddItem(item2);
                 }else{
                     if(i==count-2){
                         item2 = Resources.Load<ItemObject>("Items/"+termList[i+1].Trim());
-                        termstoString+=(item.englishName + "(" + item.nativeName + ")<#141414>, and <#51fafc>" + item2.englishName + "(" + item2.nativeName + ")");
+                        termstoString+=(item.englishName + "(" + item.nativeName + ")"+mainCol+", and "+ itemCol + item2.englishName + "(" + item2.nativeName + ")");
                         notebook.AddItem(item2);
                     }else if(i<count-2){
-                        termstoString+=(item.englishName + "(" + item.nativeName + ")<#141414>, <#51fafc>");
+                        termstoString+=(item.englishName + "(" + item.nativeName + ")" + mainCol + ", "+itemCol);
                     }
                 }
                 notebook.AddItem(item);
             }
-            termstoString += "<#141414>";
+            termstoString += mainCol;
 
             fullText = fullText.Substring(0,startPos) + termstoString  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
