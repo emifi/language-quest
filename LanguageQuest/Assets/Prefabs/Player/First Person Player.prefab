@@ -205,7 +205,7 @@ GameObject:
   - component: {fileID: 4387959200457928967}
   - component: {fileID: 4387959200457928966}
   - component: {fileID: 4387959200457928984}
-  - component: {fileID: 201709536}
+  - component: {fileID: 5419815025354324361}
   m_Layer: 0
   m_Name: First Person Player
   m_TagString: Untagged
@@ -278,7 +278,7 @@ MonoBehaviour:
   cam: {fileID: 4387959198819781436}
   spawnpoint: {fileID: 129198529364522661, guid: 58f87a8a7f147b149ad25623e777e291, type: 3}
   dialogueUI: {fileID: 0}
---- !u!114 &201709536
+--- !u!114 &5419815025354324361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,8 +290,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e326e5263e241694cac7b5acaea39175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectives: []
-  completeObjectives: []
   objectiveUI: {fileID: 0}
   panelUI: {fileID: 6681959469956127733, guid: 309b21238747ff749a3caf2642853799, type: 3}
 --- !u!1 &5075913452888430370
@@ -353,7 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 2e2f744b6345fda45bbb6efd28f1b613, type: 2}
   notebook: {fileID: 11400000, guid: 5b111a7f8833c0f458638173c6bc0852, type: 2}
-  objectiveSystem: {fileID: 201709536}
+  objectiveSystem: {fileID: 0}
   interactionRange: 3
   highlightRange: 3
   rayMask:
