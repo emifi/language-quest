@@ -16,9 +16,6 @@ MonoBehaviour:
   - BaseNodeGUID: 243c2235-27bb-4770-8915-77f5d7426f3d
     PortName: Next
     TargetNodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
-  - BaseNodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
-    PortName: none
-    TargetNodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
   - BaseNodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
     PortName: Yes!
     TargetNodeGUID: 5577bb85-719d-40bf-9048-46ca92b86915
@@ -67,11 +64,10 @@ MonoBehaviour:
   - BaseNodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
     PortName: Option 1
     TargetNodeGUID: 690eea8e-f5c1-4403-abd3-4842192eba9b
+  - BaseNodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
+    PortName: none
+    TargetNodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
   DialogueNodeData:
-  - NodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
-    DialogueText: Hello, my name is {replacename}. If you look to your left you'll
-      see a ADDTERMPRINT{Tree}.
-    Position: {x: 225, y: 205}
   - NodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
     DialogueText: Did you enjoy this conversation?
     Position: {x: 771, y: 189}
@@ -85,7 +81,7 @@ MonoBehaviour:
     DialogueText: '*GASP* HOW DARE YOU!!!'
     Position: {x: 1436, y: 482}
   - NodeGUID: 690eea8e-f5c1-4403-abd3-4842192eba9b
-    DialogueText: I have a QUEST for you! Do you accept?
+    DialogueText: I have a QUEST for you! Do you accept? CHANGEDEST{1}
     Position: {x: 2381, y: 242}
   - NodeGUID: ed79f979-bf10-4c2c-b8c6-44e10a078dd6
     DialogueText: 'GOTO{1} ADDQUESTS++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2,
@@ -112,6 +108,10 @@ MonoBehaviour:
     DialogueText: Actually... Wait. Before you go... If you look to the sky you'll
       see some ADDTERMPRINT{Bucket,Berries,Cherries}
     Position: {x: 2076, y: 34}
+  - NodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
+    DialogueText: Hello, my name is {replacename}. If you look to your left you'll
+      see a ADDTERMPRINT{Tree}. CHANGETYPE{Proximity}
+    Position: {x: 100, y: 352}
   ExposedProperties:
   - PropertyName: 
     PropertyValue: Jim
