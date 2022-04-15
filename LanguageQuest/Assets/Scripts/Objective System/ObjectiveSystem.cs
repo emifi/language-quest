@@ -16,7 +16,7 @@ public class ObjectiveSystem : MonoBehaviour
     {
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<DialogueUI>();
         foreach (Objective obj in objectives) {
-            addObjective(obj);
+            addObjective(obj, 0);
         }
     }
 
@@ -28,9 +28,16 @@ public class ObjectiveSystem : MonoBehaviour
 
     // Adds an Objective to the UI and to the current objectives container
     // The container object is only public for editor convenience! Never add directly to it!
-    public void addObjective(Objective objective) {
+    public void addObjective(Objective objective, int color_num) {
+        Random.InitState(color_num);
+        Color color = new Color(
+            Random.Range(0.6f, 1.0f),
+            Random.Range(0.6f, 1.0f),
+            Random.Range(0.6f, 1.0f)
+        );
         if (!objectives.Contains(objective)) objectives.Add(objective);
         objective.panelUI = Instantiate(panelUI);
+        objective.panelUI.GetComponent<TMP_Text>().color = color;
         string objstr = objective.objectiveString;
         if (objective.type == ObjectiveType.Collect) {
             if ((objective as ObjectiveCollect).current >= (objective as ObjectiveCollect).required) {
@@ -46,9 +53,9 @@ public class ObjectiveSystem : MonoBehaviour
         objective.panelUI.transform.SetParent(objectiveUI.transform);
     }
 
-    public void addObjectiveList(List<Objective> objectives) {
+    public void addObjectiveList(List<Objective> objectives, int color_num) {
         foreach (Objective objective in objectives) {
-            addObjective(objective);
+            addObjective(objective, color_num);
         }
     }
 
@@ -60,7 +67,7 @@ public class ObjectiveSystem : MonoBehaviour
     IEnumerator fadeAndRemove(float t, Objective objective) {
         yield return new WaitForSeconds(2.0f);
         while (t < 2.0) {
-            objective.panelUI.GetComponent<TMP_Text>().color = Color.Lerp(Color.white, new Color(1f, 1f, 1f, 0f), t/2.0f);
+            objective.panelUI.GetComponent<TMP_Text>().color = Color.Lerp(objective.panelUI.GetComponent<TMP_Text>().color, new Color(1f, 1f, 1f, 0f), t/2.0f);
             t += Time.deltaTime;
             yield return null;
         }

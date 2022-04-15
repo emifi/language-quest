@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     public List<ObjectiveDialogueGroup> objectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
     ObjectiveSystem objectiveSystem;
+    static int group_num = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +23,7 @@ public class GameController : MonoBehaviour
                 objectiveSystem.removeCompletedObjectives(odg.objectives);
                 groupsToRemove.Add(odg);
                 if (odg.finalObjective != null) {
-                    objectiveSystem.addObjective(odg.finalObjective);
+                    //objectiveSystem.addObjective(odg.finalObjective);
                 }
             }
         }
@@ -41,13 +42,15 @@ public class GameController : MonoBehaviour
 
     // Creates a new ObjDiagGroup, sends it to the objective system and adds it to the GameController container
     public void CreateGrouping(List<Objective> objectives, NpcNavMesh npc, int pointer) {
+        group_num += 1;
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, npc, pointer);
-        objectiveSystem.addObjectiveList(objectives);
+        objectiveSystem.addObjectiveList(objectives, group_num);
         objectiveDialogueGroups.Add(group);
     }
 
     public void CreateGrouping(ObjectiveDialogueGroup group) {
-        objectiveSystem.addObjectiveList(group.objectives);
+        group_num += 1;
+        objectiveSystem.addObjectiveList(group.objectives, group_num);
         objectiveDialogueGroups.Add(group);
     }
 }
