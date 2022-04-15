@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     public List<ObjectiveDialogueGroup> objectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
     ObjectiveSystem objectiveSystem;
+    // Tracks total number of ObjDiaGroups created. Used for colors of objective UI
     static int group_num = 0;
     // Start is called before the first frame update
     void Start()
@@ -47,7 +48,6 @@ public class GameController : MonoBehaviour
         objectiveSystem.addObjectiveList(objectives, group_num);
         objectiveDialogueGroups.Add(group);
     }
-
     public void CreateGrouping(ObjectiveDialogueGroup group) {
         group_num += 1;
         objectiveSystem.addObjectiveList(group.objectives, group_num);

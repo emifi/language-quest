@@ -11,6 +11,23 @@ public class ObjectiveSystem : MonoBehaviour
     public GameObject objectiveUI;
     public GameObject panelUI;
     DialogueUI dialogueUI;
+    Color[] pallete = new Color[] {
+        new Color(
+            186f/256f,
+            220f/256f, 
+            88f/256f
+        ),
+        new Color(
+            255f/256f, 
+            121f/256f, 
+            121f/256f
+        ),
+        new Color(
+            255f/256f, 
+            190f/256f, 
+            118f/256f
+        )
+    };
     // Start is called before the first frame update
     void Start()
     {
@@ -29,12 +46,7 @@ public class ObjectiveSystem : MonoBehaviour
     // Adds an Objective to the UI and to the current objectives container
     // The container object is only public for editor convenience! Never add directly to it!
     public void addObjective(Objective objective, int color_num) {
-        Random.InitState(color_num);
-        Color color = new Color(
-            Random.Range(0.6f, 1.0f),
-            Random.Range(0.6f, 1.0f),
-            Random.Range(0.6f, 1.0f)
-        );
+        Color color = pallete[color_num % 3];
         if (!objectives.Contains(objective)) objectives.Add(objective);
         objective.panelUI = Instantiate(panelUI);
         objective.panelUI.GetComponent<TMP_Text>().color = color;
