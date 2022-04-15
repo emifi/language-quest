@@ -133,29 +133,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b04f01af7ce374e8aaf19ba4d41161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dest:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  destinationGroups: []
   npc: {fileID: 3357019967353041865}
   player: {fileID: 0}
   minTimeout: 5
   maxTimeout: 15
   walkType: 0
-  colDistance: 0.5
+  dialogue: []
+  colDistance: 4
+  dialoguePtr: 0
+  destinationsPtr: 0
 --- !u!114 &5456241202023645299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,4 +155,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6f16477318e9d4e85fef60ac1a2634, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempScript: []
+  id: {fileID: 0}

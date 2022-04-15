@@ -22,6 +22,7 @@ public class NotebookUI : MonoBehaviour
     private static float timeout; //Prevents double page turns
     private string str1; //Text for page1
     private string str2; //Text for page2
+    private int entriesPerPage; //Number of entries per page
 
     void Start() {
         notebookUI.enabled = false;
@@ -39,6 +40,7 @@ public class NotebookUI : MonoBehaviour
         leftButton = GameObject.Find("DictLeftButton");
         rightButton = GameObject.Find("DictRightButton");
         timeout = 0;
+        entriesPerPage = 2;
 
         foreach(Button btn in buttons){ //While this IS flexible, any additional buttons 0th character
             if(btn.name.Length==1){     //will have to continue the ASCII sequence so that the array can remain squential 
@@ -47,8 +49,8 @@ public class NotebookUI : MonoBehaviour
             }
         }
         homeButton.onClick.AddListener(() => navHome());
-        leftButton.GetComponent<Button>().onClick.AddListener(() => turnPage(-6)); //Dictionary pages are hard-coded to have 6 pages
-        rightButton.GetComponent<Button>().onClick.AddListener(() => turnPage(6)); //This always disallows overflow.
+        leftButton.GetComponent<Button>().onClick.AddListener(() => turnPage(-(2*entriesPerPage))); //Dictionary pages are hard-coded to have 6 pages
+        rightButton.GetComponent<Button>().onClick.AddListener(() => turnPage(2*entriesPerPage)); //This always disallows overflow.
     }
 
     // Update is called once per frame
@@ -58,27 +60,27 @@ public class NotebookUI : MonoBehaviour
         str2 = "";
 
         if(atHome){ //If at home, get the 3 newest definitions
-            str1+= $"Most Recent Entries: \n";
-            str2+= $"Table of Contents: \n";
-            int src = 3;
+            str1+= $"<b>Most Recent Entries:</b> \n";
+            str2+= $"<b>Table of Contents:</b> \n";
+            int src = entriesPerPage;
             if(notebook.container.Count<src){
                 src = notebook.container.Count;
             }
             for(int i = 1; i<=src;i++){
                 ItemObject item = notebook.container[notebook.container.Count-i].item;
-                str1 += $"(image){item.nativeName}/{item.englishName}: {item.description}\n";
+                str1 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size>{item.nativeName}/{item.englishName}: {item.description}\n";
             }
-        }else{ //Get posPtr to posPtr+5 definitions on page. If there are more pages, display buttons
-            str1+= $"Words that start with \"{currPage}\": \n";
+        }else{ //Get posPtr to posPtr+(n-1) definitions on page. If there are more pages, display buttons
+            str1+= $"<b>Words that start with \"{currPage}\":</b> \n";
             List<NotebookSlot> dictionaryEntry = notebook.dictionary[NotebookObject.mapper(currPage)];
             if(currPage>=65&&currPage<=90&&dictionaryEntry!=null){
-                for(int i = 0; i<6;i++){
+                for(int i = 0; i<(2*entriesPerPage);i++){
                     if(posPtr + i < dictionaryEntry.Count){
                         ItemObject item = dictionaryEntry[posPtr+i].item;
-                        if(i<3){
-                            str1 += $"(image){item.nativeName}/{item.englishName}: {item.description}\n";
+                        if(i<entriesPerPage){
+                            str1 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size>{item.nativeName}/{item.englishName}: {item.description}\n";
                         }else{
-                            str2 += $"(image){item.nativeName}/{item.englishName}: {item.description}\n";
+                            str2 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size>{item.nativeName}/{item.englishName}: {item.description}\n";
                         }
                     }
                 }
@@ -89,7 +91,7 @@ public class NotebookUI : MonoBehaviour
                     leftButton.SetActive(false);
                 }
 
-                if(posPtr+6<(dictionaryEntry.Count)){
+                if(posPtr+(2*entriesPerPage)<(dictionaryEntry.Count)){
                     rightButton.SetActive(true);
                 }else{
                     rightButton.SetActive(false);

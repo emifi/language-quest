@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Default NPC Prog
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 4ed0ea3b-6af3-4aa5-abe0-ae6f94e9cf08
+    PortName: Next
+    TargetNodeGUID: b4b8c07f-b4ef-49db-8b05-a2a04d9ad9f6
+  - BaseNodeGUID: b4b8c07f-b4ef-49db-8b05-a2a04d9ad9f6
+    PortName: Option 1
+    TargetNodeGUID: 3b2a05ac-ab84-45d0-9845-05a83a612b27
+  - BaseNodeGUID: 3b2a05ac-ab84-45d0-9845-05a83a612b27
+    PortName: Option 1
+    TargetNodeGUID: 333b9817-c08d-4558-8161-b3cd2c6b544d
+  DialogueNodeData:
+  - NodeGUID: b4b8c07f-b4ef-49db-8b05-a2a04d9ad9f6
+    DialogueText: Hey! You still have objectives on your list! Get to it bestie!
+    Position: {x: 100, y: 290}
+  - NodeGUID: 3b2a05ac-ab84-45d0-9845-05a83a612b27
+    DialogueText: Why are you looking at me like that?
+    Position: {x: 105, y: 395}
+  - NodeGUID: 333b9817-c08d-4558-8161-b3cd2c6b544d
+    DialogueText: ...I'm funny ok
+    Position: {x: 110, y: 504}
+  ExposedProperties: []
+  CommentBlockData: []

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Beeeeerries
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  image: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
+  imageSprite: blueberry-sprite
   nativeName: jaaaaak
   englishName: beeeeerries
   description: Oh dear.

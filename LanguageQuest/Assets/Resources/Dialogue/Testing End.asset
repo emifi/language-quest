@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Testing End
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 10cc9894-34e9-437b-b82d-660572dc7640
+    PortName: Next
+    TargetNodeGUID: 10cc9894-34e9-437b-b82d-660572dc7640
+  DialogueNodeData:
+  - NodeGUID: 0549d2f5-04f6-4048-8473-51d9db744bce
+    DialogueText: We hope to have satisfied your curiousity, and hope you will consider
+      returning for more testing. It is for the good of all of us - you keep on trying
+      til we run out of cake!
+    Position: {x: 0, y: 0}
+  - NodeGUID: 2b280c81-0557-4a41-956a-2fd04211c701
+    DialogueText: 'Test Subject, please report your happiness level after having
+      gone through our rigorous testing protocol:'
+    Position: {x: 0, y: 0}
+  - NodeGUID: 058d2b43-ad5b-4a92-8d6a-cab1d87e7f93
+    DialogueText: Wake up, Patience St. Pim
+    Position: {x: 0, y: 0}
+  - NodeGUID: d91e1d68-911e-4c1c-b3e5-510bbcabb745
+    DialogueText: Wake up, Betty
+    Position: {x: 0, y: 0}
+  - NodeGUID: c51d3957-f497-4b21-b4aa-67108908b9ca
+    DialogueText: Wake up, Simon
+    Position: {x: 0, y: 0}
+  - NodeGUID: 34afbe65-11c0-4f6b-a7d9-974dc665ba65
+    DialogueText: Wake up, Finn the Human
+    Position: {x: 0, y: 0}
+  - NodeGUID: 57f8332e-a2a4-4fb2-a606-5572f68b5128
+    DialogueText: '*Fade to white* "Now that''s poetic and stuff!"'
+    Position: {x: 0, y: 0}
+  - NodeGUID: 10cc9894-34e9-437b-b82d-660572dc7640
+    DialogueText: Thank you for this valuable testing data. You will soon be ejected
+      from this simulation to return back to the Apeture Science facility. Here at
+      Apeture Science, we do what we must, because, we can.
+    Position: {x: 275, y: 258}
+  ExposedProperties: []
+  CommentBlockData: []

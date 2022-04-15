@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: talktonpc2
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: c50dc72e-5926-49bb-991f-c9bc6357de16
+    PortName: Next
+    TargetNodeGUID: a3348a93-e7e4-4b66-9c71-0f6f996cd290
+  - BaseNodeGUID: a3348a93-e7e4-4b66-9c71-0f6f996cd290
+    PortName: No problem
+    TargetNodeGUID: 9ad39206-ab5d-40ac-8134-3630ce61ab05
+  - BaseNodeGUID: 9ad39206-ab5d-40ac-8134-3630ce61ab05
+    PortName: Sure
+    TargetNodeGUID: dfe622f2-fb67-45a4-b892-4f3bf53d15a4
+  - BaseNodeGUID: dfe622f2-fb67-45a4-b892-4f3bf53d15a4
+    PortName: Option 1
+    TargetNodeGUID: 1e368a4f-b1e7-4114-a0bd-a269c7626a26
+  - BaseNodeGUID: 1e368a4f-b1e7-4114-a0bd-a269c7626a26
+    PortName: yes
+    TargetNodeGUID: 77a29dc3-c16c-4c6b-b81b-43b0ce5affc3
+  - BaseNodeGUID: 1e368a4f-b1e7-4114-a0bd-a269c7626a26
+    PortName: no
+    TargetNodeGUID: 93741f74-7a34-48e7-a0a3-2fee672eb41a
+  DialogueNodeData:
+  - NodeGUID: a3348a93-e7e4-4b66-9c71-0f6f996cd290
+    DialogueText: Thank you did it!
+    Position: {x: 229, y: 200}
+  - NodeGUID: 9ad39206-ab5d-40ac-8134-3630ce61ab05
+    DialogueText: Can you go talk to npc2?
+    Position: {x: 524, y: 238}
+  - NodeGUID: dfe622f2-fb67-45a4-b892-4f3bf53d15a4
+    DialogueText: GOTO{3} ADDQUESTS{TalkTo-npc2-1,0} You da man. Also if you look
+      to your right you will see a ADDTERM{Book,Bucket,Tree}
+    Position: {x: 889, y: 308}
+  - NodeGUID: 77a29dc3-c16c-4c6b-b81b-43b0ce5affc3
+    DialogueText: sweet
+    Position: {x: 1755, y: 350}
+  - NodeGUID: 93741f74-7a34-48e7-a0a3-2fee672eb41a
+    DialogueText: liar
+    Position: {x: 1626, y: 594}
+  - NodeGUID: 1e368a4f-b1e7-4114-a0bd-a269c7626a26
+    DialogueText: Did this save?
+    Position: {x: 1579, y: 167}
+  ExposedProperties: []
+  CommentBlockData: []

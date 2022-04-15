@@ -75,7 +75,7 @@ public class PlayerInteraction : MonoBehaviour
                             interactable.Interact();
                         }
                     } else if(interactable is NPCInteractable) {
-                        dialogueUI.enabled = true;
+                        objectiveSystem.talkToEvent((interactable as NPCInteractable).id);
                         interactable.Interact();
                     } else {
                         interactable.Interact();
