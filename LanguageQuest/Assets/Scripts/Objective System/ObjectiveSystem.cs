@@ -5,12 +5,12 @@ using TMPro;
 
 public class ObjectiveSystem : MonoBehaviour
 {
-    public List<Objective> objectives = new List<Objective>();
+    // Completed objectives are still rendered on screen
+    private List<Objective> objectives = new List<Objective>();
     private List<Objective> completeObjectives = new List<Objective>();
     public GameObject objectiveUI;
     public GameObject panelUI;
     DialogueUI dialogueUI;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -67,15 +67,15 @@ public class ObjectiveSystem : MonoBehaviour
         Destroy(objective.panelUI);
     }
 
-    public void removeAllObjectives() {
-        foreach (Objective objective in objectives) {
+    public void removeCompletedObjectives() {
+        foreach (Objective objective in completeObjectives) {
             removeObjective(objective);
         }
     }
 
-    public void removeCompletedObjectives() {
-        foreach (Objective objective in completeObjectives) {
-            removeObjective(objective);
+    public void removeCompletedObjectives(List<Objective> objs) {
+        foreach (Objective obj in objs) {
+            removeObjective(obj);
         }
     }
     // Fires from PlayerInteraction.cs when a pickup interaction is detected

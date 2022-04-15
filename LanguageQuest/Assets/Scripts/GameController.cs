@@ -19,6 +19,7 @@ public class GameController : MonoBehaviour
         foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
             if (odg.CheckForCompletion()) {
                 odg.PushDialoguePointer();
+                objectiveSystem.removeCompletedObjectives(odg.objectives);
                 groupsToRemove.Add(odg);
                 if (odg.finalObjective != null) {
                     objectiveSystem.addObjective(odg.finalObjective);
@@ -41,13 +42,11 @@ public class GameController : MonoBehaviour
     // Creates a new ObjDiagGroup, sends it to the objective system and adds it to the GameController container
     public void CreateGrouping(List<Objective> objectives, NpcNavMesh npc, int pointer) {
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, npc, pointer);
-        objectiveSystem.removeCompletedObjectives();
         objectiveSystem.addObjectiveList(objectives);
         objectiveDialogueGroups.Add(group);
     }
 
     public void CreateGrouping(ObjectiveDialogueGroup group) {
-        objectiveSystem.removeCompletedObjectives();
         objectiveSystem.addObjectiveList(group.objectives);
         objectiveDialogueGroups.Add(group);
     }
