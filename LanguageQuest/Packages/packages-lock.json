@@ -1,11 +1,11 @@
 {
   "dependencies": {
     "com.subtegral.dialoguesystem": {
-      "version": "https://github.com/merpheus-dev/NodeBasedDialogueSystem.git",
+      "version": "https://github.com/Jake-Bon/NodeBasedDialogueSystem.git",
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f68ebfcd02ba877ed7137ba1163f216497bea47c"
+      "hash": "35dbb237412ce38c08405aade3c71b4a33710570"
     },
     "com.unity.2d.sprite": {
       "version": "1.0.0",
