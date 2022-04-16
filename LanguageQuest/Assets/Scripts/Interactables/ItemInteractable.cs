@@ -17,7 +17,12 @@ public class ItemInteractable : Interactable
                 );
         }
         else if (item.type == ItemType.Pickup) {
-            Destroy(gameObject);
+            if (item == Resources.Load<ItemObject>("Items/Caribou")) {
+                Destroy(gameObject.transform.parent.parent.parent.gameObject);
+            }
+            else {
+                Destroy(gameObject);
+            }
         }
     }
 

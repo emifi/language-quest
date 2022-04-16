@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Caribou
   m_EditorClassIdentifier: 
   prefab: {fileID: 1567582185033856, guid: 3a9b422ae305e3b49aadf8ece0bfa915, type: 3}
-  image: {fileID: 0}
   type: 0
-  canBeAddedToNotebook: 0
+  canBeAddedToNotebook: 1
+  imageSprite: 
   nativeName: caribou
   englishName: caribou
   description: important animal, so i've heard
-  interactionString: to hunt
+  interactionString: to pickup
