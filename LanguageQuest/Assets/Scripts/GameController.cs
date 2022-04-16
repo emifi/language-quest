@@ -5,6 +5,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public List<ObjectiveDialogueGroup> objectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
+    [Header("These groups will not be displayed on the players UI. Useful in non-linear progression for checking if objectives from other groups have been completed.")]
+    public List<ObjectiveDialogueGroup> hiddenObjectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
     ObjectiveSystem objectiveSystem;
     // Tracks total number of ObjDiaGroups created. Used for colors of objective UI
     static int group_num = 0;
@@ -21,6 +23,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         List<ObjectiveDialogueGroup> groupsToRemove = new List<ObjectiveDialogueGroup>();
+        // Check if any current ObjDiaGroups are complete, if so: push their dialogue ptrs to respective NPCs and remove them from ObjSys UI
         foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
             if (odg.CheckForCompletion()) {
                 odg.PushDialoguePointer();
@@ -33,6 +36,15 @@ public class GameController : MonoBehaviour
         }
         foreach (ObjectiveDialogueGroup odg in groupsToRemove) {
             objectiveDialogueGroups.Remove(odg);
+        }
+        foreach (ObjectiveDialogueGroup odg in hiddenObjectiveDialogueGroups) {
+            if (odg.CheckForCompletion()) {
+                odg.PushDialoguePointer();
+                groupsToRemove.Add(odg);
+            }
+        }
+        foreach (ObjectiveDialogueGroup odg in groupsToRemove) {
+            hiddenObjectiveDialogueGroups.Remove(odg);
         }
     }
 
@@ -97,6 +109,8 @@ public class ObjectiveDialogueGroup
     }
 }
 
+// A DialoguePointerMap maps NPCs to dialogue pointers. When an ObjDiaGroup is completed, each NPC-Ptr pair is evaluated and the pointer
+// is sent to it's paired NPC to switch that NPCs dialogue tree.
 [System.Serializable]
 public class DialoguePointerMap {
     public NpcNavMesh npc;
