@@ -6,8 +6,8 @@ using TMPro;
 public class ObjectiveSystem : MonoBehaviour
 {
     // Completed objectives are still rendered on screen
-    private List<Objective> objectives = new List<Objective>();
-    private List<Objective> completeObjectives = new List<Objective>();
+    public List<Objective> objectives = new List<Objective>();
+    public List<Objective> completeObjectives = new List<Objective>();
     public GameObject objectiveUI;
     public GameObject panelUI;
     DialogueUI dialogueUI;
@@ -32,9 +32,6 @@ public class ObjectiveSystem : MonoBehaviour
     void Start()
     {
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<DialogueUI>();
-        foreach (Objective obj in objectives) {
-            addObjective(obj, 0);
-        }
     }
 
     // Update is called once per frame

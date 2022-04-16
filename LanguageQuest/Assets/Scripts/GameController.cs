@@ -12,6 +12,9 @@ public class GameController : MonoBehaviour
     void Start()
     {
         objectiveSystem = GameObject.Find("First Person Player").GetComponent<ObjectiveSystem>();
+        foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
+            objectiveSystem.addObjectiveList(odg.objectives, group_num);
+        }
     }
 
     // Update is called once per frame
@@ -88,10 +91,13 @@ public class ObjectiveDialogueGroup
 
     public void PushDialoguePointer() {
         foreach (DialoguePointerMap pair in ptrMap)
+        if (pair.npc != null) {
             pair.npc.setDialoguePointer(pair.ptr);
+        }
     }
 }
 
+[System.Serializable]
 public class DialoguePointerMap {
     public NpcNavMesh npc;
     public int ptr;
