@@ -589,6 +589,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueUI: {fileID: 0}
+  mainColor: 
+  npcColor: 
+  itemColor: 
+  choiceColor: 
 --- !u!1 &5426865030690098195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1139,7 +1143,7 @@ GameObject:
   - component: {fileID: 1212593453144604318}
   - component: {fileID: 2048692437018159275}
   m_Layer: 5
-  m_Name: Selections
+  m_Name: SelectionSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

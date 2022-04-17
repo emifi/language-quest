@@ -146,6 +146,7 @@ public class PlayerMovement : MonoBehaviour
                 playerController.height=1;
                 forcedDown = true;
             }else{
+                playerModel.SetActive(true);
                 cam.position+=positionChange;
                 groundCheck.position-=positionChange;
                 forcedDown = false;
@@ -157,6 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(forcedDown){
             if(!Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
+                playerModel.SetActive(true);
                 playerController.height=2;
                 cam.position+=positionChange;
                 groundCheck.position-=positionChange;
