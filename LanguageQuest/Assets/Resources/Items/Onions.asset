@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: onion-sprite
   nativeName: "t\u0142\u2019oo drik"
   englishName: Onions
   description: Wild chives can be found all across the Pacific Northwest.

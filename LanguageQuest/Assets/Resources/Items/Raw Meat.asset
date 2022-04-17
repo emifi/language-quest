@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: meat-sprite
   nativeName: "nil\u012F\u012F ch'\u012Fh"
   englishName: Raw Meat
   description: A cut of meat, still fresh.

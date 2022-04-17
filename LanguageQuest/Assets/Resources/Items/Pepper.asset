@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 0
-  imageSprite: 
+  imageSprite: pepper-sprite
   nativeName: lageevir
   englishName: Pepper
   description: 

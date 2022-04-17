@@ -110,7 +110,7 @@ MonoBehaviour:
     Position: {x: 2076, y: 34}
   - NodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
     DialogueText: Hello, my name is {replacename}. If you look to your left you'll
-      see a ADDTERMPRINT{Tree}.
+      see a ADDTERMPRINT{Tree,Pepper,Onions,Firewood,Fat,Shotgun,Salt,Raw Meat,Potato,Cranberries}.
     Position: {x: 100, y: 352}
   ExposedProperties:
   - PropertyName: 

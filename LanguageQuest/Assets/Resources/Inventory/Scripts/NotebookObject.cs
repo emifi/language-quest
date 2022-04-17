@@ -17,6 +17,7 @@ public class NotebookObject : ScriptableObject
         container.Add(new NotebookSlot(item));
 
         if(dictionary[mapper(item.englishName[0])]==null){
+            NotebookUI.enableCharButton(mapper(item.englishName[0]));
             dictionary[mapper(item.englishName[0])] = new List<NotebookSlot>();
             dictionary[mapper(item.englishName[0])].Add(new NotebookSlot(item));
             return;

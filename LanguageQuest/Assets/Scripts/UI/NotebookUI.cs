@@ -10,7 +10,7 @@ public class NotebookUI : MonoBehaviour
     public Canvas notebookUI;
     public static GameObject dictUI;
     public static GameObject dictButtons; //Button space
-    private Button[] buttons;
+    private static Button[] buttons;
     private Button homeButton;
     private static GameObject leftButton;
     private static GameObject rightButton;
@@ -46,6 +46,7 @@ public class NotebookUI : MonoBehaviour
             if(btn.name.Length==1){     //will have to continue the ASCII sequence so that the array can remain squential 
                                         //- buttons can be renamed after this point
                 btn.onClick.AddListener(() => navToChapter(btn.name[0])); //Please note new logic will also need to be made in the dictionary
+                btn.interactable = false;
             }
         }
         homeButton.onClick.AddListener(() => navHome());
@@ -68,7 +69,7 @@ public class NotebookUI : MonoBehaviour
             }
             for(int i = 1; i<=src;i++){
                 ItemObject item = notebook.container[notebook.container.Count-i].item;
-                str1 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size>{item.nativeName}/{item.englishName}: {item.description}\n";
+                str1 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size> {item.nativeName}/{item.englishName}: {item.description}\n";
             }
         }else{ //Get posPtr to posPtr+(n-1) definitions on page. If there are more pages, display buttons
             str1+= $"<b>Words that start with \"{currPage}\":</b> \n";
@@ -78,9 +79,9 @@ public class NotebookUI : MonoBehaviour
                     if(posPtr + i < dictionaryEntry.Count){
                         ItemObject item = dictionaryEntry[posPtr+i].item;
                         if(i<entriesPerPage){
-                            str1 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size>{item.nativeName}/{item.englishName}: {item.description}\n";
+                            str1 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size> {item.nativeName}/{item.englishName}: {item.description}\n";
                         }else{
-                            str2 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size>{item.nativeName}/{item.englishName}: {item.description}\n";
+                            str2 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size> {item.nativeName}/{item.englishName}: {item.description}\n";
                         }
                     }
                 }
@@ -114,6 +115,12 @@ public class NotebookUI : MonoBehaviour
         atHome = false;
         dictUI.SetActive(false);
         dictButtons.SetActive(true);
+    }
+
+    public static void enableCharButton(int c){
+        if(!buttons[c].interactable){
+            buttons[c].interactable = true;
+        }
     }
 
     public static void navHome(){ //Return to homepage
