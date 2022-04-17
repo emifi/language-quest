@@ -11,7 +11,7 @@ public class DialogueUI : MonoBehaviour
 {
     public Canvas dialogueUI;
     public static NotebookObject notebook; //Used to add keywords to dictionary
-    private TMP_Text dialogue;
+    private static TMP_Text dialogue;
     private static GameObject decisionSpace; //The physical UI space
     private static TMP_Text decisionA;
     private static TMP_Text decisionB;
@@ -196,14 +196,17 @@ public class DialogueUI : MonoBehaviour
         //Next Change Destination Group - CHANGEDEST{destinationPtr}
         fullText = changeDestParse(fullText,currNPC);
 
-
+        dialogue.text = "";
         if(numChoices==0){
+            dialogue.alignment = TextAlignmentOptions.TopLeft;
             decisionSpace.SetActive(false);
             decisionGrid = null;
         }else if(numChoices==1){
+            dialogue.alignment = TextAlignmentOptions.TopLeft;
             decisionSpace.SetActive(false);
             decisionGrid = null;
         }else{
+            dialogue.alignment = TextAlignmentOptions.Top;
             decisionSpace.SetActive(true);
             int copyNumChoices = numChoices;
             Debug.Log(numChoices);
