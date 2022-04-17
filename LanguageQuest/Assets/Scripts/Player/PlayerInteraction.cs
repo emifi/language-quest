@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -57,7 +58,7 @@ public class PlayerInteraction : MonoBehaviour
             if (interactable) {
                 interactable.Focus();
                 actionUI.enabled = true;
-                actionUI.transform.Find("EIndicator/Text").GetComponent<Text>().text = interactable.GetInteractString();
+                actionUI.transform.Find("EIndicator/Text").GetComponent<TMP_Text>().text = interactable.GetInteractString();
 
                 // On interact
                 if (!notebookUI.enabled&&Input.GetKeyDown(KeyCode.E)) {
