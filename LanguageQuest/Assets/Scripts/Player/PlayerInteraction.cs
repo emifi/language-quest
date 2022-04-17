@@ -16,6 +16,7 @@ public class PlayerInteraction : MonoBehaviour
     public Canvas actionUI;
     public Canvas notebookUI;
     public Canvas dialogueUI;
+    public Canvas settingsUI;
     GameObject highlightTrigger;
     SphereCollider highlightCollider;
     Transform playerCamera;
@@ -106,6 +107,15 @@ public class PlayerInteraction : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (notebookUI.isActiveAndEnabled) {
                 notebookUI.enabled = false;
+                MouseLook.dictClose();
+                PlayerMovement.dictClose();
+            } else if (!settingsUI.isActiveAndEnabled) {
+                settingsUI.enabled = true;
+                settingsUI.GetComponent<SettingsUI>().onOpen();
+                MouseLook.dictOpen();
+                PlayerMovement.dictOpen();
+            } else if (settingsUI.isActiveAndEnabled) {
+                settingsUI.enabled = false;
                 MouseLook.dictClose();
                 PlayerMovement.dictClose();
             }
