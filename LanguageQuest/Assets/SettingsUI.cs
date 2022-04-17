@@ -37,6 +37,7 @@ public class SettingsUI : MonoBehaviour
     }
 
     public void onOpen() {
+        Time.timeScale = 0;
         // Display sensitivity value
         sensitivityElement.GetComponentInChildren<Slider>().value = mouseLook.mouseSensitivity;
 
@@ -66,6 +67,7 @@ public class SettingsUI : MonoBehaviour
         MouseLook.dictClose();
         PlayerMovement.dictClose();
         transform.gameObject.GetComponent<Canvas>().enabled = false;
+        Time.timeScale = 1;
         Debug.Log("Saved!");
     }
 
@@ -73,6 +75,7 @@ public class SettingsUI : MonoBehaviour
         transform.gameObject.GetComponent<Canvas>().enabled = false;
         MouseLook.dictClose();
         PlayerMovement.dictClose();
+        Time.timeScale = 1;
         Debug.Log("Cancelled!");
     }
 
