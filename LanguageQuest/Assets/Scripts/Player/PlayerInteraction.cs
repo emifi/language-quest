@@ -115,6 +115,7 @@ public class PlayerInteraction : MonoBehaviour
                 MouseLook.dictOpen();
                 PlayerMovement.dictOpen();
             } else if (settingsUI.isActiveAndEnabled) {
+                Time.timeScale = 1;
                 settingsUI.enabled = false;
                 MouseLook.dictClose();
                 PlayerMovement.dictClose();
