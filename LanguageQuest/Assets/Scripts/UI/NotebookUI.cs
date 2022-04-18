@@ -124,6 +124,7 @@ public class NotebookUI : MonoBehaviour
     }
 
     public static void navHome(){ //Return to homepage
+        posPtr = 0;
         atHome = true;
         dictUI.SetActive(true);
         dictButtons.SetActive(false);
