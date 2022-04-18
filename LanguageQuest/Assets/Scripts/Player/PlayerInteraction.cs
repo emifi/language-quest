@@ -97,7 +97,7 @@ public class PlayerInteraction : MonoBehaviour
         }
         last = hit.collider;
 
-        if (Input.GetKeyDown(KeyCode.N)) {
+        if (!settingsUI.enabled&&Input.GetKeyDown(KeyCode.N)) {
             NotebookUI.navHome();
             if (notebookUI.isActiveAndEnabled) {
                 notebookUI.enabled = false;
@@ -111,10 +111,10 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
-            if (notebookUI.isActiveAndEnabled) {
+            if (notebookUI.enabled&&notebookUI.isActiveAndEnabled) {
                 notebookUI.enabled = false;
                 MouseLook.uiClose();
-                PlayerMovement.optionsClose();
+                PlayerMovement.notebookClose();
             } else if (!settingsUI.isActiveAndEnabled) {
                 settingsUI.enabled = true;
                 settingsUI.GetComponent<SettingsUI>().onOpen();
