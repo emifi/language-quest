@@ -220,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
         while (true) {
             Transform root = GameObject.Find("CameraRoot").transform;
             while (angle < 2 * Mathf.PI) {
-                cam.position = new Vector3(root.position.x, root.position.y + Mathf.Sin(angle)/15.0f, root.position.z - Mathf.Sin(angle)/15.0f);
+                cam.position = new Vector3(root.position.x, root.position.y + Mathf.Sin(angle)/15.0f, root.position.z);
                 angle += (2 * Mathf.PI/frequency);
                 yield return null;
             }
