@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static bool canMove = true;
+    public static bool canInput = true;
     public bool showGroundDetection = true;
     public float playerSpeed = 1.5f;
     public float jumpHeight = 5.0f;
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -1.0f;
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded) {
+        if (Input.GetButtonDown("Jump") && isGrounded && canInput) {
             Jump();
         }
 
@@ -95,39 +96,39 @@ public class PlayerMovement : MonoBehaviour
             chatBlock = !(dialogueUI.enabled&&npcType!=NpcNavMesh.NpcType.Proximity);
         }
 
-        if (Input.GetKey(KeyCode.A)&&chatBlock) {
+        if (Input.GetKey(KeyCode.A)&&chatBlock && canInput) {
             x += -1.0f;
         }
 
-        if(Input.GetKeyDown(KeyCode.A)&&!chatBlock){
+        if(Input.GetKeyDown(KeyCode.A)&&!chatBlock && canInput){
             DialogueUI.scrollX(-1);
         }
 
-        if (Input.GetKey(KeyCode.D)&&chatBlock) {
+        if (Input.GetKey(KeyCode.D)&&chatBlock && canInput) {
             x += 1.0f;
         }
 
-        if(Input.GetKeyDown(KeyCode.D)&&!chatBlock){
+        if(Input.GetKeyDown(KeyCode.D)&&!chatBlock && canInput){
             DialogueUI.scrollX(1);
         }
 
-        if (Input.GetKey(KeyCode.S)&&chatBlock) {
+        if (Input.GetKey(KeyCode.S)&&chatBlock && canInput) {
             z += -1.0f;
         }
 
-        if(Input.GetKeyDown(KeyCode.S)&&!chatBlock){
+        if(Input.GetKeyDown(KeyCode.S)&&!chatBlock && canInput){
             DialogueUI.scrollY(1);
         }
 
-        if (Input.GetKey(KeyCode.W)&&chatBlock) {
+        if (Input.GetKey(KeyCode.W)&&chatBlock && canInput) {
             z += 1.0f;
         }
 
-        if(Input.GetKeyDown(KeyCode.W)&&!chatBlock){
+        if(Input.GetKeyDown(KeyCode.W)&&!chatBlock && canInput){
             DialogueUI.scrollY(-1);
         }
 
-        if (Input.GetKeyDown("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity)) {
+        if (Input.GetKeyDown("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity) && canInput) {
             if(forcedDown){
                 forcedDown = false;
             }else{
@@ -181,11 +182,19 @@ public class PlayerMovement : MonoBehaviour
         velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
     }
 
-    public static void dictOpen(){
+    public static void optionsOpen(){
         canMove = false;
     }
 
-    public static void dictClose(){
+    public static void optionsClose(){
         canMove = true;
+    }
+
+    public static void notebookOpen(){
+        canInput = false;
+    }
+
+    public static void notebookClose(){
+        canInput = true;
     }
 }

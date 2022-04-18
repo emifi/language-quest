@@ -64,8 +64,8 @@ public class SettingsUI : MonoBehaviour
         resolutions[currentResolution].fullscreen = unsavedFullscreen;
         ResolutionWrapper savedReolution = resolutions[currentResolution];
         Screen.SetResolution(savedReolution.x, savedReolution.y, savedReolution.fullscreen);
-        MouseLook.dictClose();
-        PlayerMovement.dictClose();
+        MouseLook.uiClose();
+        PlayerMovement.optionsClose();
         transform.gameObject.GetComponent<Canvas>().enabled = false;
         Time.timeScale = 1;
         Debug.Log("Saved!");
@@ -73,8 +73,8 @@ public class SettingsUI : MonoBehaviour
 
     public void onCancel() {
         transform.gameObject.GetComponent<Canvas>().enabled = false;
-        MouseLook.dictClose();
-        PlayerMovement.dictClose();
+        MouseLook.uiClose();
+        PlayerMovement.optionsClose();
         Time.timeScale = 1;
         Debug.Log("Cancelled!");
     }

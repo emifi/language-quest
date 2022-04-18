@@ -33,12 +33,12 @@ public class MouseLook : MonoBehaviour
         playerTransform.Rotate(Vector3.up * mouseX);
     }
 
-    public static void dictOpen(){
+    public static void uiOpen(){
         canLook = false;
         Cursor.lockState = CursorLockMode.None;
     }
 
-    public static void dictClose(){
+    public static void uiClose(){
         canLook = true;
         Cursor.lockState = CursorLockMode.Locked;
     }

@@ -95,30 +95,30 @@ public class PlayerInteraction : MonoBehaviour
             NotebookUI.navHome();
             if (notebookUI.isActiveAndEnabled) {
                 notebookUI.enabled = false;
-                MouseLook.dictClose();
-                PlayerMovement.dictClose();
+                MouseLook.uiClose();
+                PlayerMovement.notebookClose();
             } else {
                 notebookUI.enabled = true;
-                MouseLook.dictOpen();
-                PlayerMovement.dictOpen();
+                MouseLook.uiOpen();
+                PlayerMovement.notebookOpen();
             }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (notebookUI.isActiveAndEnabled) {
                 notebookUI.enabled = false;
-                MouseLook.dictClose();
-                PlayerMovement.dictClose();
+                MouseLook.uiClose();
+                PlayerMovement.optionsClose();
             } else if (!settingsUI.isActiveAndEnabled) {
                 settingsUI.enabled = true;
                 settingsUI.GetComponent<SettingsUI>().onOpen();
-                MouseLook.dictOpen();
-                PlayerMovement.dictOpen();
+                MouseLook.uiOpen();
+                PlayerMovement.optionsOpen();
             } else if (settingsUI.isActiveAndEnabled) {
                 Time.timeScale = 1;
                 settingsUI.enabled = false;
-                MouseLook.dictClose();
-                PlayerMovement.dictClose();
+                MouseLook.uiClose();
+                PlayerMovement.optionsClose();
             }
         }
     }
