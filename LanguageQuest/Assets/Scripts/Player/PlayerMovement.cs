@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform spawnpoint;
     public Canvas dialogueUI;
     Vector3 velocity;
+    bool isMoving;
     bool isGrounded;
     bool hitHead;
     bool isCrouch;
@@ -176,6 +177,22 @@ public class PlayerMovement : MonoBehaviour
         if(playerTransform.position.y<-20){
             playerTransform.position = spawnpoint.position;
         }
+
+        if (Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f) {
+            if (isMoving) return;
+            else {
+                isMoving = true;
+                StopAllCoroutines();
+                StartCoroutine(HeadBob(25));
+            }
+        } else {
+            if (isMoving) {
+                isMoving = false;
+                StopAllCoroutines();
+                StartCoroutine(Idle(0.1f));
+            }
+            else return;
+        }
     }
 
     void Jump() {
@@ -196,5 +213,28 @@ public class PlayerMovement : MonoBehaviour
 
     public static void notebookClose(){
         canInput = true;
+    }
+
+    IEnumerator HeadBob(float frequency) {
+        float angle = 0.0f;
+        while (true) {
+            Transform root = GameObject.Find("CameraRoot").transform;
+            while (angle < 2 * Mathf.PI) {
+                cam.position = new Vector3(root.position.x, root.position.y + Mathf.Sin(angle)/15.0f, root.position.z - Mathf.Sin(angle)/15.0f);
+                angle += (2 * Mathf.PI/frequency);
+                yield return null;
+            }
+            angle = 0.0f;
+        }
+    }
+
+    IEnumerator Idle(float end) {
+        float t = 0.0f;
+        while (t < end) {
+            Vector3 root = GameObject.Find("CameraRoot").transform.position;
+            cam.position = Vector3.Lerp(cam.position, root, t);
+            t += Time.deltaTime;
+            yield return null;
+        }
     }
 }
