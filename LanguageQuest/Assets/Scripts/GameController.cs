@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
     public List<ObjectiveDialogueGroup> objectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
     [Header("These groups will not be displayed on the players UI. Useful in non-linear progression for checking if objectives from other groups have been completed.")]
     public List<ObjectiveDialogueGroup> hiddenObjectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
+    public List<Event> eventList = new List<Event>();
+    Dictionary<string, List<GameObject>> eventTags = new Dictionary<string, List<GameObject>>();
     ObjectiveSystem objectiveSystem;
     // Tracks total number of ObjDiaGroups created. Used for colors of objective UI
     static int group_num = 0;
@@ -16,6 +18,9 @@ public class GameController : MonoBehaviour
         objectiveSystem = GameObject.Find("First Person Player").GetComponent<ObjectiveSystem>();
         foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
             objectiveSystem.addObjectiveList(odg.objectives, group_num);
+        }
+        foreach (Event evt in eventList) {
+            eventTags.Add(evt.GetTag(), evt.GetGameObjects());
         }
     }
 
@@ -67,6 +72,24 @@ public class GameController : MonoBehaviour
         group_num += 1;
         objectiveSystem.addObjectiveList(group.objectives, group_num);
         objectiveDialogueGroups.Add(group);
+    }
+
+    public void ActivateTag(string tag) {
+        if (eventTags.ContainsKey(tag)) {
+            Event evt = new Event(tag, eventTags[tag]);
+            evt.Activate();
+        } else {
+            Debug.Log($"A script is attempting to access event tag '{tag}' but it does not exist in the game controller.");
+        }
+    }
+
+    public void DeactivateTag(string tag) {
+        if (eventTags.ContainsKey(tag)) {
+            Event evt = new Event(tag, eventTags[tag]);
+            evt.Deactivate();
+        } else {
+            Debug.Log($"A script is attempting to access event tag '{tag}' but it does not exist in the game controller.");
+        }
     }
 }
 
@@ -125,5 +148,36 @@ public class DialoguePointerMap {
     public DialoguePointerMap(string npcStr, int ptr) {
         this.npc = GameObject.Find(npcStr).GetComponent<NpcNavMesh>();
         this.ptr = ptr;
+    }
+}
+
+[System.Serializable]
+public class Event {
+    public string tag;
+    public List<GameObject> gameObjects;
+
+    public Event(string tag, List<GameObject> gameObjects) {
+        this.tag = tag;
+        this.gameObjects = gameObjects;
+    }
+
+    public string GetTag() {
+        return tag;
+    }
+
+    public List<GameObject> GetGameObjects() {
+        return gameObjects;
+    }
+
+    public void Activate() {
+        foreach (GameObject obj in gameObjects) {
+            obj.SetActive(true);
+        }
+    }
+
+    public void Deactivate() {
+        foreach (GameObject obj in gameObjects) {
+            obj.SetActive(true);
+        }
     }
 }

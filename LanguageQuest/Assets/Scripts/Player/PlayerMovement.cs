@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform cam;
     public Transform spawnpoint;
     public Canvas dialogueUI;
+    public Transform root;
     Vector3 velocity;
     bool isMoving;
     bool isGrounded;
@@ -36,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         playerModel = GameObject.Find("Player");
+        root = GameObject.Find("CameraRoot").transform;
         spawnpoint = GameObject.Find("Spawnpoint").GetComponent<Transform>();
         if (showGroundDetection) {
             groundDectector = GameObject.CreatePrimitive(PrimitiveType.Sphere);
@@ -218,7 +220,6 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator HeadBob(float frequency) {
         float angle = 0.0f;
         while (true) {
-            Transform root = GameObject.Find("CameraRoot").transform;
             while (angle < 2 * Mathf.PI) {
                 cam.position = new Vector3(root.position.x, root.position.y + Mathf.Sin(angle)/15.0f, root.position.z);
                 angle += (2 * Mathf.PI/frequency);
@@ -231,8 +232,7 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Idle(float end) {
         float t = 0.0f;
         while (t < end) {
-            Vector3 root = GameObject.Find("CameraRoot").transform.position;
-            cam.position = Vector3.Lerp(cam.position, root, t);
+            cam.position = Vector3.Lerp(cam.position, root.position, t);
             t += Time.deltaTime;
             yield return null;
         }

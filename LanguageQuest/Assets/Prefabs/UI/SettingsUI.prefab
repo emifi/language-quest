@@ -1145,7 +1145,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 669079829}
         m_TargetAssemblyTypeName: SettingsUI, Assembly-CSharp
         m_MethodName: onSave
         m_Mode: 1
@@ -1545,7 +1545,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 669079829}
         m_TargetAssemblyTypeName: SettingsUI, Assembly-CSharp
         m_MethodName: updateSensitivity
         m_Mode: 0
@@ -2056,7 +2056,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 669079829}
         m_TargetAssemblyTypeName: SettingsUI, Assembly-CSharp
         m_MethodName: updateResolution
         m_Mode: 0
@@ -2380,7 +2380,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 669079829}
         m_TargetAssemblyTypeName: SettingsUI, Assembly-CSharp
         m_MethodName: updateFullscreen
         m_Mode: 0
@@ -2810,7 +2810,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 669079829}
         m_TargetAssemblyTypeName: SettingsUI, Assembly-CSharp
         m_MethodName: onCancel
         m_Mode: 1
