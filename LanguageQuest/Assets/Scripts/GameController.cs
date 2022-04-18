@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour
             objectiveSystem.addObjectiveList(odg.objectives, group_num);
         }
         foreach (Event evt in eventList) {
+            Debug.Log($"Gamecontroller adding event tag {evt.tag}");
             eventTags.Add(evt.GetTag(), evt.GetGameObjects());
         }
     }
@@ -50,6 +51,12 @@ public class GameController : MonoBehaviour
         }
         foreach (ObjectiveDialogueGroup odg in groupsToRemove) {
             hiddenObjectiveDialogueGroups.Remove(odg);
+        }
+
+        // Test - DELETE!!
+        if (Input.GetKey(KeyCode.G)) {
+            Debug.Log("Activating tag firewood");
+            ActivateTag("firewood");
         }
     }
 
