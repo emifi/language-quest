@@ -5,8 +5,8 @@ using TMPro;
 
 public class UpdateUI : MonoBehaviour
 {
-    public GameObject updateUI;
     public GameObject panelUI;
+    GameObject updateUI;
         private Color removeColor = new Color( //Red
             255f/256f, 
             121f/256f, 
@@ -61,6 +61,7 @@ public class UpdateUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        updateUI = GameObject.Find("UpdateUI");
     }
 
     public void AddInvDisplay(ItemObject item, int amount){

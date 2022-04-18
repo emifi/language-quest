@@ -13,14 +13,14 @@ public class PlayerMovement : MonoBehaviour
     public float groundDistance = 0.4f;
     public float headDistance = 0.4f;
     public LayerMask terrainMask;
-    public CharacterController playerController;
-    public Transform playerTransform;
-    public Transform groundCheck;
-    public Transform headCheck;
-    public Transform cam;
-    public Transform spawnpoint;
-    public Canvas dialogueUI;
-    public Transform root;
+    GameObject player;
+    CharacterController playerController;
+    Transform groundCheck;
+    Transform headCheck;
+    Transform cam;
+    Transform spawnpoint;
+    Canvas dialogueUI;
+    Transform root;
     Vector3 velocity;
     bool isMoving;
     bool isGrounded;
@@ -36,9 +36,17 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // Find player model dependencies
+        player = GameObject.Find("First Person Player");
         playerModel = GameObject.Find("Player");
+        playerController = player.GetComponent<CharacterController>();
         root = GameObject.Find("CameraRoot").transform;
+        cam = GameObject.Find("Main Camera").transform;
         spawnpoint = GameObject.Find("Spawnpoint").GetComponent<Transform>();
+        groundCheck = GameObject.Find("GroundCheck").transform;
+        headCheck = GameObject.Find("HeadCheck").transform;
+
+        dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
         if (showGroundDetection) {
             groundDectector = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             groundDectector.name = "Debug Ground Detector";
@@ -47,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
 
-        playerTransform.position = spawnpoint.position;
+        player.transform.position = spawnpoint.position;
     }
 
     // Update is called once per frame
@@ -176,8 +184,8 @@ public class PlayerMovement : MonoBehaviour
         playerController.Move(moveVector * playerSpeed * Time.deltaTime);
         playerController.Move(velocity * Time.deltaTime);
 
-        if(playerTransform.position.y<-20){
-            playerTransform.position = spawnpoint.position;
+        if(player.transform.position.y<-20){
+            player.transform.position = spawnpoint.position;
         }
 
         if (Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f) {

@@ -193,7 +193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSensitivity: 100
-  playerTransform: {fileID: 4387959200457928967}
 --- !u!1 &4387959200457928965
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +229,7 @@ Transform:
   - {fileID: 8762648514693803084}
   - {fileID: 7021756612848159993}
   - {fileID: 8481300016512884340}
+  - {fileID: 6264873846326424631}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -272,13 +272,6 @@ MonoBehaviour:
   terrainMask:
     serializedVersion: 2
     m_Bits: 8
-  playerController: {fileID: 4387959200457928966}
-  playerTransform: {fileID: 4387959200457928967}
-  groundCheck: {fileID: 7869563883295213817}
-  headCheck: {fileID: 7021756612848159993}
-  cam: {fileID: 4387959198819781436}
-  spawnpoint: {fileID: 129198529364522661, guid: 58f87a8a7f147b149ad25623e777e291, type: 3}
-  dialogueUI: {fileID: 0}
 --- !u!114 &5419815025354324361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,7 +286,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   objectives: []
   completeObjectives: []
-  objectiveUI: {fileID: 0}
   panelUI: {fileID: 6681959469956127733, guid: 309b21238747ff749a3caf2642853799, type: 3}
 --- !u!114 &3185176364254061999
 MonoBehaviour:
@@ -307,8 +299,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b47c7c96a892143b15602ff981eab3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  updateUI: {fileID: 0}
-  panelUI: {fileID: 0}
+  panelUI: {fileID: 6681959469956127733, guid: 309b21238747ff749a3caf2642853799, type: 3}
+--- !u!1 &4404379745916330409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6264873846326424631}
+  m_Layer: 0
+  m_Name: CameraRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6264873846326424631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4404379745916330409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.647, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4387959200457928967}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5075913452888430370
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,16 +389,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 2e2f744b6345fda45bbb6efd28f1b613, type: 2}
   notebook: {fileID: 11400000, guid: 5b111a7f8833c0f458638173c6bc0852, type: 2}
-  objectiveSystem: {fileID: 0}
   interactionRange: 3
   highlightRange: 3
   rayMask:
     serializedVersion: 2
     m_Bits: 128
-  actionUI: {fileID: 0}
-  notebookUI: {fileID: 0}
-  dialogueUI: {fileID: 0}
-  settingsUI: {fileID: 0}
 --- !u!1 &7445549895143396394
 GameObject:
   m_ObjectHideFlags: 0

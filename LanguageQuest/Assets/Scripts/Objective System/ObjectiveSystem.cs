@@ -8,8 +8,8 @@ public class ObjectiveSystem : MonoBehaviour
     // Completed objectives are still rendered on screen
     public List<Objective> objectives = new List<Objective>();
     public List<Objective> completeObjectives = new List<Objective>();
-    public GameObject objectiveUI;
     public GameObject panelUI;
+    GameObject objectiveUI;
     DialogueUI dialogueUI;
     Color[] pallete = new Color[] {
         new Color(
@@ -31,6 +31,7 @@ public class ObjectiveSystem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        objectiveUI = GameObject.Find("ObjectiveUI");
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<DialogueUI>();
     }
 

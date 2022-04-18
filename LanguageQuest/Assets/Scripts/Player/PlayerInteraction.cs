@@ -8,15 +8,15 @@ public class PlayerInteraction : MonoBehaviour
 {
     public InventoryObject inventory;
     public NotebookObject notebook;
-    public ObjectiveSystem objectiveSystem;
-
     public float interactionRange = 2f;
     public float highlightRange = 4f;
     public LayerMask rayMask;
-    public Canvas actionUI;
-    public Canvas notebookUI;
-    public Canvas dialogueUI;
-    public Canvas settingsUI;
+
+    ObjectiveSystem objectiveSystem;
+    Canvas actionUI;
+    Canvas notebookUI;
+    Canvas dialogueUI;
+    Canvas settingsUI;
     GameObject highlightTrigger;
     SphereCollider highlightCollider;
     Transform playerCamera;
@@ -25,12 +25,18 @@ public class PlayerInteraction : MonoBehaviour
     Collider last = null;
 
     void Start() {
+        // UIs
+        actionUI = GameObject.Find("ActionUI").GetComponent<Canvas>();
+        notebookUI = GameObject.Find("NotebookUI").GetComponent<Canvas>();
+        dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
+        settingsUI = GameObject.Find("SettingsUI").GetComponent<Canvas>();
+        // Other dependencies
+        objectiveSystem = GameObject.Find("First Person Player").GetComponent<ObjectiveSystem>();
         highlightTrigger = gameObject;
         highlightCollider = highlightTrigger.GetComponent<SphereCollider>();
         highlightTrigger.transform.localScale = new Vector3(highlightRange*2, highlightRange*2, highlightRange*2);
         firstPersonPlayer = transform.parent;
         playerCamera = firstPersonPlayer.Find("Main Camera");
-        dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
     }
 
 
