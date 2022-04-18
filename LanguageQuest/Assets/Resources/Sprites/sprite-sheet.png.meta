@@ -55,7 +55,7 @@ TextureImporter:
     second: sugar-sprite
   - first:
       213: -4558533973277291694
-    second: sprite-sheet_17
+    second: water-sprite
   - first:
       213: 192454500139917738
     second: sprite-sheet_18
@@ -748,7 +748,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite-sheet_17
+      name: water-sprite
       rect:
         serializedVersion: 2
         x: 700
