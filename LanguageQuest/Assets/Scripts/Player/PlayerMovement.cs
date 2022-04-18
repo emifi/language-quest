@@ -193,7 +193,7 @@ public class PlayerMovement : MonoBehaviour
             else {
                 isMoving = true;
                 StopAllCoroutines();
-                StartCoroutine(HeadBob(25));
+                StartCoroutine(HeadBob(30));
             }
         } else {
             if (isMoving) {
