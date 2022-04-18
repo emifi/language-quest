@@ -206,6 +206,7 @@ GameObject:
   - component: {fileID: 4387959200457928966}
   - component: {fileID: 4387959200457928984}
   - component: {fileID: 5419815025354324361}
+  - component: {fileID: 3185176364254061999}
   m_Layer: 0
   m_Name: First Person Player
   m_TagString: Untagged
@@ -290,8 +291,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e326e5263e241694cac7b5acaea39175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectives: []
+  completeObjectives: []
   objectiveUI: {fileID: 0}
   panelUI: {fileID: 6681959469956127733, guid: 309b21238747ff749a3caf2642853799, type: 3}
+--- !u!114 &3185176364254061999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4387959200457928965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51b47c7c96a892143b15602ff981eab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateUI: {fileID: 0}
+  panelUI: {fileID: 0}
 --- !u!1 &5075913452888430370
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +377,7 @@ MonoBehaviour:
   actionUI: {fileID: 0}
   notebookUI: {fileID: 0}
   dialogueUI: {fileID: 0}
+  settingsUI: {fileID: 0}
 --- !u!1 &7445549895143396394
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,9 +20,11 @@ public class InventoryObject : ScriptableObject
             }
         }
         if (container.Count < maxSize) {
+            GameObject.Find("First Person Player").GetComponent<UpdateUI>().AddInvDisplay(item,amount);
             container.Add(new InventorySlot(item, amount));
             return true;
         } else {
+            GameObject.Find("First Person Player").GetComponent<UpdateUI>().AddInvDisplay(item,0);
             return false;
         }
     }
@@ -36,6 +38,7 @@ public class InventoryObject : ScriptableObject
             if (item == container[i].item) {
                 if (container[i].amount < amount) return false;
                 container[i].AddAmount(-amount);
+                GameObject.Find("First Person Player").GetComponent<UpdateUI>().RemoveInvDisplay(item,amount);
                 if (container[i].amount == 0) {
                     container.RemoveAt(i);
                 }

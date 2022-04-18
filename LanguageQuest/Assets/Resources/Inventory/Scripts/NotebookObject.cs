@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [CreateAssetMenu(fileName = "New Notebook", menuName = "Item System/Notebook")]
 public class NotebookObject : ScriptableObject
 {
     public List<NotebookSlot> container = new List<NotebookSlot>();
     public List<NotebookSlot>[] dictionary = new List<NotebookSlot>[37];//A-Z + 0-9 + Misc. Space
+    public GameObject objectiveUI;
+    public GameObject panelUI;
 
     public void AddItem(ItemObject item) {
         for (int i = 0; i < container.Count; i++) {
@@ -15,6 +18,7 @@ public class NotebookObject : ScriptableObject
             }
         }
         container.Add(new NotebookSlot(item));
+        GameObject.Find("First Person Player").GetComponent<UpdateUI>().AddNotebookDisplay(item);
 
         if(dictionary[mapper(item.englishName[0])]==null){
             NotebookUI.enableCharButton(mapper(item.englishName[0]));
