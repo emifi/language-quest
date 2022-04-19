@@ -16,7 +16,7 @@ public class Fade : MonoBehaviour
     {
         image = gameObject.GetComponentInChildren<Image>();
         image.color = color;
-        FadeIn(Color.black, 2, 5);
+        FadeIn(Color.black, 1.0f, 3.0f);
     }
     // Fades the screen in, given a starting color
     public void FadeIn(Color startColor, float delay, float fadeTime) {
