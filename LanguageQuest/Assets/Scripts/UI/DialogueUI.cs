@@ -566,7 +566,7 @@ public class DialogueUI : MonoBehaviour
                 if(toActivate){
                     GameObject.Find("Game Controller").GetComponent<GameController>().ActivateTag(tags[i].Trim());
                 }else{
-                    GameObject.Find("Game Controller").GetComponent<GameController>().ActivateTag(tags[i].Trim());
+                    GameObject.Find("Game Controller").GetComponent<GameController>().DeactivateTag(tags[i].Trim());
                 }
             }
 
