@@ -45,6 +45,7 @@ public class DialogueUI : MonoBehaviour
     private static int currChoiceY;
 
     private static bool isEnabled;
+    private static string sceneSwitch = null;
 
     // Start is called before the first frame update
     void Start()
@@ -106,6 +107,10 @@ public class DialogueUI : MonoBehaviour
             isEnabled = false;
             displayedText = "";
             textPos = 0;
+            if(sceneSwitch!=null){
+                StartCoroutine(Wait(3.0f,sceneSwitch));
+                sceneSwitch=null;
+            }
             return;
         }
         if(Time.time-textDelay>.05f&&!speechComplete&&textPos<fullText.Length){ //Write text one char at a time based on textDelay
@@ -129,6 +134,12 @@ public class DialogueUI : MonoBehaviour
         }
         
         dialogue.text = displayedText;
+    }
+
+    IEnumerator Wait(float t, string scene) {
+        GameObject.Find("Fade").GetComponent<Fade>().FadeOut(Color.black, 0.0f, t);
+        yield return new WaitForSeconds(t);
+        SceneManager.LoadScene(scene);
     }
 
     public static void turnPage(){ //Proceed to next dialogue node
@@ -590,9 +601,7 @@ public class DialogueUI : MonoBehaviour
         }
 
         if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
-            string newScene = fullText.Substring(startPos+addLen,endPos-(startPos+addLen));
-            SceneManager.LoadScene(newScene);
-
+            sceneSwitch = fullText.Substring(startPos+addLen,endPos-(startPos+addLen));
             fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText.Trim();
