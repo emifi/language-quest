@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public float gravity = 9.8f;
     public float groundDistance = 0.4f;
     public float headDistance = 0.4f;
+    public float headBobSmoothness = 10.0f;
+    public float headBobFrequency = 2.0f;
     public LayerMask terrainMask;
     GameObject player;
     CharacterController playerController;
@@ -193,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
             else {
                 isMoving = true;
                 StopAllCoroutines();
-                StartCoroutine(HeadBob(30));
+                StartCoroutine(HeadBob(headBobFrequency, headBobSmoothness));
             }
         } else {
             if (isMoving) {
@@ -225,12 +227,12 @@ public class PlayerMovement : MonoBehaviour
         canInput = true;
     }
 
-    IEnumerator HeadBob(float frequency) {
+    IEnumerator HeadBob(float frequency, float smoothness) {
         float angle = 0.0f;
         while (true) {
             while (angle < 2 * Mathf.PI) {
-                cam.position = new Vector3(root.position.x, root.position.y + Mathf.Sin(angle)/15.0f, root.position.z);
-                angle += (2 * Mathf.PI/frequency);
+                cam.position = new Vector3(root.position.x, root.position.y + Mathf.Sin(angle)/smoothness, root.position.z);
+                angle += Time.deltaTime * (2 * Mathf.PI * frequency);
                 yield return null;
             }
             angle = 0.0f;
