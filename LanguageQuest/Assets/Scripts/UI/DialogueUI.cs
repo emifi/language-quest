@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using System.Linq;
 using TMPro;
 using Subtegral.DialogueSystem.DataContainers;
+using UnityEngine.SceneManagement;
 
 public class DialogueUI : MonoBehaviour
 {
@@ -198,6 +199,9 @@ public class DialogueUI : MonoBehaviour
 
         //Enable/Disable Obj Event - ACTIVATE{tag0,...tagN} DEACTIVATE{tag0,...tagN} 
         fullText = toggleParse(fullText);
+
+        //Change Scene Event - SCENE{newScene}
+        fullText = sceneParse(fullText);
 
         dialogue.text = "";
         if(numChoices==0){
@@ -569,6 +573,25 @@ public class DialogueUI : MonoBehaviour
                     GameObject.Find("Game Controller").GetComponent<GameController>().DeactivateTag(tags[i].Trim());
                 }
             }
+
+            fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
+
+    private static string sceneParse(string fullText){
+        int startPos = fullText.IndexOf("SCENE{");
+        int addLen = 6; //Length of SCENE{
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
+            string newScene = fullText.Substring(startPos+addLen,endPos-(startPos+addLen));
+            SceneManager.LoadScene(newScene);
 
             fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
