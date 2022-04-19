@@ -25,6 +25,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: b4b8c07f-b4ef-49db-8b05-a2a04d9ad9f6
     DialogueText: Hey! You still have objectives on your list! Get to it bestie!
+      DEACTIVATE{firewood}
     Position: {x: 100, y: 290}
   - NodeGUID: 3b2a05ac-ab84-45d0-9845-05a83a612b27
     DialogueText: Why are you looking at me like that?
