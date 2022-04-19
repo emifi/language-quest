@@ -58,7 +58,7 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: ba89e231a775a1645a78bcdf7f7aac22, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 9100000, guid: d53955c7221d7c04ca832d01ab6cc8cb, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba89e231a775a1645a78bcdf7f7aac22, type: 3}
 --- !u!1001 &3676360297226342837
@@ -194,7 +194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: destinationGroups.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1763898593740336154, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: destinationGroups.Array.data[0].dests.Array.size
@@ -210,7 +210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3357019967353041865, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
       propertyPath: m_Name
-      value: Lumberjack
+      value: Human
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1763898593740336156, guid: 08a49db7b0c32bb41bbf480597c56a65, type: 3}
