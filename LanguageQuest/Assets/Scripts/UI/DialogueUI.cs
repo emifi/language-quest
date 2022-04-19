@@ -193,8 +193,11 @@ public class DialogueUI : MonoBehaviour
         //Change Type Parsing - CHANGETYPE{WalkType}
         fullText = changeTypeParse(fullText,currNPC);
 
-        //Next Change Destination Group - CHANGEDEST{destinationPtr}
+        //Change Destination Group - CHANGEDEST{destinationPtr}
         fullText = changeDestParse(fullText,currNPC);
+
+        //Enable/Disable Obj Event - ACTIVATE{tag0,...tagN} DEACTIVATE{tag0,...tagN} 
+        fullText = toggleParse(fullText);
 
         dialogue.text = "";
         if(numChoices==0){
@@ -540,4 +543,35 @@ public class DialogueUI : MonoBehaviour
             }
             return fullText.Trim();
     } 
+
+    private static string toggleParse(string fullText){
+        bool toActivate = false;
+        int startPos = fullText.IndexOf("DEACTIVATE{");
+        int addLen = 11; //Length of DEACTIVATE{
+        if(startPos==-1){
+            toActivate = true;
+            startPos = fullText.IndexOf("ACTIVATE{");
+            addLen = 9; //Length of ACTIVATE{
+        }
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
+            string[] tags = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            for(int i = 0; i<tags.Count();i++){
+                if(toActivate){
+                    GameObject.Find("Game Controller").GetComponent<GameController>().ActivateTag(tags[i].Trim());
+                }else{
+                    GameObject.Find("Game Controller").GetComponent<GameController>().DeactivateTag(tags[i].Trim());
+                }
+            }
+
+            fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
 }

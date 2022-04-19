@@ -145,8 +145,8 @@ MonoBehaviour:
     m_Unicode: 65534
     m_GlyphIndex: 17
     m_Scale: 1
-    m_Name: sprite-sheet_17
-    m_HashCode: -438246478
+    m_Name: water-sprite
+    m_HashCode: -1400914671
   - m_ElementType: 2
     m_Unicode: 65534
     m_GlyphIndex: 18

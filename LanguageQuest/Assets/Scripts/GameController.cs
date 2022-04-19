@@ -54,12 +54,6 @@ public class GameController : MonoBehaviour
         foreach (ObjectiveDialogueGroup odg in groupsToRemove) {
             hiddenObjectiveDialogueGroups.Remove(odg);
         }
-
-        // Test - DELETE!!
-        if (Input.GetKey(KeyCode.G)) {
-            Debug.Log("Activating tag firewood");
-            ActivateTag("firewood");
-        }
     }
 
     // Can use to check if there is an active ObjectiveDialogue grouping prior to inserting a new one
@@ -190,7 +184,7 @@ public class Event {
 
     public void Deactivate() {
         foreach (GameObject obj in gameObjects) {
-            obj.SetActive(true);
+            obj.SetActive(false);
         }
     }
 }
