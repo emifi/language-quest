@@ -20,6 +20,7 @@ public class NpcNavMesh : MonoBehaviour
     public static int numDests = 0;
     
     private UnityEngine.AI.NavMeshAgent mesh;
+    private Animator animator;
     public int dialoguePtr = 0; //points to which dialogue in the dialogue container is active
     public int destinationsPtr = 0;
     float timeout = 0;
@@ -47,11 +48,17 @@ public class NpcNavMesh : MonoBehaviour
         }
         }
         player = GameObject.Find("First Person Player").GetComponent<Transform>();
+        animator = gameObject.GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (mesh.velocity.magnitude > 0.1f) {
+            animator.SetBool("isWalking", true);
+        } else {
+            animator.SetBool("isWalking", false);
+        }
         if(walkType==NpcType.Stationary){
             return;
         }
