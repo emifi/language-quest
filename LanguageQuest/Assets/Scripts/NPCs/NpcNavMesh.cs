@@ -54,10 +54,12 @@ public class NpcNavMesh : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (mesh.velocity.magnitude > 0.1f) {
-            animator.SetBool("isWalking", true);
-        } else {
-            animator.SetBool("isWalking", false);
+        if(animator!=null){
+            if (mesh.velocity.magnitude > 0.1f) {
+                animator.SetBool("isWalking", true);
+            } else {
+                animator.SetBool("isWalking", false);
+            }
         }
         if(walkType==NpcType.Stationary){
             return;
