@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class GameController : MonoBehaviour
 {
@@ -136,6 +138,10 @@ public class ObjectiveDialogueGroup
         if (pair.npc != null) {
             pair.npc.setDialoguePointer(pair.ptr);
         }
+    }
+
+    public void LoadScene(string name) {
+        SceneManager.LoadScene(name);
     }
 }
 
