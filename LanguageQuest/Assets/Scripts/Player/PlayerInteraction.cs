@@ -37,6 +37,9 @@ public class PlayerInteraction : MonoBehaviour
         highlightTrigger.transform.localScale = new Vector3(highlightRange*2, highlightRange*2, highlightRange*2);
         firstPersonPlayer = transform.parent;
         playerCamera = firstPersonPlayer.Find("Main Camera");
+
+        notebook = DataStructs.notebook;
+        inventory = DataStructs.inventory;
     }
 
 

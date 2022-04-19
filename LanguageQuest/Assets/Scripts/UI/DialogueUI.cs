@@ -50,7 +50,8 @@ public class DialogueUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        notebook = Resources.Load<NotebookObject>("Inventory/Player Notebook");
+        notebook = DataStructs.notebook;
+
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
         dialogueUI.enabled = false;
         isEnabled = false;

@@ -26,6 +26,7 @@ public class NotebookUI : MonoBehaviour
 
     void Start() {
         notebookUI.enabled = false;
+        notebook = DataStructs.notebook;
         atHome = true;
         currPage = ' ';
         posPtr = 0;
@@ -42,12 +43,16 @@ public class NotebookUI : MonoBehaviour
         timeout = 0;
         entriesPerPage = 2;
 
+        int i = 0;
         foreach(Button btn in buttons){ //While this IS flexible, any additional buttons 0th character
             if(btn.name.Length==1){     //will have to continue the ASCII sequence so that the array can remain squential 
                                         //- buttons can be renamed after this point
                 btn.onClick.AddListener(() => navToChapter(btn.name[0])); //Please note new logic will also need to be made in the dictionary
-                btn.interactable = false;
+                if(notebook.dictionary[i]==null){
+                    btn.interactable = false;
+                }
             }
+            i++;
         }
         homeButton.onClick.AddListener(() => navHome());
         leftButton.GetComponent<Button>().onClick.AddListener(() => turnPage(-(2*entriesPerPage))); //Dictionary pages are hard-coded to have 6 pages

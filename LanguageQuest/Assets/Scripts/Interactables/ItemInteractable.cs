@@ -18,6 +18,7 @@ public class ItemInteractable : Interactable
         }
         else if (item.type == ItemType.Pickup) {
             if (item == Resources.Load<ItemObject>("Items/Caribou")) {
+                DialogueUI.initScript(GameObject.Find("Deer").GetComponent<NpcNavMesh>());
                 Destroy(gameObject.transform.parent.parent.parent.gameObject);
             }
             else {
