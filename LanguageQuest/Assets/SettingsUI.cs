@@ -10,7 +10,8 @@ public class SettingsUI : MonoBehaviour
     GameObject player;
     MouseLook mouseLook;
     ResolutionWrapper[] resolutions = {new ResolutionWrapper(1920, 1080, true), 
-                                        new ResolutionWrapper(2560, 1440, true)};
+                                      new ResolutionWrapper(2560, 1440, true),
+                                      new ResolutionWrapper(1600, 900, true)};
     int currentResolution = 0;
     int unsavedResolution = 0;
     bool unsavedFullscreen = true;
