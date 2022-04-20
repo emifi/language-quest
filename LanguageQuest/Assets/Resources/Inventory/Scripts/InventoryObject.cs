@@ -15,6 +15,7 @@ public class InventoryObject : ScriptableObject
     public bool AddItem(ItemObject item, int amount) {
         for (int i = 0; i < container.Count; i++) {
             if (item == container[i].item) {
+                GameObject.Find("First Person Player").GetComponent<UpdateUI>().AddInvDisplay(item,amount);
                 container[i].AddAmount(amount);
                 return true;
             }
