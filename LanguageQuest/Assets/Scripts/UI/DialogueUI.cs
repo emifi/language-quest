@@ -140,7 +140,7 @@ public class DialogueUI : MonoBehaviour
     IEnumerator Wait(float t, string scene) {
         GameObject.Find("Fade").GetComponent<Fade>().FadeOut(Color.black, 0.0f, t);
         yield return new WaitForSeconds(t);
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(scene,LoadSceneMode.Additive);
     }
 
     public static void turnPage(){ //Proceed to next dialogue node
