@@ -644,8 +644,13 @@ public class DialogueUI : MonoBehaviour
     }
 
     private static string addParse(string fullText){
-        int startPos = fullText.IndexOf("ADDITEM{");
-        int addLen = 8; //Length of ADDITEM{
+        int startPos = fullText.IndexOf("ADDITEMS{");
+        int addLen = 9; //Length of ADDITEM{
+
+        if(startPos==-1){
+            startPos = fullText.IndexOf("ADDITEM{");
+            addLen = 8; //Length of ADDQUEST{
+        }
 
         int endPos = -1;
 
@@ -665,8 +670,13 @@ public class DialogueUI : MonoBehaviour
     }
 
     private static string removeParse(string fullText){
-        int startPos = fullText.IndexOf("REMOVEITEM{");
-        int addLen = 11; //Length of REMOVEITEM{
+        int startPos = fullText.IndexOf("REMOVEITEMS{");
+        int addLen = 12; //Length of REMOVEITEMS{
+
+        if(startPos==-1){
+            startPos = fullText.IndexOf("REMOVEITEM{");
+            addLen = 11; //Length of REMOVEITEM{
+        }
 
         int endPos = -1;
 
