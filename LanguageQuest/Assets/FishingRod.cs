@@ -183,6 +183,7 @@ public class FishingRod : MonoBehaviour
         float t = 0.0f;
         bite = true;
         Vector3 submerged = root + (new Vector3(0.0f, -0.8f, 0.0f));
+        ripple.Play();
         while (t < 0.6f) {
             bobber.transform.position = Vector3.Lerp(root, submerged, t/0.3f);
             t += Time.deltaTime;
