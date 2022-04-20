@@ -40,7 +40,6 @@ public class FishingRod : MonoBehaviour
         bobberRB = bobber.GetComponent<Rigidbody>();
         bobberRB.useGravity = false;
         ripple = GameObject.Find("FX_WaterSplatter").GetComponent<ParticleSystem>();
-        PlayerMovement.canJump = false;
         
         fish = GameObject.Find("Fish");
         fish.SetActive(false);
@@ -52,6 +51,7 @@ public class FishingRod : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PlayerMovement.canJump) PlayerMovement.canJump = false;
         if (!set && !cast && readyToCast) {
             bobber.transform.position = rodTip.position - new Vector3(0.0f, 0.2f, 0.0f);
         }

@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        canJump = true;
         // Find player model dependencies
         player = GameObject.Find("First Person Player");
         playerModel = GameObject.Find("Player");
