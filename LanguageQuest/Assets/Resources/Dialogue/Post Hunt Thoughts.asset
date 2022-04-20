@@ -26,7 +26,7 @@ MonoBehaviour:
     Position: {x: 212, y: 193}
   - NodeGUID: 8a2ad455-c0b7-45a9-a89c-b1323355ba5b
     DialogueText: That should be more than enough for today, I should get back to
-      Hanta...
+      Hanta... SCENE{Terrain}
     Position: {x: 961, y: 202}
   ExposedProperties: []
   CommentBlockData: []

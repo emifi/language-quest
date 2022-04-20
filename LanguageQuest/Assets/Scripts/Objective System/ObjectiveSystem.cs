@@ -8,6 +8,7 @@ public class ObjectiveSystem : MonoBehaviour
     // Completed objectives are still rendered on screen
     public List<Objective> objectives = new List<Objective>();
     public List<Objective> completeObjectives = new List<Objective>();
+    public List<Objective> hiddenObjectives = new List<Objective>();
     public GameObject panelUI;
     public GameObject objectiveUI;
     DialogueUI dialogueUI;
@@ -114,6 +115,20 @@ public class ObjectiveSystem : MonoBehaviour
             objectives.Remove(objective);
             completeObjectives.Add(objective);
         }
+        objectivesToRemove = new List<Objective>();
+        foreach (Objective objective in hiddenObjectives) {
+            //if (objective.status == ObjectiveStatus.Complete) continue;
+            if (objective.type != ObjectiveType.Collect) continue;
+            if ((objective as ObjectiveCollect).item == item) {
+                (objective as ObjectiveCollect).current += 1;
+                if ((objective as ObjectiveCollect).current >= (objective as ObjectiveCollect).required) {
+                    objective.status = ObjectiveStatus.Complete;
+                }
+            }
+        }
+        foreach (Objective objective in objectivesToRemove) {
+            hiddenObjectives.Remove(objective);
+        }
     }
 
     // Fires from PlayerInteraction.cs when an interaction with a trigger item is detected
@@ -131,6 +146,18 @@ public class ObjectiveSystem : MonoBehaviour
         foreach (Objective objective in objectivesToRemove) {
             objectives.Remove(objective);
             completeObjectives.Add(objective);
+        }
+        objectivesToRemove = new List<Objective>();
+        foreach (Objective objective in hiddenObjectives) {
+            //if (objective.status == ObjectiveStatus.Complete) continue;
+            if (objective.type != ObjectiveType.Trigger) continue;
+            if ((objective as ObjectiveTrigger).trigger == trigger) {
+                objective.status = ObjectiveStatus.Complete;
+                objectivesToRemove.Add(objective);
+            }
+        }
+        foreach (Objective objective in objectivesToRemove) {
+            hiddenObjectives.Remove(objective);
         }
     }
 
@@ -150,6 +177,18 @@ public class ObjectiveSystem : MonoBehaviour
             objectives.Remove(objective);
             completeObjectives.Add(objective);
         }
+        objectivesToRemove = new List<Objective>();
+        foreach (Objective objective in hiddenObjectives) {
+            //if (objective.status == ObjectiveStatus.Complete) continue;
+            if (objective.type != ObjectiveType.MoveTo) continue;
+            if ((objective as ObjectiveMoveTo).destination == destination) {
+                objective.status = ObjectiveStatus.Complete;
+                objectivesToRemove.Add(objective);
+            }
+        }
+        foreach (Objective objective in objectivesToRemove) {
+            hiddenObjectives.Remove(objective);
+        }
     }
 
     public void talkToEvent(NPCIdentifierObject npc) {
@@ -165,6 +204,17 @@ public class ObjectiveSystem : MonoBehaviour
         foreach (Objective objective in objectivesToRemove) {
             objectives.Remove(objective);
             completeObjectives.Add(objective);
+        }
+        objectivesToRemove = new List<Objective>();
+        foreach (Objective objective in hiddenObjectives) {
+            if (objective.type != ObjectiveType.TalkTo) continue;
+            if ((objective as ObjectiveTalkTo).npcID == npc) {
+                objective.status = ObjectiveStatus.Complete;
+                objectivesToRemove.Add(objective);
+            }
+        }
+        foreach (Objective objective in objectivesToRemove) {
+            hiddenObjectives.Remove(objective);
         }
     }
 

@@ -39,6 +39,11 @@ public class GameController : MonoBehaviour
         foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
             objectiveSystem.addObjectiveList(odg.objectives, group_num);
         }
+        foreach (ObjectiveDialogueGroup hidodg in hiddenObjectiveDialogueGroups) {
+            foreach (Objective hiddenObj in hidodg.objectives) {
+                objectiveSystem.hiddenObjectives.Add(hiddenObj);
+            }
+        }
         foreach (Event evt in eventList) {
             Debug.Log($"Gamecontroller adding event tag {evt.tag}");
             eventTags.Add(evt.GetTag(), evt.GetGameObjects());
@@ -65,6 +70,7 @@ public class GameController : MonoBehaviour
         }
         foreach (ObjectiveDialogueGroup odg in hiddenObjectiveDialogueGroups) {
             if (odg.CheckForCompletion()) {
+                Debug.Log("Obj complete");
                 odg.PushDialoguePointer();
                 groupsToRemove.Add(odg);
             }

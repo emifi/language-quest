@@ -49,12 +49,16 @@ public class DialogueUI : MonoBehaviour
     private static bool isEnabled;
     private static string sceneSwitch = null;
 
+    private static ObjectiveSystem objectiveSystem;
+
     // Start is called before the first frame update
     void Start()
     {
         notebook = DataStructs.notebook;
         inventory = DataStructs.inventory;
         //playerName = dataStructs.playerName;
+
+        objectiveSystem = GameObject.Find("First Person Player").GetComponent<ObjectiveSystem>();
 
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
         dialogueUI.enabled = false;
@@ -667,7 +671,12 @@ public class DialogueUI : MonoBehaviour
         if(endPos>-1){ //If all requirements have passed, add quests
             string[] parts = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
             for(int i = 0; i<parts.Count();i+=2){
-                inventory.AddItem(Resources.Load<ItemObject>("Items/"+parts[i].Trim()),int.Parse(parts[i+1]));
+                int num = int.Parse(parts[i+1]);
+                PickupObject item = Resources.Load<PickupObject>("Items/"+parts[i].Trim());
+                inventory.AddItem(item,num);
+                for (int j = 0 ; j < num ; j++) {
+                    objectiveSystem.pickupEvent(item);
+                }
             }
             
             fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);

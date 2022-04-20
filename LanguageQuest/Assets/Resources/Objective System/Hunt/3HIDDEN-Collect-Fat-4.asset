@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3HIDDEN-Collect-Fat-4
   m_EditorClassIdentifier: 
   type: 0
-  objectiveString: 
+  objectiveString: collect fat
   panelUI: {fileID: 0}
   item: {fileID: 11400000, guid: 28d2919414094f441b1d5b77a0ed795d, type: 2}
   required: 4
