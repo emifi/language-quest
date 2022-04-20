@@ -7,6 +7,7 @@ public class MainMenuScript : MonoBehaviour
 {
     Fade fade;
     bool playing = false;
+    string playerName;
 
 
     void Start() {
@@ -15,6 +16,12 @@ public class MainMenuScript : MonoBehaviour
 
     public void PlayGame()
     {
+        if (playerName != null) {
+            DataStructs.playerName = playerName;
+        } else {
+            DataStructs.playerName = "Player";
+        }
+        Debug.Log(DataStructs.playerName);
         if (!playing) {
             playing = true;
             StartCoroutine(Wait(3.0f));
@@ -25,6 +32,10 @@ public class MainMenuScript : MonoBehaviour
     {
         Debug.Log("Quitting game");
         Application.Quit();
+    }
+
+    public void updateName(string name) {
+        playerName = name;
     }
 
     IEnumerator Wait(float t) {
