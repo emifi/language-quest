@@ -18,13 +18,11 @@ public class UpdateUI : MonoBehaviour
             190f/256f, 
             118f/256f
         );
-        /*
-        new Color( //Yellow
+        private Color failColor2 = new Color( //Yellow
             219f/256f,
             204f/256f, 
             92f/256f
-        ),
-        */
+        );
         private Color addColor = new Color( //Green
             186f/256f,
             220f/256f, 
@@ -92,6 +90,18 @@ public class UpdateUI : MonoBehaviour
 
         newPanelUI.transform.SetParent(updateUI.transform);
         StartCoroutine(enter(removeColor,newPanelUI));
+        StartCoroutine(fadeAndRemove(0f, newPanelUI,7.0f));
+    }
+
+    public void RemoveFailDisplay(ItemObject item, int amount){
+        //Color color = pallete[Random.Range(0,pallete.Length)];
+        GameObject newPanelUI = Instantiate(panelUI);
+        newPanelUI.GetComponent<TMP_Text>().text = $" • You don't have {amount}x {item.englishName}({item.nativeName})!";
+        newPanelUI.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Right;
+        newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
+
+        newPanelUI.transform.SetParent(updateUI.transform);
+        StartCoroutine(enter(failColor2,newPanelUI));
         StartCoroutine(fadeAndRemove(0f, newPanelUI,7.0f));
     }
 

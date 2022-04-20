@@ -37,7 +37,10 @@ public class InventoryObject : ScriptableObject
     public bool RemoveItem(ItemObject item, int amount) {
         for (int i = 0; i < container.Count; i++) {
             if (item == container[i].item) {
-                if (container[i].amount < amount) return false;
+                if (container[i].amount < amount){ 
+                    GameObject.Find("First Person Player").GetComponent<UpdateUI>().RemoveFailDisplay(item,amount);
+                    return false;
+                }
                 container[i].AddAmount(-amount);
                 GameObject.Find("First Person Player").GetComponent<UpdateUI>().RemoveInvDisplay(item,amount);
                 if (container[i].amount == 0) {
@@ -46,6 +49,7 @@ public class InventoryObject : ScriptableObject
                 return true;
             }
         }
+        GameObject.Find("First Person Player").GetComponent<UpdateUI>().RemoveFailDisplay(item,amount);
         return false;
     }
     public bool HasItem(ItemObject item) {

@@ -215,8 +215,11 @@ public class DialogueUI : MonoBehaviour
         //Change Scene Event - SCENE{newScene}
         fullText = sceneParse(fullText);
 
-        //Inventory Event - ADDITEM{item,count} REMOVEITEM{item,count}
-        fullText = inventoryParse(fullText);
+        //Inventory Event - ADDITEM{item0,count0,item1,count1,...itemN,countN}
+        fullText = addParse(fullText);
+
+        //Inventory Event - REMOVEITEM{item0,count0,item1,count1,...itemN,countN}
+        fullText = removeParse(fullText);
 
         if(fullText.Trim()==""){
             narrativeData = null;
@@ -619,15 +622,9 @@ public class DialogueUI : MonoBehaviour
         return fullText.Trim();
     }
 
-    private static string inventoryParse(string fullText){
-        bool isAdd = false;
-        int startPos = fullText.IndexOf("REMOVEITEM{");
-        int addLen = 11; //Length of REMOVEITEM{
-        if(startPos==-1){
-            isAdd = true;
-            startPos = fullText.IndexOf("ADDITEM{");
-            addLen = 8; //Length of ADDITEM{
-        }
+    private static string addParse(string fullText){
+        int startPos = fullText.IndexOf("ADDITEM{");
+        int addLen = 8; //Length of ADDITEM{
 
         int endPos = -1;
 
@@ -637,10 +634,29 @@ public class DialogueUI : MonoBehaviour
 
         if(endPos>-1){ //If all requirements have passed, add quests
             string[] parts = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
-            if(!isAdd){
-                inventory.RemoveItem(Resources.Load<ItemObject>("Items/"+parts[0].Trim()),int.Parse(parts[1]));
-            }else{
-                inventory.AddItem(Resources.Load<ItemObject>("Items/"+parts[0].Trim()),int.Parse(parts[1]));
+            for(int i = 0; i<parts.Count();i+=2){
+                inventory.AddItem(Resources.Load<ItemObject>("Items/"+parts[i].Trim()),int.Parse(parts[i+1]));
+            }
+            
+            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
+
+    private static string removeParse(string fullText){
+        int startPos = fullText.IndexOf("REMOVEITEM{");
+        int addLen = 11; //Length of REMOVEITEM{
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add quests
+            string[] parts = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            for(int i = 0; i<parts.Count();i+=2){
+                inventory.RemoveItem(Resources.Load<ItemObject>("Items/"+parts[i].Trim()),int.Parse(parts[i+1]));
             }
             
             fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
