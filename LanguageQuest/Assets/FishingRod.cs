@@ -6,6 +6,8 @@ public class FishingRod : MonoBehaviour
 {
     public float minBiteTime = 3.0f;
     public float maxBiteTime = 15.0f;
+    public float chanceForNibble = 10.0f;
+    int numNibbles = 0;
     float timeUntilBite;
     bool readyToCast = true;
     bool reeling = false;
@@ -52,6 +54,7 @@ public class FishingRod : MonoBehaviour
     void Update()
     {
         if (PlayerMovement.canJump) PlayerMovement.canJump = false;
+
         if (!set && !cast && readyToCast) {
             bobber.transform.position = rodTip.position - new Vector3(0.0f, 0.2f, 0.0f);
         }
@@ -128,13 +131,14 @@ public class FishingRod : MonoBehaviour
         bobberRB.useGravity = false;
         bobberRB.velocity = Vector3.zero;
         Vector3 bobberOriginal = bobber.transform.position;
+        // Pulling the rod backwards and yanking bobber to resting position
         while (t < pullBackTime) {
             rod.localRotation = Quaternion.Slerp(rodResting, Quaternion.Euler(-100.0f, 0.0f, -90.0f), t/pullBackTime);
             bobber.transform.position = Vector3.Lerp(bobberOriginal, rodTip.position, t/pullBackTime);
             t += Time.deltaTime;
             yield return null;
         }
-        t = 0.0f;
+        // If we caught a fish, turn it off when it reached the poll
         if (fish.activeSelf) {
             fish.SetActive(false);
             Debug.Log("Adding fish to inv");
@@ -142,6 +146,8 @@ public class FishingRod : MonoBehaviour
             inventory.AddItem(fishItem);
             objectiveSystem.pickupEvent(fishItem);
         }
+        // Returning rod to original position
+        t = 0.0f;
         while (t < pushForwardTime) {
             rod.localRotation = Quaternion.Slerp(Quaternion.Euler(-100.0f, 0.0f, -90.0f), rodResting, t/pushForwardTime);
             bobber.transform.position = rodTip.position;
@@ -168,9 +174,17 @@ public class FishingRod : MonoBehaviour
                 }
                 yield return null;
             }
+            float nibble = Random.Range(0.0f, 100.0f);
+            // Check if it's time for the bite
             if (timeSinceStart > timeUntilBite) {
                 StartCoroutine(Bite(root));
                 yield break;
+            } else {
+                // Nibble
+                if (numNibbles < 2 && timeSinceStart >= timeUntilBite/2.0f && nibble <= chanceForNibble) {
+                    ripple.Play();
+                    numNibbles += 1;
+                }
             }
             angle = 0.0f;
         }
@@ -183,10 +197,10 @@ public class FishingRod : MonoBehaviour
     IEnumerator Bite(Vector3 root) {
         float t = 0.0f;
         bite = true;
-        Vector3 submerged = root + (new Vector3(0.0f, -0.8f, 0.0f));
+        Vector3 submerged = root + (new Vector3(0.0f, -0.5f, 0.0f));
         ripple.Play();
         while (t < 0.6f) {
-            bobber.transform.position = Vector3.Lerp(root, submerged, t/0.3f);
+            bobber.transform.position = Vector3.Slerp(root, submerged, t/0.3f);
             t += Time.deltaTime;
             yield return null;
         }
@@ -194,10 +208,11 @@ public class FishingRod : MonoBehaviour
         timeUntilBite = Random.Range(minBiteTime, maxBiteTime);
         t = 0.0f;
         while (t < 0.3f) {
-            bobber.transform.position = Vector3.Lerp(submerged, root, t/0.3f);
+            bobber.transform.position = Vector3.Slerp(submerged, root, t/0.3f);
             t += Time.deltaTime;
             yield return null;
         }
+        numNibbles = 0;
         StartCoroutine(Bob(20.0f, 1.0f));
         yield return null;
     }
