@@ -212,14 +212,14 @@ public class DialogueUI : MonoBehaviour
         //Enable/Disable Obj Event - ACTIVATE{tag0,...tagN} DEACTIVATE{tag0,...tagN} 
         fullText = toggleParse(fullText);
 
-        //Change Scene Event - SCENE{newScene}
-        fullText = sceneParse(fullText);
-
         //Inventory Event - ADDITEM{item0,count0,item1,count1,...itemN,countN}
         fullText = addParse(fullText);
 
         //Inventory Event - REMOVEITEM{item0,count0,item1,count1,...itemN,countN}
         fullText = removeParse(fullText);
+
+        //Change Scene Event - SCENE{newScene}
+        fullText = sceneParse(fullText);
 
         if(fullText.Trim()==""){
             narrativeData = null;
