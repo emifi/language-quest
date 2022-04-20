@@ -29,20 +29,28 @@ public abstract class Interactable : MonoBehaviour
 
     // Default glows/unglows for interactable objects. See PlayerInteraction in player
     public virtual void Highlight(){
-        outline.enabled = true;
+        if (outline) {
+            outline.enabled = true;
+        }
     }
 
     public virtual void Unhighlight(){
-        outline.enabled = false;
+        if (outline) {
+            outline.enabled = false;
+        }
     }
 
     public virtual void Focus(){
-        outline.OutlineColor = Color.blue;
-        outline.OutlineWidth = 7f;
+        if (outline) {
+            outline.OutlineColor = Color.blue;
+            outline.OutlineWidth = 7f;
+        }
     }
 
     public virtual void Unfocus() {
-        outline.OutlineColor = Color.cyan;
-        outline.OutlineWidth = 5f;
+        if (outline) {
+            outline.OutlineColor = Color.cyan;
+            outline.OutlineWidth = 5f;
+        }
     }
 }

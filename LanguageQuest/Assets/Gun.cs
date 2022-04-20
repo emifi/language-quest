@@ -35,8 +35,8 @@ public class Gun : MonoBehaviour
                 if (hit.collider.gameObject.layer == 10) {
                     Animator animator = hit.collider.GetComponentInParent<Animator>();
                     animator.SetBool("isDead", true);
-                    ItemInteractable interactable = hit.collider.gameObject.AddComponent<ItemInteractable>();
-                    interactable.item = Resources.Load<ItemObject>("Items/Caribou");
+                    NPCInteractable interactable = hit.collider.gameObject.AddComponent<NPCInteractable>();
+                    //interactable.item = Resources.Load<ItemObject>("Items/Caribou");
                 }
                 else {
                 }

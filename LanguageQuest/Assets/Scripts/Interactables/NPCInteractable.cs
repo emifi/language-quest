@@ -8,6 +8,10 @@ using Subtegral.DialogueSystem.DataContainers;
 public class NPCInteractable : Interactable
 {
     public NPCIdentifierObject id;
+
+    new void Start() {
+
+    }
     
     public override void Interact()
     {
