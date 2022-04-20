@@ -12,6 +12,7 @@ public class DialogueUI : MonoBehaviour
 {
     public Canvas dialogueUI;
     public static NotebookObject notebook; //Used to add keywords to dictionary
+    public static InventoryObject inventory; //used to manipulate inventory
     private static TMP_Text dialogue;
     private static GameObject decisionSpace; //The physical UI space
     private static TMP_Text decisionA;
@@ -29,6 +30,7 @@ public class DialogueUI : MonoBehaviour
     public string npcColor;
     public string itemColor;
     public string choiceColor;
+    private static string playerName;
     private static string mainCol; //private/static use
     private static string npcCol;
     private static string itemCol;
@@ -51,6 +53,8 @@ public class DialogueUI : MonoBehaviour
     void Start()
     {
         notebook = DataStructs.notebook;
+        inventory = DataStructs.inventory;
+        //playerName = dataStructs.playerName;
 
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
         dialogueUI.enabled = false;
@@ -140,7 +144,7 @@ public class DialogueUI : MonoBehaviour
     IEnumerator Wait(float t, string scene) {
         GameObject.Find("Fade").GetComponent<Fade>().FadeOut(Color.black, 0.0f, t);
         yield return new WaitForSeconds(t);
-        SceneManager.LoadScene(scene,LoadSceneMode.Additive);
+        SceneManager.LoadScene(scene);
     }
 
     public static void turnPage(){ //Proceed to next dialogue node
@@ -193,10 +197,6 @@ public class DialogueUI : MonoBehaviour
         //Term Parsing (print variation) - ADDTERMPRINT{item0,item1...itemN}/ADDTERMSPRINT{item0,item1...itemN}
         fullText = addTermPrintParse(fullText);
 
-
-        choices = dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID).ToList();
-        numChoices = choices.Count();
-
         //Next Dialogue Parsing - GOTO{dialoguePtr}
         fullText = goToParse(fullText,currNPC);
 
@@ -214,6 +214,17 @@ public class DialogueUI : MonoBehaviour
 
         //Change Scene Event - SCENE{newScene}
         fullText = sceneParse(fullText);
+
+        //Inventory Event - ADDITEM{item,count} REMOVEITEM{item,count}
+        fullText = inventoryParse(fullText);
+
+        if(fullText.Trim()==""){
+            narrativeData = null;
+            return;
+        }
+
+        choices = dialogueContainer.NodeLinks.Where(x => x.BaseNodeGUID == narrativeDataGUID).ToList();
+        numChoices = choices.Count();
 
         dialogue.text = "";
         if(numChoices==0){
@@ -604,6 +615,35 @@ public class DialogueUI : MonoBehaviour
         if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
             sceneSwitch = fullText.Substring(startPos+addLen,endPos-(startPos+addLen));
             fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
+
+    private static string inventoryParse(string fullText){
+        bool isAdd = false;
+        int startPos = fullText.IndexOf("REMOVEITEM{");
+        int addLen = 11; //Length of REMOVEITEM{
+        if(startPos==-1){
+            isAdd = true;
+            startPos = fullText.IndexOf("ADDITEM{");
+            addLen = 8; //Length of ADDITEM{
+        }
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add quests
+            string[] parts = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            if(!isAdd){
+                inventory.RemoveItem(Resources.Load<ItemObject>("Items/"+parts[0].Trim()),int.Parse(parts[1]));
+            }else{
+                inventory.AddItem(Resources.Load<ItemObject>("Items/"+parts[0].Trim()),int.Parse(parts[1]));
+            }
+            
+            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText.Trim();
     }

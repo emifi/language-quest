@@ -106,11 +106,13 @@ MonoBehaviour:
     Position: {x: 199, y: -54}
   - NodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
     DialogueText: Actually... Wait. Before you go... If you look to the sky you'll
-      see some ADDTERMPRINT{Bucket,Berries,Cherries}
+      see some ADDTERMPRINT{Bucket,Berries,Cherries} Also. Actually. No bucket for
+      you. give it back. GIVE IT BACKKK! REMOVEITEM{Bucket,1}
     Position: {x: 2076, y: 34}
   - NodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
     DialogueText: Hello, my name is {replacename}. If you look to your left you'll
       see a ADDTERMPRINT{Tree,Pepper,Onions,Firewood,Fat,Shotgun,Salt,Raw Meat,Potato,Cranberries}.
+      I would like to gift you a bucket! ADDITEM{Bucket,1}
     Position: {x: 100, y: 352}
   ExposedProperties:
   - PropertyName: 
