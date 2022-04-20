@@ -52,8 +52,11 @@ public class FishingRod : MonoBehaviour
     void Update()
     {
         if (!set && !cast && readyToCast) {
-            bobber.transform.position = rodTip.position;
+            bobber.transform.position = rodTip.position - new Vector3(0.0f, 0.2f, 0.0f);
         }
+        
+        line.SetPosition(0, rodTip.transform.position);
+        line.SetPosition(1, bobber.transform.position);
 
         // On input mouse left click
         if (Input.GetMouseButton(0) && Time.timeScale != 0) {
@@ -80,9 +83,6 @@ public class FishingRod : MonoBehaviour
                 }
             }
         }
-
-        line.SetPosition(0, rodTip.transform.position);
-        line.SetPosition(1, bobber.transform.position);
     }
 
     public void hitWater() {
@@ -114,7 +114,7 @@ public class FishingRod : MonoBehaviour
             yield return null;
         }
         bobberRB.useGravity = true;
-        bobberRB.AddForce((camera.forward * 700) + (camera.up * 700));
+        bobberRB.AddForce((camera.forward * 2000) + (camera.up * 1000));
         readyToCast = false;
         reeling = false;
         cast = true;
