@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2-Collect-Shotgun-1
   m_EditorClassIdentifier: 
   type: 0
-  objectiveString: 
+  objectiveString: Pick up the shotgun
   panelUI: {fileID: 0}
-  item: {fileID: 0}
-  required: 0
+  item: {fileID: 11400000, guid: 7e8e24e25fc4ab441bcced70d1ad0953, type: 2}
+  required: 1

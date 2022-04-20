@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 4-TalkTo-Harper
   m_EditorClassIdentifier: 
   type: 3
-  objectiveString: 
+  objectiveString: Talk to Harper
   panelUI: {fileID: 0}
-  npcID: {fileID: 0}
+  npcID: {fileID: 11400000, guid: d95373ba44eae1d43b1802927ee47874, type: 2}

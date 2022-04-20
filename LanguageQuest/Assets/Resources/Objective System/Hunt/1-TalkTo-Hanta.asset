@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 1-TalkTo-Hanta
   m_EditorClassIdentifier: 
   type: 3
-  objectiveString: 
+  objectiveString: Talk to Hanta
   panelUI: {fileID: 0}
-  npcID: {fileID: 0}
+  npcID: {fileID: 11400000, guid: f69e6fc1c2125714bba011c7c3b74629, type: 2}
