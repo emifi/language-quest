@@ -8,6 +8,7 @@ using Subtegral.DialogueSystem.DataContainers;
 public class NPCInteractable : Interactable
 {
     public NPCIdentifierObject id;
+    public string interactOverride = "";
 
     new void Start() {
 
@@ -22,8 +23,8 @@ public class NPCInteractable : Interactable
 
     public override string GetInteractString()
     {
-        if (transform.name == "Root_M") {
-            return "to dress Deer";
+        if (interactOverride != "") {
+            return interactOverride;
         }
         return base.GetInteractString();
     }

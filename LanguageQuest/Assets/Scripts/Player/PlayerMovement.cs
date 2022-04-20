@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public static bool canMove = true;
     public static bool canInput = true;
+    public static bool canJump = true;
     public bool showGroundDetection = true;
     public float playerSpeed = 1.5f;
     public float jumpHeight = 5.0f;
@@ -208,7 +209,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void Jump() {
-        velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
+        if (canJump) {
+            velocity.y = Mathf.Sqrt(jumpHeight * 2f * gravity);
+        }
     }
 
     public static void optionsOpen(){

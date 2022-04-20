@@ -40,6 +40,7 @@ public class FishingRod : MonoBehaviour
         bobberRB = bobber.GetComponent<Rigidbody>();
         bobberRB.useGravity = false;
         ripple = GameObject.Find("FX_WaterSplatter").GetComponent<ParticleSystem>();
+        PlayerMovement.canJump = false;
         
         fish = GameObject.Find("Fish");
         fish.SetActive(false);

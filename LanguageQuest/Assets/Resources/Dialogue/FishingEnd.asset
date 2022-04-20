@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: FishingEnd
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: cacb0fd4-5ea0-421e-8573-07a2a75bd940
+    PortName: Next
+    TargetNodeGUID: 80a85a65-4dbf-4d64-979f-5152a00b51e2
+  - BaseNodeGUID: 80a85a65-4dbf-4d64-979f-5152a00b51e2
+    PortName: Option 1
+    TargetNodeGUID: 19f99961-5f0d-4c58-8030-53be09905adc
+  DialogueNodeData:
+  - NodeGUID: 19f99961-5f0d-4c58-8030-53be09905adc
+    DialogueText: Time to head back to shore. SCENE{Terrain}
+    Position: {x: 704, y: 239}
+  - NodeGUID: 80a85a65-4dbf-4d64-979f-5152a00b51e2
+    DialogueText: That's enough fishing for today...
+    Position: {x: 339, y: 239}
+  ExposedProperties: []
+  CommentBlockData: []
