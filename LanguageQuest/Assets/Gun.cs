@@ -35,8 +35,12 @@ public class Gun : MonoBehaviour
                 if (hit.collider.gameObject.layer == 10) {
                     Animator animator = hit.collider.GetComponentInParent<Animator>();
                     animator.SetBool("isDead", true);
+                    animator.SetBool("isWalking", false);
                     NPCInteractable interactable = hit.collider.gameObject.AddComponent<NPCInteractable>();
-                    NpcNavMesh navMesh = hit.collider.gameObject.GetComponent<NpcNavMesh>();
+                    NpcNavMesh navMeshScript = hit.collider.gameObject.GetComponentInParent<NpcNavMesh>();
+                    navMeshScript.walkType = NpcNavMesh.NpcType.Stationary;
+                    UnityEngine.AI.NavMeshAgent agent = hit.collider.gameObject.GetComponentInParent<UnityEngine.AI.NavMeshAgent>();
+                    agent.isStopped = true;
 
                     //interactable.item = Resources.Load<ItemObject>("Items/Caribou");
                 }

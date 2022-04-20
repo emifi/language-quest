@@ -16,6 +16,15 @@ public class NPCInteractable : Interactable
     public override void Interact()
     {
         NpcNavMesh npc = gameObject.GetComponent<NpcNavMesh>();
+        if (npc == null) npc = gameObject.GetComponentInParent<NpcNavMesh>();
         DialogueUI.initScript(npc);
+    }
+
+    public override string GetInteractString()
+    {
+        if (transform.name == "Root_M") {
+            return "to dress Deer";
+        }
+        return base.GetInteractString();
     }
 }

@@ -10,23 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
-  m_Name: Post Hunt Thoughts
+  m_Name: Deer1
   m_EditorClassIdentifier: 
   NodeLinks:
   - BaseNodeGUID: 7e5b8cd2-6d48-401e-869a-97411285cee8
     PortName: Next
     TargetNodeGUID: 814041a3-2767-42d8-9547-0acd7920af32
-  - BaseNodeGUID: 814041a3-2767-42d8-9547-0acd7920af32
-    PortName: Option 1
-    TargetNodeGUID: 8a2ad455-c0b7-45a9-a89c-b1323355ba5b
   DialogueNodeData:
   - NodeGUID: 814041a3-2767-42d8-9547-0acd7920af32
-    DialogueText: You dress the last caribou and collect its meat... ADDITEM{Raw
-      Meat,1,Fat,1} DESTROY{Deer (1)}
+    DialogueText: You dress the caribou and collect its meat... ADDITEM{Raw Meat,1,Fat,1}
+      DESTROY{Deer (1)}
     Position: {x: 212, y: 193}
-  - NodeGUID: 8a2ad455-c0b7-45a9-a89c-b1323355ba5b
-    DialogueText: That should be more than enough for today, I should get back to
-      Hanta...
-    Position: {x: 961, y: 202}
   ExposedProperties: []
   CommentBlockData: []

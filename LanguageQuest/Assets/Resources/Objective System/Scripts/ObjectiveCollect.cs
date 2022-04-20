@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using TMPro;
 
-[CreateAssetMenu(fileName = "New Collect Objective", menuName = "Objective System/Objectives/Collect")]
+[CreateAssetMenu(fileName = "QuestID-Collect-Item-Number", menuName = "Objective System/Objectives/Collect")]
 public class ObjectiveCollect : Objective {
     [Header("Collect-type Paramaters")]
     public PickupObject item;

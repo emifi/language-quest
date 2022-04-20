@@ -37,7 +37,6 @@ public class NpcNavMesh : MonoBehaviour
         mesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
         Debug.Log(mesh);
         if(destinationGroups!=null&&destinationGroups.Count>0&&destinationGroups[destinationsPtr]!=null){
-            Debug.Log("Made it here start 1");
             
             destListLength = destinationGroups[destinationsPtr].dests.Count;
             if(minTimeout>maxTimeout){
@@ -58,7 +57,7 @@ public class NpcNavMesh : MonoBehaviour
     void Update()
     {
         if(animator!=null){
-            if (mesh.velocity.magnitude > 0.1f) {
+            if (mesh.velocity.magnitude > 0.2f) {
                 animator.SetBool("isWalking", true);
             } else {
                 animator.SetBool("isWalking", false);

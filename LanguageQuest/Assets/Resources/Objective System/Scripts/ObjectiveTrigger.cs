@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using TMPro;
 
-[CreateAssetMenu(fileName = "New Trigger Objective", menuName = "Objective System/Objectives/Trigger")]
+[CreateAssetMenu(fileName = "QuestID-Trigger-TriggerName", menuName = "Objective System/Objectives/Trigger")]
 public class ObjectiveTrigger : Objective {
     [Header("Trigger-type Paramaters")]
     public TriggerObject trigger;

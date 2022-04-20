@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47964972eec62514fa9aaee957b17013, type: 3}
-  m_Name: New Follow Objective
+  m_Script: {fileID: 11500000, guid: 290c92d20573e3741a77fe67d2cc3a0e, type: 3}
+  m_Name: 3-Collect-Raw Meat-5
   m_EditorClassIdentifier: 
-  type: 1
-  objectiveString: 
+  type: 0
+  objectiveString: Hunt and dress Caribou
   panelUI: {fileID: 0}
-  destination: {fileID: 0}
-  npc: {fileID: 0}
+  item: {fileID: 11400000, guid: 6760c4992fcc2704f84e221343b8af8c, type: 2}
+  required: 5
