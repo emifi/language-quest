@@ -72,14 +72,12 @@ public class NpcNavMesh : MonoBehaviour
             mesh.destination = destinationGroups[destinationsPtr].dests[targetedDest].position;
         }
         if(collided){ //If collision, react to timeout or nearby player
-            Debug.Log(walkType + " " + (npc.transform.position - player.position).sqrMagnitude + " " + colDistance);
             if(walkType==NpcType.Roam&&Time.time>=colTime+timeout){
                 targetedDest = Random.Range(0,destinationGroups[destinationsPtr].dests.Count); //assign new random spot to roam
                 collided = false;
             }
             if(walkType==NpcType.Proximity&&Time.time>=colTime+timeout&&(npc.transform.position - player.position).sqrMagnitude < colDistance){ //Nearby player detection
                 targetedDest++;
-                Debug.Log(targetedDest);
                 if(targetedDest<destinationGroups[destinationsPtr].dests.Count){ //If more locations exist, start navigation
                     collided = false;
                 }else{ //Otherwise, disallow any more roaming.
@@ -90,7 +88,6 @@ public class NpcNavMesh : MonoBehaviour
                 }
             }
         }else if((!complete&&(npc.transform.position - destinationGroups[destinationsPtr].dests[targetedDest].position).sqrMagnitude < colDistance)){ //Upon collision, take time and determine timeout
-            Debug.Log("Is for me?");
             colTime = Time.time;
             timeout = Random.Range(minTimeout,maxTimeout);
             collided = true;
