@@ -12,7 +12,6 @@ public class FishingRod : MonoBehaviour
     bool reeling = false;
     bool cast = false;
     bool set = false;
-    bool nibble = false;
     bool bite = false;
 
     InventoryObject inventory;
