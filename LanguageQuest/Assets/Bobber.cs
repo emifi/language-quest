@@ -20,7 +20,7 @@ public class Bobber : MonoBehaviour
     }
 
     private void OnCollisionEnter(Collision other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Water")) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Water") && rod.collisionEnabled()) {
             rod.hitWater();
         }
     }
