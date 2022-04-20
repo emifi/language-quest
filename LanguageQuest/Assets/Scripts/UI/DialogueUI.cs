@@ -180,10 +180,16 @@ public class DialogueUI : MonoBehaviour
         //ADD ANY REPLACEMENT VALUES YOU WOULD LIKE HERE.
         //MAKE THEM THE SAME AS THEY ARE IN DIALOGUE GRAPHS.
         if(currNPC != null){
-            fullText = fullText.Replace("{replacename}",(npcCol + currNPC.name + mainCol));
+            fullText = fullText.Replace("{npctitle}",("<size=140%>" +currNPC.name + "/size")); //For START of dialogue
+            fullText = fullText.Replace("{npcname}",(npcCol + currNPC.name + mainCol)); //For any reference in dialogue
         }
 
+        fullText = fullText.Replace("{playername}",DataStructs.playerName);
 
+        fullText = fullText.Replace("{maincolor}",mainCol);
+        fullText = fullText.Replace("{npccolor}",npcCol);
+        fullText = fullText.Replace("{itemcolor}",itemCol);
+        fullText = fullText.Replace("{choicecolor}",choiceCol);
 
 
         //Objective Parsing - ADDQUEST{quest0,quest1...questN,dialoguePTR}/ADDQUEST{quest0,quest1...questN,dialoguePTR}
