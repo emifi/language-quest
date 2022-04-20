@@ -36,6 +36,8 @@ public class Gun : MonoBehaviour
                     Animator animator = hit.collider.GetComponentInParent<Animator>();
                     animator.SetBool("isDead", true);
                     NPCInteractable interactable = hit.collider.gameObject.AddComponent<NPCInteractable>();
+                    NpcNavMesh navMesh = hit.collider.gameObject.GetComponent<NpcNavMesh>();
+
                     //interactable.item = Resources.Load<ItemObject>("Items/Caribou");
                 }
                 else {

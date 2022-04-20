@@ -34,18 +34,21 @@ public class NpcNavMesh : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-        if(destinationGroups!=null&&destinationGroups.Count>0&&destinationGroups[destinationsPtr]!=null){
-        destListLength = destinationGroups[destinationsPtr].dests.Count;
         mesh = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        if(minTimeout>maxTimeout){
-            minTimeout = maxTimeout;
-        }
-        if(walkType==NpcType.Roam){
-            targetedDest = Random.Range(0,destListLength);
-        }else{
-            MeshRenderer renderer = npc.GetComponent<MeshRenderer>();
-            renderer.material.color = Color.blue;
-        }
+        Debug.Log(mesh);
+        if(destinationGroups!=null&&destinationGroups.Count>0&&destinationGroups[destinationsPtr]!=null){
+            Debug.Log("Made it here start 1");
+            
+            destListLength = destinationGroups[destinationsPtr].dests.Count;
+            if(minTimeout>maxTimeout){
+                minTimeout = maxTimeout;
+            }
+            if(walkType==NpcType.Roam){
+                targetedDest = Random.Range(0,destListLength);
+            }else{
+                MeshRenderer renderer = npc.GetComponent<MeshRenderer>();
+                renderer.material.color = Color.blue;
+            }
         }
         player = GameObject.Find("First Person Player").GetComponent<Transform>();
         animator = gameObject.GetComponentInChildren<Animator>();
@@ -61,13 +64,13 @@ public class NpcNavMesh : MonoBehaviour
                 animator.SetBool("isWalking", false);
             }
         }
+
         if(walkType==NpcType.Stationary){
             return;
         }
         if(!complete){ //Hidden away from complete proximity NPC
             mesh.destination = destinationGroups[destinationsPtr].dests[targetedDest].position;
         }
-        
         if(collided){ //If collision, react to timeout or nearby player
             Debug.Log(walkType + " " + (npc.transform.position - player.position).sqrMagnitude + " " + colDistance);
             if(walkType==NpcType.Roam&&Time.time>=colTime+timeout){
