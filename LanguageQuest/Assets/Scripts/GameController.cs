@@ -17,6 +17,24 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        int currScene = SceneManager.GetActiveScene().buildIndex-1;
+        Debug.Log(DataStructs.objectiveDialogueGroups.Length);
+        if(DataStructs.objectiveDialogueGroups[currScene]==null){
+            Debug.Log("aesrg");
+            DataStructs.objectiveDialogueGroups[currScene] = objectiveDialogueGroups;
+        }else{
+            Debug.Log("aesrsrhdg");
+            objectiveDialogueGroups = DataStructs.objectiveDialogueGroups[currScene];
+        }
+
+        if(DataStructs.hiddenObjectiveDialogueGroups[currScene]==null){
+            Debug.Log("aesrgerthdjykj");
+            DataStructs.hiddenObjectiveDialogueGroups[currScene] = hiddenObjectiveDialogueGroups;
+        }else{
+            Debug.Log("aesrgwefgrsdtjhd");
+            hiddenObjectiveDialogueGroups = DataStructs.hiddenObjectiveDialogueGroups[currScene];
+        }
+
         objectiveSystem = GameObject.Find("First Person Player").GetComponent<ObjectiveSystem>();
         foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
             objectiveSystem.addObjectiveList(odg.objectives, group_num);
