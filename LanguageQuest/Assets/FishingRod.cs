@@ -6,7 +6,6 @@ public class FishingRod : MonoBehaviour
 {
     public float minBiteTime = 3.0f;
     public float maxBiteTime = 15.0f;
-    float delayBetweenCasts = 2.0f;
     float timeUntilBite;
     bool readyToCast = true;
     bool reeling = false;
