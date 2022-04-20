@@ -29,8 +29,11 @@ MonoBehaviour:
     PortName: Option 1
     TargetNodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
   - BaseNodeGUID: f22b72e9-1e25-4642-866f-78588c75d762
-    PortName: Option 1
+    PortName: '>:3'
     TargetNodeGUID: bd6dc56d-0775-4c2b-9ebe-aec89bb795e2
+  - BaseNodeGUID: f22b72e9-1e25-4642-866f-78588c75d762
+    PortName: '*Destroys u*'
+    TargetNodeGUID: f8d9c33d-0dbd-402c-8900-c508fb9035f8
   - BaseNodeGUID: 690eea8e-f5c1-4403-abd3-4842192eba9b
     PortName: Yes
     TargetNodeGUID: ed79f979-bf10-4c2c-b8c6-44e10a078dd6
@@ -67,6 +70,9 @@ MonoBehaviour:
   - BaseNodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
     PortName: Shut up!
     TargetNodeGUID: f22b72e9-1e25-4642-866f-78588c75d762
+  - BaseNodeGUID: f8d9c33d-0dbd-402c-8900-c508fb9035f8
+    PortName: Option 1
+    TargetNodeGUID: 62567078-26a1-4c77-a764-f48b4095f958
   DialogueNodeData:
   - NodeGUID: 218ba50d-d1b9-4bb4-a96f-893f6caad645
     DialogueText: Just curious :) Do u think that is fair? Only 3 choices!!
@@ -115,6 +121,12 @@ MonoBehaviour:
     DialogueText: Did you enjoy this conversation? Also give me a WHOLE CARIBOU right
       NOW >:(  REMOVEITEM{Caribou, 1} Wow. Nothing. Failure.
     Position: {x: 612, y: 107}
+  - NodeGUID: f8d9c33d-0dbd-402c-8900-c508fb9035f8
+    DialogueText: What do u mean DESTROY{NPC (1)}
+    Position: {x: 1450, y: 630}
+  - NodeGUID: 62567078-26a1-4c77-a764-f48b4095f958
+    DialogueText: 'Bestie!!! How could you :sob:'
+    Position: {x: 1716, y: 637}
   ExposedProperties:
   - PropertyName: 
     PropertyValue: Jim

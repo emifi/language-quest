@@ -179,7 +179,9 @@ public class DialogueUI : MonoBehaviour
 
         //ADD ANY REPLACEMENT VALUES YOU WOULD LIKE HERE.
         //MAKE THEM THE SAME AS THEY ARE IN DIALOGUE GRAPHS.
-        fullText = fullText.Replace("{replacename}",(npcCol + currNPC.name + mainCol));
+        if(currNPC != null){
+            fullText = fullText.Replace("{replacename}",(npcCol + currNPC.name + mainCol));
+        }
 
 
 
@@ -217,6 +219,9 @@ public class DialogueUI : MonoBehaviour
 
         //Inventory Event - REMOVEITEM{item0,count0,item1,count1,...itemN,countN}
         fullText = removeParse(fullText);
+
+        //Change Scene Event - DESTROY{npc}
+        fullText = destroyParse(fullText);
 
         //Change Scene Event - SCENE{newScene}
         fullText = sceneParse(fullText);
@@ -362,6 +367,10 @@ public class DialogueUI : MonoBehaviour
     }
 
     private static string objectiveParse(string fullText, NpcNavMesh currNPC){
+        if(currNPC == null){
+            return fullText;
+        }
+
         int startPos = fullText.IndexOf("ADDQUESTS{");
         int addLen = 10; //Length of ADDQUESTS{
         if(startPos==-1){
@@ -496,6 +505,10 @@ public class DialogueUI : MonoBehaviour
     }
 
     private static string goToParse(string fullText, NpcNavMesh currNPC){
+        if(currNPC == null){
+            return fullText;
+        }
+
         int startPos = fullText.IndexOf("GOTO{");
             int addLen = 5; //Length of GOTO{
 
@@ -536,6 +549,10 @@ public class DialogueUI : MonoBehaviour
     } 
 
     private static string changeTypeParse(string fullText, NpcNavMesh currNPC){
+        if(currNPC == null){
+            return fullText;
+        }
+
         int startPos = fullText.IndexOf("CHANGETYPE{");
             int addLen = 11; //Length of CHANGETYPE{
 
@@ -557,6 +574,10 @@ public class DialogueUI : MonoBehaviour
     }   
 
     private static string changeDestParse(string fullText, NpcNavMesh currNPC){
+        if(currNPC == null){
+            return fullText;
+        }
+
         int startPos = fullText.IndexOf("CHANGEDEST{");
             int addLen = 11; //Length of CHANGEDEST{
 
@@ -660,6 +681,23 @@ public class DialogueUI : MonoBehaviour
             }
             
             fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
+
+    private static string destroyParse(string fullText){
+        int startPos = fullText.IndexOf("DESTROY{");
+        int addLen = 8; //Length of DESTROY{
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
+            Destroy(GameObject.Find(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
+            fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText.Trim();
     }
