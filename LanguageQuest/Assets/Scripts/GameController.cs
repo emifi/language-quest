@@ -70,7 +70,6 @@ public class GameController : MonoBehaviour
         }
         foreach (ObjectiveDialogueGroup odg in hiddenObjectiveDialogueGroups) {
             if (odg.CheckForCompletion()) {
-                Debug.Log("Obj complete");
                 odg.PushDialoguePointer();
                 groupsToRemove.Add(odg);
             }
