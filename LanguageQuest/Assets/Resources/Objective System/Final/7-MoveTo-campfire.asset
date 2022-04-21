@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: 7-MoveTo-campfire
   m_EditorClassIdentifier: 
   type: 1
-  objectiveString: 
+  objectiveString: Go to the campfire
   panelUI: {fileID: 0}
-  destination: {fileID: 0}
+  destination: {fileID: 11400000, guid: b26366267aa33554d9c266b34d346227, type: 2}

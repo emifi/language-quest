@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 2-Collect-Cranberries-3
   m_EditorClassIdentifier: 
   type: 0
-  objectiveString: Harvest 3 cranberries
+  objectiveString: Harvest cranberries
   panelUI: {fileID: 0}
   item: {fileID: 11400000, guid: 366753e05e5e8a14299f7f8c58cae519, type: 2}
   required: 3
