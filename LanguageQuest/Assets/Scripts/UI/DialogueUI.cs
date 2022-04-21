@@ -204,7 +204,9 @@ public class DialogueUI : MonoBehaviour
         if(currNPC != null){
             fullText = fullText.Replace("{npctitle}",("<size=150%><#060606>" +currNPC.name + mainCol + "</size>")); //For START of dialogue
             fullText = fullText.Replace("{npcname}",(npcCol + currNPC.name + mainCol)); //For any reference in dialogue
-            fullText = fullText.Replace(("{"+$"{currNPC.name}"+"}"),("<size=150%><#060606>" +currNPC.name + mainCol + "</size>")); //For START of dialogue
+            if(fullText.Length>currNPC.name.Length+2&&(fullText.Trim().Substring(0,currNPC.name.Length+2))==($"{{"+$"{currNPC.name}"+$"}}")){
+                fullText = fullText.Replace(($"{{"+$"{currNPC.name}"+$"}}"),("<size=150%><#060606>" +currNPC.name + mainCol + "</size>")); //For START of dialogue
+            }
             if(fullText.Contains("<size=150%><#060606>" +currNPC.name + mainCol + "</size>")){
                 npcTitle = "<size=150%><#060606>" +currNPC.name + mainCol + "</size>";
                 displayedText += npcTitle;
