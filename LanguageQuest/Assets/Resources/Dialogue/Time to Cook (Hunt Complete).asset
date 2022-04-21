@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Time to Cook (Hunt Complete)
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: ce45abd0-9bd3-44da-8734-86f1bc447ec1
+    PortName: Option 1
+    TargetNodeGUID: 3555e5b8-1e9d-4533-9f16-c5e2326ddd28
+  - BaseNodeGUID: ce45abd0-9bd3-44da-8734-86f1bc447ec1
+    PortName: Next
+    TargetNodeGUID: ce45abd0-9bd3-44da-8734-86f1bc447ec1
+  DialogueNodeData:
+  - NodeGUID: ce45abd0-9bd3-44da-8734-86f1bc447ec1
+    DialogueText: "{Doris} Hello, young one. Neenjit d\xF4onch'y\xE0a?"
+    Position: {x: 431, y: 247}
+  - NodeGUID: 3555e5b8-1e9d-4533-9f16-c5e2326ddd28
+    DialogueText: '{Doris} It looks like Harper might need some help fishing. Could
+      you please go help her?'
+    Position: {x: 889, y: 344}
+  ExposedProperties: []
+  CommentBlockData: []

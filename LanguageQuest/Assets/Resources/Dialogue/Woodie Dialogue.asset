@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Woodie Dialogue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: cc9a1804-daaa-42c3-9cb5-9ca92f67f4f1
+    PortName: Next
+    TargetNodeGUID: d0ce6203-da30-4120-bf9b-229cf6eca987
+  - BaseNodeGUID: d0ce6203-da30-4120-bf9b-229cf6eca987
+    PortName: Option 1
+    TargetNodeGUID: 2904ff21-be70-4697-a17a-3616a696eee5
+  DialogueNodeData:
+  - NodeGUID: d0ce6203-da30-4120-bf9b-229cf6eca987
+    DialogueText: "{Woodie} Busy day today, isn\u2019t it? ADDTERM{busy, today}"
+    Position: {x: 282, y: 200}
+  - NodeGUID: 2904ff21-be70-4697-a17a-3616a696eee5
+    DialogueText: '{Woodie} Gotta stock up for the winter! No time to waste. ADDTERM{winter}'
+    Position: {x: 560, y: 418}
+  ExposedProperties: []
+  CommentBlockData: []

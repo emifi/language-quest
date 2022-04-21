@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Start Fishing Interaction
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: e65bf38a-9c6c-49a5-8396-98362bcc1ec5
+    PortName: Next
+    TargetNodeGUID: 0e4be553-6e58-40f5-a904-4faef4fff337
+  - BaseNodeGUID: 0e4be553-6e58-40f5-a904-4faef4fff337
+    PortName: Option 1
+    TargetNodeGUID: 097a2569-4870-408f-ac44-c28255f3d413
+  - BaseNodeGUID: 097a2569-4870-408f-ac44-c28255f3d413
+    PortName: Option 1
+    TargetNodeGUID: 60865902-6f36-4e1f-9a74-7688ead24c8e
+  - BaseNodeGUID: 60865902-6f36-4e1f-9a74-7688ead24c8e
+    PortName: '{choicecolor}Yes{maincolor}'
+    TargetNodeGUID: 72fcf9a1-40d5-49df-bfab-fca8a9a07d9d
+  - BaseNodeGUID: 60865902-6f36-4e1f-9a74-7688ead24c8e
+    PortName: '{choicecolor}No{maincolor}'
+    TargetNodeGUID: f08f7633-d8de-45bc-a19d-d3de869959e5
+  DialogueNodeData:
+  - NodeGUID: 0e4be553-6e58-40f5-a904-4faef4fff337
+    DialogueText: '{Harper} Oi there!'
+    Position: {x: 318, y: 200}
+  - NodeGUID: 097a2569-4870-408f-ac44-c28255f3d413
+    DialogueText: "{Harper} I\u2019m gonna be taking the kids down to the river later
+      to teach them how to fish."
+    Position: {x: 612.5, y: 200}
+  - NodeGUID: f08f7633-d8de-45bc-a19d-d3de869959e5
+    DialogueText: "{Harper} Well as soon as you\u2019re feeling up for it, come let
+      me know!"
+    Position: {x: 898.5, y: 517.5}
+  - NodeGUID: 60865902-6f36-4e1f-9a74-7688ead24c8e
+    DialogueText: "{Harper} You\u2019re free to tag along!"
+    Position: {x: 355.5, y: 484}
+  - NodeGUID: 72fcf9a1-40d5-49df-bfab-fca8a9a07d9d
+    DialogueText: "GOTO{} ADDQUEST{fetch-bait, fetch-fishingrod, } {Harper} Great!
+      Let\u2019s gather up the {itemcolor}bait{maincolor} and the {itemcolor}fishing
+      rods{maincolor} and get those fish! ADDTERMS{bait,3,fishingrod,1}"
+    Position: {x: 853, y: 387}
+  ExposedProperties: []
+  CommentBlockData: []
