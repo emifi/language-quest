@@ -47,7 +47,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f1029d71d562ff42bc9cb63015ecd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTimePublic: 0
+  skyboxAssets:
+  - {fileID: 2100000, guid: 8162517b6ec2309499f99e303b29f146, type: 2}
+  - {fileID: 2100000, guid: 55e64e617a8bfff4ba846574e2651eb9, type: 2}
+  - {fileID: 2100000, guid: 8162517b6ec2309499f99e303b29f146, type: 2}
+  - {fileID: 2100000, guid: c1c961cbd00909b45b34d97fd7df5cbf, type: 2}
+  defaultTime: 1
 --- !u!1 &5286987517001104183
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,16 +6,17 @@ using UnityEngine.SceneManagement;
 public class ChangeTimeOfDay : MonoBehaviour
 {
     public enum TimeType {NotSet,Random,Morning,Afternoon,Evening,Night};
+    public Material[] skyboxAssets;
     static public Material[] skyboxes;
     static public GameObject[] lights;
     public TimeType defaultTime;
 
     void Start(){
             skyboxes = new Material[4];
-            skyboxes[0] = Resources.Load<Material>("Sky_Anime_11_morning_a");
-            skyboxes[1] = Resources.Load<Material>("Sky_Anime_03_Day_a");
-            skyboxes[2] = Resources.Load<Material>("Sky_Anime_11_morning_a");
-            skyboxes[3] = Resources.Load<Material>("Sky_LowPoly_02_Night_a");
+            skyboxes[0] = skyboxAssets[0];
+            skyboxes[1] = skyboxAssets[1];
+            skyboxes[2] = skyboxAssets[2];
+            skyboxes[3] = skyboxAssets[3];
 
             lights = new GameObject[4];
             lights[0] = GameObject.Find("Morning");
@@ -49,7 +50,6 @@ public class ChangeTimeOfDay : MonoBehaviour
      * 2. evening
      * 3. night
     */
-
     static void ClearLights() {
         foreach (GameObject o in lights) {
             o.SetActive(false);
@@ -57,7 +57,6 @@ public class ChangeTimeOfDay : MonoBehaviour
     }
 
     static public void SetTimeMorning() {
-        Debug.Log("easkubgi");
         ClearLights();
         DataStructs.timeList[SceneManager.GetActiveScene().buildIndex-1]=TimeType.Morning;
         lights[0].SetActive(true);
