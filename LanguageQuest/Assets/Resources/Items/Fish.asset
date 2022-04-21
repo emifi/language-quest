@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 0
   canBeAddedToNotebook: 1
   imageSprite: 
-  nativeName: gwichyfishy
+  nativeName: "\u0142uk"
   englishName: Fish
   description: 
   interactionString: to pickup
