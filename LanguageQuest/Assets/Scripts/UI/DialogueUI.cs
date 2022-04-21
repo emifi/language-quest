@@ -49,6 +49,7 @@ public class DialogueUI : MonoBehaviour
     private static bool isEnabled;
     private static string sceneSwitch = null;
     private static int timeChange = -1; 
+    private static float score = 0;
 
     private static ObjectiveSystem objectiveSystem;
 
@@ -244,6 +245,12 @@ public class DialogueUI : MonoBehaviour
 
         //Inventory Event - REMOVEITEM{item0,count0,item1,count1,...itemN,countN}
         fullText = removeParse(fullText);
+
+        //Inventory Event - REMOVEITEM{item0,count0,item1,count1,...itemN,countN}
+        fullText = addScoreParse(fullText);
+
+        //Inventory Event - REMOVEITEM{item0,count0,item1,count1,...itemN,countN}
+        fullText = checkScoreParse(fullText,currNPC);
 
         //Change Time Event - Time{Morning/Afternoon/Evening/Night}
         fullText = timeParse(fullText);
@@ -759,6 +766,48 @@ public class DialogueUI : MonoBehaviour
             }else if(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))=="Night"){
                 timeChange = 3;
             }
+            fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
+
+    private static string addScoreParse(string fullText){
+        int startPos = fullText.IndexOf("ADDPOINT{");
+        int addLen = 9; //Length of ADDPOINT{
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
+            score+=float.Parse(fullText.Substring(startPos+addLen,endPos-(startPos+addLen)));
+            fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
+
+    private static string checkScoreParse(string fullText, NpcNavMesh currNpc){
+        int startPos = fullText.IndexOf("CHECKSCORE{");
+        int addLen = 11; //Length of CHECKSCORE{
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
+            string[] parts = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            float playerPercent = score/float.Parse(parts[3].Trim());
+            float passingPercent = float.Parse(parts[2].Trim())/100.0f;
+            if(playerPercent>passingPercent){
+                currNPC.setDialoguePointer(int.Parse(parts[0].Trim()));
+            }else{
+                currNPC.setDialoguePointer(int.Parse(parts[1].Trim()));
+            }
+
             fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText.Trim();
