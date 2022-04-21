@@ -107,11 +107,6 @@ public class DialogueUI : MonoBehaviour
             dialogueUI.enabled = true;
         }
 
-        if(timeChange>=0){
-            StartCoroutine(ChangeTime(2.0f,timeChange));
-            timeChange = -1;
-        }
-
         if(narrativeData==null||fullText==null){ //If null, the end of map has been reached
             lineComplete = false;
             speechComplete = true;
@@ -126,8 +121,13 @@ public class DialogueUI : MonoBehaviour
                 StartCoroutine(Wait(3.0f,sceneSwitch));
                 sceneSwitch=null;
             }
+
+            if(timeChange>=0){
+                StartCoroutine(ChangeTime(2.0f,timeChange));
+                timeChange = -1;
+                }   
             return;
-        }
+            }
         if(Time.time-textDelay>.05f&&!speechComplete&&textPos<fullText.Length){ //Write text one char at a time based on textDelay
             textDelay = Time.time;
             if(fullText[textPos]=='<'){ //Exclude Html TAGs from char-based additions
@@ -275,7 +275,6 @@ public class DialogueUI : MonoBehaviour
             dialogue.alignment = TextAlignmentOptions.Top;
             decisionSpace.SetActive(true);
             int copyNumChoices = numChoices;
-            Debug.Log(numChoices);
 
             decisionGrid = new TMP_Text[2,2]; //Feel free to resize decision grid based on your maximum # of responses. 
                                       //Methods will react to this without issue
@@ -416,7 +415,6 @@ public class DialogueUI : MonoBehaviour
             string[] questList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
             List<Objective> newObjs = new List<Objective>();
             for(int i = 0; i<questList.Count()-1;i++){ //Add all quests (exclude last position)
-                Debug.Log(questList[i]);
                 newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
             }
             ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,currNPC,int.Parse(questList[questList.Count()-1]));
@@ -445,7 +443,6 @@ public class DialogueUI : MonoBehaviour
             List<Objective> newObjs = new List<Objective>();
             List<DialoguePointerMap> npcMap = new List<DialoguePointerMap>();
             for(int i = 0; i<questList.Count();i++){
-                Debug.Log(questList[i]);
                 if(questList[i].Contains(':')){ //Add NPC and dialogue ptr
                     string[] npcInfo = questList[i].Trim().Split(':');
                     npcMap.Add(new DialoguePointerMap(npcInfo[0],int.Parse(npcInfo[1])));
@@ -593,10 +590,7 @@ public class DialogueUI : MonoBehaviour
             if(endPos>-1){ //If all requirements have passed, set next dialogue
 
                 currNPC.setType((NpcNavMesh.NpcType)System.Enum.Parse( typeof(NpcNavMesh.NpcType),fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
-
-                Debug.Log("B4 " + fullText);
                 fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
-               Debug.Log("AvDr " + fullText); 
             }
             return fullText.Trim();
     }   
