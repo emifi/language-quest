@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -65,147 +66,304 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!canMove) return;
+        //call update on every scene that isn't the fishing minigame
+        Scene currentScene = SceneManager.GetActiveScene();
+        if(currentScene.buildIndex != 3) {
 
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, terrainMask);
-        hitHead = Physics.CheckSphere(headCheck.position, headDistance, terrainMask);
+            if (!canMove) return;
 
-        if (showGroundDetection) {
-            groundDectector.SetActive(true);
-            groundDectector.transform.position = groundCheck.position;
-            groundDectector.transform.localScale = new Vector3(groundDistance*2, groundDistance*2, groundDistance*2);
-            MeshRenderer renderer = groundDectector.GetComponent<MeshRenderer>();
-            SphereCollider collider = groundDectector.GetComponent<SphereCollider>();
-            collider.isTrigger = true;
-            if (isGrounded) {
-                renderer.material.color = Color.green;
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, terrainMask);
+            hitHead = Physics.CheckSphere(headCheck.position, headDistance, terrainMask);
+
+            if (showGroundDetection) {
+                groundDectector.SetActive(true);
+                groundDectector.transform.position = groundCheck.position;
+                groundDectector.transform.localScale = new Vector3(groundDistance*2, groundDistance*2, groundDistance*2);
+                MeshRenderer renderer = groundDectector.GetComponent<MeshRenderer>();
+                SphereCollider collider = groundDectector.GetComponent<SphereCollider>();
+                collider.isTrigger = true;
+                if (isGrounded) {
+                    renderer.material.color = Color.green;
+                } else {
+                    renderer.material.color = Color.red;
+                }
+            } 
+
+            // If grounded and has a negative velocity, set velocity to some small negative amount to force character down. Else apply gravity
+            if (isGrounded && velocity.y < 0.0f) {
+                velocity.y = -2.0f;
             } else {
-                renderer.material.color = Color.red;
+                velocity.y -= gravity * Time.deltaTime;
             }
-        } 
 
-        // If grounded and has a negative velocity, set velocity to some small negative amount to force character down. Else apply gravity
-        if (isGrounded && velocity.y < 0.0f) {
-            velocity.y = -2.0f;
-        } else {
-            velocity.y -= gravity * Time.deltaTime;
-        }
-
-        if (hitHead && velocity.y > 0) {
-            Debug.Log("hit head");
-            velocity.y = -1.0f;
-        }
-
-        if (Input.GetButtonDown("Jump") && isGrounded && canInput) {
-            Jump();
-        }
-
-        float x = 0f;
-        float z = 0f;
-
-        NpcNavMesh.NpcType npcType = NpcNavMesh.NpcType.Stationary;
-        bool chatBlock = true;
-
-        if(dialogueUI.enabled){
-            npcType = DialogueUI.getNpcType();
-            chatBlock = !(dialogueUI.enabled&&npcType!=NpcNavMesh.NpcType.Proximity);
-        }
-
-        if (Input.GetKey(KeyCode.A)&&chatBlock && canInput) {
-            x += -1.0f;
-        }
-
-        if(Input.GetKeyDown(KeyCode.A)&&!chatBlock && canInput){
-            DialogueUI.scrollX(-1);
-        }
-
-        if (Input.GetKey(KeyCode.D)&&chatBlock && canInput) {
-            x += 1.0f;
-        }
-
-        if(Input.GetKeyDown(KeyCode.D)&&!chatBlock && canInput){
-            DialogueUI.scrollX(1);
-        }
-
-        if (Input.GetKey(KeyCode.S)&&chatBlock && canInput) {
-            z += -1.0f;
-        }
-
-        if(Input.GetKeyDown(KeyCode.S)&&!chatBlock && canInput){
-            DialogueUI.scrollY(1);
-        }
-
-        if (Input.GetKey(KeyCode.W)&&chatBlock && canInput) {
-            z += 1.0f;
-        }
-
-        if(Input.GetKeyDown(KeyCode.W)&&!chatBlock && canInput){
-            DialogueUI.scrollY(-1);
-        }
-
-        if (Input.GetKeyDown("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity) && canInput) {
-            if(forcedDown){
-                forcedDown = false;
-            }else{
-                playerModel.SetActive(false);
-                playerController.height=1;
-                groundCheck.position+=positionChange;
-                cam.position-=positionChange;
-                isCrouch = true;
-                playerSpeed = 3.0f;
+            if (hitHead && velocity.y > 0) {
+                Debug.Log("hit head");
+                velocity.y = -1.0f;
             }
-        }
 
-        if (!forcedDown&&Input.GetKeyUp("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity)) {
-            playerController.height=2;
-            if(Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
-                playerController.height=1;
-                forcedDown = true;
-            }else{
-                playerModel.SetActive(true);
-                cam.position+=positionChange;
-                groundCheck.position-=positionChange;
-                forcedDown = false;
-                isCrouch = false;
-                playerSpeed = 6.0f;
+            if (Input.GetButtonDown("Jump") && isGrounded && canInput) {
+                Jump();
             }
-            
-        }
 
-        if(forcedDown){
-            if(!Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
-                playerModel.SetActive(true);
+            float x = 0f;
+            float z = 0f;
+
+            NpcNavMesh.NpcType npcType = NpcNavMesh.NpcType.Stationary;
+            bool chatBlock = true;
+
+            if(dialogueUI.enabled){
+                npcType = DialogueUI.getNpcType();
+                chatBlock = !(dialogueUI.enabled&&npcType!=NpcNavMesh.NpcType.Proximity);
+            }
+
+            if (Input.GetKey(KeyCode.A)&&chatBlock && canInput) {
+                x += -1.0f;
+            }
+
+            if(Input.GetKeyDown(KeyCode.A)&&!chatBlock && canInput){
+                DialogueUI.scrollX(-1);
+            }
+
+            if (Input.GetKey(KeyCode.D)&&chatBlock && canInput) {
+                x += 1.0f;
+            }
+
+            if(Input.GetKeyDown(KeyCode.D)&&!chatBlock && canInput){
+                DialogueUI.scrollX(1);
+            }
+
+            if (Input.GetKey(KeyCode.S)&&chatBlock && canInput) {
+                z += -1.0f;
+            }
+
+            if(Input.GetKeyDown(KeyCode.S)&&!chatBlock && canInput){
+                DialogueUI.scrollY(1);
+            }
+
+            if (Input.GetKey(KeyCode.W)&&chatBlock && canInput) {
+                z += 1.0f;
+            }
+
+            if(Input.GetKeyDown(KeyCode.W)&&!chatBlock && canInput){
+                DialogueUI.scrollY(-1);
+            }
+
+            if (Input.GetKeyDown("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity) && canInput) {
+                if(forcedDown){
+                    forcedDown = false;
+                }else{
+                    playerModel.SetActive(false);
+                    playerController.height=1;
+                    groundCheck.position+=positionChange;
+                    cam.position-=positionChange;
+                    isCrouch = true;
+                    playerSpeed = 3.0f;
+                }
+            }
+
+            if (!forcedDown&&Input.GetKeyUp("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity)) {
                 playerController.height=2;
-                cam.position+=positionChange;
-                groundCheck.position-=positionChange;
-                forcedDown = false;
-                isCrouch = false;
-                playerSpeed = 6.0f;
+                if(Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
+                    playerController.height=1;
+                    forcedDown = true;
+                }else{
+                    playerModel.SetActive(true);
+                    cam.position+=positionChange;
+                    groundCheck.position-=positionChange;
+                    forcedDown = false;
+                    isCrouch = false;
+                    playerSpeed = 6.0f;
+                }
                 
             }
-        }
-        Vector3 moveVector = transform.right * x + transform.forward * z;
-        playerController.Move(moveVector * playerSpeed * Time.deltaTime);
-        playerController.Move(velocity * Time.deltaTime);
 
-        if(player.transform.position.y<-20){
-            player.transform.position = spawnpoint.position;
-        }
+            if(forcedDown){
+                if(!Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
+                    playerModel.SetActive(true);
+                    playerController.height=2;
+                    cam.position+=positionChange;
+                    groundCheck.position-=positionChange;
+                    forcedDown = false;
+                    isCrouch = false;
+                    playerSpeed = 6.0f;
+                    
+                }
+            }
+            Vector3 moveVector = transform.right * x + transform.forward * z;
+            playerController.Move(moveVector * playerSpeed * Time.deltaTime);
+            playerController.Move(velocity * Time.deltaTime);
 
-        if (Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f) {
-            if (isMoving) return;
-            else {
-                isMoving = true;
-                StopAllCoroutines();
-                StartCoroutine(HeadBob(headBobFrequency, headBobSmoothness));
+            if(player.transform.position.y<-20){
+                player.transform.position = spawnpoint.position;
             }
-        } else {
-            if (isMoving) {
-                isMoving = false;
-                StopAllCoroutines();
-                StartCoroutine(Idle(0.1f));
+
+            if (Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f) {
+                if (isMoving) return;
+                else {
+                    isMoving = true;
+                    StopAllCoroutines();
+                    StartCoroutine(HeadBob(headBobFrequency, headBobSmoothness));
+                }
+            } else {
+                if (isMoving) {
+                    isMoving = false;
+                    StopAllCoroutines();
+                    StartCoroutine(Idle(0.1f));
+                }
+                else return;
             }
-            else return;
+        }
+    }
+
+    // FixedUpdate is called multiple times per frame
+    void FixedUpdate()
+    {
+        //call fixedupdate for fishing minigame scene only
+        Scene currentScene = SceneManager.GetActiveScene();
+        if(currentScene.buildIndex == 3) {
+
+            if (!canMove) return;
+
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, terrainMask);
+            hitHead = Physics.CheckSphere(headCheck.position, headDistance, terrainMask);
+
+            if (showGroundDetection) {
+                groundDectector.SetActive(true);
+                groundDectector.transform.position = groundCheck.position;
+                groundDectector.transform.localScale = new Vector3(groundDistance*2, groundDistance*2, groundDistance*2);
+                MeshRenderer renderer = groundDectector.GetComponent<MeshRenderer>();
+                SphereCollider collider = groundDectector.GetComponent<SphereCollider>();
+                collider.isTrigger = true;
+                if (isGrounded) {
+                    renderer.material.color = Color.green;
+                } else {
+                    renderer.material.color = Color.red;
+                }
+            } 
+
+            // If grounded and has a negative velocity, set velocity to some small negative amount to force character down. Else apply gravity
+            if (isGrounded && velocity.y < 0.0f) {
+                velocity.y = -2.0f;
+            } else {
+                velocity.y -= gravity * Time.deltaTime;
+            }
+
+            if (hitHead && velocity.y > 0) {
+                Debug.Log("hit head");
+                velocity.y = -1.0f;
+            }
+
+            if (Input.GetButtonDown("Jump") && isGrounded && canInput) {
+                Jump();
+            }
+
+            float x = 0f;
+            float z = 0f;
+
+            NpcNavMesh.NpcType npcType = NpcNavMesh.NpcType.Stationary;
+            bool chatBlock = true;
+
+            if(dialogueUI.enabled){
+                npcType = DialogueUI.getNpcType();
+                chatBlock = !(dialogueUI.enabled&&npcType!=NpcNavMesh.NpcType.Proximity);
+            }
+
+            if (Input.GetKey(KeyCode.A)&&chatBlock && canInput) {
+                x += -1.0f;
+            }
+
+            if(Input.GetKeyDown(KeyCode.A)&&!chatBlock && canInput){
+                DialogueUI.scrollX(-1);
+            }
+
+            if (Input.GetKey(KeyCode.D)&&chatBlock && canInput) {
+                x += 1.0f;
+            }
+
+            if(Input.GetKeyDown(KeyCode.D)&&!chatBlock && canInput){
+                DialogueUI.scrollX(1);
+            }
+
+            if (Input.GetKey(KeyCode.S)&&chatBlock && canInput) {
+                z += -1.0f;
+            }
+
+            if(Input.GetKeyDown(KeyCode.S)&&!chatBlock && canInput){
+                DialogueUI.scrollY(1);
+            }
+
+            if (Input.GetKey(KeyCode.W)&&chatBlock && canInput) {
+                z += 1.0f;
+            }
+
+            if(Input.GetKeyDown(KeyCode.W)&&!chatBlock && canInput){
+                DialogueUI.scrollY(-1);
+            }
+
+            if (Input.GetKeyDown("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity) && canInput) {
+                if(forcedDown){
+                    forcedDown = false;
+                }else{
+                    playerModel.SetActive(false);
+                    playerController.height=1;
+                    groundCheck.position+=positionChange;
+                    cam.position-=positionChange;
+                    isCrouch = true;
+                    playerSpeed = 3.0f;
+                }
+            }
+
+            if (!forcedDown&&Input.GetKeyUp("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity)) {
+                playerController.height=2;
+                if(Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
+                    playerController.height=1;
+                    forcedDown = true;
+                }else{
+                    playerModel.SetActive(true);
+                    cam.position+=positionChange;
+                    groundCheck.position-=positionChange;
+                    forcedDown = false;
+                    isCrouch = false;
+                    playerSpeed = 6.0f;
+                }
+                
+            }
+
+            if(forcedDown){
+                if(!Physics.CheckSphere(headCheck.position, headDistance, terrainMask)){
+                    playerModel.SetActive(true);
+                    playerController.height=2;
+                    cam.position+=positionChange;
+                    groundCheck.position-=positionChange;
+                    forcedDown = false;
+                    isCrouch = false;
+                    playerSpeed = 6.0f;
+                    
+                }
+            }
+            Vector3 moveVector = transform.right * x + transform.forward * z;
+            playerController.Move(moveVector * playerSpeed * Time.deltaTime);
+            playerController.Move(velocity * Time.deltaTime);
+
+            if(player.transform.position.y<-20){
+                player.transform.position = spawnpoint.position;
+            }
+
+            if (Mathf.Abs(x) > 0.1f || Mathf.Abs(z) > 0.1f) {
+                if (isMoving) return;
+                else {
+                    isMoving = true;
+                    StopAllCoroutines();
+                    StartCoroutine(HeadBob(headBobFrequency, headBobSmoothness));
+                }
+            } else {
+                if (isMoving) {
+                    isMoving = false;
+                    StopAllCoroutines();
+                    StartCoroutine(Idle(0.1f));
+                }
+                else return;
+            }
         }
     }
 
