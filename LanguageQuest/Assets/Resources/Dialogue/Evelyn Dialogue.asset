@@ -31,11 +31,11 @@ MonoBehaviour:
     Position: {x: 292, y: 200}
   - NodeGUID: 32613571-133f-4ba5-85ef-ae0a94845238
     DialogueText: '{Evelyn} All the kids do these days is sit around watching the
-      television. ADDTERM{kid}'
+      television. ADDTERM{child}'
     Position: {x: 730, y: 200}
   - NodeGUID: df12ab3b-efde-4a76-afd2-42eb73e27273
     DialogueText: '{Evelyn} When I was younger, I would play games outside with my
-      friends. ADDTERM{outside, friends}'
+      friends. ADDTERM{outside, friend}'
     Position: {x: 550.5, y: 446.5}
   - NodeGUID: 7a35810a-d156-4d51-a980-c2b3a4b52614
     DialogueText: "{Evelyn} They\u2019re staying inside too much. ADDTERM{inside}"

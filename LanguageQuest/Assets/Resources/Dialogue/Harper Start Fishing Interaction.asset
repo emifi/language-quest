@@ -23,10 +23,10 @@ MonoBehaviour:
     PortName: Option 1
     TargetNodeGUID: 60865902-6f36-4e1f-9a74-7688ead24c8e
   - BaseNodeGUID: 60865902-6f36-4e1f-9a74-7688ead24c8e
-    PortName: '{choicecolor}Yes{maincolor}'
+    PortName: "aah\u0105'"
     TargetNodeGUID: 72fcf9a1-40d5-49df-bfab-fca8a9a07d9d
   - BaseNodeGUID: 60865902-6f36-4e1f-9a74-7688ead24c8e
-    PortName: '{choicecolor}No{maincolor}'
+    PortName: akwaa
     TargetNodeGUID: f08f7633-d8de-45bc-a19d-d3de869959e5
   DialogueNodeData:
   - NodeGUID: 0e4be553-6e58-40f5-a904-4faef4fff337
@@ -44,8 +44,8 @@ MonoBehaviour:
     DialogueText: "{Harper} You\u2019re free to tag along!"
     Position: {x: 355.5, y: 484}
   - NodeGUID: 72fcf9a1-40d5-49df-bfab-fca8a9a07d9d
-    DialogueText: "GOTO{} ADDQUEST{fetch-bait, fetch-fishingrod, } {Harper} Great!
-      Let\u2019s gather up the {itemcolor}bait{maincolor} and the {itemcolor}fishing
+    DialogueText: "ADDQUEST{5-Collect-Bait-3,5-Collect-Fishing Rod-1,2} {Harper}
+      Great! Let\u2019s gather up the {itemcolor}bait{maincolor} and the {itemcolor}fishing
       rods{maincolor} and get those fish! ADDTERMS{bait,3,fishingrod,1}"
     Position: {x: 853, y: 387}
   ExposedProperties: []
