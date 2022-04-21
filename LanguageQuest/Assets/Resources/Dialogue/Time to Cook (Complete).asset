@@ -23,33 +23,33 @@ MonoBehaviour:
     PortName: Option 1
     TargetNodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
   - BaseNodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
-    PortName: '{choicecolor}No{maincolor}'
-    TargetNodeGUID: 0596c75c-62b6-4122-96f6-b687e8387654
-  - BaseNodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
     PortName: '{choicecolor}Yes{maincolor}'
     TargetNodeGUID: 75d7d008-a3ec-4b4c-82f2-b99d123fcf6d
   - BaseNodeGUID: 75d7d008-a3ec-4b4c-82f2-b99d123fcf6d
     PortName: Option 1
     TargetNodeGUID: fbbc33bf-ab78-4511-a8ab-0f5eb5e69491
+  - BaseNodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
+    PortName: '{choicecolor}No{maincolor}'
+    TargetNodeGUID: 0596c75c-62b6-4122-96f6-b687e8387654
   DialogueNodeData:
+  - NodeGUID: b9360b50-f593-4bdb-ac32-8616b31f405d
+    DialogueText: "{Doris} Welcome back, young one. Neenjit d\xF4onch'y\xE0a?"
+    Position: {x: 206, y: 291}
   - NodeGUID: 2aaaf1ae-47d4-45f0-a3f1-f730bffc4f0c
     DialogueText: "{Doris} You\u2019ve helped both Hanta and Harper? Splendid! We
       can now move onto making dinner!"
-    Position: {x: 291, y: 573}
-  - NodeGUID: b9360b50-f593-4bdb-ac32-8616b31f405d
-    DialogueText: "{Doris} Welcome back, young one. Neenjit d\xF4onch'y\xE0a?"
-    Position: {x: 291, y: 317}
-  - NodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
-    DialogueText: '{Doris} Are you ready to cook, young one?'
-    Position: {x: 612, y: 738.5}
-  - NodeGUID: 0596c75c-62b6-4122-96f6-b687e8387654
-    DialogueText: "{Doris} I\u2019ll be here when you\u2019re ready."
-    Position: {x: 1029.5, y: 956}
+    Position: {x: 672, y: 486}
   - NodeGUID: 75d7d008-a3ec-4b4c-82f2-b99d123fcf6d
     DialogueText: '{Doris} Fantastic.'
-    Position: {x: 1162, y: 690}
+    Position: {x: 1847, y: 535}
   - NodeGUID: fbbc33bf-ab78-4511-a8ab-0f5eb5e69491
     DialogueText: SCENE{}
-    Position: {x: 1469.5, y: 690}
+    Position: {x: 2118, y: 535}
+  - NodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
+    DialogueText: '{Doris} Are you ready to cook, young one?'
+    Position: {x: 1422, y: 389}
+  - NodeGUID: 0596c75c-62b6-4122-96f6-b687e8387654
+    DialogueText: "{Doris} I\u2019ll be here when you\u2019re ready."
+    Position: {x: 1847, y: 389}
   ExposedProperties: []
   CommentBlockData: []
