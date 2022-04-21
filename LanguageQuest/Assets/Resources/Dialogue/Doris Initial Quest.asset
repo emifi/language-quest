@@ -26,29 +26,29 @@ MonoBehaviour:
     PortName: Option 1
     TargetNodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
   - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
-    PortName: '{choicecolor}No{maincolor}'
+    PortName: No
     TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
   - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
-    PortName: '{choicecolor}Yes{maincolor}'
+    PortName: Yes
     TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
   - BaseNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
-    PortName: '{choicecolor}Yes{maincolor}'
+    PortName: Yes
     TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
   - BaseNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
-    PortName: '{choicecolor}No{maincolor}'
+    PortName: No
     TargetNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
   - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
-    PortName: '{choicecolor}Yes{maincolor}'
+    PortName: Yes
     TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
   - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
-    PortName: '{choicecolor}No{maincolor}'
+    PortName: No
     TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
-  - BaseNodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
-    PortName: Option 1
-    TargetNodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
   - BaseNodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
     PortName: Option 1
     TargetNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+  - BaseNodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
+    PortName: Option 1
+    TargetNodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
   DialogueNodeData:
   - NodeGUID: d2a69db5-018c-4625-92d6-914bdec4b59f
     DialogueText: '{Doris} Good morning. How are you today?'
