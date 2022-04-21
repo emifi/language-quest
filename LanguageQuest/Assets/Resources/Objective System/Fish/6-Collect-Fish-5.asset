@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 6-Collect-Fish-5
   m_EditorClassIdentifier: 
   type: 0
-  objectiveString: Reel in 5 wiggly-bois
+  objectiveString: Catch fish
   panelUI: {fileID: 0}
   item: {fileID: 11400000, guid: f8fcfbab09cf6d7419614aea3cf4c4bb, type: 2}
   required: 5
