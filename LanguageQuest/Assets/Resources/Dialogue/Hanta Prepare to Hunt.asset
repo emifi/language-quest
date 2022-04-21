@@ -22,9 +22,6 @@ MonoBehaviour:
   - BaseNodeGUID: 677ae90e-e7ec-4cc4-8861-42355c0f1a42
     PortName: Option 1
     TargetNodeGUID: d1a525af-c92f-4811-8dd7-f5db45e35a3e
-  - BaseNodeGUID: d1a525af-c92f-4811-8dd7-f5db45e35a3e
-    PortName: Yes
-    TargetNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
   - BaseNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
     PortName: Option 1
     TargetNodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
@@ -35,7 +32,10 @@ MonoBehaviour:
     PortName: Option 1
     TargetNodeGUID: 33d5b888-fbdb-4f06-ab42-e2871a308a51
   - BaseNodeGUID: d1a525af-c92f-4811-8dd7-f5db45e35a3e
-    PortName: No
+    PortName: "aah\u0105'"
+    TargetNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
+  - BaseNodeGUID: d1a525af-c92f-4811-8dd7-f5db45e35a3e
+    PortName: akwaa
     TargetNodeGUID: 63d635a7-d42f-499c-a108-0599fda127f5
   - BaseNodeGUID: 63d635a7-d42f-499c-a108-0599fda127f5
     PortName: Option 1
@@ -43,15 +43,6 @@ MonoBehaviour:
   - BaseNodeGUID: d22a0e31-83b8-43ed-b04f-06323bda4c30
     PortName: Option 1
     TargetNodeGUID: a8d0719e-5024-4107-b296-6915b576a191
-  - BaseNodeGUID: a8d0719e-5024-4107-b296-6915b576a191
-    PortName: Option 1
-    TargetNodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
-  - BaseNodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
-    PortName: "I\u2019ll help you"
-    TargetNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
-  - BaseNodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
-    PortName: I do not want to go
-    TargetNodeGUID: 424e4dd0-f9b2-4ecb-8c10-596400f8c009
   - BaseNodeGUID: 424e4dd0-f9b2-4ecb-8c10-596400f8c009
     PortName: Option 1
     TargetNodeGUID: 159287b1-15f6-460f-9813-c5a367368e30
@@ -61,6 +52,15 @@ MonoBehaviour:
   - BaseNodeGUID: 159287b1-15f6-460f-9813-c5a367368e30
     PortName: I do not want to hunt
     TargetNodeGUID: 8894c704-8e97-4324-93d6-83775a9b7f24
+  - BaseNodeGUID: a8d0719e-5024-4107-b296-6915b576a191
+    PortName: Option 1
+    TargetNodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
+  - BaseNodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
+    PortName: "I\u2019ll help you"
+    TargetNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
+  - BaseNodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
+    PortName: I do not want to go
+    TargetNodeGUID: 424e4dd0-f9b2-4ecb-8c10-596400f8c009
   - BaseNodeGUID: 8894c704-8e97-4324-93d6-83775a9b7f24
     PortName: Option 1
     TargetNodeGUID: 9fec02d8-1b4a-4b92-b548-4c9ccb4e0e77
@@ -87,9 +87,6 @@ MonoBehaviour:
   - NodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
     DialogueText: '{Hanta} Yay!! Thank you, mate!'
     Position: {x: 1968, y: 200}
-  - NodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
-    DialogueText: '{Hanta} We just need a few supplies before we walk down.'
-    Position: {x: 2274, y: 200}
   - NodeGUID: 73a24ae7-b188-49a8-9d2c-27e47d7f38c2
     DialogueText: '{Hanta} Three blueberries and three cranberries for bait and a
       shotgun.'
@@ -137,5 +134,9 @@ MonoBehaviour:
   - NodeGUID: e2a5c8a6-6f10-44df-a8c9-cb2de779be5a
     DialogueText: "{Hanta} ...I\u2019ll be here if you change your mind!! haha\u2026"
     Position: {x: 1988.5, y: 1521}
+  - NodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
+    DialogueText: ADDQUEST{2-Collect-Blueberries-3, 2-Collect-Cranberries-3,2-Collect-Shotgun-1,2}
+      {Hanta} We just need a few supplies before we walk down.
+    Position: {x: 2019, y: 371.5}
   ExposedProperties: []
   CommentBlockData: []

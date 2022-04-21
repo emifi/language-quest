@@ -22,33 +22,33 @@ MonoBehaviour:
   - BaseNodeGUID: e2ae6e0c-9841-4d69-8467-a75fc0737635
     PortName: Option 1
     TargetNodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
-  - BaseNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
-    PortName: Option 1
-    TargetNodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
-  - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
-    PortName: No
-    TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
-  - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
-    PortName: Yes
+  - BaseNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
+    PortName: "aah\u0105'"
     TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
   - BaseNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
-    PortName: Yes
-    TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
-  - BaseNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
-    PortName: No
+    PortName: akwaa
     TargetNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
-  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
-    PortName: Yes
-    TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
-  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
-    PortName: No
-    TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
   - BaseNodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
     PortName: Option 1
     TargetNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
   - BaseNodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
     PortName: Option 1
     TargetNodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
+  - BaseNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+    PortName: Option 1
+    TargetNodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
+  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+    PortName: "aah\u0105' (yes)"
+    TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+    PortName: akwaa (no)
+    TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
+  - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
+    PortName: "aah\u0105'"
+    TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
+  - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
+    PortName: akwaa
+    TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
   DialogueNodeData:
   - NodeGUID: d2a69db5-018c-4625-92d6-914bdec4b59f
     DialogueText: '{Doris} Good morning. How are you today?'
@@ -60,29 +60,30 @@ MonoBehaviour:
     DialogueText: "{Doris}  Come back to me when you\u2019ve helped both of them.
       Then we can start cooking!"
     Position: {x: 1410, y: 551}
-  - NodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
-    DialogueText: '{Doris} Splendid! In fact, we still need to gather ingredients
-      for dinner tonight as well. {npccolor}Hanta{maincolor} and {npccolor}Harper{maincolor}
-      might need assistance with hunting and fishing, so feel free to approach them
-      when you have time.'
-    Position: {x: 581, y: 434}
-  - NodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
-    DialogueText: "{Doris}  But we\u2019re running low on food\u2026Please? "
-    Position: {x: 658, y: 1125}
   - NodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
     DialogueText: "{Doris}  But we\u2019re running low on food\u2026Please?"
     Position: {x: 245, y: 752}
-  - NodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
-    DialogueText: "{Doris} We must stock up for the upcoming winter, and we do need
-      the extra hands\u2026"
-    Position: {x: 819, y: 291}
   - NodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
     DialogueText: '{Doris} Well, now that you are here, would you mind helping around
-      the village? '
+      the village? ADDTERM{village}'
     Position: {x: 830, y: 176}
   - NodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
     DialogueText: "{Doris} In fact, I don\u2019t think I\u2019ve ever seen you up
       this early!"
     Position: {x: 245, y: 218}
+  - NodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+    DialogueText: "{Doris} We must stock up for the upcoming winter, and we do need
+      the extra hands\u2026 ADDTERM{winter}"
+    Position: {x: 830, y: 298}
+  - NodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
+    DialogueText: "{Doris}  But we\u2019re running low on food\u2026Please? "
+    Position: {x: 632.5, y: 947.5}
+  - NodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+    DialogueText: ADDQUEST++{1-TalkTo-Hanta,4-MoveTo-river,4-TalkTo-Harper,Hanta:1,Harper:1,Doris:1}
+      {Doris} Splendid! In fact, we still need to gather ingredients for dinner tonight
+      as well. {npccolor}Hanta{maincolor} and {npccolor}Harper{maincolor} might need
+      assistance with hunting and fishing, so feel free to approach them when you
+      have time. ADDTERM{tonight, hunting, fish}
+    Position: {x: 553, y: 454}
   ExposedProperties: []
   CommentBlockData: []

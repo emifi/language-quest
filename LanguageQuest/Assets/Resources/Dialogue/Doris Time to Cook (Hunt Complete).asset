@@ -21,7 +21,7 @@ MonoBehaviour:
     TargetNodeGUID: bf3df808-b358-44dc-bd1a-759a6f0d335f
   DialogueNodeData:
   - NodeGUID: 4307a831-0f10-4002-8e3e-363bd9d37d01
-    DialogueText: "{Doris} Hello young one. Neenjit d\xF4onch'y\xE0a?"
+    DialogueText: "GOTO{2} {Doris} Hello young one. Neenjit d\xF4onch'y\xE0a?"
     Position: {x: 269, y: 180}
   - NodeGUID: bf3df808-b358-44dc-bd1a-759a6f0d335f
     DialogueText: '{Doris} It looks like Harper might need some help fishing. Could

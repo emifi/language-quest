@@ -16,9 +16,15 @@ MonoBehaviour:
   - BaseNodeGUID: b02e3e40-3b52-4687-b216-db9b9658bda3
     PortName: Next
     TargetNodeGUID: 06a99468-1fc2-4042-b2e7-15b6738f4bd7
+  - BaseNodeGUID: 06a99468-1fc2-4042-b2e7-15b6738f4bd7
+    PortName: Option 1
+    TargetNodeGUID: afd7c0bb-e229-4393-a67b-159ef1676876
   DialogueNodeData:
   - NodeGUID: 06a99468-1fc2-4042-b2e7-15b6738f4bd7
-    DialogueText: Need five fish for dinner tonight! Think we can get some more?
+    DialogueText: '{Harper} Got the supplies? Great! We''re all reeling to go then!'
     Position: {x: 325, y: 180}
+  - NodeGUID: afd7c0bb-e229-4393-a67b-159ef1676876
+    DialogueText: ADDQUEST{6-Collect-Fish-5,3}{Harper} Let's aim for 5 fish, alright?
+    Position: {x: 521, y: 371}
   ExposedProperties: []
   CommentBlockData: []

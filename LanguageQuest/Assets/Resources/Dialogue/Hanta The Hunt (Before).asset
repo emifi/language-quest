@@ -16,9 +16,17 @@ MonoBehaviour:
   - BaseNodeGUID: 9457007d-d66a-42cf-8130-3d95f6ea1ef4
     PortName: Next
     TargetNodeGUID: 3121e623-229a-4d19-8d44-a01ed7b6a24e
+  - BaseNodeGUID: 3121e623-229a-4d19-8d44-a01ed7b6a24e
+    PortName: Option 1
+    TargetNodeGUID: ccef1684-2642-4f7e-a9b0-ec56f0b1841c
   DialogueNodeData:
   - NodeGUID: 3121e623-229a-4d19-8d44-a01ed7b6a24e
-    DialogueText: '{Hanta} I think I see some more caribou out there.'
+    DialogueText: GOTO{2} {Hanta} Thanks for gatherin' the supplies, mate. Now it's
+      time for the hunt!
     Position: {x: 220.5, y: 180}
+  - NodeGUID: ccef1684-2642-4f7e-a9b0-ec56f0b1841c
+    DialogueText: ADDQUEST{3-Collect-Raw Meat-5,3} {Hanta} Mind shooting up 5 caribou?
+      Gotta be well stocked for dinner.
+    Position: {x: 148.5, y: 350.5}
   ExposedProperties: []
   CommentBlockData: []

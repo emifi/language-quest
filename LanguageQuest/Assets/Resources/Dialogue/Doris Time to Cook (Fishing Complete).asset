@@ -21,7 +21,7 @@ MonoBehaviour:
     TargetNodeGUID: 8e1db522-8260-4268-a4d9-73d567ec2483
   DialogueNodeData:
   - NodeGUID: 9e7eb0cc-50a8-49fc-9ceb-b00b89ebeeff
-    DialogueText: "{Doris} Hello young one. Neenjit d\xF4onch'y\xE0a?"
+    DialogueText: "GOTO{3} {Doris} Hello young one. Neenjit d\xF4onch'y\xE0a?"
     Position: {x: 354, y: 185}
   - NodeGUID: 8e1db522-8260-4268-a4d9-73d567ec2483
     DialogueText: '{Doris} It looks like Hanta might need some help hunting. Could
