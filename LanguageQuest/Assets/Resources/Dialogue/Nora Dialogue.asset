@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Nora Dialogue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 4a67b2f0-5466-4cee-b835-5122aef6c25b
+    PortName: Next
+    TargetNodeGUID: 4a539590-1d27-4568-a0e1-789fecab6fdd
+  - BaseNodeGUID: 4a539590-1d27-4568-a0e1-789fecab6fdd
+    PortName: Option 1
+    TargetNodeGUID: d8d733d6-9442-4942-a7e3-2554e7b00507
+  - BaseNodeGUID: d8d733d6-9442-4942-a7e3-2554e7b00507
+    PortName: Option 1
+    TargetNodeGUID: 9a8f20ad-f74e-4aae-87be-cc27550dc6ec
+  DialogueNodeData:
+  - NodeGUID: 4a539590-1d27-4568-a0e1-789fecab6fdd
+    DialogueText: "{Nora} The leaves look so pretty in autumn\u2026 ADDTERM{leaf,
+      autumn}"
+    Position: {x: 312, y: 200}
+  - NodeGUID: d8d733d6-9442-4942-a7e3-2554e7b00507
+    DialogueText: '{Nora} This is my favorite time of year.'
+    Position: {x: 427, y: 411}
+  - NodeGUID: 9a8f20ad-f74e-4aae-87be-cc27550dc6ec
+    DialogueText: '{Nora} My dear Oliver disagrees, though. :('
+    Position: {x: 637, y: 599}
+  ExposedProperties: []
+  CommentBlockData: []

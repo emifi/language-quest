@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Fishing Hour (Before)
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: b02e3e40-3b52-4687-b216-db9b9658bda3
+    PortName: Next
+    TargetNodeGUID: 06a99468-1fc2-4042-b2e7-15b6738f4bd7
+  DialogueNodeData:
+  - NodeGUID: 06a99468-1fc2-4042-b2e7-15b6738f4bd7
+    DialogueText: Need five fish for dinner tonight! Think we can get some more?
+    Position: {x: 325, y: 180}
+  ExposedProperties: []
+  CommentBlockData: []

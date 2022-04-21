@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Emma Dialogue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 6684dd40-8ea3-45a7-95c4-2574d2fd7f8b
+    PortName: Next
+    TargetNodeGUID: 25556496-f89e-4dd7-b997-5c43489cae67
+  - BaseNodeGUID: 25556496-f89e-4dd7-b997-5c43489cae67
+    PortName: Option 1
+    TargetNodeGUID: ba043e0f-82cf-4124-bb0b-78d2378336e6
+  - BaseNodeGUID: ba043e0f-82cf-4124-bb0b-78d2378336e6
+    PortName: Option 1
+    TargetNodeGUID: f96a0c1d-52ea-4476-a94f-0965570f02e5
+  - BaseNodeGUID: f96a0c1d-52ea-4476-a94f-0965570f02e5
+    PortName: Option 1
+    TargetNodeGUID: 5e5208c1-3347-47ab-adab-739a6ef09929
+  - BaseNodeGUID: 5e5208c1-3347-47ab-adab-739a6ef09929
+    PortName: Big rocks turn into smaller rocks
+    TargetNodeGUID: 7cb5c407-c4e5-4d6b-b1cf-524dbf73140b
+  - BaseNodeGUID: 7cb5c407-c4e5-4d6b-b1cf-524dbf73140b
+    PortName: Option 1
+    TargetNodeGUID: 1b79aa64-f4ed-41ce-ad0f-3c2cbef728df
+  - BaseNodeGUID: 5e5208c1-3347-47ab-adab-739a6ef09929
+    PortName: Small rocks turn into bigger rocks
+    TargetNodeGUID: d327df03-76bd-4c1a-93af-0f2a58e1d7d9
+  - BaseNodeGUID: d327df03-76bd-4c1a-93af-0f2a58e1d7d9
+    PortName: Option 1
+    TargetNodeGUID: 53decbaf-f67f-4bb0-853d-d75745739149
+  DialogueNodeData:
+  - NodeGUID: 25556496-f89e-4dd7-b997-5c43489cae67
+    DialogueText: "{Emma} This rock is so small\u2026 ADDTERM{rock, small}"
+    Position: {x: 276, y: 200}
+  - NodeGUID: ba043e0f-82cf-4124-bb0b-78d2378336e6
+    DialogueText: '{Emma} Do small rocks come from bigger rocks? ADDTERM{big}'
+    Position: {x: 186.5, y: 392}
+  - NodeGUID: 5e5208c1-3347-47ab-adab-739a6ef09929
+    DialogueText: '{Emma} What do you think?'
+    Position: {x: 289, y: 585}
+  - NodeGUID: f96a0c1d-52ea-4476-a94f-0965570f02e5
+    DialogueText: '{Emma} Do big rocks turn into smaller rocks?'
+    Position: {x: 682, y: 440.5}
+  - NodeGUID: 7cb5c407-c4e5-4d6b-b1cf-524dbf73140b
+    DialogueText: "{Emma} But if big rocks turn into small rocks, why don\u2019t
+      big people turn into small people?"
+    Position: {x: 671.5, y: 609}
+  - NodeGUID: 1b79aa64-f4ed-41ce-ad0f-3c2cbef728df
+    DialogueText: '{Emma} Are my dads going to shrink?'
+    Position: {x: 952.5, y: 749}
+  - NodeGUID: d327df03-76bd-4c1a-93af-0f2a58e1d7d9
+    DialogueText: '{Emma} Yeah! They definitely do!'
+    Position: {x: 435.5, y: 797.5}
+  - NodeGUID: 53decbaf-f67f-4bb0-853d-d75745739149
+    DialogueText: "{Emma} I\u2019m gonna grow into a big and strong rock one day!!"
+    Position: {x: 787, y: 894.5}
+  ExposedProperties: []
+  CommentBlockData: []

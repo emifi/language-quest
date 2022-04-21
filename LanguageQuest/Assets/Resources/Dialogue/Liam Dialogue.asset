@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Liam Dialogue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: c790a29b-e81a-416f-b597-96b22b31f3d2
+    PortName: Next
+    TargetNodeGUID: 9a449957-24db-4f83-9a61-39242d97af3b
+  - BaseNodeGUID: 9a449957-24db-4f83-9a61-39242d97af3b
+    PortName: Option 1
+    TargetNodeGUID: 1d15c309-986e-4c6d-b2ac-f705079d8b0d
+  - BaseNodeGUID: 1d15c309-986e-4c6d-b2ac-f705079d8b0d
+    PortName: Option 1
+    TargetNodeGUID: 2dcf9995-29eb-4fc3-8885-6352d4848998
+  - BaseNodeGUID: 2dcf9995-29eb-4fc3-8885-6352d4848998
+    PortName: Sunset
+    TargetNodeGUID: bd6b7e47-5e32-41a6-bfc5-b1434b01880a
+  - BaseNodeGUID: bd6b7e47-5e32-41a6-bfc5-b1434b01880a
+    PortName: Option 1
+    TargetNodeGUID: 3c986a61-30d8-4f74-93b2-5da701dce517
+  - BaseNodeGUID: 3c986a61-30d8-4f74-93b2-5da701dce517
+    PortName: Option 1
+    TargetNodeGUID: 9e764690-43da-4400-a80e-566b04763e09
+  - BaseNodeGUID: 2dcf9995-29eb-4fc3-8885-6352d4848998
+    PortName: Sunrise
+    TargetNodeGUID: 1884d83f-2e80-480b-ae46-d2bc91918870
+  - BaseNodeGUID: 1884d83f-2e80-480b-ae46-d2bc91918870
+    PortName: Option 1
+    TargetNodeGUID: 25d1dd5e-6f10-42db-afc3-5dea005482bc
+  - BaseNodeGUID: 2dcf9995-29eb-4fc3-8885-6352d4848998
+    PortName: I don't know
+    TargetNodeGUID: 31a44bbf-66dc-4cd3-a5ea-5c5dcaf48ea1
+  - BaseNodeGUID: 31a44bbf-66dc-4cd3-a5ea-5c5dcaf48ea1
+    PortName: Option 1
+    TargetNodeGUID: 8c6bb541-a0c7-4a9f-b685-1601363e64e9
+  DialogueNodeData:
+  - NodeGUID: 9a449957-24db-4f83-9a61-39242d97af3b
+    DialogueText: '{Liam} Mommy said that the sunrise happens in the west! ADDTERM{sunrise,
+      west}'
+    Position: {x: 286, y: 190}
+  - NodeGUID: 1d15c309-986e-4c6d-b2ac-f705079d8b0d
+    DialogueText: "{Liam} Or\u2026was that a sunset? ADDTERM{sunset}"
+    Position: {x: 368, y: 362}
+  - NodeGUID: 2dcf9995-29eb-4fc3-8885-6352d4848998
+    DialogueText: '{Liam} Which one is it?'
+    Position: {x: 397, y: 546}
+  - NodeGUID: bd6b7e47-5e32-41a6-bfc5-b1434b01880a
+    DialogueText: '{Liam} I see! I dunno what you mean by the planet spinning around,
+      though. '
+    Position: {x: 1084.5, y: 423.5}
+  - NodeGUID: 3c986a61-30d8-4f74-93b2-5da701dce517
+    DialogueText: "{Liam} I\u2019m not spinning. You're not spinning. How are we
+      spinning?"
+    Position: {x: 1069, y: 558.5}
+  - NodeGUID: 9e764690-43da-4400-a80e-566b04763e09
+    DialogueText: '{Liam} I thought the Earth was flat like the map Daddy showed
+      me!'
+    Position: {x: 1201.5, y: 688}
+  - NodeGUID: 1884d83f-2e80-480b-ae46-d2bc91918870
+    DialogueText: '{Liam} I see! Does that mean the moon and stars come out from
+      the west too?'
+    Position: {x: 731.5, y: 805.5}
+  - NodeGUID: 25d1dd5e-6f10-42db-afc3-5dea005482bc
+    DialogueText: "{Liam} I\u2019ll go tell Mommy what I\u2019ve learned!"
+    Position: {x: 1324.5, y: 805.5}
+  - NodeGUID: 31a44bbf-66dc-4cd3-a5ea-5c5dcaf48ea1
+    DialogueText: "{Liam} Aw\u2026I guess I shouldn\u2019t trust a random person
+      to know anything."
+    Position: {x: 699.5, y: 956.5}
+  - NodeGUID: 8c6bb541-a0c7-4a9f-b685-1601363e64e9
+    DialogueText: '{Liam} Stranger danger!'
+    Position: {x: 1289.5, y: 956.5}
+  ExposedProperties: []
+  CommentBlockData: []

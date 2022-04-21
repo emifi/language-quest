@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Evelyn Dialogue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 9112239e-60a0-4b41-9163-a72a62d3514c
+    PortName: Next
+    TargetNodeGUID: b183b017-5fea-4e51-b454-ed6fab6615a3
+  - BaseNodeGUID: b183b017-5fea-4e51-b454-ed6fab6615a3
+    PortName: Option 1
+    TargetNodeGUID: 32613571-133f-4ba5-85ef-ae0a94845238
+  - BaseNodeGUID: 32613571-133f-4ba5-85ef-ae0a94845238
+    PortName: Option 1
+    TargetNodeGUID: df12ab3b-efde-4a76-afd2-42eb73e27273
+  - BaseNodeGUID: df12ab3b-efde-4a76-afd2-42eb73e27273
+    PortName: Option 1
+    TargetNodeGUID: 7a35810a-d156-4d51-a980-c2b3a4b52614
+  DialogueNodeData:
+  - NodeGUID: b183b017-5fea-4e51-b454-ed6fab6615a3
+    DialogueText: '{Evelyn} The times are certainly changing.'
+    Position: {x: 292, y: 200}
+  - NodeGUID: 32613571-133f-4ba5-85ef-ae0a94845238
+    DialogueText: '{Evelyn} All the kids do these days is sit around watching the
+      television. ADDTERM{kid}'
+    Position: {x: 730, y: 200}
+  - NodeGUID: df12ab3b-efde-4a76-afd2-42eb73e27273
+    DialogueText: '{Evelyn} When I was younger, I would play games outside with my
+      friends. ADDTERM{outside, friends}'
+    Position: {x: 550.5, y: 446.5}
+  - NodeGUID: 7a35810a-d156-4d51-a980-c2b3a4b52614
+    DialogueText: "{Evelyn} They\u2019re staying inside too much. ADDTERM{inside}"
+    Position: {x: 777, y: 650}
+  ExposedProperties: []
+  CommentBlockData: []

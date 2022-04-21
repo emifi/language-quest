@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Jules Dialogue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: b7ee1486-3d47-4060-ba87-2ad718ca15d8
+    PortName: Next
+    TargetNodeGUID: 876bbd5f-9cb7-4da2-acb5-1ba559626f4b
+  - BaseNodeGUID: 876bbd5f-9cb7-4da2-acb5-1ba559626f4b
+    PortName: Option 1
+    TargetNodeGUID: 7dbdf0cd-ad69-41d9-b38c-429bbeedd56f
+  - BaseNodeGUID: 7dbdf0cd-ad69-41d9-b38c-429bbeedd56f
+    PortName: Option 1
+    TargetNodeGUID: 78263b8d-e815-48fc-944c-d1a016690aaf
+  DialogueNodeData:
+  - NodeGUID: 876bbd5f-9cb7-4da2-acb5-1ba559626f4b
+    DialogueText: "{Jules} I love living in the mountains, but we\u2019re kind of
+      far away from everything. ADDTERM{mountain}"
+    Position: {x: 265, y: 200}
+  - NodeGUID: 7dbdf0cd-ad69-41d9-b38c-429bbeedd56f
+    DialogueText: '{Jules} I see other people on television living in big cities
+      in a film. ADDTERM{big}'
+    Position: {x: 456, y: 429}
+  - NodeGUID: 78263b8d-e815-48fc-944c-d1a016690aaf
+    DialogueText: "I wonder what it\u2019d be like to live in one myself\u2026"
+    Position: {x: 586, y: 624}
+  ExposedProperties: []
+  CommentBlockData: []
