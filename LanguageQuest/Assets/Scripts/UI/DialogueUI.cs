@@ -809,6 +809,7 @@ public class DialogueUI : MonoBehaviour
             }
 
             fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+            score = 0.0f;
         }
         return fullText.Trim();
     }
