@@ -48,6 +48,7 @@ public class DialogueUI : MonoBehaviour
 
     private static bool isEnabled;
     private static string sceneSwitch = null;
+    private static int timeChange = -1; 
 
     private static ObjectiveSystem objectiveSystem;
 
@@ -106,6 +107,11 @@ public class DialogueUI : MonoBehaviour
             dialogueUI.enabled = true;
         }
 
+        if(timeChange>=0){
+            StartCoroutine(ChangeTime(2.0f,timeChange));
+            timeChange = -1;
+        }
+
         if(narrativeData==null||fullText==null){ //If null, the end of map has been reached
             lineComplete = false;
             speechComplete = true;
@@ -149,6 +155,14 @@ public class DialogueUI : MonoBehaviour
         GameObject.Find("Fade").GetComponent<Fade>().FadeOut(Color.black, 0.0f, t);
         yield return new WaitForSeconds(t);
         SceneManager.LoadScene(scene);
+    }
+
+    IEnumerator ChangeTime(float t, int dayTime) {
+        GameObject.Find("Fade").GetComponent<Fade>().FadeOut(Color.black, 0.0f, t);
+        yield return new WaitForSeconds(t);
+        ChangeTimeOfDay.SetTimeWithInt(dayTime);
+        yield return new WaitForSeconds(t);
+        GameObject.Find("Fade").GetComponent<Fade>().FadeIn(Color.black, 0.0f, t);
     }
 
     public static void turnPage(){ //Proceed to next dialogue node
@@ -222,6 +236,7 @@ public class DialogueUI : MonoBehaviour
         fullText = changeDestParse(fullText,currNPC);
 
         //Enable/Disable Obj Event - ACTIVATE{tag0,...tagN} DEACTIVATE{tag0,...tagN} 
+        fullText = toggleParse(fullText); //This is intentional
         fullText = toggleParse(fullText);
 
         //Inventory Event - ADDITEM{item0,count0,item1,count1,...itemN,countN}
@@ -229,6 +244,9 @@ public class DialogueUI : MonoBehaviour
 
         //Inventory Event - REMOVEITEM{item0,count0,item1,count1,...itemN,countN}
         fullText = removeParse(fullText);
+
+        //Change Time Event - Time{Morning/Afternoon/Evening/Night}
+        fullText = timeParse(fullText);
 
         //Change Scene Event - DESTROY{npc}
         fullText = destroyParse(fullText);
@@ -722,6 +740,31 @@ public class DialogueUI : MonoBehaviour
 
         if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
             Destroy(GameObject.Find(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
+            fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
+
+    private static string timeParse(string fullText){
+        int startPos = fullText.IndexOf("TIME{");
+        int addLen = 5; //Length of TIME{
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add items to notebook (no string replacement/manipulation)
+            if(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))=="Morning"){
+               timeChange = 0;
+            }else if(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))=="Afternoon"){
+                timeChange = 1;
+            }else if(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))=="Evening"){
+                timeChange = 2;
+            }else if(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))=="Night"){
+                timeChange = 3;
+            }
             fullText = fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText.Trim();
