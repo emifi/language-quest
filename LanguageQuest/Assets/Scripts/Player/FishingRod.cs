@@ -77,7 +77,8 @@ public class FishingRod : MonoBehaviour
                 if (set && bite) {
                     bite = false;
                     fish.SetActive(true);
-                    fish.transform.rotation = Quaternion.LookRotation(rodTip.transform.position, Vector3.up);
+                    Vector3 targetDirection = rodTip.transform.position - bobber.transform.position;
+                    fish.transform.rotation = Quaternion.LookRotation(targetDirection, Vector3.up);
                     StopAllCoroutines();
                     StartCoroutine(Reel(0.4f, 1.0f));
                 } else {
