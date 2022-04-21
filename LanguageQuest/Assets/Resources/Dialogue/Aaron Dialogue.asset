@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Aaron Dialogue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 1a929ea4-b499-44e0-b17a-b586e2cdf54c
+    PortName: Next
+    TargetNodeGUID: 1ec8da16-5c28-4cb9-9832-0ae9dccf967a
+  - BaseNodeGUID: 1ec8da16-5c28-4cb9-9832-0ae9dccf967a
+    PortName: Option 1
+    TargetNodeGUID: 709e77f3-bf6b-4d40-a881-cb46b8eb0591
+  - BaseNodeGUID: 709e77f3-bf6b-4d40-a881-cb46b8eb0591
+    PortName: Option 1
+    TargetNodeGUID: 2e1da980-1f56-498a-8f64-9aca8b710e6d
+  - BaseNodeGUID: 2e1da980-1f56-498a-8f64-9aca8b710e6d
+    PortName: Yes
+    TargetNodeGUID: f9951a84-2359-45c6-8e3f-83e460e20647
+  - BaseNodeGUID: 2e1da980-1f56-498a-8f64-9aca8b710e6d
+    PortName: No
+    TargetNodeGUID: 70c23b35-3bf0-45b9-88a3-350e99d2e6e0
+  DialogueNodeData:
+  - NodeGUID: 1ec8da16-5c28-4cb9-9832-0ae9dccf967a
+    DialogueText: '{Aaron} Do you know the legend about the raven? ADDTERM{raven}'
+    Position: {x: 273, y: 200}
+  - NodeGUID: 709e77f3-bf6b-4d40-a881-cb46b8eb0591
+    DialogueText: "{Aaron} It\u2019s been passed down for generations."
+    Position: {x: 308, y: 373}
+  - NodeGUID: 2e1da980-1f56-498a-8f64-9aca8b710e6d
+    DialogueText: '{Aaron} Would you like to hear about it?'
+    Position: {x: 415, y: 520.5}
+  - NodeGUID: f9951a84-2359-45c6-8e3f-83e460e20647
+    DialogueText: "{Aaron} Alright\u2026now how did it go again?"
+    Position: {x: 867, y: 472}
+  - NodeGUID: 70c23b35-3bf0-45b9-88a3-350e99d2e6e0
+    DialogueText: "{Aaron} You little ducklings have no respect for your elders these
+      days\u2026"
+    Position: {x: 840, y: 616.5}
+  ExposedProperties: []
+  CommentBlockData: []

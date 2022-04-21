@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Oliver Dialogue
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 1338fae0-66ea-40a9-8f5f-355c5f093902
+    PortName: Next
+    TargetNodeGUID: a6032cbd-08bc-4fab-8230-441bf1a33240
+  - BaseNodeGUID: a6032cbd-08bc-4fab-8230-441bf1a33240
+    PortName: Option 1
+    TargetNodeGUID: 88aeb951-425f-4896-8e3f-665d2cbe7b25
+  - BaseNodeGUID: 88aeb951-425f-4896-8e3f-665d2cbe7b25
+    PortName: Option 1
+    TargetNodeGUID: 6db32824-e360-47dc-a365-4411bbedac06
+  DialogueNodeData:
+  - NodeGUID: a6032cbd-08bc-4fab-8230-441bf1a33240
+    DialogueText: "{Oliver} I miss summer! I\u2019m not used to these colder nights.
+      ADDTERM{summer, cold, night}"
+    Position: {x: 297, y: 200}
+  - NodeGUID: 88aeb951-425f-4896-8e3f-665d2cbe7b25
+    DialogueText: '{Oliver} The caribou are gonna be going away soon, too. ADDTERM{carribou}'
+    Position: {x: 218, y: 376}
+  - NodeGUID: 6db32824-e360-47dc-a365-4411bbedac06
+    DialogueText: '{Oliver} Should we bring them blankets? They might get cold.'
+    Position: {x: 332, y: 530}
+  ExposedProperties: []
+  CommentBlockData: []

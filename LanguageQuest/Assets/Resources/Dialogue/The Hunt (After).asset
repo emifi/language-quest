@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: The Hunt (After)
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 2f9d9082-008f-410e-9426-a5c2b19dc9e4
+    PortName: Next
+    TargetNodeGUID: aca73457-ab86-4cf8-834c-c72c60da27ae
+  - BaseNodeGUID: aca73457-ab86-4cf8-834c-c72c60da27ae
+    PortName: Option 1
+    TargetNodeGUID: 61b33a2d-676c-4a31-95e8-c72a41647e9a
+  - BaseNodeGUID: 61b33a2d-676c-4a31-95e8-c72a41647e9a
+    PortName: Option 1
+    TargetNodeGUID: 9c824be0-976d-4394-875f-216340bc60ad
+  DialogueNodeData:
+  - NodeGUID: aca73457-ab86-4cf8-834c-c72c60da27ae
+    DialogueText: "{Hanta} Dang, five whole caribou? Quite the haul today! You\u2019re
+      a natural."
+    Position: {x: 243, y: 200}
+  - NodeGUID: 61b33a2d-676c-4a31-95e8-c72a41647e9a
+    DialogueText: "{Hanta} We\u2019ll need to dress the caribou and say thanks before
+      heading back up."
+    Position: {x: 80, y: 413}
+  - NodeGUID: 9c824be0-976d-4394-875f-216340bc60ad
+    DialogueText: '{Hanta} Thanks for your help'
+    Position: {x: 746, y: 413}
+  ExposedProperties: []
+  CommentBlockData: []
