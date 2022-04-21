@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Time to Cook (Fishing Complete)
   m_EditorClassIdentifier: 
   NodeLinks:
-  - BaseNodeGUID: 5de50519-55dc-465e-b62e-ee509b37e1c0
+  - BaseNodeGUID: c337b794-bb6e-470a-9c5d-9b0eb0d428d8
     PortName: Next
-    TargetNodeGUID: 5de50519-55dc-465e-b62e-ee509b37e1c0
-  - BaseNodeGUID: 5de50519-55dc-465e-b62e-ee509b37e1c0
+    TargetNodeGUID: 9e7eb0cc-50a8-49fc-9ceb-b00b89ebeeff
+  - BaseNodeGUID: 9e7eb0cc-50a8-49fc-9ceb-b00b89ebeeff
     PortName: Option 1
-    TargetNodeGUID: d18d9f2d-cf3c-4bd7-96cb-06679bf9418f
+    TargetNodeGUID: 8e1db522-8260-4268-a4d9-73d567ec2483
   DialogueNodeData:
-  - NodeGUID: 5de50519-55dc-465e-b62e-ee509b37e1c0
-    DialogueText: "{Doris} Hello, young one. Neenjit d\xF4onch'y\xE0a?"
-    Position: {x: 483.5, y: 200}
-  - NodeGUID: d18d9f2d-cf3c-4bd7-96cb-06679bf9418f
+  - NodeGUID: 9e7eb0cc-50a8-49fc-9ceb-b00b89ebeeff
+    DialogueText: "{Doris} Hello young one. Neenjit d\xF4onch'y\xE0a?"
+    Position: {x: 354, y: 185}
+  - NodeGUID: 8e1db522-8260-4268-a4d9-73d567ec2483
     DialogueText: '{Doris} It looks like Hanta might need some help hunting. Could
       you please go help him?'
-    Position: {x: 1021, y: 248.5}
+    Position: {x: 540, y: 400}
   ExposedProperties: []
   CommentBlockData: []

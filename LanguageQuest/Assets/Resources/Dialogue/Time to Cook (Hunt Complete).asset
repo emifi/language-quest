@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: Time to Cook (Hunt Complete)
   m_EditorClassIdentifier: 
   NodeLinks:
-  - BaseNodeGUID: ce45abd0-9bd3-44da-8734-86f1bc447ec1
-    PortName: Option 1
-    TargetNodeGUID: 3555e5b8-1e9d-4533-9f16-c5e2326ddd28
-  - BaseNodeGUID: ce45abd0-9bd3-44da-8734-86f1bc447ec1
+  - BaseNodeGUID: 346156db-afe7-4043-a644-92d76aec2112
     PortName: Next
-    TargetNodeGUID: ce45abd0-9bd3-44da-8734-86f1bc447ec1
+    TargetNodeGUID: 4307a831-0f10-4002-8e3e-363bd9d37d01
+  - BaseNodeGUID: 4307a831-0f10-4002-8e3e-363bd9d37d01
+    PortName: Option 1
+    TargetNodeGUID: bf3df808-b358-44dc-bd1a-759a6f0d335f
   DialogueNodeData:
-  - NodeGUID: ce45abd0-9bd3-44da-8734-86f1bc447ec1
-    DialogueText: "{Doris} Hello, young one. Neenjit d\xF4onch'y\xE0a?"
-    Position: {x: 431, y: 247}
-  - NodeGUID: 3555e5b8-1e9d-4533-9f16-c5e2326ddd28
+  - NodeGUID: 4307a831-0f10-4002-8e3e-363bd9d37d01
+    DialogueText: "{Doris} Hello young one. Neenjit d\xF4onch'y\xE0a?"
+    Position: {x: 269, y: 180}
+  - NodeGUID: bf3df808-b358-44dc-bd1a-759a6f0d335f
     DialogueText: '{Doris} It looks like Harper might need some help fishing. Could
       you please go help her?'
-    Position: {x: 889, y: 344}
+    Position: {x: 544, y: 365}
   ExposedProperties: []
   CommentBlockData: []

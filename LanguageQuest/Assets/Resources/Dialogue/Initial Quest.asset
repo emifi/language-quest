@@ -77,6 +77,6 @@ MonoBehaviour:
     DialogueText: "{Doris} Well, now that you are here, would you mind helping around
       the village? We must stock up for the upcoming winter, and we need the extra
       hands\u2026"
-    Position: {x: 618.5, y: 206}
+    Position: {x: 797, y: 216.5}
   ExposedProperties: []
   CommentBlockData: []

@@ -13,43 +13,46 @@ MonoBehaviour:
   m_Name: Time to Cook (Complete)
   m_EditorClassIdentifier: 
   NodeLinks:
-  - BaseNodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
+  - BaseNodeGUID: b99e87f1-1f89-4154-a2e7-944964e4f033
     PortName: Next
-    TargetNodeGUID: b9360b50-f593-4bdb-ac32-8616b31f405d
-  - BaseNodeGUID: b9360b50-f593-4bdb-ac32-8616b31f405d
+    TargetNodeGUID: 98dd4735-53a2-4f37-afa0-28051aeaeb7f
+  - BaseNodeGUID: 98dd4735-53a2-4f37-afa0-28051aeaeb7f
     PortName: Option 1
-    TargetNodeGUID: 2aaaf1ae-47d4-45f0-a3f1-f730bffc4f0c
-  - BaseNodeGUID: 2aaaf1ae-47d4-45f0-a3f1-f730bffc4f0c
+    TargetNodeGUID: ec72f089-92bb-4bf5-8644-528513cebb28
+  - BaseNodeGUID: ec72f089-92bb-4bf5-8644-528513cebb28
     PortName: Option 1
-    TargetNodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
-  - BaseNodeGUID: 75d7d008-a3ec-4b4c-82f2-b99d123fcf6d
+    TargetNodeGUID: db0d2868-18be-4d76-9730-20d9694d0001
+  - BaseNodeGUID: db0d2868-18be-4d76-9730-20d9694d0001
+    PortName: Yes
+    TargetNodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
+  - BaseNodeGUID: db0d2868-18be-4d76-9730-20d9694d0001
+    PortName: No
+    TargetNodeGUID: 17ada236-65c1-4857-91e8-da92d463df83
+  - BaseNodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
     PortName: Option 1
-    TargetNodeGUID: fbbc33bf-ab78-4511-a8ab-0f5eb5e69491
-  - BaseNodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
-    PortName: '{choicecolor}No{maincolor}'
-    TargetNodeGUID: 0596c75c-62b6-4122-96f6-b687e8387654
-  - BaseNodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
-    PortName: '{choicecolor}Yes{maincolor}'
-    TargetNodeGUID: 75d7d008-a3ec-4b4c-82f2-b99d123fcf6d
+    TargetNodeGUID: 56c93be5-6186-4de5-b3fc-e85f3fcf9206
   DialogueNodeData:
-  - NodeGUID: b9360b50-f593-4bdb-ac32-8616b31f405d
+  - NodeGUID: 98dd4735-53a2-4f37-afa0-28051aeaeb7f
     DialogueText: "{Doris} Welcome back, young one. Neenjit d\xF4onch'y\xE0a?"
-    Position: {x: 223, y: 200}
-  - NodeGUID: 2aaaf1ae-47d4-45f0-a3f1-f730bffc4f0c
+    Position: {x: 324, y: 245}
+  - NodeGUID: ec72f089-92bb-4bf5-8644-528513cebb28
     DialogueText: "{Doris} You\u2019ve helped both Hanta and Harper? Splendid! We
       can now move onto making dinner!"
-    Position: {x: 698, y: 200}
-  - NodeGUID: 478f814f-ee6f-4032-b85c-512d88803337
+    Position: {x: 56, y: 378}
+  - NodeGUID: db0d2868-18be-4d76-9730-20d9694d0001
     DialogueText: '{Doris} Are you ready to cook, young one?'
-    Position: {x: 1392, y: 200}
-  - NodeGUID: 0596c75c-62b6-4122-96f6-b687e8387654
-    DialogueText: "{Doris} I\u2019ll be here when you\u2019re ready."
-    Position: {x: 1847, y: 200}
-  - NodeGUID: 75d7d008-a3ec-4b4c-82f2-b99d123fcf6d
-    DialogueText: '{Doris} Fantastic.'
-    Position: {x: 1856, y: 298}
-  - NodeGUID: fbbc33bf-ab78-4511-a8ab-0f5eb5e69491
+    Position: {x: 349, y: 527}
+  - NodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
+    DialogueText: '{Doris} Fantastic!'
+    Position: {x: 763, y: 512}
+  - NodeGUID: 17ada236-65c1-4857-91e8-da92d463df83
+    DialogueText: "{Doris} I\u2019ll be here when you\u2019re ready"
+    Position: {x: 731.5, y: 681.5}
+  - NodeGUID: 56c93be5-6186-4de5-b3fc-e85f3fcf9206
     DialogueText: SCENE{}
-    Position: {x: 2127, y: 298}
+    Position: {x: 1012, y: 512}
   ExposedProperties: []
-  CommentBlockData: []
+  CommentBlockData:
+  - ChildNodes: []
+    Position: {x: 597, y: 566}
+    Title: Comment Block

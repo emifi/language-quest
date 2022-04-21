@@ -13,136 +13,129 @@ MonoBehaviour:
   m_Name: Start Hunting Interaction
   m_EditorClassIdentifier: 
   NodeLinks:
-  - BaseNodeGUID: 0467b075-3c22-4968-a952-dd8f1340add9
-    PortName: Option 1
-    TargetNodeGUID: 8b22888d-52f0-451f-adaf-eab612c1140e
-  - BaseNodeGUID: fd78ac80-339b-4027-b51c-f0307f15f796
-    PortName: Option 1
-    TargetNodeGUID: 0467b075-3c22-4968-a952-dd8f1340add9
-  - BaseNodeGUID: ce211613-1782-4ff4-ba96-9e12037612f3
-    PortName: '{choicecolor}I  do not want to hunt.{maincolor}'
-    TargetNodeGUID: fd78ac80-339b-4027-b51c-f0307f15f796
-  - BaseNodeGUID: e9be9c66-2678-4349-8e99-3c53021228af
-    PortName: Option 1
-    TargetNodeGUID: 67c5e071-7c19-4ab1-92de-e8cce7e756d7
-  - BaseNodeGUID: e9cda7d2-5fcb-4990-bd7b-5e082a5cb517
+  - BaseNodeGUID: cdc76245-2fd2-44d4-887c-87716185ce47
     PortName: Next
-    TargetNodeGUID: e9cda7d2-5fcb-4990-bd7b-5e082a5cb517
-  - BaseNodeGUID: e9cda7d2-5fcb-4990-bd7b-5e082a5cb517
+    TargetNodeGUID: 1804bf96-7f75-42ca-aa9f-23a81eb04462
+  - BaseNodeGUID: 1804bf96-7f75-42ca-aa9f-23a81eb04462
     PortName: Option 1
-    TargetNodeGUID: 2a8ed12a-964c-456c-aae8-5bf1db94d5f4
-  - BaseNodeGUID: 2a8ed12a-964c-456c-aae8-5bf1db94d5f4
+    TargetNodeGUID: 677ae90e-e7ec-4cc4-8861-42355c0f1a42
+  - BaseNodeGUID: 677ae90e-e7ec-4cc4-8861-42355c0f1a42
     PortName: Option 1
-    TargetNodeGUID: 2ef441ad-fab7-487a-8e97-2258857fc2ca
-  - BaseNodeGUID: 2ef441ad-fab7-487a-8e97-2258857fc2ca
-    PortName: '{choicecolor}Yes{maincolor}'
-    TargetNodeGUID: dca73d27-14b0-4d4d-aabe-70f1ef7d28e8
-  - BaseNodeGUID: dca73d27-14b0-4d4d-aabe-70f1ef7d28e8
+    TargetNodeGUID: d1a525af-c92f-4811-8dd7-f5db45e35a3e
+  - BaseNodeGUID: d1a525af-c92f-4811-8dd7-f5db45e35a3e
+    PortName: Yes
+    TargetNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
+  - BaseNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
     PortName: Option 1
-    TargetNodeGUID: 2480393d-235c-476a-a178-d7b0375b55d6
-  - BaseNodeGUID: 2480393d-235c-476a-a178-d7b0375b55d6
+    TargetNodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
+  - BaseNodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
     PortName: Option 1
-    TargetNodeGUID: e9be9c66-2678-4349-8e99-3c53021228af
-  - BaseNodeGUID: 2ef441ad-fab7-487a-8e97-2258857fc2ca
-    PortName: '{choicecolor}No{maincolor}'
-    TargetNodeGUID: 19b03e2a-44f4-4299-bac0-ef082d78d928
-  - BaseNodeGUID: 19b03e2a-44f4-4299-bac0-ef082d78d928
+    TargetNodeGUID: 73a24ae7-b188-49a8-9d2c-27e47d7f38c2
+  - BaseNodeGUID: 73a24ae7-b188-49a8-9d2c-27e47d7f38c2
     PortName: Option 1
-    TargetNodeGUID: a9244e0e-2e1e-42d7-b71a-d9924807f2a5
-  - BaseNodeGUID: a9244e0e-2e1e-42d7-b71a-d9924807f2a5
+    TargetNodeGUID: 33d5b888-fbdb-4f06-ab42-e2871a308a51
+  - BaseNodeGUID: d1a525af-c92f-4811-8dd7-f5db45e35a3e
+    PortName: No
+    TargetNodeGUID: 63d635a7-d42f-499c-a108-0599fda127f5
+  - BaseNodeGUID: 63d635a7-d42f-499c-a108-0599fda127f5
     PortName: Option 1
-    TargetNodeGUID: 3637ddaa-b297-40d6-8881-23a35d555ff1
-  - BaseNodeGUID: 3637ddaa-b297-40d6-8881-23a35d555ff1
+    TargetNodeGUID: d22a0e31-83b8-43ed-b04f-06323bda4c30
+  - BaseNodeGUID: d22a0e31-83b8-43ed-b04f-06323bda4c30
     PortName: Option 1
-    TargetNodeGUID: 76dbf2b0-fe2e-4004-803f-3959e6382e7d
-  - BaseNodeGUID: 76dbf2b0-fe2e-4004-803f-3959e6382e7d
-    PortName: '{choicecolor}I''ll help you.{maincolor}'
-    TargetNodeGUID: 392f1114-9ba7-4995-8baf-bea569a5856b
-  - BaseNodeGUID: 392f1114-9ba7-4995-8baf-bea569a5856b
+    TargetNodeGUID: a8d0719e-5024-4107-b296-6915b576a191
+  - BaseNodeGUID: a8d0719e-5024-4107-b296-6915b576a191
     PortName: Option 1
-    TargetNodeGUID: dca73d27-14b0-4d4d-aabe-70f1ef7d28e8
-  - BaseNodeGUID: ce211613-1782-4ff4-ba96-9e12037612f3
-    PortName: '{choicecolor}I can help you.{maincolor}'
-    TargetNodeGUID: 392f1114-9ba7-4995-8baf-bea569a5856b
-  - BaseNodeGUID: 76dbf2b0-fe2e-4004-803f-3959e6382e7d
-    PortName: '{choicecolor}I don''t want to go. {maincolor}'
-    TargetNodeGUID: 49e3a231-0421-4a5c-b6cb-e9cb00f85bd4
-  - BaseNodeGUID: 49e3a231-0421-4a5c-b6cb-e9cb00f85bd4
+    TargetNodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
+  - BaseNodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
+    PortName: "I\u2019ll help you"
+    TargetNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
+  - BaseNodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
+    PortName: I do not want to go
+    TargetNodeGUID: 424e4dd0-f9b2-4ecb-8c10-596400f8c009
+  - BaseNodeGUID: 424e4dd0-f9b2-4ecb-8c10-596400f8c009
     PortName: Option 1
-    TargetNodeGUID: 405cc746-e7d5-40d8-9306-86b717e3798d
-  - BaseNodeGUID: 405cc746-e7d5-40d8-9306-86b717e3798d
-    PortName: '{choicecolor}I do not want to hunt.{maincolor}'
-    TargetNodeGUID: 6e76d217-230a-4e46-9b4f-395af153d932
-  - BaseNodeGUID: 405cc746-e7d5-40d8-9306-86b717e3798d
-    PortName: '{choicecolor}I''ll hunt.{maincolor}'
-    TargetNodeGUID: 392f1114-9ba7-4995-8baf-bea569a5856b
-  - BaseNodeGUID: 6e76d217-230a-4e46-9b4f-395af153d932
+    TargetNodeGUID: 159287b1-15f6-460f-9813-c5a367368e30
+  - BaseNodeGUID: 159287b1-15f6-460f-9813-c5a367368e30
+    PortName: "I\u2019ll hunt"
+    TargetNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
+  - BaseNodeGUID: 159287b1-15f6-460f-9813-c5a367368e30
+    PortName: I do not want to hunt
+    TargetNodeGUID: 8894c704-8e97-4324-93d6-83775a9b7f24
+  - BaseNodeGUID: 8894c704-8e97-4324-93d6-83775a9b7f24
     PortName: Option 1
-    TargetNodeGUID: ce211613-1782-4ff4-ba96-9e12037612f3
+    TargetNodeGUID: 9fec02d8-1b4a-4b92-b548-4c9ccb4e0e77
+  - BaseNodeGUID: 9fec02d8-1b4a-4b92-b548-4c9ccb4e0e77
+    PortName: I can help you
+    TargetNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
+  - BaseNodeGUID: 9fec02d8-1b4a-4b92-b548-4c9ccb4e0e77
+    PortName: I do not want to huntt
+    TargetNodeGUID: 21a53b8d-d057-4c8d-aeb1-cd5e299bb067
+  - BaseNodeGUID: 21a53b8d-d057-4c8d-aeb1-cd5e299bb067
+    PortName: Option 1
+    TargetNodeGUID: 36e67827-8b43-4a87-b937-48d931444eaf
+  - BaseNodeGUID: 36e67827-8b43-4a87-b937-48d931444eaf
+    PortName: Option 1
+    TargetNodeGUID: e2a5c8a6-6f10-44df-a8c9-cb2de779be5a
   DialogueNodeData:
-  - NodeGUID: 2a8ed12a-964c-456c-aae8-5bf1db94d5f4
+  - NodeGUID: 1804bf96-7f75-42ca-aa9f-23a81eb04462
+    DialogueText: "{Hanta} Hey! I\u2019ll be heading down to hunt some caribou later."
+    Position: {x: 267, y: 200}
+  - NodeGUID: 677ae90e-e7ec-4cc4-8861-42355c0f1a42
     DialogueText: "{Hanta} Since autumn\u2019s ending soon, we could use some extra
       help before they migrate."
-    Position: {x: 1163, y: 161}
-  - NodeGUID: e9cda7d2-5fcb-4990-bd7b-5e082a5cb517
-    DialogueText: "{Hanta} Hey! I\u2019ll be heading down to hunt some caribou later."
-    Position: {x: 474, y: 180}
-  - NodeGUID: 67c5e071-7c19-4ab1-92de-e8cce7e756d7
+    Position: {x: 783.5, y: 200}
+  - NodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
+    DialogueText: '{Hanta} Yay!! Thank you, mate!'
+    Position: {x: 1968, y: 200}
+  - NodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
+    DialogueText: '{Hanta} We just need a few supplies before we walk down.'
+    Position: {x: 2274, y: 200}
+  - NodeGUID: 73a24ae7-b188-49a8-9d2c-27e47d7f38c2
+    DialogueText: '{Hanta} Three blueberries and three cranberries for bait and a
+      shotgun.'
+    Position: {x: 2838, y: 200}
+  - NodeGUID: 33d5b888-fbdb-4f06-ab42-e2871a308a51
     DialogueText: "{Hanta} I\u2019ll be getting some other gear. Could you get those
       things for me?"
-    Position: {x: 2513, y: 636.5}
-  - NodeGUID: dca73d27-14b0-4d4d-aabe-70f1ef7d28e8
-    DialogueText: '{Hanta} Thank you, mate!'
-    Position: {x: 2426, y: 161}
-  - NodeGUID: a9244e0e-2e1e-42d7-b71a-d9924807f2a5
-    DialogueText: "{Hanta} Well\u2026 No one else really wants to help out today."
-    Position: {x: 1107.5, y: 463}
-  - NodeGUID: 19b03e2a-44f4-4299-bac0-ef082d78d928
+    Position: {x: 2842, y: 370}
+  - NodeGUID: d1a525af-c92f-4811-8dd7-f5db45e35a3e
+    DialogueText: '{Hanta} Could you spare some time to help out?'
+    Position: {x: 1494.5, y: 176}
+  - NodeGUID: 63d635a7-d42f-499c-a108-0599fda127f5
     DialogueText: "{Hanta} Oh\u2026 Are you busy?"
-    Position: {x: 713, y: 463}
-  - NodeGUID: 3637ddaa-b297-40d6-8881-23a35d555ff1
+    Position: {x: 819, y: 468.5}
+  - NodeGUID: d22a0e31-83b8-43ed-b04f-06323bda4c30
+    DialogueText: "{Hanta} Well\u2026 No one else really wants to help out today."
+    Position: {x: 1209, y: 468.5}
+  - NodeGUID: 424e4dd0-f9b2-4ecb-8c10-596400f8c009
+    DialogueText: "{Hanta} Autumn\u2019s ending and we need to stock up on food."
+    Position: {x: 914.5, y: 886}
+  - NodeGUID: 159287b1-15f6-460f-9813-c5a367368e30
+    DialogueText: "{Hanta} You could be really helping out the camp\u2026"
+    Position: {x: 1463.5, y: 886}
+  - NodeGUID: a8d0719e-5024-4107-b296-6915b576a191
     DialogueText: "{Hanta} Just one person going hunting isn\u2019t the most efficient
       for gathering."
-    Position: {x: 1656.5, y: 511.5}
-  - NodeGUID: e9be9c66-2678-4349-8e99-3c53021228af
-    DialogueText: '{Hanta} Three {itemcolor}blueberries{maincolor} and three {itemcolor}cranberries{maincolor}
-      for bait, and a {itemcolor}shotgun{maincolor}. ADDTERM{blueberry, cranberry,
-      shotgun}'
-    Position: {x: 2910, y: 398}
-  - NodeGUID: 2480393d-235c-476a-a178-d7b0375b55d6
-    DialogueText: '{Hanta} We just need a few supplies before we walk down.'
-    Position: {x: 2405.5, y: 398}
-  - NodeGUID: 392f1114-9ba7-4995-8baf-bea569a5856b
-    DialogueText: '{Hanta} Yay!!'
-    Position: {x: 2285, y: 560}
-  - NodeGUID: 2ef441ad-fab7-487a-8e97-2258857fc2ca
-    DialogueText: '{Hanta} Could you spare some time to help out?'
-    Position: {x: 1891, y: 161}
-  - NodeGUID: 6e76d217-230a-4e46-9b4f-395af153d932
+    Position: {x: 895, y: 633}
+  - NodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
+    DialogueText: "{Hanta} Are you sure you don\u2019t want to go?"
+    Position: {x: 1508.5, y: 609}
+  - NodeGUID: 8894c704-8e97-4324-93d6-83775a9b7f24
     DialogueText: "{Hanta} Okay, I really didn\u2019t want to let this get out there,
-      but I\u2019m kind of terrified of hunting."
-    Position: {x: 867, y: 1114}
-  - NodeGUID: fd78ac80-339b-4027-b51c-f0307f15f796
-    DialogueText: "{Hanta} ...Okay\u2026"
-    Position: {x: 2230.5, y: 1202.5}
-  - NodeGUID: ce211613-1782-4ff4-ba96-9e12037612f3
+      but I\u2019m kind of terrified of hunting"
+    Position: {x: 914.5, y: 1101}
+  - NodeGUID: 9fec02d8-1b4a-4b92-b548-4c9ccb4e0e77
     DialogueText: "{Hanta} I\u2019m terrible with guns. I could really, REALLY use
       the help."
-    Position: {x: 1710.5, y: 1178.5}
-  - NodeGUID: 8b22888d-52f0-451f-adaf-eab612c1140e
-    DialogueText: "{Hanta} ... I\u2019ll be here if you change your mind!! haha\u2026"
-    Position: {x: 2883.5, y: 1157.5}
-  - NodeGUID: 0467b075-3c22-4968-a952-dd8f1340add9
+    Position: {x: 1623.5, y: 1101}
+  - NodeGUID: 21a53b8d-d057-4c8d-aeb1-cd5e299bb067
+    DialogueText: "{Hanta} ...Okay\u2026"
+    Position: {x: 1576.5, y: 1359}
+  - NodeGUID: 36e67827-8b43-4a87-b937-48d931444eaf
     DialogueText: "{Hanta} I can\u2026 find someone else\u2026"
-    Position: {x: 2526, y: 1178.5}
-  - NodeGUID: 76dbf2b0-fe2e-4004-803f-3959e6382e7d
-    DialogueText: "{Hanta} Are you sure you don\u2019t want to go?"
-    Position: {x: 972, y: 673}
-  - NodeGUID: 49e3a231-0421-4a5c-b6cb-e9cb00f85bd4
-    DialogueText: "{Hanta} Autumn\u2019s ending and we need to stock up on food."
-    Position: {x: 1429, y: 794}
-  - NodeGUID: 405cc746-e7d5-40d8-9306-86b717e3798d
-    DialogueText: "{Hanta} You could be really helping out the camp\u2026"
-    Position: {x: 1678, y: 966.5}
+    Position: {x: 1875.5, y: 1359}
+  - NodeGUID: e2a5c8a6-6f10-44df-a8c9-cb2de779be5a
+    DialogueText: "{Hanta} ...I\u2019ll be here if you change your mind!! haha\u2026"
+    Position: {x: 1988.5, y: 1521}
   ExposedProperties: []
   CommentBlockData: []

@@ -10,22 +10,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
-  m_Name: Time to Cook (None Complete)
+  m_Name: Time to Cook (Incomplete)
   m_EditorClassIdentifier: 
   NodeLinks:
-  - BaseNodeGUID: 7382aabc-06db-447a-8997-84f11f52c073
-    PortName: Option 1
-    TargetNodeGUID: 1b06ffa4-0dd3-464f-b8ef-884a34fe5c38
-  - BaseNodeGUID: 7382aabc-06db-447a-8997-84f11f52c073
+  - BaseNodeGUID: 42847829-4b32-4edc-8115-e4349ab6f729
     PortName: Next
-    TargetNodeGUID: 7382aabc-06db-447a-8997-84f11f52c073
+    TargetNodeGUID: cf8ed455-32a1-4810-98d4-819268b13afe
+  - BaseNodeGUID: cf8ed455-32a1-4810-98d4-819268b13afe
+    PortName: Option 1
+    TargetNodeGUID: b061e717-a564-470f-ac09-14d19bf9781a
   DialogueNodeData:
-  - NodeGUID: 1b06ffa4-0dd3-464f-b8ef-884a34fe5c38
+  - NodeGUID: cf8ed455-32a1-4810-98d4-819268b13afe
+    DialogueText: "{Doris} Hello, young one. Neenjit d\xF4onch'y\xE0a? "
+    Position: {x: 265, y: 200}
+  - NodeGUID: b061e717-a564-470f-ac09-14d19bf9781a
     DialogueText: '{Doris} It looks like Harper and Hanta still need some help. Could
       you please go check on them?'
-    Position: {x: 923.5, y: 200}
-  - NodeGUID: 7382aabc-06db-447a-8997-84f11f52c073
-    DialogueText: '{Doris} Hello, young one. How are you doing?'
-    Position: {x: 461.5, y: 214.5}
+    Position: {x: 520, y: 401}
   ExposedProperties: []
   CommentBlockData: []
