@@ -236,6 +236,9 @@ public class DialogueUI : MonoBehaviour
         //Change Destination Group - CHANGEDEST{destinationPtr}
         fullText = changeDestParse(fullText,currNPC);
 
+        //Change Destination Group for multiple NPCs - CHANGEDESTMULT{NPC0:destinationPtr0,...NPCN:destinationPtrN}
+        fullText = changeDestMultParse(fullText);
+
         //Enable/Disable Obj Event - ACTIVATE{tag0,...tagN} DEACTIVATE{tag0,...tagN} 
         fullText = toggleParse(fullText); //This is intentional
         fullText = toggleParse(fullText);
@@ -618,6 +621,28 @@ public class DialogueUI : MonoBehaviour
 
             if(endPos>-1){ //If all requirements have passed, set next dialogue for multiple NPCs
                 currNPC.setDestinationPointer(int.Parse(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
+
+                fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+            }
+            return fullText.Trim();
+    } 
+
+        private static string changeDestMultParse(string fullText){
+        int startPos = fullText.IndexOf("CHANGEDESTMULT{");
+            int addLen = 15; //Length of CHANGEDESTMULT{
+
+            int endPos = -1;
+
+            if(startPos>-1){ //Check for closing bracket
+                endPos = fullText.IndexOf("}",startPos+addLen);
+            }
+
+            if(endPos>-1){ //If all requirements have passed, set next dialogue for multiple NPCs
+                string[] destList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+                foreach(string str in destList){
+                    string[] destInfo = str.Trim().Split(':');
+                    GameObject.Find(destInfo[0]).GetComponent<NpcNavMesh>().setDestinationPointer(int.Parse(destInfo[1]));
+                }
 
                 fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
             }
