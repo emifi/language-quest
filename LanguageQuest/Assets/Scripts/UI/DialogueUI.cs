@@ -199,8 +199,9 @@ public class DialogueUI : MonoBehaviour
         //ADD ANY REPLACEMENT VALUES YOU WOULD LIKE HERE.
         //MAKE THEM THE SAME AS THEY ARE IN DIALOGUE GRAPHS.
         if(currNPC != null){
-            fullText = fullText.Replace("{npctitle}",("<size=140%>" +currNPC.name + "/size")); //For START of dialogue
+            fullText = fullText.Replace("{npctitle}",("<size=140%>" +currNPC.name + "</size>")); //For START of dialogue
             fullText = fullText.Replace("{npcname}",(npcCol + currNPC.name + mainCol)); //For any reference in dialogue
+            fullText = fullText.Replace(("{"+$"{currNPC.name}"+"}"),("<size=140%>" +currNPC.name + "</size>")); //For START of dialogue
         }
 
         fullText = fullText.Replace("{playername}",DataStructs.playerName);

@@ -103,10 +103,10 @@ MonoBehaviour:
     DialogueText: Goodbye! ! !
     Position: {x: 1847, y: 49}
   - NodeGUID: df3c1842-d7f4-4536-8454-19b7bf66c14f
-    DialogueText: I wanted to speak with you about very important and very cool matters
-      that I would like to talk to you about via this long dialogue box! If you look
-      to your right you'll see a ADDTERMPRINT{Book,Donut}. I would like to gift you
-      a bucket! REMOVEITEM{Berries,2} ADDITEM{Bucket,1,Fish,2}
+    DialogueText: '{npctitle} I wanted to speak with you about very important and
+      very cool matters that I would like to talk to you about via this long dialogue
+      box! If you look to your right you''ll see a ADDTERMPRINT{Book,Donut}. I would
+      like to gift you a bucket! REMOVEITEM{Berries,2} ADDITEM{Bucket,1,Fish,2}'
     Position: {x: 199, y: -54}
   - NodeGUID: 0d18b7d7-4f64-49a8-91db-41e2a8564d34
     DialogueText: Actually... Wait. Before you go... If you look to the sky you'll
@@ -114,8 +114,9 @@ MonoBehaviour:
       you. give it back. GIVE IT BACKKK! REMOVEITEM{Bucket,1}
     Position: {x: 2076, y: 34}
   - NodeGUID: 82533cbe-2796-4a7e-984a-6546c00558cb
-    DialogueText: 'Hello, my name is {replacename}. If you look to your left you''ll
-      see a ADDTERMPRINT{Tree,Pepper,Onions,Firewood,Fat,Shotgun,Salt,Raw Meat,Potato,Cranberries}. '
+    DialogueText: '{NPC (1)} Hello, my name is {npcname}. If you look to your left
+      you''ll see a ADDTERMPRINT{Tree,Pepper,Onions,Firewood,Fat,Shotgun,Salt,Raw
+      Meat,Potato,Cranberries}. '
     Position: {x: 100, y: 352}
   - NodeGUID: d07dd8c7-14e1-4353-b03e-e37347b0d216
     DialogueText: Did you enjoy this conversation? Also give me a WHOLE CARIBOU right
