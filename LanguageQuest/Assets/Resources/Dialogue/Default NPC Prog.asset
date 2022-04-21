@@ -31,7 +31,7 @@ MonoBehaviour:
     DialogueText: Why are you looking at me like that?
     Position: {x: 105, y: 395}
   - NodeGUID: 333b9817-c08d-4558-8161-b3cd2c6b544d
-    DialogueText: ...I'm funny ok ACTIVATE{firewood} SCENE{Minigame}
+    DialogueText: ...I'm funny ok ACTIVATE{firewood}  GOTO{1} SCENE{Minigame}
     Position: {x: 110, y: 504}
   ExposedProperties: []
   CommentBlockData: []
