@@ -36,7 +36,9 @@ public class Gun : MonoBehaviour
                     Animator animator = hit.collider.GetComponentInParent<Animator>();
                     animator.SetBool("isDead", true);
                     animator.SetBool("isWalking", false);
+                    animator.Play("Base Layer.Death", 0);
                     NPCInteractable interactable = hit.collider.gameObject.AddComponent<NPCInteractable>();
+                    interactable.interactOverride = "to dress Caribou";
                     NpcNavMesh navMeshScript = hit.collider.gameObject.GetComponentInParent<NpcNavMesh>();
                     navMeshScript.walkType = NpcNavMesh.NpcType.Stationary;
                     UnityEngine.AI.NavMeshAgent agent = hit.collider.gameObject.GetComponentInParent<UnityEngine.AI.NavMeshAgent>();

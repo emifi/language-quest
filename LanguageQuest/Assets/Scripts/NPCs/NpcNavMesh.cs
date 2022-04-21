@@ -5,7 +5,7 @@ using Subtegral.DialogueSystem.DataContainers;
 
 public class NpcNavMesh : MonoBehaviour
 {
-    public enum NpcType {Roam,Proximity,Stationary};
+    public enum NpcType {Roam,Proximity,Stationary,Reactive};
 
     public List<DestinationArray> destinationGroups;
     public GameObject npc;
@@ -42,7 +42,7 @@ public class NpcNavMesh : MonoBehaviour
             if(minTimeout>maxTimeout){
                 minTimeout = maxTimeout;
             }
-            if(walkType==NpcType.Roam){
+            if(walkType==NpcType.Roam || walkType==NpcType.Reactive){
                 targetedDest = Random.Range(0,destListLength);
             }else{
                 MeshRenderer renderer = npc.GetComponent<MeshRenderer>();
@@ -71,13 +71,13 @@ public class NpcNavMesh : MonoBehaviour
             mesh.destination = destinationGroups[destinationsPtr].dests[targetedDest].position;
         }
         if(collided){ //If collision, react to timeout or nearby player
-            if(walkType==NpcType.Roam&&Time.time>=colTime+timeout){
+            if((walkType==NpcType.Roam || walkType == NpcType.Reactive)&&Time.time>=colTime+timeout){
                 targetedDest = Random.Range(0,destinationGroups[destinationsPtr].dests.Count); //assign new random spot to roam
                 collided = false;
             }
             if(walkType==NpcType.Proximity&&Time.time>=colTime+timeout&&(npc.transform.position - player.position).sqrMagnitude < colDistance){ //Nearby player detection
                 targetedDest++;
-                if(targetedDest<destinationGroups[destinationsPtr].dests.Count){ //If more locations exist, start navigation
+                if(targetedDest<destinationGroups[destinationsPtr].dests.Count || walkType == NpcType.Reactive){ //If more locations exist, start navigation
                     collided = false;
                 }else{ //Otherwise, disallow any more roaming.
                     MeshRenderer renderer = npc.GetComponent<MeshRenderer>();
@@ -85,6 +85,11 @@ public class NpcNavMesh : MonoBehaviour
                     collided = false;
                     complete = true;
                 }
+            }
+            else if (walkType == NpcType.Reactive && (npc.transform.position - player.position).sqrMagnitude < colDistance) {
+                Debug.Log("HOLY FUCK THAT GUYS GOTTA GUN");
+                targetedDest = Random.Range(0,destinationGroups[destinationsPtr].dests.Count);
+                collided = false;
             }
         }else if((!complete&&(npc.transform.position - destinationGroups[destinationsPtr].dests[targetedDest].position).sqrMagnitude < colDistance)){ //Upon collision, take time and determine timeout
             colTime = Time.time;
