@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Doris Quiz Fail
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 36a72c5b-5b56-4a73-b10a-1d7e1aeb425e
+    PortName: Next
+    TargetNodeGUID: c806956d-543b-4337-b1c1-5759fbb6c63c
+  DialogueNodeData:
+  - NodeGUID: c806956d-543b-4337-b1c1-5759fbb6c63c
+    DialogueText: '{Doris} Oh no...'
+    Position: {x: 298, y: 200}
+  ExposedProperties: []
+  CommentBlockData: []

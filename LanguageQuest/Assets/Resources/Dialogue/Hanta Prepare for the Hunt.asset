@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Hanta Prepare for the Hunt
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 9f6a861c-5ed4-4d34-9a96-e1a0f5aa156d
+    PortName: Next
+    TargetNodeGUID: a7baf6dd-2356-4dbf-9d86-4023ce0950bc
+  - BaseNodeGUID: a7baf6dd-2356-4dbf-9d86-4023ce0950bc
+    PortName: Option 1
+    TargetNodeGUID: d2c1349e-44e3-43fb-b643-b4611d5f4a09
+  DialogueNodeData:
+  - NodeGUID: a7baf6dd-2356-4dbf-9d86-4023ce0950bc
+    DialogueText: '{Hanta} We need three blueberries, three cranberries, and a shotgun.'
+    Position: {x: 321, y: 143}
+  - NodeGUID: d2c1349e-44e3-43fb-b643-b4611d5f4a09
+    DialogueText: '{Hanta} Could you get those things for me?'
+    Position: {x: 356, y: 368}
+  ExposedProperties: []
+  CommentBlockData: []

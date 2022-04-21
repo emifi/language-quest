@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Doris Initial Quest
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 308d98de-7ede-4b0d-b172-e6cc162a368c
+    PortName: Next
+    TargetNodeGUID: d2a69db5-018c-4625-92d6-914bdec4b59f
+  - BaseNodeGUID: d2a69db5-018c-4625-92d6-914bdec4b59f
+    PortName: Option 1
+    TargetNodeGUID: e2ae6e0c-9841-4d69-8467-a75fc0737635
+  - BaseNodeGUID: e2ae6e0c-9841-4d69-8467-a75fc0737635
+    PortName: Option 1
+    TargetNodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
+  - BaseNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+    PortName: Option 1
+    TargetNodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
+  - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
+    PortName: '{choicecolor}No{maincolor}'
+    TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
+  - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
+    PortName: '{choicecolor}Yes{maincolor}'
+    TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+  - BaseNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
+    PortName: '{choicecolor}Yes{maincolor}'
+    TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+  - BaseNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
+    PortName: '{choicecolor}No{maincolor}'
+    TargetNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
+  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+    PortName: '{choicecolor}Yes{maincolor}'
+    TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+    PortName: '{choicecolor}No{maincolor}'
+    TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
+  - BaseNodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
+    PortName: Option 1
+    TargetNodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
+  - BaseNodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
+    PortName: Option 1
+    TargetNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+  DialogueNodeData:
+  - NodeGUID: d2a69db5-018c-4625-92d6-914bdec4b59f
+    DialogueText: '{Doris} Good morning. How are you today?'
+    Position: {x: 289, y: 23}
+  - NodeGUID: e2ae6e0c-9841-4d69-8467-a75fc0737635
+    DialogueText: '{Doris}  You''re up early, {playername}.'
+    Position: {x: 698, y: 23}
+  - NodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
+    DialogueText: "{Doris}  Come back to me when you\u2019ve helped both of them.
+      Then we can start cooking!"
+    Position: {x: 1410, y: 551}
+  - NodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+    DialogueText: '{Doris} Splendid! In fact, we still need to gather ingredients
+      for dinner tonight as well. {npccolor}Hanta{maincolor} and {npccolor}Harper{maincolor}
+      might need assistance with hunting and fishing, so feel free to approach them
+      when you have time.'
+    Position: {x: 581, y: 434}
+  - NodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
+    DialogueText: "{Doris}  But we\u2019re running low on food\u2026Please? "
+    Position: {x: 658, y: 1125}
+  - NodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
+    DialogueText: "{Doris}  But we\u2019re running low on food\u2026Please?"
+    Position: {x: 245, y: 752}
+  - NodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+    DialogueText: "{Doris} We must stock up for the upcoming winter, and we do need
+      the extra hands\u2026"
+    Position: {x: 819, y: 291}
+  - NodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
+    DialogueText: '{Doris} Well, now that you are here, would you mind helping around
+      the village? '
+    Position: {x: 830, y: 176}
+  - NodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
+    DialogueText: "{Doris} In fact, I don\u2019t think I\u2019ve ever seen you up
+      this early!"
+    Position: {x: 245, y: 218}
+  ExposedProperties: []
+  CommentBlockData: []

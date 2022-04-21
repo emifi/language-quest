@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Doris Time to Cook (Complete)
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: b99e87f1-1f89-4154-a2e7-944964e4f033
+    PortName: Next
+    TargetNodeGUID: 98dd4735-53a2-4f37-afa0-28051aeaeb7f
+  - BaseNodeGUID: 98dd4735-53a2-4f37-afa0-28051aeaeb7f
+    PortName: Option 1
+    TargetNodeGUID: ec72f089-92bb-4bf5-8644-528513cebb28
+  - BaseNodeGUID: ec72f089-92bb-4bf5-8644-528513cebb28
+    PortName: Option 1
+    TargetNodeGUID: db0d2868-18be-4d76-9730-20d9694d0001
+  - BaseNodeGUID: db0d2868-18be-4d76-9730-20d9694d0001
+    PortName: Yes
+    TargetNodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
+  - BaseNodeGUID: db0d2868-18be-4d76-9730-20d9694d0001
+    PortName: No
+    TargetNodeGUID: 17ada236-65c1-4857-91e8-da92d463df83
+  - BaseNodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
+    PortName: Option 1
+    TargetNodeGUID: 56c93be5-6186-4de5-b3fc-e85f3fcf9206
+  DialogueNodeData:
+  - NodeGUID: 98dd4735-53a2-4f37-afa0-28051aeaeb7f
+    DialogueText: "{Doris} Welcome back, young one. Neenjit d\xF4onch'y\xE0a?"
+    Position: {x: 324, y: 245}
+  - NodeGUID: ec72f089-92bb-4bf5-8644-528513cebb28
+    DialogueText: "{Doris} You\u2019ve helped both Hanta and Harper? Splendid! We
+      can now move onto making dinner!"
+    Position: {x: 56, y: 378}
+  - NodeGUID: db0d2868-18be-4d76-9730-20d9694d0001
+    DialogueText: '{Doris} Are you ready to cook, young one?'
+    Position: {x: 349, y: 527}
+  - NodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
+    DialogueText: '{Doris} Fantastic!'
+    Position: {x: 763, y: 512}
+  - NodeGUID: 17ada236-65c1-4857-91e8-da92d463df83
+    DialogueText: "{Doris} I\u2019ll be here when you\u2019re ready"
+    Position: {x: 731.5, y: 681.5}
+  - NodeGUID: 56c93be5-6186-4de5-b3fc-e85f3fcf9206
+    DialogueText: SCENE{}
+    Position: {x: 1012, y: 512}
+  ExposedProperties: []
+  CommentBlockData:
+  - ChildNodes: []
+    Position: {x: 597, y: 566}
+    Title: Comment Block

@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Doris Time to Cook (Incomplete)
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 42847829-4b32-4edc-8115-e4349ab6f729
+    PortName: Next
+    TargetNodeGUID: cf8ed455-32a1-4810-98d4-819268b13afe
+  - BaseNodeGUID: cf8ed455-32a1-4810-98d4-819268b13afe
+    PortName: Option 1
+    TargetNodeGUID: b061e717-a564-470f-ac09-14d19bf9781a
+  DialogueNodeData:
+  - NodeGUID: cf8ed455-32a1-4810-98d4-819268b13afe
+    DialogueText: "{Doris} Hello, young one. Neenjit d\xF4onch'y\xE0a? "
+    Position: {x: 265, y: 200}
+  - NodeGUID: b061e717-a564-470f-ac09-14d19bf9781a
+    DialogueText: '{Doris} It looks like Harper and Hanta still need some help. Could
+      you please go check on them?'
+    Position: {x: 520, y: 401}
+  ExposedProperties: []
+  CommentBlockData: []

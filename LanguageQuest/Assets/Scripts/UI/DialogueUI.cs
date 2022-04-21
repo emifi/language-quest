@@ -50,6 +50,8 @@ public class DialogueUI : MonoBehaviour
     private static string sceneSwitch = null;
     private static int timeChange = -1; 
     private static float score = 0;
+    private static bool lineChange = false;
+    private static string npcTitle = "";
 
     private static ObjectiveSystem objectiveSystem;
 
@@ -133,10 +135,10 @@ public class DialogueUI : MonoBehaviour
             textDelay = Time.time;
             if(fullText[textPos]=='<'){ //Exclude Html TAGs from char-based additions
                 int endPos = fullText.IndexOf(">",textPos);
-                displayedText+=fullText.Substring(textPos,endPos-textPos);
-                textPos+=(endPos-textPos);
+                displayedText+=fullText.Substring(textPos,endPos-textPos+1);
+                textPos+=(endPos-textPos+1);
             }
-            if(textPos<fullText.Length){ //May look redundant, but ensures that upon <tag> element disappearing, a new character
+            if(textPos<fullText.Length&&fullText[textPos]!='<'){ //May look redundant, but ensures that upon <tag> element disappearing, a new character
                 displayedText+=fullText[textPos]; //is added in its absence
                 textPos++;
             }
@@ -167,6 +169,7 @@ public class DialogueUI : MonoBehaviour
     }
 
     public static void turnPage(){ //Proceed to next dialogue node
+        lineChange = false;
         if(choices.Count()==0){ //End dialogue
             nextDialogue(null);
             return;
@@ -199,9 +202,14 @@ public class DialogueUI : MonoBehaviour
         //ADD ANY REPLACEMENT VALUES YOU WOULD LIKE HERE.
         //MAKE THEM THE SAME AS THEY ARE IN DIALOGUE GRAPHS.
         if(currNPC != null){
-            fullText = fullText.Replace("{npctitle}",("<size=140%>" +currNPC.name + "</size>")); //For START of dialogue
+            fullText = fullText.Replace("{npctitle}",("<size=150%><#060606>" +currNPC.name + mainCol + "</size>")); //For START of dialogue
             fullText = fullText.Replace("{npcname}",(npcCol + currNPC.name + mainCol)); //For any reference in dialogue
-            fullText = fullText.Replace(("{"+$"{currNPC.name}"+"}"),("<size=140%>" +currNPC.name + "</size>")); //For START of dialogue
+            fullText = fullText.Replace(("{"+$"{currNPC.name}"+"}"),("<size=150%><#060606>" +currNPC.name + mainCol + "</size>")); //For START of dialogue
+            if(fullText.Contains("<size=150%><#060606>" +currNPC.name + mainCol + "</size>")){
+                npcTitle = "<size=150%><#060606>" +currNPC.name + mainCol + "</size>";
+                displayedText += npcTitle;
+                textPos+=npcTitle.Length;
+            }
         }
 
         fullText = fullText.Replace("{playername}",DataStructs.playerName);

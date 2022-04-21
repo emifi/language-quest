@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Harper Pre Doris
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: f3480d4a-3abe-4e32-914b-54309787195d
+    PortName: Next
+    TargetNodeGUID: 223ca736-eeb4-4e6f-b321-de899304d6f8
+  - BaseNodeGUID: 223ca736-eeb4-4e6f-b321-de899304d6f8
+    PortName: Option 1
+    TargetNodeGUID: 3376fa19-32ca-4095-b4c3-e1272f5004c9
+  - BaseNodeGUID: 3376fa19-32ca-4095-b4c3-e1272f5004c9
+    PortName: Option 1
+    TargetNodeGUID: 4bf2ffb3-237a-4b46-a1f4-707c1ebc2254
+  DialogueNodeData:
+  - NodeGUID: 223ca736-eeb4-4e6f-b321-de899304d6f8
+    DialogueText: '{Harper} Oi now, what are you doing down here so early in the
+      day?'
+    Position: {x: 62, y: 325}
+  - NodeGUID: 3376fa19-32ca-4095-b4c3-e1272f5004c9
+    DialogueText: '{Harper} What, do you want to go fishing?'
+    Position: {x: 73, y: 455}
+  - NodeGUID: 4bf2ffb3-237a-4b46-a1f4-707c1ebc2254
+    DialogueText: "{Harper} Well, it\u2019s a bit early for that, I think. Why don\u2019t
+      you go back to camp for a bit. I might consider taking everyone out fishing
+      later - well, anyone who cares to fish today, that is!"
+    Position: {x: 70, y: 578}
+  ExposedProperties: []
+  CommentBlockData: []

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Doris Quiz Success
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: fde6d5d7-f73a-4aac-9bc8-4aacd2e35e1b
+    PortName: Next
+    TargetNodeGUID: 434f355c-ae23-4456-8787-6064ffefbdb0
+  DialogueNodeData:
+  - NodeGUID: 434f355c-ae23-4456-8787-6064ffefbdb0
+    DialogueText: "{Doris} What a lovely meal! You\u2019re a great assistant, young
+      one."
+    Position: {x: 302, y: 164}
+  ExposedProperties: []
+  CommentBlockData: []

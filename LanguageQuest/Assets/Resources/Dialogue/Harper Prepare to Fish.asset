@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
+  m_Name: Harper Prepare to Fish
+  m_EditorClassIdentifier: 
+  NodeLinks:
+  - BaseNodeGUID: 1693434b-641d-4711-88eb-b5502f4bbc7a
+    PortName: Next
+    TargetNodeGUID: 0e41a7c0-98eb-45c7-b4dd-5dfb304f868f
+  DialogueNodeData:
+  - NodeGUID: 0e41a7c0-98eb-45c7-b4dd-5dfb304f868f
+    DialogueText: ADDQUEST{6-Collect-Fish-5} {Harper} We need some bait and fishing
+      rods. Go get 'em!
+    Position: {x: 304, y: 180}
+  ExposedProperties: []
+  CommentBlockData: []

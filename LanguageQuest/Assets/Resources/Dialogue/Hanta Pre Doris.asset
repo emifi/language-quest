@@ -24,13 +24,13 @@ MonoBehaviour:
     TargetNodeGUID: b458f6f3-2fcf-445e-80ae-44f1c038a49f
   DialogueNodeData:
   - NodeGUID: d50fe3e6-d75a-4c04-af57-d92767926fc5
-    DialogueText: Hey, what are you doing down here so early?
+    DialogueText: '{Hanta} Hey, what are you doing down here so early?'
     Position: {x: 48, y: 349}
   - NodeGUID: 690bfc91-1815-41a3-832c-601f1ae6f1f6
-    DialogueText: "Does Doris even know you\u2019re down here?"
+    DialogueText: "{Hanta} Does Doris even know you\u2019re down here?"
     Position: {x: 44, y: 474}
   - NodeGUID: b458f6f3-2fcf-445e-80ae-44f1c038a49f
-    DialogueText: "{npctitle} I\u2019ll take that expression as a yes. I don\u2019t
+    DialogueText: "{Hanta} I\u2019ll take that expression as a yes. I don\u2019t
       want her to worry if she sees you aren\u2019t in the village. Please go talk
       to her."
     Position: {x: 65, y: 644}
