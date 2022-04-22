@@ -83,9 +83,7 @@ MonoBehaviour:
       for dinner tonight as well. {npccolor}Hanta{maincolor} and {npccolor}Harper{maincolor}
       might need assistance with hunting and fishing, so feel free to approach them
       when you have time. ADDTERM{tonight, hunting, fish} GOTOMULT{Doris:1,Harper:1,Hanta:1}
-      ADDQUESTS++{Hunt-1-TalkTo-Hanta,Hunt-1-MoveTo-Clearing,Hanta:1} HIDDENQUESTS++{Fish-4-MoveTo-river,Fish-4-TalkTo-Harper,Harper:1}
-      HIDDENQUEST{Doris-Fish-Done,Doris-Hunt-Done,5} HIDDENQUEST{Doris-Fish-Done,3}
-      HIDDENQUEST{Doris-Hunt-Done,2}'
+      ADDQUESTS++{Hunt-1-TalkTo-Hanta,Hunt-1-MoveTo-Clearing,Hanta:1} HIDDENQUEST{Doris-Fish-Done,Doris-Hunt-Done,5}'
     Position: {x: 1411, y: 776}
   ExposedProperties: []
   CommentBlockData: []

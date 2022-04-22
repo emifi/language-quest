@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78b3fd9154634ebdb8c8a48960b9a16a, type: 3}
-  m_Name: Doris Time to Cook (Fishing Complete)
+  m_Name: Doris Time to Cook (Partial Complete)
   m_EditorClassIdentifier: 
   NodeLinks:
   - BaseNodeGUID: c337b794-bb6e-470a-9c5d-9b0eb0d428d8
@@ -24,8 +24,8 @@ MonoBehaviour:
     DialogueText: "{Doris} Hello young one. Neenjit d\xF4onch'y\xE0a? GOTO{3}"
     Position: {x: 354, y: 185}
   - NodeGUID: 8e1db522-8260-4268-a4d9-73d567ec2483
-    DialogueText: '{Doris} It looks like Hanta might need some help hunting. Could
-      you please go help him?'
+    DialogueText: '{Doris} It looks like there''s still work to do! Go down the cliff
+      trail and help Hanta and Harper!'
     Position: {x: 540, y: 400}
   ExposedProperties: []
   CommentBlockData: []

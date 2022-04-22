@@ -523,7 +523,7 @@ public class DialogueUI : MonoBehaviour
             string[] questList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
             List<Objective> newObjs = new List<Objective>();
             for(int i = 0; i<questList.Count()-1;i++){ //Add all quests (exclude last position)
-                newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
+                newObjs.Add(Resources.Load<ObjectiveMisc>("Objective System/"+questList[i].Trim()));
             }
             ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,currNPC,int.Parse(questList[questList.Count()-1]));
             GameObject.Find("Game Controller").GetComponent<GameController>().CreateHiddenGrouping(newObjGroup);
