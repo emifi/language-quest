@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: friend-sprite
+  imageSprite: friends-sprite
   nativeName: valak
   englishName: friend
   description: a person you like being around.
