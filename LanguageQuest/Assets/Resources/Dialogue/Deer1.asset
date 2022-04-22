@@ -18,8 +18,8 @@ MonoBehaviour:
     TargetNodeGUID: 814041a3-2767-42d8-9547-0acd7920af32
   DialogueNodeData:
   - NodeGUID: 814041a3-2767-42d8-9547-0acd7920af32
-    DialogueText: You dress the caribou and collect its meat... ADDITEM{Raw Meat,1,Fat,1}
-      DESTROY{Deer (1)}
+    DialogueText: You dress the caribou and collect its meat... ADDITEM{Caribou Meat,1,Caribou
+      Fat,1} DESTROY{Deer (1)}
     Position: {x: 212, y: 193}
   ExposedProperties: []
   CommentBlockData: []

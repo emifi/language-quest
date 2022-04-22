@@ -15,8 +15,8 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 0
-  imageSprite: 
-  nativeName: 
-  englishName: 
+  imageSprite: fat-sprite
+  nativeName: i inehk' eh
+  englishName: Caribou Fat
   description: 
   interactionString: to pickup

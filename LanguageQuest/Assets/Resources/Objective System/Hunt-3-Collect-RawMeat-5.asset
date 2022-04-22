@@ -15,5 +15,5 @@ MonoBehaviour:
   type: 0
   objectiveString: Hunt and dress Caribou
   panelUI: {fileID: 0}
-  item: {fileID: 11400000, guid: 6760c4992fcc2704f84e221343b8af8c, type: 2}
+  item: {fileID: 11400000, guid: 663dc3948bd7f43e5a643fc94b408621, type: 2}
   required: 5
