@@ -24,7 +24,7 @@ MonoBehaviour:
     DialogueText: '{Harper} Got the supplies? Great! We''re all reeling to go then!'
     Position: {x: 325, y: 180}
   - NodeGUID: afd7c0bb-e229-4393-a67b-159ef1676876
-    DialogueText: '{Harper} Let''s aim for 5 fish, alright? ADDQUEST{Fish-5-Collect-FishingRod-1,4}'
+    DialogueText: '{Harper} Let''s aim for 5 fish, alright? SCENE{3}'
     Position: {x: 521, y: 371}
   ExposedProperties: []
   CommentBlockData: []
