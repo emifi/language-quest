@@ -32,7 +32,7 @@ MonoBehaviour:
       in a film. ADDTERM{big}'
     Position: {x: 456, y: 429}
   - NodeGUID: 78263b8d-e815-48fc-944c-d1a016690aaf
-    DialogueText: "I wonder what it\u2019d be like to live in one myself\u2026"
+    DialogueText: "{Jules} I wonder what it\u2019d be like to live in one myself\u2026"
     Position: {x: 586, y: 624}
   ExposedProperties: []
   CommentBlockData: []

@@ -18,7 +18,8 @@ MonoBehaviour:
     TargetNodeGUID: 76139d08-9c72-48f6-a6c1-0ab02ec9b8ed
   DialogueNodeData:
   - NodeGUID: 76139d08-9c72-48f6-a6c1-0ab02ec9b8ed
-    DialogueText: 'Oi! You haven''t gotten the fishing items yet! Go find ''em! '
+    DialogueText: '{Harper} Oi! You haven''t gotten the fishing items yet! I think
+      I last remember seeing some sacks of bait by one of the houses.'
     Position: {x: 213, y: 180}
   ExposedProperties: []
   CommentBlockData: []
