@@ -56,20 +56,24 @@ public class NpcNavMesh : MonoBehaviour
         animator = gameObject.GetComponentInChildren<Animator>();
 
         Dictionary<string,NPCPointers> npcDict = DataStructs.NPCS[SceneManager.GetActiveScene().buildIndex-1];
+        Debug.Log("TEST");
         if(npcDict==null){
             DataStructs.NPCS[SceneManager.GetActiveScene().buildIndex-1] = new Dictionary<string,NPCPointers>();
             npcDict = DataStructs.NPCS[SceneManager.GetActiveScene().buildIndex-1];
             npcDict.Add(this.gameObject.name,new NPCPointers(dialoguePtr,destinationsPtr,targetedDest));
             np = npcDict[this.gameObject.name];
+            Debug.Log("A");
         }else{
             if(npcDict.ContainsKey(this.gameObject.name)){
                 np = npcDict[this.gameObject.name];
                 dialoguePtr = np.dialoguePtr;
                 targetedDest = np.targetedDest;
                 destinationsPtr = np.destinationsPtr;
+                Debug.Log("B");
             }else{
                 npcDict.Add(this.gameObject.name,new NPCPointers(dialoguePtr,destinationsPtr,targetedDest));
                 np = npcDict[this.gameObject.name];
+                Debug.Log("C");
             }
         }
         
