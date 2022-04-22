@@ -245,6 +245,9 @@ public class DialogueUI : MonoBehaviour
             fullText = hiddenObjectiveParseMultNPC(fullText); //++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2, NPC (2):2}
         }
 
+        //Next Dialogue Parsing - FIRE{objective0,...objectiveN}
+        fullText = fireParse(fullText);
+
         //Term Parsing (no print variation) - ADDTERM{item0,item1...itemN}/ADDTERMS{item0,item1...itemN}
         fullText = addTermParse(fullText);
 
@@ -554,7 +557,7 @@ public class DialogueUI : MonoBehaviour
                     npcMap.Add(new DialoguePointerMap(npcInfo[0],int.Parse(npcInfo[1])));
                 }else{ //Add objectives
                     Debug.Log("Is Objective "+questList[i]);
-                    newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
+                    newObjs.Add(Resources.Load<ObjectiveMisc>("Objective System/"+questList[i].Trim()));
                 }
             }
             ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,npcMap);
@@ -562,6 +565,32 @@ public class DialogueUI : MonoBehaviour
             fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText.Trim();
+    }
+
+    private static string fireParse(string fullText){
+        if(currNPC == null){
+            return fullText;
+        }
+
+        int startPos = fullText.IndexOf("FIRE{");
+            int addLen = 5; //Length of FIRE{
+
+            int endPos = -1;
+
+            if(startPos>-1){ //Check for closing bracket
+                endPos = fullText.IndexOf("}",startPos+addLen);
+            }
+
+            if(endPos>-1){ //If all requirements have passed, set next dialogue
+                string[] objs = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+
+                foreach(string ob in objs){
+                    GameObject.Find("Game Controller").GetComponent<GameController>().ForceComplete(Resources.Load<ObjectiveMisc>("Objective System/"+ob.Trim()));
+                }
+
+                fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+            }
+            return fullText.Trim();
     }
 
     private static string addTermPrintParse(string fullText){

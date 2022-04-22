@@ -25,7 +25,7 @@ MonoBehaviour:
     Position: {x: 265, y: 200}
   - NodeGUID: b061e717-a564-470f-ac09-14d19bf9781a
     DialogueText: '{Doris} It looks like Harper and Hanta still need some help. Could
-      you please go check on them?'
+      you please go check on them? FIRE{Doris-Fish-Done}'
     Position: {x: 520, y: 401}
   ExposedProperties: []
   CommentBlockData: []
