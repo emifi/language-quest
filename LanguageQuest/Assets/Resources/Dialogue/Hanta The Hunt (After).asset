@@ -24,8 +24,8 @@ MonoBehaviour:
     TargetNodeGUID: 9c824be0-976d-4394-875f-216340bc60ad
   DialogueNodeData:
   - NodeGUID: aca73457-ab86-4cf8-834c-c72c60da27ae
-    DialogueText: "GOTO{3} {Hanta} Dang, five whole caribou? Quite the haul today!
-      You\u2019re a natural."
+    DialogueText: "{Hanta} Dang, five whole caribou? Quite the haul today! You\u2019re
+      a natural."
     Position: {x: 243, y: 200}
   - NodeGUID: 61b33a2d-676c-4a31-95e8-c72a41647e9a
     DialogueText: "{Hanta} We\u2019ll need to dress the caribou and say thanks before

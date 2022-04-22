@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 919132149155446097, guid: 7454e17b283ddd442a3b5bdd48b7f86f, type: 3}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: fishingrod-sprite
   nativeName: J'al tai
   englishName: fishing rod
   description: a stick to catch fish

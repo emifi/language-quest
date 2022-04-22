@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Autumn
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
   imageSprite: 
   nativeName: 'khaiits''a'' '
   englishName: autumn
   description: the leafiest of the four seasons
-  interactionString: 
+  interactionString: to pickup
