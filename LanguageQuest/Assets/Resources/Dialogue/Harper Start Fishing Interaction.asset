@@ -46,7 +46,7 @@ MonoBehaviour:
   - NodeGUID: 72fcf9a1-40d5-49df-bfab-fca8a9a07d9d
     DialogueText: "{Harper} Great! Let\u2019s gather up the {itemcolor}bait{maincolor}
       and the {itemcolor}fishing rods{maincolor} and get those fish! ADDTERMS{bait,
-      fish,fishingrod} GOTO{2} ADDQUEST{Fish-5-Collect-Bait-3,Fish-5-Collect-FishingRod-1,3}"
+      fish,fishing rod} GOTO{2} ADDQUEST{Fish-5-Collect-Bait-3,Fish-5-Collect-FishingRod-1,3}"
     Position: {x: 638, y: 397}
   ExposedProperties: []
   CommentBlockData: []

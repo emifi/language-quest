@@ -627,6 +627,7 @@ public class DialogueUI : MonoBehaviour
             string[] termList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
             int count = termList.Count();
             for(int i = 0; i<count;i++){
+                Debug.Log(termList[i]);
                 notebook.AddItem(Resources.Load<ItemObject>("Items/"+termList[i].Trim()));
             }
 
