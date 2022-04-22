@@ -63,8 +63,8 @@ public class UpdateUI : MonoBehaviour
     {
         updateUI = GameObject.Find("UpdateUI");
         GameObject newPanelUI = Instantiate(panelUI);
-        Color color;
-        ifSceneManager.GetActiveScene().buildIndex==1){
+        Color color = startColor;
+        if(SceneManager.GetActiveScene().buildIndex==1){
             color = startColor;
             newPanelUI.GetComponent<TMP_Text>().text = $"Press 'N' to view your notebook!";
         }else if(SceneManager.GetActiveScene().buildIndex==3){
