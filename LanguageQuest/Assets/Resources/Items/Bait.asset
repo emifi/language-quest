@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 1718839437809988, guid: 5fb4dbc1b7c07b9418845eb61970d9df, type: 3}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: bait-sprite
   nativeName: tsan
   englishName: bait
   description: a snack for the fish.

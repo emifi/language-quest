@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  canBeAddedToNotebook: 0
+  canBeAddedToNotebook: 1
   imageSprite: fat-sprite
   nativeName: i inehk' eh
   englishName: Caribou Fat
-  description: 
+  description: The oils of the caribou.
   interactionString: to pickup
