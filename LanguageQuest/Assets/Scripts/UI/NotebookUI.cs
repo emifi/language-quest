@@ -74,7 +74,7 @@ public class NotebookUI : MonoBehaviour
             }
             for(int i = 1; i<=src;i++){
                 ItemObject item = notebook.container[notebook.container.Count-i].item;
-                str1 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size> {item.nativeName}/{item.englishName}: {item.description}\n";
+                str1 += $"<size=250%><sprite name=\"{item.imageSprite}\"></size> {item.nativeName}/{item.englishName}: {item.description}\n";
             }
         }else{ //Get posPtr to posPtr+(n-1) definitions on page. If there are more pages, display buttons
             str1+= $"<b>Words that start with \"{currPage}\":</b> \n";
@@ -84,9 +84,9 @@ public class NotebookUI : MonoBehaviour
                     if(posPtr + i < dictionaryEntry.Count){
                         ItemObject item = dictionaryEntry[posPtr+i].item;
                         if(i<entriesPerPage){
-                            str1 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size> {item.nativeName}/{item.englishName}: {item.description}\n";
+                            str1 += $"<size=250%><sprite name=\"{item.imageSprite}\"></size> {item.nativeName}/{item.englishName}: {item.description}\n";
                         }else{
-                            str2 += $"<size=300%><sprite name=\"{item.imageSprite}\"></size> {item.nativeName}/{item.englishName}: {item.description}\n";
+                            str2 += $"<size=250%><sprite name=\"{item.imageSprite}\"></size> {item.nativeName}/{item.englishName}: {item.description}\n";
                         }
                     }
                 }

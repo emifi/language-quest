@@ -26,7 +26,7 @@ MonoBehaviour:
     Position: {x: 221, y: 180}
   - NodeGUID: ccef1684-2642-4f7e-a9b0-ec56f0b1841c
     DialogueText: '{Hanta} Mind shooting up 5 caribou? Gotta be well stocked for
-      dinner. SCENE{Minigame} INCPTR{Doris}'
+      dinner. SCENE{Minigame} INCPTR{Doris} FIRE{Doris-Hunt-Done}'
     Position: {x: 813, y: 327}
   ExposedProperties: []
   CommentBlockData: []
