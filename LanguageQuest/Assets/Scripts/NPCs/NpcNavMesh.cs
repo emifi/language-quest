@@ -83,7 +83,7 @@ public class NpcNavMesh : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!gameObject.name.StartsWith("Deer")) {
+        if (!gameObject.name.StartsWith("Deer") && !gameObject.name.StartsWith("Head")) {
             humanModel.transform.position = new Vector3(transform.position.x, humanModel.transform.position.y, transform.position.z);
         }
         if(animator!=null){
