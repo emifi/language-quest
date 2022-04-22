@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class UpdateUI : MonoBehaviour
 {
@@ -62,12 +63,20 @@ public class UpdateUI : MonoBehaviour
     {
         updateUI = GameObject.Find("UpdateUI");
         GameObject newPanelUI = Instantiate(panelUI);
-        newPanelUI.GetComponent<TMP_Text>().text = $"Press 'N' to view your notebook!";
+        Color color;
+        ifSceneManager.GetActiveScene().buildIndex==1){
+            color = startColor;
+            newPanelUI.GetComponent<TMP_Text>().text = $"Press 'N' to view your notebook!";
+        }else if(SceneManager.GetActiveScene().buildIndex==3){
+            color = addColor;
+            newPanelUI.GetComponent<TMP_Text>().text = $"After you're done fishing, interact with your boat's motor!";
+        }
+        
         newPanelUI.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Right;
         newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
 
         newPanelUI.transform.SetParent(updateUI.transform);
-        StartCoroutine(enter(startColor,newPanelUI));
+        StartCoroutine(enter(color,newPanelUI));
         StartCoroutine(fadeAndRemove(0f, newPanelUI,20.0f));
     }
 
