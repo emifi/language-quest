@@ -29,12 +29,12 @@ public class UpdateUI : MonoBehaviour
             220f/256f, 
             88f/256f
         );
-        /*
-        new Color( //Sky Blue
+        
+        private Color end2 = new Color( //Sky Blue
             126f/256f,
             237f/256f, 
             219f/256f
-        ),*/
+        );
         private Color noteColor = new Color( //Ocean Blue
             124f/256f,
             183f/256f, 
@@ -76,20 +76,36 @@ public class UpdateUI : MonoBehaviour
         newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
 
         newPanelUI.transform.SetParent(updateUI.transform);
+
+        
         StartCoroutine(enter(color,newPanelUI));
         StartCoroutine(fadeAndRemove(0f, newPanelUI,20.0f));
     }
 
     public void end(){
         updateUI = GameObject.Find("UpdateUI");
+
+        List<Color> colors = new List<Color>();
+        colors.Add(removeColor);
+        colors.Add(failColor);
+        colors.Add(failColor2);
+        colors.Add(addColor);
+        colors.Add(end2);
+        colors.Add(noteColor);
+        colors.Add(startColor);
+        colors.Add(endColor);
+
+        foreach(Color c in colors){
         GameObject newPanelUI = Instantiate(panelUI);
         newPanelUI.GetComponent<TMP_Text>().text = $"Mahsi' eenjit 'in! Thanks for playing!";
         newPanelUI.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Right;
         newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
 
+
         newPanelUI.transform.SetParent(updateUI.transform);
-        StartCoroutine(enter(startColor,newPanelUI));
-        StartCoroutine(fadeAndRemove(0f, newPanelUI,1000.0f));
+        StartCoroutine(enter(c,newPanelUI));
+        StartCoroutine(fadeAndRemove(0f, newPanelUI,10.0f));
+        }
     }
 
     public void AddInvDisplay(ItemObject item, int amount){

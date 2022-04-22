@@ -661,7 +661,7 @@ public class DialogueUI : MonoBehaviour
             int count = termList.Count();
             for(int i = 0; i<count;i++){
                 if(termList[i]=="THX"){
-                    GameObject.Find("UpdateUI").GetComponent<UpdateUI>().end();
+                    GameObject.Find("First Person Player").GetComponent<UpdateUI>().end();
                     return fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
                 }
                 Debug.Log(termList[i]);
