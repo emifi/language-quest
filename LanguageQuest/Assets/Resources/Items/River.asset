@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648f4d8d8e3b60348bfea5e230184d05, type: 3}
-  m_Name: Fishing Rod
+  m_Name: River
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 0
   imageSprite: 
-  nativeName: J'al tai
-  englishName: fishing rod
-  description: a stick to catch fish
+  nativeName: 
+  englishName: 
+  description: 
   interactionString: to pickup
