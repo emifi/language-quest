@@ -18,7 +18,7 @@ MonoBehaviour:
     TargetNodeGUID: c806956d-543b-4337-b1c1-5759fbb6c63c
   DialogueNodeData:
   - NodeGUID: c806956d-543b-4337-b1c1-5759fbb6c63c
-    DialogueText: '{Doris} Oh no...'
+    DialogueText: '{Doris} Oh no... ADDTERM{THX}'
     Position: {x: 298, y: 200}
   ExposedProperties: []
   CommentBlockData: []
