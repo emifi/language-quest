@@ -72,8 +72,13 @@ public class ObjectiveSystem : MonoBehaviour
         objective.panelUI.GetComponent<TMP_Text>().color = color;
         string objstr = objective.objectiveString;
         if (objective.type == ObjectiveType.Collect) {
-            (objective as ObjectiveCollect).current = inventory.GetItem((objective as ObjectiveCollect).item);
+            if (inventory.GetItem((objective as ObjectiveCollect).item) > (objective as ObjectiveCollect).current) {
+                (objective as ObjectiveCollect).current = (objective as ObjectiveCollect).required;
+            } else {
+                (objective as ObjectiveCollect).current = inventory.GetItem((objective as ObjectiveCollect).item);
+            }
             if ((objective as ObjectiveCollect).current >= (objective as ObjectiveCollect).required) {
+                (objective as ObjectiveCollect).status = ObjectiveStatus.Complete;
                 (objective as ObjectiveCollect).panelUI.GetComponent<TMP_Text>().text = $" • <s>{objstr} {(objective as ObjectiveCollect).current}/{(objective as ObjectiveCollect).required}</s>";
             }
             else {

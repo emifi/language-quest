@@ -80,6 +80,11 @@ public class SettingsUI : MonoBehaviour
         Debug.Log("Cancelled!");
     }
 
+    public void onQuit() {
+        Debug.Log("Quiting game");
+        Application.Quit();
+    }
+
     public void updateSensitivity(float value) {
         Debug.Log($"Sensitivity changed from {sensitivity} to {value}");
         sensitivity = value;
