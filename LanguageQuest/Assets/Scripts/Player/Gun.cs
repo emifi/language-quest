@@ -33,18 +33,20 @@ public class Gun : MonoBehaviour
                 StartCoroutine(createTrail(trail, hit.point));
                 // Layer 10 is the wildlife layer (for the deer)
                 if (hit.collider.gameObject.layer == 10) {
-                    Animator animator = hit.collider.GetComponentInParent<Animator>();
+                    GameObject deer = hit.collider.gameObject;
+                    while (!deer.name.StartsWith("Deer")) {
+                        deer = deer.transform.parent.gameObject;
+                    }
+                    Animator animator = deer.GetComponent<Animator>();
                     animator.SetBool("isDead", true);
                     animator.SetBool("isWalking", false);
                     animator.Play("Base Layer.Death", 0);
-                    NPCInteractable interactable = hit.collider.gameObject.AddComponent<NPCInteractable>();
+                    NPCInteractable interactable = deer.AddComponent<NPCInteractable>();
                     interactable.interactOverride = "to dress Caribou";
-                    NpcNavMesh navMeshScript = hit.collider.gameObject.GetComponentInParent<NpcNavMesh>();
+                    NpcNavMesh navMeshScript = deer.GetComponent<NpcNavMesh>();
                     navMeshScript.walkType = NpcNavMesh.NpcType.Stationary;
-                    UnityEngine.AI.NavMeshAgent agent = hit.collider.gameObject.GetComponentInParent<UnityEngine.AI.NavMeshAgent>();
+                    UnityEngine.AI.NavMeshAgent agent = deer.GetComponent<UnityEngine.AI.NavMeshAgent>();
                     agent.isStopped = true;
-
-                    //interactable.item = Resources.Load<ItemObject>("Items/Caribou");
                 }
                 else {
                 }
