@@ -218,6 +218,33 @@ public class ObjectiveSystem : MonoBehaviour
         }
     }
 
+    public void miscEvent(ObjectiveMisc obj) {
+        List<Objective> objectivesToRemove = new List<Objective>();
+        foreach (Objective objective in objectives) {
+            if (objective.type != ObjectiveType.Misc) continue;
+            if (objective == obj) {
+                objective.status = ObjectiveStatus.Complete;
+                objectivesToRemove.Add(objective);
+                updateUI(objective);
+            }
+        }
+        foreach (Objective objective in objectivesToRemove) {
+            objectives.Remove(objective);
+            completeObjectives.Add(objective);
+        }
+        objectivesToRemove = new List<Objective>();
+        foreach (Objective objective in objectives) {
+            if (objective.type != ObjectiveType.Misc) continue;
+            if (objective == obj) {
+                objective.status = ObjectiveStatus.Complete;
+                objectivesToRemove.Add(objective);
+            }
+        }
+        foreach (Objective objective in objectivesToRemove) {
+            hiddenObjectives.Remove(objective);
+        }
+    }
+
     void updateUI(Objective objective) {
         string objstr = objective.objectiveString;
         if (objective.type == ObjectiveType.Collect) {
