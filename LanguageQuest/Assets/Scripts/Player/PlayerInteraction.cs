@@ -11,6 +11,7 @@ public class PlayerInteraction : MonoBehaviour
     public float interactionRange = 2f;
     public float highlightRange = 4f;
     public LayerMask rayMask;
+    public static bool disabled = false;
 
     ObjectiveSystem objectiveSystem;
     Canvas actionUI;
@@ -46,6 +47,10 @@ public class PlayerInteraction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(disabled){
+            actionUI.enabled=false;
+            return;
+        }
         if(!DialogueUI.dialogueComplete()){ //if dialogue occurring, interaction is disallowed
             actionUI.enabled = false;
             if (DialogueUI.textComplete()&&Input.GetKeyDown(KeyCode.E)) {
@@ -147,5 +152,13 @@ public class PlayerInteraction : MonoBehaviour
     private void OnApplicationQuit() {
         inventory.container.Clear();
         notebook.container.Clear();
+    }
+
+    public static void disableInteraction(){
+        disabled = true;
+    }
+
+    public static void enableInteraction(){
+        disabled = false;
     }
 }

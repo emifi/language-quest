@@ -28,6 +28,7 @@ public class Fade : MonoBehaviour
     }
 
     IEnumerator FadeRoutine(Color beginColor, Color endColor, float delay, float fadeTime) {
+        PlayerInteraction.disableInteraction();
         image.color = beginColor;
         yield return new WaitForSeconds(delay);
         float t = 0.0f;
@@ -36,6 +37,7 @@ public class Fade : MonoBehaviour
             t += Time.deltaTime;
             yield return null;
         }
+        PlayerInteraction.enableInteraction();
     }
     
 }
