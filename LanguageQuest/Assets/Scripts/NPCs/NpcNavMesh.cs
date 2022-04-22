@@ -31,6 +31,8 @@ public class NpcNavMesh : MonoBehaviour
     bool collided = false;
     bool complete = false;
 
+    GameObject humanModel;
+
     NPCPointers np;
     
 
@@ -74,12 +76,16 @@ public class NpcNavMesh : MonoBehaviour
                 Debug.Log("C");
             }
         }
-        
+
+        humanModel = gameObject.GetComponentInChildren<Animator>().gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!gameObject.name.StartsWith("Deer") && !gameObject.name.StartsWith("Head")) {
+            humanModel.transform.position = new Vector3(transform.position.x, humanModel.transform.position.y, transform.position.z);
+        }
         if(animator!=null){
             if (mesh.velocity.magnitude > 0.2f) {
                 animator.SetBool("isWalking", true);

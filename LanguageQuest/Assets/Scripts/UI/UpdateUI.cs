@@ -91,10 +91,10 @@ public class UpdateUI : MonoBehaviour
 
         if(amount==0){
             color = failColor;
-            newPanelUI.GetComponent<TMP_Text>().text = $" • Inventory full... Could not carry {item.englishName}({item.nativeName}).";
+            newPanelUI.GetComponent<TMP_Text>().text = $" ! Inventory full... Could not carry {item.englishName}({item.nativeName}).";
         }else{
             color = addColor;
-            newPanelUI.GetComponent<TMP_Text>().text = $" • Added {amount}x {item.englishName}({item.nativeName}) to inventory!";
+            newPanelUI.GetComponent<TMP_Text>().text = $" + Added {amount}x {item.englishName}({item.nativeName}) to inventory!";
         }
         newPanelUI.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Right;
         newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
@@ -107,7 +107,7 @@ public class UpdateUI : MonoBehaviour
     public void RemoveInvDisplay(ItemObject item, int amount){
         //Color color = pallete[Random.Range(0,pallete.Length)];
         GameObject newPanelUI = Instantiate(panelUI);
-        newPanelUI.GetComponent<TMP_Text>().text = $" • {amount}x {item.englishName}({item.nativeName} removed from inventory.";
+        newPanelUI.GetComponent<TMP_Text>().text = $" - {amount}x {item.englishName}({item.nativeName} removed from inventory.";
         newPanelUI.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Right;
         newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
 
@@ -119,7 +119,7 @@ public class UpdateUI : MonoBehaviour
     public void RemoveFailDisplay(ItemObject item, int amount){
         //Color color = pallete[Random.Range(0,pallete.Length)];
         GameObject newPanelUI = Instantiate(panelUI);
-        newPanelUI.GetComponent<TMP_Text>().text = $" • You don't have {amount}x {item.englishName}({item.nativeName})!";
+        newPanelUI.GetComponent<TMP_Text>().text = $" ! You don't have {amount}x {item.englishName}({item.nativeName})!";
         newPanelUI.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Right;
         newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
 
@@ -131,7 +131,7 @@ public class UpdateUI : MonoBehaviour
     public void AddNotebookDisplay(ItemObject item){
         //Color color = pallete[Random.Range(0,pallete.Length)];
         GameObject newPanelUI = Instantiate(panelUI);
-        newPanelUI.GetComponent<TMP_Text>().text = $" • New term added to notebook: {item.englishName}({item.nativeName})";
+        newPanelUI.GetComponent<TMP_Text>().text = $" + New term added to notebook: {item.englishName}({item.nativeName})";
         newPanelUI.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Right;
         newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
 
