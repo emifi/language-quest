@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Sunrise
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: sunrise-sprite
   nativeName: gach'ahaa'aii
   englishName: sunrise
-  description: where you live.
-  interactionString: 
+  description: Where the sun goes over the horizon.
+  interactionString: to pickup

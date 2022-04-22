@@ -114,7 +114,7 @@ MonoBehaviour:
     DialogueText: '{Doris} Perfect! ADDPOINT{1}'
     Position: {x: 663.5, y: 136}
   - NodeGUID: 9d374038-692d-4a16-874b-fc453e5f00d2
-    DialogueText: '{Doris } Could you get me the lageevir?'
+    DialogueText: '{Doris} Could you get me the lageevir?'
     Position: {x: 373.5, y: 447}
   - NodeGUID: 1eb85821-855c-4925-90b1-d32d45d5a321
     DialogueText: '{Doris} Perfect! ADDPOINT{1}'
@@ -125,9 +125,6 @@ MonoBehaviour:
   - NodeGUID: 5b08503d-b2e2-40cc-a736-02adaf0b090d
     DialogueText: '{Doris} Could you get me the lisil?'
     Position: {x: 433, y: 691.5}
-  - NodeGUID: 3f94b430-669e-467b-86db-b956db1f210c
-    DialogueText: '{Doris} Perfect! ADDPOINT{1}'
-    Position: {x: 905.5, y: 888.5}
   - NodeGUID: 08c9bc23-f902-4afa-8e02-472316fe5340
     DialogueText: "{Doris} This wasn\u2019t what I asked for, young one."
     Position: {x: 913.5, y: 763.5}
@@ -144,13 +141,16 @@ MonoBehaviour:
     DialogueText: '{Doris} Could you get me the flour?'
     Position: {x: 624.5, y: 1370}
   - NodeGUID: 6a83306a-06da-4499-9644-ad6bfdbcfd9d
-    DialogueText: '{Doris} Perfect! ADDPOINT{1} CHECKSCORE{6,7,60,5}'
+    DialogueText: '{Doris} Perfect! ADDPOINT{1} CHECKSCORE{5,6,60,5}'
     Position: {x: 1093, y: 1321.5}
   - NodeGUID: 4e64ea1e-82d0-4491-8883-9163a7868baf
-    DialogueText: "{Doris} This wasn\u2019t what I asked for, young one. CHECKSCORE{6,7,60,5}"
+    DialogueText: "{Doris} This wasn\u2019t what I asked for, young one. CHECKSCORE{5,6,60,5}"
     Position: {x: 1093, y: 1442}
   - NodeGUID: 4e55617d-641a-466b-974b-57b1ed4c28e1
     DialogueText: '{Doris} Perfect! ADDPOINT{1}'
     Position: {x: 1036, y: 1181}
+  - NodeGUID: 3f94b430-669e-467b-86db-b956db1f210c
+    DialogueText: '{Doris} Perfect! ADDPOINT{1}'
+    Position: {x: 957.5, y: 896.5}
   ExposedProperties: []
   CommentBlockData: []

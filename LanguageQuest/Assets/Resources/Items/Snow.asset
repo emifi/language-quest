@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Snow
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: snow-sprite
   nativeName: zhah
   englishName: snow
   description: white crystals that fall from the sky
-  interactionString: 
+  interactionString: to pickup

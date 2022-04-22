@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Ice
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: ice-sprite
   nativeName: luu
   englishName: ice
   description: cold, solid water
-  interactionString: 
+  interactionString: to pickup

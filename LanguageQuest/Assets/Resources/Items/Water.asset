@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  canBeAddedToNotebook: 0
-  imageSprite: 
+  canBeAddedToNotebook: 1
+  imageSprite: water-sprite
   nativeName: chuu
   englishName: water
   description: Fresh from the river.

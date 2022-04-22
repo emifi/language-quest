@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  canBeAddedToNotebook: 0
-  imageSprite: 
-  nativeName: 
-  englishName: 
-  description: 
+  canBeAddedToNotebook: 1
+  imageSprite: flour-sprite
+  nativeName: "\u0142uh"
+  englishName: flour
+  description: White powder made of grounded up wheat.
   interactionString: to pickup

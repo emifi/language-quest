@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 3
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: tree-sprite
   nativeName: dachan
   englishName: tree
   description: The huge plants we all know and love.

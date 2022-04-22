@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  canBeAddedToNotebook: 0
-  imageSprite: 
-  nativeName: 
-  englishName: 
-  description: 
+  canBeAddedToNotebook: 1
+  imageSprite: egg-sprite
+  nativeName: ch'aghoo
+  englishName: egg
+  description: The oval shaped embryo of an animal. Yolk and egg whites included.
   interactionString: to pickup

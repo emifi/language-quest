@@ -34,18 +34,18 @@ MonoBehaviour:
   - BaseNodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
     PortName: Option 1
     TargetNodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
-  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
-    PortName: "aah\u0105' (yes)"
-    TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
-  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
-    PortName: akwaa (no)
-    TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
   - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
     PortName: akwaa
     TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
   - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
     PortName: "aah\u0105'"
     TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+    PortName: "aah\u0105' (yes)"
+    TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+  - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+    PortName: akwaa (no)
+    TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
   - BaseNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
     PortName: Option 1
     TargetNodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
@@ -67,10 +67,6 @@ MonoBehaviour:
     DialogueText: "{Doris} In fact, I don\u2019t think I\u2019ve ever seen you up
       this early!"
     Position: {x: 245, y: 218}
-  - NodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
-    DialogueText: "{Doris} We must stock up for the upcoming winter, and we do need
-      the extra hands\u2026 ADDTERM{winter}"
-    Position: {x: 830, y: 298}
   - NodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
     DialogueText: "{Doris}  But we\u2019re running low on food\u2026Please? "
     Position: {x: 633, y: 948}
@@ -78,12 +74,16 @@ MonoBehaviour:
     DialogueText: "{Doris}  Come back to me when you\u2019ve helped both of them.
       Then we can start cooking!"
     Position: {x: 1673, y: 931}
+  - NodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
+    DialogueText: "{Doris} We must stock up for the upcoming winter, and we do need
+      the extra hands\u2026 ADDTERM{winter}"
+    Position: {x: 862, y: 441.5}
   - NodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
     DialogueText: '{Doris} Splendid! In fact, we still need to gather ingredients
       for dinner tonight as well. {npccolor}Hanta{maincolor} and {npccolor}Harper{maincolor}
       might need assistance with hunting and fishing, so feel free to approach them
       when you have time. ADDTERM{tonight, hunting, fish} GOTOMULT{Doris:1,Harper:1,Hanta:1}
       ADDQUESTS++{Hunt-1-TalkTo-Hanta,Hunt-1-MoveTo-Clearing,Hanta:1} HIDDENQUEST{Doris-Fish-Done,Doris-Hunt-Done,5}'
-    Position: {x: 1411, y: 776}
+    Position: {x: 1357.5, y: 735}
   ExposedProperties: []
   CommentBlockData: []

@@ -18,5 +18,5 @@ MonoBehaviour:
   imageSprite: wood-sprite
   nativeName: troo
   englishName: firewood
-  description: 
+  description: The wood we burn in the flames to keep warm.
   interactionString: to pickup

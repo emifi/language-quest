@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: bone-sprite
   nativeName: tth'an
   englishName: bone
   description: 

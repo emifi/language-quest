@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  canBeAddedToNotebook: 0
+  canBeAddedToNotebook: 1
   imageSprite: pepper-sprite
   nativeName: lageevir
   englishName: pepper
-  description: 
+  description: The spice to flavor food.
   interactionString: to pickup

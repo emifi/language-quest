@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: West
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: west-sprite
   nativeName: neech'a'ak ts'aii
   englishName: west
   description: the leftmost cardinal direction.
-  interactionString: 
+  interactionString: to pickup
