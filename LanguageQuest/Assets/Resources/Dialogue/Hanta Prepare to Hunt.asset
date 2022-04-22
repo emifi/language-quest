@@ -25,9 +25,6 @@ MonoBehaviour:
   - BaseNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
     PortName: Option 1
     TargetNodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
-  - BaseNodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
-    PortName: Option 1
-    TargetNodeGUID: 73a24ae7-b188-49a8-9d2c-27e47d7f38c2
   - BaseNodeGUID: 73a24ae7-b188-49a8-9d2c-27e47d7f38c2
     PortName: Option 1
     TargetNodeGUID: 33d5b888-fbdb-4f06-ab42-e2871a308a51
@@ -68,7 +65,7 @@ MonoBehaviour:
     PortName: I can help you
     TargetNodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
   - BaseNodeGUID: 9fec02d8-1b4a-4b92-b548-4c9ccb4e0e77
-    PortName: I do not want to huntt
+    PortName: I do not want to hunt
     TargetNodeGUID: 21a53b8d-d057-4c8d-aeb1-cd5e299bb067
   - BaseNodeGUID: 21a53b8d-d057-4c8d-aeb1-cd5e299bb067
     PortName: Option 1
@@ -76,6 +73,9 @@ MonoBehaviour:
   - BaseNodeGUID: 36e67827-8b43-4a87-b937-48d931444eaf
     PortName: Option 1
     TargetNodeGUID: e2a5c8a6-6f10-44df-a8c9-cb2de779be5a
+  - BaseNodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
+    PortName: Option 1
+    TargetNodeGUID: 73a24ae7-b188-49a8-9d2c-27e47d7f38c2
   DialogueNodeData:
   - NodeGUID: 1804bf96-7f75-42ca-aa9f-23a81eb04462
     DialogueText: "{Hanta} Hey! I\u2019ll be heading down to hunt some caribou later."
@@ -83,7 +83,7 @@ MonoBehaviour:
   - NodeGUID: 677ae90e-e7ec-4cc4-8861-42355c0f1a42
     DialogueText: "{Hanta} Since autumn\u2019s ending soon, we could use some extra
       help before they migrate."
-    Position: {x: 783.5, y: 200}
+    Position: {x: 784, y: 200}
   - NodeGUID: 111ee1a8-4f1d-463e-8692-0c9c4ab375fb
     DialogueText: '{Hanta} Yay!! Thank you, mate!'
     Position: {x: 1968, y: 200}
@@ -97,46 +97,45 @@ MonoBehaviour:
     Position: {x: 2842, y: 370}
   - NodeGUID: d1a525af-c92f-4811-8dd7-f5db45e35a3e
     DialogueText: '{Hanta} Could you spare some time to help out?'
-    Position: {x: 1494.5, y: 176}
+    Position: {x: 1495, y: 176}
   - NodeGUID: 63d635a7-d42f-499c-a108-0599fda127f5
     DialogueText: "{Hanta} Oh\u2026 Are you busy?"
-    Position: {x: 819, y: 468.5}
+    Position: {x: 819, y: 469}
   - NodeGUID: d22a0e31-83b8-43ed-b04f-06323bda4c30
     DialogueText: "{Hanta} Well\u2026 No one else really wants to help out today."
-    Position: {x: 1209, y: 468.5}
+    Position: {x: 1209, y: 469}
   - NodeGUID: 424e4dd0-f9b2-4ecb-8c10-596400f8c009
     DialogueText: "{Hanta} Autumn\u2019s ending and we need to stock up on food."
-    Position: {x: 914.5, y: 886}
+    Position: {x: 915, y: 886}
   - NodeGUID: 159287b1-15f6-460f-9813-c5a367368e30
     DialogueText: "{Hanta} You could be really helping out the camp\u2026"
-    Position: {x: 1463.5, y: 886}
+    Position: {x: 1464, y: 886}
   - NodeGUID: a8d0719e-5024-4107-b296-6915b576a191
     DialogueText: "{Hanta} Just one person going hunting isn\u2019t the most efficient
       for gathering."
     Position: {x: 895, y: 633}
   - NodeGUID: 697abf79-38f9-475d-9b05-30c61f1550bb
     DialogueText: "{Hanta} Are you sure you don\u2019t want to go?"
-    Position: {x: 1508.5, y: 609}
+    Position: {x: 1509, y: 609}
   - NodeGUID: 8894c704-8e97-4324-93d6-83775a9b7f24
     DialogueText: "{Hanta} Okay, I really didn\u2019t want to let this get out there,
       but I\u2019m kind of terrified of hunting"
-    Position: {x: 914.5, y: 1101}
+    Position: {x: 915, y: 1101}
   - NodeGUID: 9fec02d8-1b4a-4b92-b548-4c9ccb4e0e77
     DialogueText: "{Hanta} I\u2019m terrible with guns. I could really, REALLY use
       the help."
-    Position: {x: 1623.5, y: 1101}
+    Position: {x: 1624, y: 1101}
   - NodeGUID: 21a53b8d-d057-4c8d-aeb1-cd5e299bb067
     DialogueText: "{Hanta} ...Okay\u2026"
-    Position: {x: 1576.5, y: 1359}
+    Position: {x: 1577, y: 1359}
   - NodeGUID: 36e67827-8b43-4a87-b937-48d931444eaf
     DialogueText: "{Hanta} I can\u2026 find someone else\u2026"
-    Position: {x: 1875.5, y: 1359}
+    Position: {x: 1876, y: 1359}
   - NodeGUID: e2a5c8a6-6f10-44df-a8c9-cb2de779be5a
     DialogueText: "{Hanta} ...I\u2019ll be here if you change your mind!! haha\u2026"
-    Position: {x: 1988.5, y: 1521}
+    Position: {x: 1989, y: 1521}
   - NodeGUID: 258700bc-84e5-40bd-a490-15632c6e817b
-    DialogueText: ADDQUEST{2-Collect-Blueberries-3, 2-Collect-Cranberries-3,2-Collect-Shotgun-1,2}
-      {Hanta} We just need a few supplies before we walk down.
-    Position: {x: 2019, y: 371.5}
+    DialogueText: '{Hanta} We just need a few supplies before we walk down. ADDQUEST{Hunt-2-Collect-Blueberries-3,Hunt-2-Collect-Cranberries-3,Hunt-2-Collect-Shotgun-1,2}'
+    Position: {x: 2075, y: 479}
   ExposedProperties: []
   CommentBlockData: []

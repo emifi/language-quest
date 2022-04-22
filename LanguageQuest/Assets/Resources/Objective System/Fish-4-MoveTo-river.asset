@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef1f1b9a4bc21eb4796f0e2e0117e293, type: 3}
-  m_Name: 4-TalkTo-Harper
+  m_Script: {fileID: 11500000, guid: 1116d816243d7444c925774ffa87f14d, type: 3}
+  m_Name: Fish-4-MoveTo-river
   m_EditorClassIdentifier: 
-  type: 3
-  objectiveString: Talk to Harper
+  type: 1
+  objectiveString: Meet Harper at the river
   panelUI: {fileID: 0}
-  npcID: {fileID: 11400000, guid: d95373ba44eae1d43b1802927ee47874, type: 2}
+  destination: {fileID: 11400000, guid: ded01ac078690cc4dbdc6c8fafa810a8, type: 2}

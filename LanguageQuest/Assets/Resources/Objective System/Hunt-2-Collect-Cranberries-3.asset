@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 290c92d20573e3741a77fe67d2cc3a0e, type: 3}
-  m_Name: 3HIDDEN-Collect-Fat-4
+  m_Name: Hunt-2-Collect-Cranberries-3
   m_EditorClassIdentifier: 
   type: 0
-  objectiveString: collect fat
+  objectiveString: Harvest cranberries
   panelUI: {fileID: 0}
-  item: {fileID: 11400000, guid: 28d2919414094f441b1d5b77a0ed795d, type: 2}
-  required: 4
+  item: {fileID: 11400000, guid: 366753e05e5e8a14299f7f8c58cae519, type: 2}
+  required: 3

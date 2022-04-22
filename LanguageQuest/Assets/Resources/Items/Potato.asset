@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 1
   imageSprite: potato-sprite
   nativeName: trih
-  englishName: Potato
+  englishName: potato
   description: This hearty tuber has been grown in Alaska for centuries.
   interactionString: to pickup

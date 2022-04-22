@@ -10,13 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 648f4d8d8e3b60348bfea5e230184d05, type: 3}
-  m_Name: Shotgun
+  m_Name: Winter
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: gun-sprite
-  nativeName: 'di ik''ee zhei i '
-  englishName: shotgun
-  description: 
-  interactionString: to pickup
+  imageSprite: 
+  nativeName: khaii
+  englishName: winter
+  description: In the Northern Hemisphere, usually the coldest season of the year,
+    occurring between autumn and spring and including the months of December, January,
+    and February. In the Southern Hemisphere austral winter includes June, July,
+    and August.
+  interactionString: 

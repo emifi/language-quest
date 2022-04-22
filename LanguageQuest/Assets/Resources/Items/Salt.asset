@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 1
   imageSprite: salt-sprite
   nativeName: lisil
-  englishName: Salt
+  englishName: salt
   description: 
   interactionString: to pickup

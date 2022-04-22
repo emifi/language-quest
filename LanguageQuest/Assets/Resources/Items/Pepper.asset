@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 0
   imageSprite: pepper-sprite
   nativeName: lageevir
-  englishName: Pepper
+  englishName: pepper
   description: 
   interactionString: to pickup
