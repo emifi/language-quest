@@ -162,31 +162,37 @@ public class NpcNavMesh : MonoBehaviour
     }
 
     public void FacePlayer() {
-        //StartCoroutine(TurnToPlayer());
-        gameObject.transform.eulerAngles = new Vector3(
-                gameObject.transform.eulerAngles.x,
-                player.eulerAngles.y + 180,
-                gameObject.transform.eulerAngles.z);
+        if (true) // gradual change
+            StartCoroutine(TurnToPlayer());
+        else // instant change
+            gameObject.transform.eulerAngles = new Vector3(
+                    gameObject.transform.eulerAngles.x,
+                    player.eulerAngles.y + 180,
+                    gameObject.transform.eulerAngles.z);
 
     }
     IEnumerator TurnToPlayer() {
-        float playerRotationY = player.eulerAngles.y;
-        float npcRotationYGoal = playerRotationY + 180; // facing player
-        float change = (npcRotationYGoal - gameObject.transform.eulerAngles.y)/100;
+        float playerRotationY = player.eulerAngles.y % 360;
+        float npcRotationY = gameObject.transform.eulerAngles.y % 360;
+        float npcRotationYGoal = (playerRotationY + 180) % 360; // facing player
 
-        for (int i = 0; i < 100; i ++) {
-            //if (playerRotationY > gameObject.transform.eulerAngles.y) {
-                //while (gameObject.transform.eulerAngles.y < npcRotationYGoal) {
-                    gameObject.transform.eulerAngles = new Vector3(
+        if (npcRotationYGoal > npcRotationY) {
+            while(npcRotationYGoal > gameObject.transform.eulerAngles.y) {
+                gameObject.transform.eulerAngles = new Vector3(
                         gameObject.transform.eulerAngles.x,
-                        gameObject.transform.eulerAngles.x + change,
+                        gameObject.transform.eulerAngles.y + 0.1f,
                         gameObject.transform.eulerAngles.z);
-
-                    //gameObject.transform.rotation;//.eulerAngles.x += 1;
-                    //gameObject.transform.rotation;//.eulerAngles.y += 1;
-                    yield return null;
-                //}
-            //}
+                yield return null;
+            }
+        }
+        else {
+            while(npcRotationYGoal < gameObject.transform.eulerAngles.y) {
+                gameObject.transform.eulerAngles = new Vector3(
+                        gameObject.transform.eulerAngles.x,
+                        gameObject.transform.eulerAngles.y - 0.1f,
+                        gameObject.transform.eulerAngles.z);
+                yield return null;
+            }
         }
     }
 }
