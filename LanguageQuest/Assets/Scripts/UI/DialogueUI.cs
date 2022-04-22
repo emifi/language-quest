@@ -223,16 +223,25 @@ public class DialogueUI : MonoBehaviour
 
 
         //Objective Parsing - ADDQUEST{quest0,quest1...questN,dialoguePTR}/ADDQUEST{quest0,quest1...questN,dialoguePTR}
-        string cpy = "" + fullText;
         for (int i = 0; i < 5; i++) {
             fullText = objectiveParse(fullText,currNPC);
         }
 
         //Objective Parsing -   ADDQUEST++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
         //                      ADDQUESTS++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
-        cpy = "" + fullText;
         for (int i = 0; i < 5; i++) {
             fullText = objectiveParseMultNPC(fullText); //++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2, NPC (2):2}
+        }
+
+        //Hidden Objective Parsing - HIDDENQUESTS{quest0,quest1...questN,dialoguePTR}/HIDDENQUEST{quest0,quest1...questN,dialoguePTR}
+        for (int i = 0; i < 5; i++) {
+            fullText = hiddenObjectiveParse(fullText,currNPC);
+        }
+
+        //Hidden Objective Parsing -   HIDDENQUESTS++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
+        //                      HIDDENQUESTS++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
+        for (int i = 0; i < 5; i++) {
+            fullText = hiddenObjectiveParseMultNPC(fullText); //++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2, NPC (2):2}
         }
 
         //Term Parsing (no print variation) - ADDTERM{item0,item1...itemN}/ADDTERMS{item0,item1...itemN}
@@ -481,6 +490,72 @@ public class DialogueUI : MonoBehaviour
             }
             ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,npcMap);
             GameObject.Find("Game Controller").GetComponent<GameController>().CreateGrouping(newObjGroup);
+            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
+
+        private static string hiddenObjectiveParse(string fullText, NpcNavMesh currNPC){
+        if(currNPC == null){
+            return fullText;
+        }
+
+        int startPos = fullText.IndexOf("HIDDENQUESTS{");
+        int addLen = 13; //Length of HIDDENQUESTS{
+        if(startPos==-1){
+            startPos = fullText.IndexOf("HIDDENQUEST{");
+            addLen = 12; //Length of HIDDENQUEST{
+        }
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add quests
+            string[] questList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            List<Objective> newObjs = new List<Objective>();
+            for(int i = 0; i<questList.Count()-1;i++){ //Add all quests (exclude last position)
+                newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
+            }
+            ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,currNPC,int.Parse(questList[questList.Count()-1]));
+            GameObject.Find("Game Controller").GetComponent<GameController>().CreateHiddenGrouping(newObjGroup);
+            fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+        }
+        return fullText.Trim();
+    }
+
+    private static string hiddenObjectiveParseMultNPC(string fullText){ //ADDQUESTS{q1, q2, q3, npc1:1, npc2:4}
+        int startPos = fullText.IndexOf("HIDDENQUESTS++{");
+        int addLen = 15; //Length of HIDDENQUESTS++{
+        if(startPos==-1){
+            startPos = fullText.IndexOf("HIDDENQUEST++{");
+            addLen = 14; //Length of HIDDENQUEST++{
+        }
+
+        int endPos = -1;
+
+        if(startPos>-1){ //Check for closing bracket
+            endPos = fullText.IndexOf("}",startPos+addLen);
+        }
+
+        if(endPos>-1){ //If all requirements have passed, add quests
+            string[] questList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
+            List<Objective> newObjs = new List<Objective>();
+            List<DialoguePointerMap> npcMap = new List<DialoguePointerMap>();
+            for(int i = 0; i<questList.Count();i++){
+                if(questList[i].Contains(':')){ //Add NPC and dialogue ptr
+                    Debug.Log("Is NPC:Ptr "+questList[i]);
+                    string[] npcInfo = questList[i].Trim().Split(':');
+                    npcMap.Add(new DialoguePointerMap(npcInfo[0],int.Parse(npcInfo[1])));
+                }else{ //Add objectives
+                    Debug.Log("Is Objective "+questList[i]);
+                    newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
+                }
+            }
+            ObjectiveDialogueGroup newObjGroup = new ObjectiveDialogueGroup(newObjs,npcMap);
+            GameObject.Find("Game Controller").GetComponent<GameController>().CreateHiddenGrouping(newObjGroup);
             fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
         }
         return fullText.Trim();
