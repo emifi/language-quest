@@ -100,6 +100,19 @@ public class GameController : MonoBehaviour
         objectiveDialogueGroups.Add(group);
     }
 
+    // Creates a new hidden ObjDiagGroup, sends it to the objective system and adds it to the GameController container
+    public void CreateHiddenGrouping(List<Objective> objectives, NpcNavMesh npc, int pointer) {
+        ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, npc, pointer);
+        hiddenObjectiveDialogueGroups.Add(group);
+    }
+    public void CreateHiddenGrouping(List<Objective> objectives, List<DialoguePointerMap> ptrMap) {
+        ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, ptrMap);
+        hiddenObjectiveDialogueGroups.Add(group);
+    }
+    public void CreateHiddenGrouping(ObjectiveDialogueGroup group) {
+        hiddenObjectiveDialogueGroups.Add(group);
+    }
+
     public void ActivateTag(string tag) {
         if (eventTags.ContainsKey(tag)) {
             Event evt = new Event(tag, eventTags[tag]);
