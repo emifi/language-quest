@@ -33,7 +33,7 @@ MonoBehaviour:
     DialogueText: "{Doris} Welcome back, young one. Neenjit d\xF4onch'y\xE0a?"
     Position: {x: 324, y: 245}
   - NodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
-    DialogueText: '{Doris} Fantastic! '
+    DialogueText: '{Doris} Fantastic!  GOTO{4} TIME{Night}'
     Position: {x: 763, y: 512}
   - NodeGUID: 17ada236-65c1-4857-91e8-da92d463df83
     DialogueText: "{Doris} I\u2019ll be here when you\u2019re ready."
@@ -43,7 +43,7 @@ MonoBehaviour:
     Position: {x: 321, y: 549}
   - NodeGUID: ec72f089-92bb-4bf5-8644-528513cebb28
     DialogueText: "{Doris} You\u2019ve helped both Hanta and Harper? Splendid! We
-      can now move onto making dinner! GOTO{4} TIME{Night}"
+      can now move onto making dinner! "
     Position: {x: 72, y: 372}
   ExposedProperties: []
   CommentBlockData: []
