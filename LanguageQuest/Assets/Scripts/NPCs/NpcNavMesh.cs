@@ -129,6 +129,7 @@ public class NpcNavMesh : MonoBehaviour
 
     public void stopMovement(){
         mesh.velocity = Vector3.zero;
+        FacePlayer();
     }
 
     public NpcType getType(){
@@ -164,6 +165,41 @@ public class NpcNavMesh : MonoBehaviour
     public void setDestinationPointer(int ptr){
         destinationsPtr = ptr;
         np.destinationsPtr = ptr;
+    }
+
+    public void FacePlayer() {
+        if (true) // gradual change
+            StartCoroutine(TurnToPlayer());
+        else // instant change
+            gameObject.transform.eulerAngles = new Vector3(
+                    gameObject.transform.eulerAngles.x,
+                    player.eulerAngles.y + 180,
+                    gameObject.transform.eulerAngles.z);
+
+    }
+    IEnumerator TurnToPlayer() {
+        float playerRotationY = player.eulerAngles.y % 360;
+        float npcRotationY = gameObject.transform.eulerAngles.y % 360;
+        float npcRotationYGoal = (playerRotationY + 180) % 360; // facing player
+
+        if (npcRotationYGoal > npcRotationY) {
+            while(npcRotationYGoal > gameObject.transform.eulerAngles.y) {
+                gameObject.transform.eulerAngles = new Vector3(
+                        gameObject.transform.eulerAngles.x,
+                        gameObject.transform.eulerAngles.y + 0.1f,
+                        gameObject.transform.eulerAngles.z);
+                yield return null;
+            }
+        }
+        else {
+            while(npcRotationYGoal < gameObject.transform.eulerAngles.y) {
+                gameObject.transform.eulerAngles = new Vector3(
+                        gameObject.transform.eulerAngles.x,
+                        gameObject.transform.eulerAngles.y - 0.1f,
+                        gameObject.transform.eulerAngles.z);
+                yield return null;
+            }
+        }
     }
 }
 
