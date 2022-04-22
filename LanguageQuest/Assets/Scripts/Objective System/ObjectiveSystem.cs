@@ -235,7 +235,7 @@ public class ObjectiveSystem : MonoBehaviour
             completeObjectives.Add(objective);
         }
         objectivesToRemove = new List<Objective>();
-        foreach (Objective objective in objectives) {
+        foreach (Objective objective in hiddenObjectives) {
             if (objective.type != ObjectiveType.Misc) continue;
             if (objective == obj) {
                 objective.status = ObjectiveStatus.Complete;

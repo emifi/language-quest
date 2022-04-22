@@ -83,6 +83,8 @@ public class NpcNavMesh : MonoBehaviour
         if(animator!=null){
             if (mesh.velocity.magnitude > 0.2f) {
                 animator.SetBool("isWalking", true);
+            } else if (animator.GetBool("isDead") == true) {
+
             } else {
                 animator.SetBool("isWalking", false);
             }
