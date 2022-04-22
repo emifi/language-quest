@@ -15,8 +15,8 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 0
-  imageSprite: 
-  nativeName: 
-  englishName: 
+  imageSprite: meat-sprite
+  nativeName: "nil\u012F\u012F ch'\u012Fh"
+  englishName: Caribou Meat
   description: 
   interactionString: to pickup

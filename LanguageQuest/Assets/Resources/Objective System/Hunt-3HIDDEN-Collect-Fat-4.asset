@@ -15,5 +15,5 @@ MonoBehaviour:
   type: 0
   objectiveString: collect fat
   panelUI: {fileID: 0}
-  item: {fileID: 11400000, guid: 28d2919414094f441b1d5b77a0ed795d, type: 2}
+  item: {fileID: 11400000, guid: 049b0187b7dec4c8393d9a278962d0ca, type: 2}
   required: 4
