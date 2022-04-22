@@ -63,6 +63,15 @@ public class InventoryObject : ScriptableObject
         }
         return false;
     }
+
+    public int GetItem(ItemObject item) {
+        for (int i = 0; i < container.Count; i++) {
+            if (item == container[i].item) {
+                return container[i].amount;
+            }
+        }
+        return 0;
+    }
 }
 
 [System.Serializable]

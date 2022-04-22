@@ -11,6 +11,7 @@ public class ObjectiveSystem : MonoBehaviour
     public List<Objective> hiddenObjectives = new List<Objective>();
     public GameObject panelUI;
     public GameObject objectiveUI;
+    public InventoryObject inventory;
     DialogueUI dialogueUI;
     Color[] pallete = new Color[] {
         new Color(
@@ -51,6 +52,7 @@ public class ObjectiveSystem : MonoBehaviour
         objective.panelUI.GetComponent<TMP_Text>().color = color;
         string objstr = objective.objectiveString;
         if (objective.type == ObjectiveType.Collect) {
+            (objective as ObjectiveCollect).current = inventory.GetItem((objective as ObjectiveCollect).item);
             if ((objective as ObjectiveCollect).current >= (objective as ObjectiveCollect).required) {
                 (objective as ObjectiveCollect).panelUI.GetComponent<TMP_Text>().text = $" • <s>{objstr} {(objective as ObjectiveCollect).current}/{(objective as ObjectiveCollect).required}</s>";
             }
@@ -103,7 +105,7 @@ public class ObjectiveSystem : MonoBehaviour
             //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.Collect) continue;
             if ((objective as ObjectiveCollect).item == item) {
-                (objective as ObjectiveCollect).current += 1;
+                (objective as ObjectiveCollect).current = inventory.GetItem(item);
                 if ((objective as ObjectiveCollect).current >= (objective as ObjectiveCollect).required) {
                     objective.status = ObjectiveStatus.Complete;
                     objectivesToRemove.Add(objective);
@@ -120,7 +122,7 @@ public class ObjectiveSystem : MonoBehaviour
             //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.Collect) continue;
             if ((objective as ObjectiveCollect).item == item) {
-                (objective as ObjectiveCollect).current += 1;
+                (objective as ObjectiveCollect).current = inventory.GetItem(item);
                 if ((objective as ObjectiveCollect).current >= (objective as ObjectiveCollect).required) {
                     objective.status = ObjectiveStatus.Complete;
                 }
