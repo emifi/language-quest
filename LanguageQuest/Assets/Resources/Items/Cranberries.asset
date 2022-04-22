@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 0
   imageSprite: cranberry-sprite
   nativeName: natl'at
-  englishName: Cranberries
+  englishName: cranberries
   description: 
   interactionString: to pickup

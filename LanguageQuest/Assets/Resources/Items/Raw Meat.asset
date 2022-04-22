@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 1
   imageSprite: meat-sprite
   nativeName: "nil\u012F\u012F ch'\u012Fh"
-  englishName: Raw Meat
+  englishName: raw meat
   description: A cut of meat, still fresh.
   interactionString: to pickup

@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 3
   canBeAddedToNotebook: 1
   imageSprite: 
-  nativeName: Dachan
-  englishName: Tree
+  nativeName: dachan
+  englishName: tree
   description: The huge plants we all know and love.
   interactionString: to interact

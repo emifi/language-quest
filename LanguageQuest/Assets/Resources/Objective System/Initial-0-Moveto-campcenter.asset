@@ -9,11 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 290c92d20573e3741a77fe67d2cc3a0e, type: 3}
-  m_Name: 5-Collect-Bait-3
+  m_Script: {fileID: 11500000, guid: 1116d816243d7444c925774ffa87f14d, type: 3}
+  m_Name: Initial-0-Moveto-campcenter
   m_EditorClassIdentifier: 
-  type: 0
-  objectiveString: Collect bait
+  type: 1
+  objectiveString: Go to the camp center
   panelUI: {fileID: 0}
-  item: {fileID: 11400000, guid: 28c5f9674fe94414fbd87985da82ecf3, type: 2}
-  required: 3
+  destination: {fileID: 11400000, guid: 5460cc360f5b240428873a6711154b9f, type: 2}

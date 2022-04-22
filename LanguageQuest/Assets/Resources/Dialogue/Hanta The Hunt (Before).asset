@@ -23,10 +23,10 @@ MonoBehaviour:
   - NodeGUID: 3121e623-229a-4d19-8d44-a01ed7b6a24e
     DialogueText: GOTO{2} {Hanta} Thanks for gatherin' the supplies, mate. Now it's
       time for the hunt!
-    Position: {x: 220.5, y: 180}
+    Position: {x: 221, y: 180}
   - NodeGUID: ccef1684-2642-4f7e-a9b0-ec56f0b1841c
-    DialogueText: ADDQUEST{3-Collect-Raw Meat-5,3} {Hanta} Mind shooting up 5 caribou?
-      Gotta be well stocked for dinner.
-    Position: {x: 148.5, y: 350.5}
+    DialogueText: '{Hanta} Mind shooting up 5 caribou? Gotta be well stocked for
+      dinner. ADDQUEST{Hunt-3-Collect-RawMeat-5,3}'
+    Position: {x: 149, y: 351}
   ExposedProperties: []
   CommentBlockData: []

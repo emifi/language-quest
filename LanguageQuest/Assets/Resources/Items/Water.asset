@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 0
   imageSprite: 
   nativeName: chuu
-  englishName: Water
+  englishName: water
   description: Fresh from the river.
   interactionString: to pickup
