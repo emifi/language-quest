@@ -47,11 +47,9 @@ public class NpcNavMesh : MonoBehaviour
             }
             if(walkType==NpcType.Roam || walkType==NpcType.Reactive){
                 targetedDest = Random.Range(0,destListLength);
-            }else{
-                MeshRenderer renderer = npc.GetComponent<MeshRenderer>();
-                renderer.material.color = Color.blue;
             }
         }
+
         player = GameObject.Find("First Person Player").GetComponent<Transform>();
         animator = gameObject.GetComponentInChildren<Animator>();
 
@@ -108,8 +106,6 @@ public class NpcNavMesh : MonoBehaviour
                 if(targetedDest<destinationGroups[destinationsPtr].dests.Count || walkType == NpcType.Reactive){ //If more locations exist, start navigation
                     collided = false;
                 }else{ //Otherwise, disallow any more roaming.
-                    MeshRenderer renderer = npc.GetComponent<MeshRenderer>();
-                    renderer.material.color = Color.red;
                     collided = false;
                     complete = true;
                 }

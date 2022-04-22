@@ -21,7 +21,7 @@ MonoBehaviour:
     TargetNodeGUID: b061e717-a564-470f-ac09-14d19bf9781a
   DialogueNodeData:
   - NodeGUID: cf8ed455-32a1-4810-98d4-819268b13afe
-    DialogueText: "GOTO{1} {Doris} Hello, young one. Neenjit d\xF4onch'y\xE0a? "
+    DialogueText: "{Doris} Hello, young one. Neenjit d\xF4onch'y\xE0a? "
     Position: {x: 265, y: 200}
   - NodeGUID: b061e717-a564-470f-ac09-14d19bf9781a
     DialogueText: '{Doris} It looks like Harper and Hanta still need some help. Could
