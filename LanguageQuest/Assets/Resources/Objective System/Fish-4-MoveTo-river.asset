@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Fish-4-MoveTo-river
   m_EditorClassIdentifier: 
   type: 1
-  objectiveString: Meet Harper at the river
+  objectiveString: Meet Harper down by the river
   panelUI: {fileID: 0}
   destination: {fileID: 11400000, guid: ded01ac078690cc4dbdc6c8fafa810a8, type: 2}
