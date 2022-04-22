@@ -111,7 +111,6 @@ public class NpcNavMesh : MonoBehaviour
                 }
             }
             else if (walkType == NpcType.Reactive && (npc.transform.position - player.position).sqrMagnitude < colDistance) {
-                Debug.Log("HOLY FUCK THAT GUYS GOTTA GUN");
                 targetedDest = Random.Range(0,destinationGroups[destinationsPtr].dests.Count);
                 np.targetedDest = targetedDest;
                 collided = false;
