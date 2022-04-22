@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f4d8d8e3b60348bfea5e230184d05, type: 3}
   m_Name: Shotgun
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 8154593054247537034, guid: 722640c6b61d3fb4d90a23fc4ad04cbe, type: 3}
   type: 0
   canBeAddedToNotebook: 1
   imageSprite: gun-sprite
   nativeName: 'di ik''ee zhei i '
   englishName: shotgun
-  description: 
+  description: pew pew!
   interactionString: to pickup
