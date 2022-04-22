@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  canBeAddedToNotebook: 0
-  imageSprite: 
-  nativeName: 
-  englishName: 
-  description: 
+  canBeAddedToNotebook: 1
+  imageSprite: sugar-sprite
+  nativeName: soogaii
+  englishName: sugar
+  description: A white crystal that makes food sweet.
   interactionString: to pickup

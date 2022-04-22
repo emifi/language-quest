@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Kayak
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: kayak-sprite
   nativeName: ch'eekwaii tr'ii
   englishName: kayak
   description: nevermore!
-  interactionString: 
+  interactionString: to pickup

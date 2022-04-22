@@ -15,11 +15,11 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: winter-sprite
   nativeName: khaii
   englishName: winter
   description: In the Northern Hemisphere, usually the coldest season of the year,
     occurring between autumn and spring and including the months of December, January,
     and February. In the Southern Hemisphere austral winter includes June, July,
     and August.
-  interactionString: 
+  interactionString: to pickup

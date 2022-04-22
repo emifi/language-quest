@@ -18,5 +18,5 @@ MonoBehaviour:
   imageSprite: day-sprite
   nativeName: drin
   englishName: day
-  description: 
+  description: The time where the sun shines.
   interactionString: to interact

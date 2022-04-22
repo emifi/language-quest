@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Friend
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: friend-sprite
   nativeName: valak
   englishName: friend
   description: a person you like being around.
-  interactionString: 
+  interactionString: to pickup

@@ -15,9 +15,9 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: village-sprite
   nativeName: kwaiik'it
   englishName: village
   description: A small group of dwellings in a rural area, usually ranking in size
     between a hamlet and a town.
-  interactionString: 
+  interactionString: to pickup

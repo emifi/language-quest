@@ -15,8 +15,8 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: fish-sprite
   nativeName: "\u0142uk"
   englishName: fish
-  description: 
+  description: An aquatic animal that swims around a body of water. Good food source.
   interactionString: to pickup

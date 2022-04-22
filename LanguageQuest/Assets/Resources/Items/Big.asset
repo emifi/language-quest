@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Big
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: big-sprite
   nativeName: nitsii
   englishName: big
   description: huge!
-  interactionString: 
+  interactionString: to pickup
