@@ -113,6 +113,10 @@ public class GameController : MonoBehaviour
         hiddenObjectiveDialogueGroups.Add(group);
     }
 
+    public void ForceComplete(ObjectiveMisc obj) {
+        objectiveSystem.miscEvent(obj);
+    }
+
     public void ActivateTag(string tag) {
         if (eventTags.ContainsKey(tag)) {
             Event evt = new Event(tag, eventTags[tag]);
