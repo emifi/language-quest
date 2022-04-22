@@ -23,10 +23,10 @@ MonoBehaviour:
     PortName: Option 1
     TargetNodeGUID: 2e1da980-1f56-498a-8f64-9aca8b710e6d
   - BaseNodeGUID: 2e1da980-1f56-498a-8f64-9aca8b710e6d
-    PortName: Yes
+    PortName: "aah\u0105'"
     TargetNodeGUID: f9951a84-2359-45c6-8e3f-83e460e20647
   - BaseNodeGUID: 2e1da980-1f56-498a-8f64-9aca8b710e6d
-    PortName: No
+    PortName: akwaa
     TargetNodeGUID: 70c23b35-3bf0-45b9-88a3-350e99d2e6e0
   DialogueNodeData:
   - NodeGUID: 1ec8da16-5c28-4cb9-9832-0ae9dccf967a
