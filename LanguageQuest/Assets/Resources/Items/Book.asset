@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Book
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  image: {fileID: 0}
   type: 2
   canBeAddedToNotebook: 1
-  nativeName: Book
-  englishName: Book
+  imageSprite: 
+  nativeName: book
+  englishName: book
   description: 
   interactionString: to interact

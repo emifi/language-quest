@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 1
   imageSprite: wood-sprite
   nativeName: troo
-  englishName: Firewood
+  englishName: firewood
   description: 
   interactionString: to pickup

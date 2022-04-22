@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 1
   imageSprite: gun-sprite
   nativeName: 'di ik''ee zhei i '
-  englishName: Shotgun
+  englishName: shotgun
   description: 
   interactionString: to pickup

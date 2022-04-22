@@ -223,11 +223,17 @@ public class DialogueUI : MonoBehaviour
 
 
         //Objective Parsing - ADDQUEST{quest0,quest1...questN,dialoguePTR}/ADDQUEST{quest0,quest1...questN,dialoguePTR}
-        fullText = objectiveParse(fullText,currNPC);
+        string cpy = "" + fullText;
+        do{
+            fullText = objectiveParse(fullText,currNPC);
+        }while(fullText!=cpy);
 
         //Objective Parsing -   ADDQUEST++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
         //                      ADDQUESTS++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
+        cpy = "" + fullText;
+        do{
         fullText = objectiveParseMultNPC(fullText); //++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2, NPC (2):2}
+        }while(fullText!=cpy);
 
         //Term Parsing (no print variation) - ADDTERM{item0,item1...itemN}/ADDTERMS{item0,item1...itemN}
         fullText = addTermParse(fullText);
@@ -465,9 +471,11 @@ public class DialogueUI : MonoBehaviour
             List<DialoguePointerMap> npcMap = new List<DialoguePointerMap>();
             for(int i = 0; i<questList.Count();i++){
                 if(questList[i].Contains(':')){ //Add NPC and dialogue ptr
+                    Debug.Log("Is NPC:Ptr "+questList[i]);
                     string[] npcInfo = questList[i].Trim().Split(':');
                     npcMap.Add(new DialoguePointerMap(npcInfo[0],int.Parse(npcInfo[1])));
                 }else{ //Add objectives
+                    Debug.Log("Is Objective "+questList[i]);
                     newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
                 }
             }

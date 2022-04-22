@@ -35,18 +35,18 @@ MonoBehaviour:
   - NodeGUID: 097a2569-4870-408f-ac44-c28255f3d413
     DialogueText: "{Harper} I\u2019m gonna be taking the kids down to the river later
       to teach them how to fish."
-    Position: {x: 612.5, y: 200}
+    Position: {x: 613, y: 200}
   - NodeGUID: f08f7633-d8de-45bc-a19d-d3de869959e5
     DialogueText: "{Harper} Well as soon as you\u2019re feeling up for it, come let
       me know!"
-    Position: {x: 898.5, y: 517.5}
+    Position: {x: 899, y: 518}
   - NodeGUID: 60865902-6f36-4e1f-9a74-7688ead24c8e
     DialogueText: "{Harper} You\u2019re free to tag along!"
-    Position: {x: 355.5, y: 484}
+    Position: {x: 356, y: 484}
   - NodeGUID: 72fcf9a1-40d5-49df-bfab-fca8a9a07d9d
-    DialogueText: "ADDQUEST{5-Collect-Bait-3,5-Collect-Fishing Rod-1,2} {Harper}
-      Great! Let\u2019s gather up the {itemcolor}bait{maincolor} and the {itemcolor}fishing
-      rods{maincolor} and get those fish! ADDTERMS{bait,3,fishingrod,1}"
+    DialogueText: "{Harper} Great! Let\u2019s gather up the {itemcolor}bait{maincolor}
+      and the {itemcolor}fishing rods{maincolor} and get those fish! ADDTERMS{bait,3,fishingrod,1}
+      ADDQUEST{Fish-5-Collect-Bait-3,Fish-5-Collect-FishingRod-1,2}"
     Position: {x: 853, y: 387}
   ExposedProperties: []
   CommentBlockData: []
