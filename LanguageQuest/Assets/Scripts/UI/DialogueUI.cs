@@ -660,6 +660,10 @@ public class DialogueUI : MonoBehaviour
             string[] termList = fullText.Substring(startPos+addLen,endPos-(startPos+addLen)).Split(',');
             int count = termList.Count();
             for(int i = 0; i<count;i++){
+                if(termList[i]=="THX"){
+                    GameObject.Find("UpdateUI").GetComponent<UpdateUI>().end();
+                    return fullText.Substring(0,startPos)  + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+                }
                 Debug.Log(termList[i]);
                 notebook.AddItem(Resources.Load<ItemObject>("Items/"+termList[i].Trim()));
             }

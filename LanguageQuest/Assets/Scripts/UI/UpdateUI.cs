@@ -38,17 +38,18 @@ public class UpdateUI : MonoBehaviour
             124f/256f,
             183f/256f, 
             217f/256f
-        );/*
-        new Color( //Purple
+        );
+        private Color startColor = new Color( //Purple
             141f/256f,
             126f/256f, 
             237f/256f
-        ),
-        new Color( //Lavender
+        );
+        private Color endColor = new Color( //Lavender
             200f/256f,
             126f/256f, 
             237f/256f
-        ),
+        );
+        /*
         new Color( //Pink
             237f/256f,
             126f/256f, 
@@ -60,12 +61,34 @@ public class UpdateUI : MonoBehaviour
     void Start()
     {
         updateUI = GameObject.Find("UpdateUI");
+        GameObject newPanelUI = Instantiate(panelUI);
+        newPanelUI.GetComponent<TMP_Text>().text = $"Press 'N' to view your notebook!";
+        newPanelUI.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Right;
+        newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
+
+        newPanelUI.transform.SetParent(updateUI.transform);
+        StartCoroutine(enter(startColor,newPanelUI));
+        StartCoroutine(fadeAndRemove(0f, newPanelUI,20.0f));
+    }
+
+    public void end(){
+        updateUI = GameObject.Find("UpdateUI");
+        GameObject newPanelUI = Instantiate(panelUI);
+        newPanelUI.GetComponent<TMP_Text>().text = $"Mahsi' eenjit 'in! Thanks for playing!";
+        newPanelUI.GetComponent<TMP_Text>().alignment = TextAlignmentOptions.Right;
+        newPanelUI.GetComponent<TMP_Text>().fontStyle = FontStyles.Bold;
+
+        newPanelUI.transform.SetParent(updateUI.transform);
+        StartCoroutine(enter(startColor,newPanelUI));
+        StartCoroutine(fadeAndRemove(0f, newPanelUI,1000.0f));
     }
 
     public void AddInvDisplay(ItemObject item, int amount){
         //Color color = pallete[Random.Range(0,pallete.Length)];
+        //Mahsi' eenjit 'in!
         GameObject newPanelUI = Instantiate(panelUI);
         Color color;
+
         if(amount==0){
             color = failColor;
             newPanelUI.GetComponent<TMP_Text>().text = $" • Inventory full... Could not carry {item.englishName}({item.nativeName}).";
