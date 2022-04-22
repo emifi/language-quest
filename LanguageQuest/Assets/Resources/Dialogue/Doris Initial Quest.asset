@@ -34,9 +34,6 @@ MonoBehaviour:
   - BaseNodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
     PortName: Option 1
     TargetNodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
-  - BaseNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
-    PortName: Option 1
-    TargetNodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
   - BaseNodeGUID: 58d196df-cfd6-4c3d-8e71-df8c6785f0c6
     PortName: "aah\u0105' (yes)"
     TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
@@ -44,11 +41,14 @@ MonoBehaviour:
     PortName: akwaa (no)
     TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
   - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
-    PortName: "aah\u0105'"
+    PortName: akwaa
     TargetNodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
   - BaseNodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
-    PortName: akwaa
+    PortName: "aah\u0105'"
     TargetNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+  - BaseNodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
+    PortName: Option 1
+    TargetNodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
   DialogueNodeData:
   - NodeGUID: d2a69db5-018c-4625-92d6-914bdec4b59f
     DialogueText: '{Doris} Good morning. How are you today?'
@@ -56,10 +56,6 @@ MonoBehaviour:
   - NodeGUID: e2ae6e0c-9841-4d69-8467-a75fc0737635
     DialogueText: '{Doris}  You''re up early, {playername}.'
     Position: {x: 698, y: 23}
-  - NodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
-    DialogueText: "{Doris}  Come back to me when you\u2019ve helped both of them.
-      Then we can start cooking!"
-    Position: {x: 1410, y: 551}
   - NodeGUID: f85855ff-023f-492d-a3cb-f8cf9dcf5731
     DialogueText: "{Doris}  But we\u2019re running low on food\u2026Please?"
     Position: {x: 245, y: 752}
@@ -77,13 +73,16 @@ MonoBehaviour:
     Position: {x: 830, y: 298}
   - NodeGUID: 0f2fff85-15cc-4268-9ec1-78909ac3abd7
     DialogueText: "{Doris}  But we\u2019re running low on food\u2026Please? "
-    Position: {x: 632.5, y: 947.5}
+    Position: {x: 633, y: 948}
+  - NodeGUID: 2d732008-d234-43e4-8014-85e9e5dbdb12
+    DialogueText: "{Doris}  Come back to me when you\u2019ve helped both of them.
+      Then we can start cooking!"
+    Position: {x: 1673, y: 931}
   - NodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
-    DialogueText: ADDQUEST++{1-TalkTo-Hanta,4-MoveTo-river,4-TalkTo-Harper,Hanta:1,Harper:1,Doris:1}
-      {Doris} Splendid! In fact, we still need to gather ingredients for dinner tonight
-      as well. {npccolor}Hanta{maincolor} and {npccolor}Harper{maincolor} might need
-      assistance with hunting and fishing, so feel free to approach them when you
-      have time. ADDTERM{tonight, hunting, fish}
-    Position: {x: 553, y: 454}
+    DialogueText: '{Doris} Splendid! In fact, we still need to gather ingredients
+      for dinner tonight as well. {npccolor}Hanta{maincolor} and {npccolor}Harper{maincolor}
+      might need assistance with hunting and fishing, so feel free to approach them
+      when you have time. ADDTERM{tonight, hunting, fish} ADDQUEST++{Hunt-1-TalkTo-Hanta,Fish-4-MoveTo-river,Fish-4-TalkTo-Harper,Hanta:1,Harper:1,Doris:1}'
+    Position: {x: 1411, y: 776}
   ExposedProperties: []
   CommentBlockData: []

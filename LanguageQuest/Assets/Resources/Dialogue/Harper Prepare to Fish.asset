@@ -18,8 +18,7 @@ MonoBehaviour:
     TargetNodeGUID: 0e41a7c0-98eb-45c7-b4dd-5dfb304f868f
   DialogueNodeData:
   - NodeGUID: 0e41a7c0-98eb-45c7-b4dd-5dfb304f868f
-    DialogueText: ADDQUEST{6-Collect-Fish-5} {Harper} We need some bait and fishing
-      rods. Go get 'em!
+    DialogueText: '{Harper} We need some bait and fishing rods. Go get ''em! ADDQUEST{6-Collect-Fish-5} '
     Position: {x: 304, y: 180}
   ExposedProperties: []
   CommentBlockData: []

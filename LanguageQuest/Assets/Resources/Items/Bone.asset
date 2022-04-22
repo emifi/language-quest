@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 1
   imageSprite: 
   nativeName: tth'an
-  englishName: Bone
+  englishName: bone
   description: 
   interactionString: to pickup

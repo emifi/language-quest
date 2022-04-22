@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1116d816243d7444c925774ffa87f14d, type: 3}
-  m_Name: 4-MoveTo-river
+  m_Script: {fileID: 11500000, guid: 290c92d20573e3741a77fe67d2cc3a0e, type: 3}
+  m_Name: Hunt-3HIDDEN-Collect-Fat-4
   m_EditorClassIdentifier: 
-  type: 1
-  objectiveString: Meet Harper at the river
+  type: 0
+  objectiveString: collect fat
   panelUI: {fileID: 0}
-  destination: {fileID: 11400000, guid: ded01ac078690cc4dbdc6c8fafa810a8, type: 2}
+  item: {fileID: 11400000, guid: 28d2919414094f441b1d5b77a0ed795d, type: 2}
+  required: 4

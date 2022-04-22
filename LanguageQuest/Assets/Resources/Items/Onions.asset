@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 1
   imageSprite: onion-sprite
   nativeName: "t\u0142\u2019oo drik"
-  englishName: Onions
+  englishName: onions
   description: Wild chives can be found all across the Pacific Northwest.
   interactionString: to pickup

@@ -17,6 +17,6 @@ MonoBehaviour:
   canBeAddedToNotebook: 1
   imageSprite: 
   nativeName: "\u0142uk"
-  englishName: Fish
+  englishName: fish
   description: 
   interactionString: to pickup

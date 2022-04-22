@@ -471,9 +471,11 @@ public class DialogueUI : MonoBehaviour
             List<DialoguePointerMap> npcMap = new List<DialoguePointerMap>();
             for(int i = 0; i<questList.Count();i++){
                 if(questList[i].Contains(':')){ //Add NPC and dialogue ptr
+                    Debug.Log("Is NPC:Ptr "+questList[i]);
                     string[] npcInfo = questList[i].Trim().Split(':');
                     npcMap.Add(new DialoguePointerMap(npcInfo[0],int.Parse(npcInfo[1])));
                 }else{ //Add objectives
+                    Debug.Log("Is Objective "+questList[i]);
                     newObjs.Add(Resources.Load<Objective>("Objective System/"+questList[i].Trim()));
                 }
             }

@@ -32,7 +32,7 @@ MonoBehaviour:
       heading back up."
     Position: {x: 80, y: 413}
   - NodeGUID: 9c824be0-976d-4394-875f-216340bc60ad
-    DialogueText: '{Hanta} Thanks for your help'
+    DialogueText: '{Hanta} Thanks for your help!'
     Position: {x: 746, y: 413}
   ExposedProperties: []
   CommentBlockData: []
