@@ -19,7 +19,7 @@ MonoBehaviour:
   DialogueNodeData:
   - NodeGUID: 434f355c-ae23-4456-8787-6064ffefbdb0
     DialogueText: "{Doris} What a lovely meal! You\u2019re a great assistant, young
-      one."
+      one. ADDTERM{THX}"
     Position: {x: 302, y: 164}
   ExposedProperties: []
   CommentBlockData: []
