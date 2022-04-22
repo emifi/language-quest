@@ -85,9 +85,6 @@ MonoBehaviour:
   - BaseNodeGUID: 7d2f779a-3fa6-46a2-9234-94efe1b7891b
     PortName: tth'an
     TargetNodeGUID: cd05ccee-202e-4a3f-b75a-08e8e62e3014
-  - BaseNodeGUID: 4e55617d-641a-466b-974b-57b1ed4c28e1
-    PortName: Option 1
-    TargetNodeGUID: d45c4bac-5548-4bbd-81f9-50a3a05bbd7f
   - BaseNodeGUID: cd05ccee-202e-4a3f-b75a-08e8e62e3014
     PortName: Option 1
     TargetNodeGUID: d45c4bac-5548-4bbd-81f9-50a3a05bbd7f
@@ -103,6 +100,9 @@ MonoBehaviour:
   - BaseNodeGUID: d45c4bac-5548-4bbd-81f9-50a3a05bbd7f
     PortName: luk
     TargetNodeGUID: 4e64ea1e-82d0-4491-8883-9163a7868baf
+  - BaseNodeGUID: 4e55617d-641a-466b-974b-57b1ed4c28e1
+    PortName: Option 1
+    TargetNodeGUID: d45c4bac-5548-4bbd-81f9-50a3a05bbd7f
   DialogueNodeData:
   - NodeGUID: 450a0e57-9747-4ab9-b74b-2a6ac03de166
     DialogueText: "{Doris} Could you get me the nil\u012F\u012F ch'\u012Fh?"

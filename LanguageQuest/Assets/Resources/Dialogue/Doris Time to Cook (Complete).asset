@@ -19,9 +19,6 @@ MonoBehaviour:
   - BaseNodeGUID: 98dd4735-53a2-4f37-afa0-28051aeaeb7f
     PortName: Option 1
     TargetNodeGUID: ec72f089-92bb-4bf5-8644-528513cebb28
-  - BaseNodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
-    PortName: Option 1
-    TargetNodeGUID: 56c93be5-6186-4de5-b3fc-e85f3fcf9206
   - BaseNodeGUID: 363be25f-3462-4b93-b9d3-ec0ea620ce70
     PortName: "aah\u0105'"
     TargetNodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
@@ -33,14 +30,11 @@ MonoBehaviour:
     TargetNodeGUID: 363be25f-3462-4b93-b9d3-ec0ea620ce70
   DialogueNodeData:
   - NodeGUID: 98dd4735-53a2-4f37-afa0-28051aeaeb7f
-    DialogueText: "GOTO{4} {Doris} Welcome back, young one. Neenjit d\xF4onch'y\xE0a?"
+    DialogueText: "{Doris} Welcome back, young one. Neenjit d\xF4onch'y\xE0a?"
     Position: {x: 324, y: 245}
   - NodeGUID: e0782e04-6074-425b-8cc7-5f8432c768a9
-    DialogueText: '{Doris} Fantastic!'
+    DialogueText: '{Doris} Fantastic! GOTO{5} '
     Position: {x: 763, y: 512}
-  - NodeGUID: 56c93be5-6186-4de5-b3fc-e85f3fcf9206
-    DialogueText: SCENE{}
-    Position: {x: 1012, y: 512}
   - NodeGUID: 17ada236-65c1-4857-91e8-da92d463df83
     DialogueText: "{Doris} I\u2019ll be here when you\u2019re ready."
     Position: {x: 732, y: 682}
