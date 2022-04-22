@@ -21,10 +21,12 @@ MonoBehaviour:
     TargetNodeGUID: 2904ff21-be70-4697-a17a-3616a696eee5
   DialogueNodeData:
   - NodeGUID: d0ce6203-da30-4120-bf9b-229cf6eca987
-    DialogueText: "{Woodie} Busy day today, isn\u2019t it? ADDTERM{busy}"
+    DialogueText: "{Woodie} {itemcolor}Busy{maincolor} day today, isn\u2019t it?
+      ADDTERM{busy}"
     Position: {x: 282, y: 200}
   - NodeGUID: 2904ff21-be70-4697-a17a-3616a696eee5
-    DialogueText: '{Woodie} Gotta stock up for the winter! No time to waste. ADDTERM{winter}'
+    DialogueText: '{Woodie} Gotta stock up for the {itemcolor}winter{maincolor}!
+      No time to waste. ADDTERM{winter}'
     Position: {x: 560, y: 418}
   ExposedProperties: []
   CommentBlockData: []

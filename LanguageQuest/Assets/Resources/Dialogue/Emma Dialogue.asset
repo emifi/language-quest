@@ -39,10 +39,12 @@ MonoBehaviour:
     TargetNodeGUID: 53decbaf-f67f-4bb0-853d-d75745739149
   DialogueNodeData:
   - NodeGUID: 25556496-f89e-4dd7-b997-5c43489cae67
-    DialogueText: "{Emma} This rock is so small\u2026 ADDTERM{rock, small}"
+    DialogueText: "{Emma} This {itemcolor}rock{maincolor} is so {itemcolor}small{maincolor}\u2026
+      ADDTERM{rock, small}"
     Position: {x: 276, y: 200}
   - NodeGUID: ba043e0f-82cf-4124-bb0b-78d2378336e6
-    DialogueText: '{Emma} Do small rocks come from bigger rocks? ADDTERM{big}'
+    DialogueText: '{Emma} Do small rocks come from {itemcolor}big{maincolor}ger rocks?
+      ADDTERM{big}'
     Position: {x: 186.5, y: 392}
   - NodeGUID: 5e5208c1-3347-47ab-adab-739a6ef09929
     DialogueText: '{Emma} What do you think?'

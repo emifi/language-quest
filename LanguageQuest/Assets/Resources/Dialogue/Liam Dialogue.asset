@@ -45,11 +45,11 @@ MonoBehaviour:
     TargetNodeGUID: 8c6bb541-a0c7-4a9f-b685-1601363e64e9
   DialogueNodeData:
   - NodeGUID: 9a449957-24db-4f83-9a61-39242d97af3b
-    DialogueText: '{Liam} Mommy said that the sunrise happens in the west! ADDTERM{sunrise,
-      west}'
+    DialogueText: '{Liam} Mommy said that the {itemcolor}sunrise{maincolor} happens
+      in the {itemcolor}west{maincolor}! ADDTERM{sunrise, west}'
     Position: {x: 286, y: 190}
   - NodeGUID: 1d15c309-986e-4c6d-b2ac-f705079d8b0d
-    DialogueText: "{Liam} Or\u2026was that a sunset? ADDTERM{sunset}"
+    DialogueText: "{Liam} Or\u2026was that a {itemcolor}sunset{maincolor}? ADDTERM{sunset}"
     Position: {x: 368, y: 362}
   - NodeGUID: 2dcf9995-29eb-4fc3-8885-6352d4848998
     DialogueText: '{Liam} Which one is it?'

@@ -24,8 +24,8 @@ MonoBehaviour:
     TargetNodeGUID: 9a8f20ad-f74e-4aae-87be-cc27550dc6ec
   DialogueNodeData:
   - NodeGUID: 4a539590-1d27-4568-a0e1-789fecab6fdd
-    DialogueText: "{Nora} The leaves look so pretty in autumn\u2026 ADDTERM{leaf,
-      autumn}"
+    DialogueText: "{Nora} The {itemcolor}leaves{maincolor} look so pretty in {itemcolor}autumn{maincolor}\u2026
+      ADDTERM{leaf, autumn}"
     Position: {x: 312, y: 200}
   - NodeGUID: d8d733d6-9442-4942-a7e3-2554e7b00507
     DialogueText: '{Nora} This is my favorite time of year.'
