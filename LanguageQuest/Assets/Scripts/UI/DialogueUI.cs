@@ -288,7 +288,7 @@ public class DialogueUI : MonoBehaviour
         //Inventory Event - REMOVEITEM{item0,count0,item1,count1,...itemN,countN}
         fullText = checkScoreParse(fullText,currNPC);
 
-        //Change Time Event - Time{Morning/Afternoon/Evening/Night}
+        //Change Time Event - TIME{Morning/Afternoon/Evening/Night}
         fullText = timeParse(fullText);
 
         //Change Scene Event - DESTROY{npc}

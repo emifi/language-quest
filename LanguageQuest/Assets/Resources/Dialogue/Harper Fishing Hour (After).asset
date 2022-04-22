@@ -18,7 +18,7 @@ MonoBehaviour:
     TargetNodeGUID: ff11ecdb-c54b-48b7-ba63-39441ce39c8a
   DialogueNodeData:
   - NodeGUID: ff11ecdb-c54b-48b7-ba63-39441ce39c8a
-    DialogueText: Blimey! Great catches today.
+    DialogueText: Blimey! Great catches today. TIME{Evening}
     Position: {x: 276, y: 210}
   ExposedProperties: []
   CommentBlockData: []

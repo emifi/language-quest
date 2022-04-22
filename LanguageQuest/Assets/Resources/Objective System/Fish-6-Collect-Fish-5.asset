@@ -16,4 +16,4 @@ MonoBehaviour:
   objectiveString: Catch fish
   panelUI: {fileID: 0}
   item: {fileID: 11400000, guid: f8fcfbab09cf6d7419614aea3cf4c4bb, type: 2}
-  required: 1
+  required: 3

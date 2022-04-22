@@ -16,4 +16,4 @@ MonoBehaviour:
   objectiveString: Grab the fishing rod
   panelUI: {fileID: 0}
   item: {fileID: 11400000, guid: 509880c05a340844a96c61bbc72115fa, type: 2}
-  required: 3
+  required: 1

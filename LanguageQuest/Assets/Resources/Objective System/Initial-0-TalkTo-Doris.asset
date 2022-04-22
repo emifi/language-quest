@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Initial-0-TalkTo-Doris
   m_EditorClassIdentifier: 
   type: 3
-  objectiveString: Speak with Doris
+  objectiveString: Speak with Doris at the fire
   panelUI: {fileID: 0}
   npcID: {fileID: 11400000, guid: 98da9c1f2217fcd498cbaca8d6d65edf, type: 2}
