@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Trail
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: trail-sprite
   nativeName: taii
   englishName: trail
   description: a path in the forest
-  interactionString: 
+  interactionString: to pickup

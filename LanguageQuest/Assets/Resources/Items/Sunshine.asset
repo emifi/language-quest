@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 3
-  canBeAddedToNotebook: 0
+  canBeAddedToNotebook: 1
   imageSprite: sunshine-sprite
   nativeName: gishreen'aii
   englishName: sunshine
-  description: 
+  description: The sun's rays of light.
   interactionString: to interact

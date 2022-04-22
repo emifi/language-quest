@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
   type: 0
-  canBeAddedToNotebook: 0
+  canBeAddedToNotebook: 1
   imageSprite: cranberry-sprite
   nativeName: natl'at
   englishName: cranberries
-  description: 
+  description: a red acid berry good for cooking and catching caribou.
   interactionString: to pickup

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Tomorrow
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: tomorrow-sprite
   nativeName: nihkaa
   englishName: tomorrow
   description: the day after today
-  interactionString: 
+  interactionString: to pickup

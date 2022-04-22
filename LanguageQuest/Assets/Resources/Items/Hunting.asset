@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 0}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: hunting-sprite
   nativeName: naazhrii
   englishName: hunting
   description: The activity or sport of pursuing game.

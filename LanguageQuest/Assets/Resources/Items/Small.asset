@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Small
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: small-sprite
   nativeName: tsal
   englishName: small
   description: tiny!
-  interactionString: 
+  interactionString: to pickup

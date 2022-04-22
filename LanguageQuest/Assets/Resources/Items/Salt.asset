@@ -18,5 +18,5 @@ MonoBehaviour:
   imageSprite: salt-sprite
   nativeName: lisil
   englishName: salt
-  description: 
+  description: A spice that helps with flavor.
   interactionString: to pickup

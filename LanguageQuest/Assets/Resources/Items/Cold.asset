@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Cold
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: cold-sprite
   nativeName: gwiink'oo
   englishName: cold
   description: when things are cool. too cool!
-  interactionString: 
+  interactionString: to pickup

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: South
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: south-sprite
   nativeName: ch'angwahts'aii ts'aii
   englishName: south
   description: the downmost cardinal direction.
-  interactionString: 
+  interactionString: to pickup

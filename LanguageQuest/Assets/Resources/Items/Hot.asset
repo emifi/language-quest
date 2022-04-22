@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Hot
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: hot-sprite
   nativeName: nindhaa
   englishName: hot
   description: when things are warm. too warm!
-  interactionString: 
+  interactionString: to pickup

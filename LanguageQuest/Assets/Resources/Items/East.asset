@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: East
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: east-sprite
   nativeName: gach'aha'ak ts'aii
   englishName: east
   description: the rightmost cardinal direction.
-  interactionString: 
+  interactionString: to pickup

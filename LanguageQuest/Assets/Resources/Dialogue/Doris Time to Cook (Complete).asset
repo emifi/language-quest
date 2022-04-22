@@ -43,7 +43,7 @@ MonoBehaviour:
     Position: {x: 321, y: 549}
   - NodeGUID: ec72f089-92bb-4bf5-8644-528513cebb28
     DialogueText: "{Doris} You\u2019ve helped both Hanta and Harper? Splendid! We
-      can now move onto making dinner! GOTO{5}"
+      can now move onto making dinner! GOTO{4}"
     Position: {x: 72, y: 372}
   ExposedProperties: []
   CommentBlockData: []

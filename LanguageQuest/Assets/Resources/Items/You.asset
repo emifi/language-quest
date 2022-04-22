@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: You
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: you-sprite
   nativeName: nan
   englishName: you
   description: the person reading this :)
-  interactionString: 
+  interactionString: to pickup

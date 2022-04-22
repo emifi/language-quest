@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Summer
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: summer-sprite
   nativeName: shin
   englishName: summer
   description: the hottest of the four seasons
-  interactionString: 
+  interactionString: to pickup

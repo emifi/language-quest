@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Bench
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: bench-sprite
   nativeName: vakak daraadii
   englishName: bench
   description: a log that you sit on
-  interactionString: 
+  interactionString: to pickup
