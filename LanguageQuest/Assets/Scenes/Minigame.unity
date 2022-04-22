@@ -1599,13 +1599,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8860adacf5ea40c4db6c5c1ba220d78e, type: 3}
---- !u!43 &690615230
+--- !u!43 &670882812
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-30608
+  m_Name: pb_Mesh-480064
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20660,13 +20660,13 @@ MonoBehaviour:
     ptrMap:
     - npc: {fileID: 1297333443}
       ptr: 1
-    - npc: {fileID: 0}
+    - npc: {fileID: 1328030839}
       ptr: 1
-    - npc: {fileID: 0}
+    - npc: {fileID: 1311912534}
       ptr: 1
-    - npc: {fileID: 0}
+    - npc: {fileID: 2004552297}
       ptr: 1
-    - npc: {fileID: 0}
+    - npc: {fileID: 2030606665}
       ptr: 1
   eventList: []
 --- !u!4 &2120633623
