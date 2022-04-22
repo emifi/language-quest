@@ -224,16 +224,16 @@ public class DialogueUI : MonoBehaviour
 
         //Objective Parsing - ADDQUEST{quest0,quest1...questN,dialoguePTR}/ADDQUEST{quest0,quest1...questN,dialoguePTR}
         string cpy = "" + fullText;
-        do{
+        for (int i = 0; i < 5; i++) {
             fullText = objectiveParse(fullText,currNPC);
-        }while(fullText!=cpy);
+        }
 
         //Objective Parsing -   ADDQUEST++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
         //                      ADDQUESTS++{quest0,quest1...questN,NPC0:dialoguePTR...NPC1:dialoguePTR}
         cpy = "" + fullText;
-        do{
-        fullText = objectiveParseMultNPC(fullText); //++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2, NPC (2):2}
-        }while(fullText!=cpy);
+        for (int i = 0; i < 5; i++) {
+            fullText = objectiveParseMultNPC(fullText); //++{Collect-jak-3,MoveTo-NW,Trigger-Book,NPC (1):2, NPC (2):2}
+        }
 
         //Term Parsing (no print variation) - ADDTERM{item0,item1...itemN}/ADDTERMS{item0,item1...itemN}
         fullText = addTermParse(fullText);
