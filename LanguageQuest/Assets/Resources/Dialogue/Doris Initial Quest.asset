@@ -82,7 +82,7 @@ MonoBehaviour:
     DialogueText: '{Doris} Splendid! In fact, we still need to gather ingredients
       for dinner tonight as well. {npccolor}Hanta{maincolor} and {npccolor}Harper{maincolor}
       might need assistance with hunting and fishing, so feel free to approach them
-      when you have time. GOTO{1} ADDTERM{tonight, hunting, fish} ADDQUEST++{Hunt-1-TalkTo-Hanta,Doris:2,Hanta:1}
+      when you have time. ADDTERM{tonight, hunting, fish} GOTO{1}ADDQUEST++{Hunt-1-TalkTo-Hanta,Doris:2,Hanta:1}
       ADDQUEST++{Fish-4-MoveTo-river,Fish-4-TalkTo-Harper,Doris:3,Harper:1}'
     Position: {x: 1411, y: 776}
   ExposedProperties: []
