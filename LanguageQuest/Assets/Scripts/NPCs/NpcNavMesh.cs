@@ -151,8 +151,16 @@ public class NpcNavMesh : MonoBehaviour
     }
 
     public void setDialoguePointer(int ptr) {
+        if(ptr<0){
+            return;
+        }
         dialoguePtr = ptr;
         np.dialoguePtr = ptr;
+    }
+
+    public void incDialoguePointer() {
+        dialoguePtr++;
+        np.dialoguePtr++;
     }
 
     public void setDestinationPointer(int ptr){

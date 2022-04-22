@@ -28,6 +28,26 @@ public class ObjectiveSystem : MonoBehaviour
             255f/256f, 
             190f/256f, 
             118f/256f
+        ),
+        new Color( //Sky Blue
+            126f/256f,
+            237f/256f, 
+            219f/256f
+        ),
+        new Color( //Purple
+            141f/256f,
+            126f/256f, 
+            237f/256f
+        ),
+        new Color( //Lavender
+            200f/256f,
+            126f/256f, 
+            237f/256f
+        ),
+        new Color( //Pink
+            237f/256f,
+            126f/256f, 
+            235f/256f
         )
     };
     // Start is called before the first frame update
@@ -46,7 +66,7 @@ public class ObjectiveSystem : MonoBehaviour
     // Adds an Objective to the UI and to the current objectives container
     // The container object is only public for editor convenience! Never add directly to it!
     public void addObjective(Objective objective, int color_num) {
-        Color color = pallete[color_num % 3];
+        Color color = pallete[color_num % pallete.Length];
         if (!objectives.Contains(objective)) objectives.Add(objective);
         objective.panelUI = Instantiate(panelUI);
         objective.panelUI.GetComponent<TMP_Text>().color = color;

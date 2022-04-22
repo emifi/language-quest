@@ -257,6 +257,9 @@ public class DialogueUI : MonoBehaviour
         //Next Dialogue Parsing - GOTO{dialoguePtr}
         fullText = goToParse(fullText,currNPC);
 
+        //Next Dialogue Parsing - INCPTR{npcName}
+        fullText = incParse(fullText);
+
         //Next Dialogue Parsing - GOTOMULT{NPC0:dialoguePTR...NPC1:dialoguePTR}
         fullText = goToMultParse(fullText);
 
@@ -682,6 +685,24 @@ public class DialogueUI : MonoBehaviour
 
             if(endPos>-1){ //If all requirements have passed, set next dialogue
                 currNPC.setDialoguePointer(int.Parse(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))));
+
+                fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
+            }
+            return fullText.Trim();
+    }
+
+    private static string incParse(string fullText){
+        int startPos = fullText.IndexOf("INCPTR{");
+        int addLen = 7; //Length of INCPTR{
+
+            int endPos = -1;
+
+            if(startPos>-1){ //Check for closing bracket
+                endPos = fullText.IndexOf("}",startPos+addLen);
+            }
+
+            if(endPos>-1){ //If all requirements have passed, set next dialogue
+                GameObject.Find(fullText.Substring(startPos+addLen,endPos-(startPos+addLen))).GetComponent<NpcNavMesh>().incDialoguePointer();
 
                 fullText = fullText.Substring(0,startPos) + fullText.Substring(endPos+1,fullText.Length-endPos-1);
             }

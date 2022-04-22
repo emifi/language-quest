@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Doris-Fish-Done
   m_EditorClassIdentifier: 
   type: 5
-  objectiveString: 
+  objectiveString: Go Fishing with Harper
   panelUI: {fileID: 0}
