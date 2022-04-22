@@ -28,7 +28,7 @@ MonoBehaviour:
       ADDTERM{summer, cold, night}"
     Position: {x: 297, y: 200}
   - NodeGUID: 88aeb951-425f-4896-8e3f-665d2cbe7b25
-    DialogueText: '{Oliver} The caribou are gonna be going away soon, too. ADDTERM{carribou}'
+    DialogueText: '{Oliver} The caribou are gonna be going away soon, too. ADDTERM{caribou}'
     Position: {x: 218, y: 376}
   - NodeGUID: 6db32824-e360-47dc-a365-4411bbedac06
     DialogueText: '{Oliver} Should we bring them blankets? They might get cold.'
