@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 0
   canBeAddedToNotebook: 0
   imageSprite: 
-  nativeName: 
-  englishName: 
-  description: 
+  nativeName: tsan
+  englishName: bait
+  description: a snack for the fish.
   interactionString: to pickup
