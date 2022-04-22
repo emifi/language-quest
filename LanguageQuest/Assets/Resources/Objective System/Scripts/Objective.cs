@@ -26,4 +26,5 @@ public enum ObjectiveType {
     Trigger,
     TalkTo,
     Follow,
+    Misc,
 }
