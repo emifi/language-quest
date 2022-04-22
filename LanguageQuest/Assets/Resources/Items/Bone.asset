@@ -18,5 +18,5 @@ MonoBehaviour:
   imageSprite: bone-sprite
   nativeName: tth'an
   englishName: bone
-  description: 
+  description: The hard structure that keeps a living object from being a blob.
   interactionString: to pickup

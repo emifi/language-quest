@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Night
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 1
+  type: 3
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: night-sprite
   nativeName: "t\u01EB\u01EB"
   englishName: night
   description: when it's dark and cold.

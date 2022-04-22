@@ -15,7 +15,7 @@ MonoBehaviour:
   prefab: {fileID: 1567582185033856, guid: 3a9b422ae305e3b49aadf8ece0bfa915, type: 3}
   type: 0
   canBeAddedToNotebook: 1
-  imageSprite: 
+  imageSprite: caribou-sprite
   nativeName: caribou
   englishName: caribou
   description: important animal, so i've heard
