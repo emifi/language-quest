@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e7e5a89cd327384c829cd135e54e736, type: 3}
   m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  maxSize: 5
+  maxSize: 30
   container: []

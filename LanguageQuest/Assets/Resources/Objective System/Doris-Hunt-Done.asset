@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Doris-Hunt-Done
   m_EditorClassIdentifier: 
   type: 5
-  objectiveString: 
+  objectiveString: Go hunting with Hanta
   panelUI: {fileID: 0}
