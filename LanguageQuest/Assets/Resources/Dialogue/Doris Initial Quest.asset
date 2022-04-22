@@ -61,7 +61,7 @@ MonoBehaviour:
     Position: {x: 245, y: 752}
   - NodeGUID: 9a16cd52-3dcf-4def-b761-597890cca714
     DialogueText: '{Doris} Well, now that you are here, would you mind helping around
-      the village? ADDTERM{village}'
+      the {itemcolor}village{maincolor}? ADDTERM{village}'
     Position: {x: 830, y: 176}
   - NodeGUID: fa173376-45bc-456f-a2c4-90ccc22fd6d3
     DialogueText: "{Doris} In fact, I don\u2019t think I\u2019ve ever seen you up
@@ -80,9 +80,9 @@ MonoBehaviour:
     Position: {x: 1673, y: 931}
   - NodeGUID: a555e414-e91d-4157-b35a-0350ea1e52a8
     DialogueText: '{Doris} Splendid! In fact, we still need to gather ingredients
-      for dinner tonight as well. {npccolor}Hanta{maincolor} and {npccolor}Harper{maincolor}
-      might need assistance with hunting and fishing, so feel free to approach them
-      when you have time. ADDTERM{tonight, hunting, fish} GOTOMULT{Doris:1,Harper:1,Hanta:1}
+      for dinner {itemcolor}tonight{maincolor} as well. {npccolor}Hanta{maincolor}
+      and {npccolor}Harper{maincolor} might need assistance with hunting and fishing,
+      so feel free to approach them when you have time. ADDTERM{tonight} GOTOMULT{Doris:1,Harper:1,Hanta:1}
       ADDQUESTS++{Doris-Hunt-Done,Doris:-1}ADDQUESTS++{Hunt-1-TalkTo-Hanta,Hunt-1-MoveTo-Clearing,Doris:-1}ADDQUESTS++{Doris-Fish-Done,Doris:-1}ADDQUESTS++{Fish-4-MoveTo-river,Fish-4-TalkTo-Harper,Hanta:-1}'
     Position: {x: 1411, y: 776}
   ExposedProperties: []
