@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 648f4d8d8e3b60348bfea5e230184d05, type: 3}
   m_Name: Fishing Rod
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  prefab: {fileID: 919132149155446097, guid: 7454e17b283ddd442a3b5bdd48b7f86f, type: 3}
   type: 0
   canBeAddedToNotebook: 1
   imageSprite: 
