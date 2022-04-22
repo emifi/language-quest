@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Night
   m_EditorClassIdentifier: 
   prefab: {fileID: 0}
-  type: 3
-  canBeAddedToNotebook: 0
+  type: 1
+  canBeAddedToNotebook: 1
   imageSprite: 
-  nativeName: 
-  englishName: 
-  description: 
+  nativeName: "t\u01EB\u01EB"
+  englishName: night
+  description: when it's dark and cold.
   interactionString: to interact
