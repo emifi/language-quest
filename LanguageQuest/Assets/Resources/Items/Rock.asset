@@ -16,7 +16,7 @@ MonoBehaviour:
   type: 1
   canBeAddedToNotebook: 1
   imageSprite: 
-  nativeName: deetrya'
-  englishName: raven
-  description: nevermore!
-  interactionString: 
+  nativeName: kii
+  englishName: rock
+  description: smaller than a boulder, bigger than a pebble
+  interactionString: to pickup
