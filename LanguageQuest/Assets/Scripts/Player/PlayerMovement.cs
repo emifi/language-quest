@@ -152,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
                 DialogueUI.scrollY(-1);
             }
 
-            if (Input.GetKeyDown("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity) && canInput) {
+            /*if (Input.GetKeyDown("left shift")&&!(dialogueUI.enabled&&npcType==NpcNavMesh.NpcType.Proximity) && canInput) {
                 if(forcedDown){
                     forcedDown = false;
                 }else{
@@ -192,7 +192,7 @@ public class PlayerMovement : MonoBehaviour
                     playerSpeed = 6.0f;
                     
                 }
-            }
+            }*/
             Vector3 moveVector = transform.right * x + transform.forward * z;
             playerController.Move(moveVector * playerSpeed * Time.deltaTime);
             playerController.Move(velocity * Time.deltaTime);
