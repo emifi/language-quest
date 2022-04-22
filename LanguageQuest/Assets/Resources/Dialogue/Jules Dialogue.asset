@@ -29,7 +29,7 @@ MonoBehaviour:
     Position: {x: 265, y: 200}
   - NodeGUID: 7dbdf0cd-ad69-41d9-b38c-429bbeedd56f
     DialogueText: '{Jules} I see other people on television living in {itemcolor}big{maincolor}
-      cities in a film. ADDTERM{big}'
+      {itemcolor}cities{maincolor} in a film. ADDTERM{big,village}'
     Position: {x: 456, y: 429}
   - NodeGUID: 78263b8d-e815-48fc-944c-d1a016690aaf
     DialogueText: "{Jules} I wonder what it\u2019d be like to live in one myself\u2026"
