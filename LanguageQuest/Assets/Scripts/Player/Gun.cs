@@ -62,7 +62,7 @@ public class Gun : MonoBehaviour
     }
 
     IEnumerator createTrail(TrailRenderer trail, Vector3 target) {
-        float bulletSpeed = 75.0f;
+        float bulletSpeed = 125.0f;
         float distance = Vector3.Distance(trail.transform.position, target);
         float time = 0.0f;
         float endTime = distance/bulletSpeed;
