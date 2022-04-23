@@ -72,7 +72,7 @@ public class ObjectiveSystem : MonoBehaviour
         objective.panelUI.GetComponent<TMP_Text>().color = color;
         string objstr = objective.objectiveString;
         if (objective.type == ObjectiveType.Collect) {
-            if (inventory.GetItem((objective as ObjectiveCollect).item) > (objective as ObjectiveCollect).current) {
+            if (inventory.GetItem((objective as ObjectiveCollect).item) > (objective as ObjectiveCollect).required) {
                 (objective as ObjectiveCollect).current = (objective as ObjectiveCollect).required;
             } else {
                 (objective as ObjectiveCollect).current = inventory.GetItem((objective as ObjectiveCollect).item);
@@ -127,7 +127,6 @@ public class ObjectiveSystem : MonoBehaviour
     public void pickupEvent(PickupObject item) {
         List<Objective> objectivesToRemove = new List<Objective>();
         foreach (Objective objective in objectives) {
-            //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.Collect) continue;
             if ((objective as ObjectiveCollect).item == item) {
                 (objective as ObjectiveCollect).current = inventory.GetItem(item);
@@ -144,7 +143,6 @@ public class ObjectiveSystem : MonoBehaviour
         }
         objectivesToRemove = new List<Objective>();
         foreach (Objective objective in hiddenObjectives) {
-            //if (objective.status == ObjectiveStatus.Complete) continue;
             if (objective.type != ObjectiveType.Collect) continue;
             if ((objective as ObjectiveCollect).item == item) {
                 (objective as ObjectiveCollect).current = inventory.GetItem(item);

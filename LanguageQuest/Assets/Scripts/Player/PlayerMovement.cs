@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
         if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Terrain") && DataStructs.playerPos != null) {
             player.transform.position = DataStructs.playerPos;
+            player.transform.rotation = DataStructs.playerRot;
         } else {
             player.transform.position = spawnpoint.position;
         }
@@ -69,7 +70,10 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Terrain")) DataStructs.playerPos = player.transform.position;
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Terrain")) {
+            DataStructs.playerPos = player.transform.position;
+            DataStructs.playerRot = player.transform.rotation;
+        }
         //call update on every scene that isn't the fishing minigame
         Scene currentScene = SceneManager.GetActiveScene();
         if(currentScene.buildIndex != 3) {

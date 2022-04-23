@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
     public List<ObjectiveDialogueGroup> objectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
     [Header("These groups will not be displayed on the players UI. Useful in non-linear progression for checking if objectives from other groups have been completed.")]
     public List<ObjectiveDialogueGroup> hiddenObjectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
+    [Header("Events can be fired from dialogue to either active or deactivate gameobjects within the scene")]
     public List<Event> eventList = new List<Event>();
     Dictionary<string, List<GameObject>> eventTags = new Dictionary<string, List<GameObject>>();
     ObjectiveSystem objectiveSystem;
@@ -20,19 +21,43 @@ public class GameController : MonoBehaviour
         int currScene = SceneManager.GetActiveScene().buildIndex-1;
         Debug.Log(DataStructs.objectiveDialogueGroups.Length);
         if(DataStructs.objectiveDialogueGroups[currScene]==null){
-            Debug.Log("aesrg");
-            DataStructs.objectiveDialogueGroups[currScene] = objectiveDialogueGroups;
+            List<SavedObjectiveDialogueGroup> saved = new List<SavedObjectiveDialogueGroup>();
+            foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
+                if (odg.CheckForCompletion()) continue;
+                Debug.Log("Saving ObjDiaGroup...");
+                foreach (Objective obj in odg.objectives) {
+                    Debug.Log($"- Saving obj {obj.objectiveString}");
+                }
+                saved.Add(odg.Save());
+            }
+            DataStructs.objectiveDialogueGroups[currScene] = saved;
         }else{
-            Debug.Log("aesrsrhdg");
-            objectiveDialogueGroups = DataStructs.objectiveDialogueGroups[currScene];
+            List<ObjectiveDialogueGroup> loaded = new List<ObjectiveDialogueGroup>();
+            foreach (SavedObjectiveDialogueGroup odg in DataStructs.objectiveDialogueGroups[currScene]) {
+                if (odg.CheckForCompletion()) continue;
+                Debug.Log("Loading ObjDiaGroup...");
+                foreach (Objective obj in odg.objectives) {
+                    Debug.Log($"- Loading obj {obj.objectiveString}");
+                }
+                loaded.Add(odg.Load());
+            }
+            objectiveDialogueGroups = loaded;
         }
 
         if(DataStructs.hiddenObjectiveDialogueGroups[currScene]==null){
-            Debug.Log("aesrgerthdjykj");
-            DataStructs.hiddenObjectiveDialogueGroups[currScene] = hiddenObjectiveDialogueGroups;
+            List<SavedObjectiveDialogueGroup> saved = new List<SavedObjectiveDialogueGroup>();
+            foreach (ObjectiveDialogueGroup odg in hiddenObjectiveDialogueGroups) {
+                if (odg.CheckForCompletion()) continue;
+                saved.Add(odg.Save());
+            }
+            DataStructs.hiddenObjectiveDialogueGroups[currScene] = saved;
         }else{
-            Debug.Log("aesrgwefgrsdtjhd");
-            hiddenObjectiveDialogueGroups = DataStructs.hiddenObjectiveDialogueGroups[currScene];
+            List<ObjectiveDialogueGroup> loaded = new List<ObjectiveDialogueGroup>();
+            foreach (SavedObjectiveDialogueGroup odg in DataStructs.hiddenObjectiveDialogueGroups[currScene]) {
+                if (odg.CheckForCompletion()) continue;
+                loaded.Add(odg.Load());
+            }
+            hiddenObjectiveDialogueGroups = loaded;
         }
 
         objectiveSystem = GameObject.Find("First Person Player").GetComponent<ObjectiveSystem>();
@@ -67,6 +92,7 @@ public class GameController : MonoBehaviour
         }
         foreach (ObjectiveDialogueGroup odg in groupsToRemove) {
             objectiveDialogueGroups.Remove(odg);
+            DataStructs.objectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Remove(odg.Save());
         }
         foreach (ObjectiveDialogueGroup odg in hiddenObjectiveDialogueGroups) {
             if (odg.CheckForCompletion()) {
@@ -76,6 +102,7 @@ public class GameController : MonoBehaviour
         }
         foreach (ObjectiveDialogueGroup odg in groupsToRemove) {
             hiddenObjectiveDialogueGroups.Remove(odg);
+            DataStructs.hiddenObjectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Remove(odg.Save());
         }
     }
 
@@ -91,11 +118,15 @@ public class GameController : MonoBehaviour
     public void CreateGrouping(List<Objective> objectives, NpcNavMesh npc, int pointer) {
         group_num += 1;
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, npc, pointer);
+        SavedObjectiveDialogueGroup saved = group.Save();
+        DataStructs.objectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Add(saved);
         objectiveSystem.addObjectiveList(objectives, group_num);
         objectiveDialogueGroups.Add(group);
     }
     public void CreateGrouping(ObjectiveDialogueGroup group) {
         group_num += 1;
+        SavedObjectiveDialogueGroup saved = group.Save();
+        DataStructs.objectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Add(saved);
         objectiveSystem.addObjectiveList(group.objectives, group_num);
         objectiveDialogueGroups.Add(group);
     }
@@ -103,13 +134,19 @@ public class GameController : MonoBehaviour
     // Creates a new hidden ObjDiagGroup, sends it to the objective system and adds it to the GameController container
     public void CreateHiddenGrouping(List<Objective> objectives, NpcNavMesh npc, int pointer) {
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, npc, pointer);
+        SavedObjectiveDialogueGroup saved = group.Save();
+        DataStructs.objectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Add(saved);
         hiddenObjectiveDialogueGroups.Add(group);
     }
     public void CreateHiddenGrouping(List<Objective> objectives, List<DialoguePointerMap> ptrMap) {
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, ptrMap);
+        SavedObjectiveDialogueGroup saved = group.Save();
+        DataStructs.objectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Add(saved);
         hiddenObjectiveDialogueGroups.Add(group);
     }
     public void CreateHiddenGrouping(ObjectiveDialogueGroup group) {
+        SavedObjectiveDialogueGroup saved = group.Save();
+        DataStructs.objectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Add(saved);
         hiddenObjectiveDialogueGroups.Add(group);
     }
 
@@ -174,8 +211,12 @@ public class ObjectiveDialogueGroup
         }
     }
 
-    public void LoadScene(string name) {
-        SceneManager.LoadScene(name);
+    public SavedObjectiveDialogueGroup Save() {
+        List<SavedDialoguePointerMap> newMap = new List<SavedDialoguePointerMap>();
+        foreach (DialoguePointerMap pair in ptrMap) {
+            if (pair.npc != null) newMap.Add(new SavedDialoguePointerMap(pair.npc.gameObject.name, pair.ptr));
+        }
+        return new SavedObjectiveDialogueGroup(objectives, newMap, finalObjective);
     }
 }
 
