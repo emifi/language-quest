@@ -6,11 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
-    public List<ObjectiveDialogueGroup> objectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
+    [SerializeField]
+    private List<ObjectiveDialogueGroup> objectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
     [Header("These groups will not be displayed on the players UI. Useful in non-linear progression for checking if objectives from other groups have been completed.")]
-    public List<ObjectiveDialogueGroup> hiddenObjectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
+    [SerializeField]
+    private List<ObjectiveDialogueGroup> hiddenObjectiveDialogueGroups = new List<ObjectiveDialogueGroup>();
     [Header("Events can be fired from dialogue to either active or deactivate gameobjects within the scene")]
-    public List<Event> eventList = new List<Event>();
+    [SerializeField]
+    private List<Event> tagList = new List<Event>();
     Dictionary<string, List<GameObject>> eventTags = new Dictionary<string, List<GameObject>>();
     ObjectiveSystem objectiveSystem;
     // Tracks total number of ObjDiaGroups created. Used for colors of objective UI
@@ -19,7 +22,10 @@ public class GameController : MonoBehaviour
     void Start()
     {
         int currScene = SceneManager.GetActiveScene().buildIndex-1;
-        Debug.Log(DataStructs.objectiveDialogueGroups.Length);
+
+        // Check the DataStructs to see if the current scene has saved ObjectiveDialogueGroups.
+        // If no, save the default ObjectiveDialogueGroups that were present in this scene to the DataStructs.
+        // If yes, load the saved Objective DialogueGroups from DataStructs into the respective (hidden or otherwise) ObjectiveDialogueGroup container.
         if(DataStructs.objectiveDialogueGroups[currScene]==null){
             List<SavedObjectiveDialogueGroup> saved = new List<SavedObjectiveDialogueGroup>();
             foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
@@ -43,7 +49,6 @@ public class GameController : MonoBehaviour
             }
             objectiveDialogueGroups = loaded;
         }
-
         if(DataStructs.hiddenObjectiveDialogueGroups[currScene]==null){
             List<SavedObjectiveDialogueGroup> saved = new List<SavedObjectiveDialogueGroup>();
             foreach (ObjectiveDialogueGroup odg in hiddenObjectiveDialogueGroups) {
@@ -60,16 +65,19 @@ public class GameController : MonoBehaviour
             hiddenObjectiveDialogueGroups = loaded;
         }
 
+        // Send the current ObjectiveDialogueGroups to the ObjectiveSystem to be rendered and tracked.
         objectiveSystem = GameObject.Find("First Person Player").GetComponent<ObjectiveSystem>();
         foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
             objectiveSystem.addObjectiveList(odg.objectives, group_num);
         }
+        // Send the current hidden ObjectiveDialogueGroups to the ObjectiveSystem to be tracked.
         foreach (ObjectiveDialogueGroup hidodg in hiddenObjectiveDialogueGroups) {
             foreach (Objective hiddenObj in hidodg.objectives) {
-                objectiveSystem.hiddenObjectives.Add(hiddenObj);
+                objectiveSystem.addHiddenObjective(hiddenObj);
             }
         }
-        foreach (Event evt in eventList) {
+        // Add all pre-set events to the eventTag container
+        foreach (Event evt in tagList) {
             Debug.Log($"Gamecontroller adding event tag {evt.tag}");
             eventTags.Add(evt.GetTag(), evt.GetGameObjects());
         }
@@ -79,6 +87,7 @@ public class GameController : MonoBehaviour
     void Update()
     {
         List<ObjectiveDialogueGroup> groupsToRemove = new List<ObjectiveDialogueGroup>();
+
         // Check if any current ObjDiaGroups are complete, if so: push their dialogue ptrs to respective NPCs and remove them from ObjSys UI
         foreach (ObjectiveDialogueGroup odg in objectiveDialogueGroups) {
             if (odg.CheckForCompletion()) {
@@ -106,7 +115,9 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Can use to check if there is an active ObjectiveDialogue grouping prior to inserting a new one
+    /// <summary>
+    /// Returns true if there is atleast one active (and visible) ObjectiveDialogueGroup. Otherwise, returns false;
+    /// </summary>
     public bool HasActiveGrouping() {
         if (objectiveDialogueGroups.Count > 0) {
             return true;
@@ -114,7 +125,9 @@ public class GameController : MonoBehaviour
         return false;
     }
 
-    // Creates a new ObjDiagGroup, sends it to the objective system and adds it to the GameController container
+    /// <summary>
+    /// Creates a new ObjectiveDialogueGroup, saves it to the DataStructs for this scene, and adds it to the ObjectiveSystem to be rendered and tracked.
+    /// </summary>
     public void CreateGrouping(List<Objective> objectives, NpcNavMesh npc, int pointer) {
         group_num += 1;
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, npc, pointer);
@@ -123,6 +136,9 @@ public class GameController : MonoBehaviour
         objectiveSystem.addObjectiveList(objectives, group_num);
         objectiveDialogueGroups.Add(group);
     }
+    /// <summary>
+    /// Creates a new ObjectiveDialogueGroup, saves it to the DataStructs for this scene, and adds it to the ObjectiveSystem to be rendered and tracked.
+    /// </summary>
     public void CreateGrouping(ObjectiveDialogueGroup group) {
         group_num += 1;
         SavedObjectiveDialogueGroup saved = group.Save();
@@ -131,29 +147,43 @@ public class GameController : MonoBehaviour
         objectiveDialogueGroups.Add(group);
     }
 
-    // Creates a new hidden ObjDiagGroup, sends it to the objective system and adds it to the GameController container
+    /// <summary>
+    /// Creates a new hidden ObjectiveDialogueGroup, saves it to the DataStructs for this scene, and adds it to the ObjectiveSystem to be tracked.
+    /// </summary>
     public void CreateHiddenGrouping(List<Objective> objectives, NpcNavMesh npc, int pointer) {
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, npc, pointer);
         SavedObjectiveDialogueGroup saved = group.Save();
         DataStructs.objectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Add(saved);
         hiddenObjectiveDialogueGroups.Add(group);
     }
+    /// <summary>
+    /// Creates a new hidden ObjectiveDialogueGroup, saves it to the DataStructs for this scene, and adds it to the ObjectiveSystem to be tracked.
+    /// </summary>
     public void CreateHiddenGrouping(List<Objective> objectives, List<DialoguePointerMap> ptrMap) {
         ObjectiveDialogueGroup group = new ObjectiveDialogueGroup(objectives, ptrMap);
         SavedObjectiveDialogueGroup saved = group.Save();
         DataStructs.objectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Add(saved);
         hiddenObjectiveDialogueGroups.Add(group);
     }
+    /// <summary>
+    /// Creates a new hidden ObjectiveDialogueGroup, saves it to the DataStructs for this scene, and adds it to the ObjectiveSystem to be tracked.
+    /// </summary>
     public void CreateHiddenGrouping(ObjectiveDialogueGroup group) {
         SavedObjectiveDialogueGroup saved = group.Save();
         DataStructs.objectiveDialogueGroups[SceneManager.GetActiveScene().buildIndex-1].Add(saved);
         hiddenObjectiveDialogueGroups.Add(group);
     }
 
+    /// <summary>
+    /// Sets the given ObjectiveMisc's ObjectiveStatus to ObjectiveStatus.Complete by firing a miscEvent.
+    /// </summary>
     public void ForceComplete(ObjectiveMisc obj) {
         objectiveSystem.miscEvent(obj);
     }
 
+    /// <summary>
+    /// (Not to be confused with the Unity Editor built-in tags) Finds the event with the given tag and sets all of its GameObjects to active.
+    /// </summary>
     public void ActivateTag(string tag) {
         if (eventTags.ContainsKey(tag)) {
             Event evt = new Event(tag, eventTags[tag]);
@@ -163,6 +193,9 @@ public class GameController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// (Not to be confused with the Unity Editor built-in tags) Finds the event with the given tag and sets all of its GameObjects to inactive.
+    /// </summary>
     public void DeactivateTag(string tag) {
         if (eventTags.ContainsKey(tag)) {
             Event evt = new Event(tag, eventTags[tag]);
@@ -174,6 +207,9 @@ public class GameController : MonoBehaviour
 }
 
 // This class is used to pair objectives into groupings so that they can all be checked for completion. Upon completion, their quest-giver npc will have their dialogue updated to reflect
+    /// <summary>
+    /// A GameController class containing a list of Objectives and a DialoguePointerMap. This class allows for dialogue pointers to be sent to NPCs upon the completion of all of its Objectives.
+    /// </summary>
 [System.Serializable]
 public class ObjectiveDialogueGroup
 {
@@ -204,6 +240,9 @@ public class ObjectiveDialogueGroup
         return true;
     }
 
+    /// <summary>
+    /// For each DialoguePointerMap pairing, send the dialogue pointer to its respective NPC.
+    /// </summary>
     public void PushDialoguePointer() {
         foreach (DialoguePointerMap pair in ptrMap)
         if (pair.npc != null) {
@@ -211,6 +250,9 @@ public class ObjectiveDialogueGroup
         }
     }
 
+    /// <summary>
+    /// Converts all NpcNavMeshs in an ObjectiveDialogueGroup to a string-ified format so that they can be sent the DataStructs and saved between scenes. Returns a SavedObjectiveDialogueGroup.
+    /// </summary>
     public SavedObjectiveDialogueGroup Save() {
         List<SavedDialoguePointerMap> newMap = new List<SavedDialoguePointerMap>();
         foreach (DialoguePointerMap pair in ptrMap) {
@@ -219,9 +261,10 @@ public class ObjectiveDialogueGroup
         return new SavedObjectiveDialogueGroup(objectives, newMap, finalObjective);
     }
 }
-
-// A DialoguePointerMap maps NPCs to dialogue pointers. When an ObjDiaGroup is completed, each NPC-Ptr pair is evaluated and the pointer
-// is sent to it's paired NPC to switch that NPCs dialogue tree.
+/// <summary>
+/// A DialoguePointerMap maps NPCs to dialogue pointers. When an ObjDiaGroup is completed, each NPC-Ptr pair is evaluated and the pointer
+/// is used to update its paired NPC's dialogue pointer.
+/// </summary>
 [System.Serializable]
 public class DialoguePointerMap {
     public NpcNavMesh npc;

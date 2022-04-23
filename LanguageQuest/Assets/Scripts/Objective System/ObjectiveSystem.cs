@@ -5,14 +5,14 @@ using TMPro;
 
 public class ObjectiveSystem : MonoBehaviour
 {
-    // Completed objectives are still rendered on screen
-    public List<Objective> objectives = new List<Objective>();
-    public List<Objective> completeObjectives = new List<Objective>();
-    public List<Objective> hiddenObjectives = new List<Objective>();
+    private List<Objective> objectives = new List<Objective>();
+    private List<Objective> completeObjectives = new List<Objective>();
+    private List<Objective> hiddenObjectives = new List<Objective>();
     public GameObject panelUI;
     public GameObject objectiveUI;
     public InventoryObject inventory;
     DialogueUI dialogueUI;
+    // UI colors
     Color[] pallete = new Color[] {
         new Color(
             186f/256f,
@@ -63,8 +63,9 @@ public class ObjectiveSystem : MonoBehaviour
         
     }
 
-    // Adds an Objective to the UI and to the current objectives container
-    // The container object is only public for editor convenience! Never add directly to it!
+    /// <summary>
+    /// Adds given Objective to the ObjectiveSystem to be tracked, adds it to player's UI and renders its color based on the color_num.
+    /// </summary>
     public void addObjective(Objective objective, int color_num) {
         Color color = pallete[color_num % pallete.Length];
         if (!objectives.Contains(objective)) objectives.Add(objective);
@@ -91,6 +92,16 @@ public class ObjectiveSystem : MonoBehaviour
         objective.panelUI.transform.SetParent(objectiveUI.transform);
     }
 
+    /// <summary>
+    /// Adds given given hidden Objective to ObjectiveSystem to be tracked.
+    /// </summary>
+    public void addHiddenObjective(Objective objective) {
+        hiddenObjectives.Add(objective);
+    }
+
+    /// <summary>
+    /// Adds the list of objectives to the player's UI.
+    /// </summary>
     public void addObjectiveList(List<Objective> objectives, int color_num) {
         foreach (Objective objective in objectives) {
             addObjective(objective, color_num);
@@ -123,7 +134,9 @@ public class ObjectiveSystem : MonoBehaviour
             removeObjective(obj);
         }
     }
-    // Fires from PlayerInteraction.cs when a pickup interaction is detected
+    /// <summary>
+    /// Fires a check to see if the player's objectives (hidden or otherwise) requires the given PickupObject.
+    /// </summary>
     public void pickupEvent(PickupObject item) {
         List<Objective> objectivesToRemove = new List<Objective>();
         foreach (Objective objective in objectives) {
@@ -156,7 +169,9 @@ public class ObjectiveSystem : MonoBehaviour
         }
     }
 
-    // Fires from PlayerInteraction.cs when an interaction with a trigger item is detected
+    /// <summary>
+    /// Fires a check to see if the player's objectives (hidden or otherwise) requires the given TriggerObject.
+    /// </summary>
     public void triggerEvent(TriggerObject trigger) {
         List<Objective> objectivesToRemove = new List<Objective>();
         foreach (Objective objective in objectives) {
@@ -186,7 +201,9 @@ public class ObjectiveSystem : MonoBehaviour
         }
     }
 
-    // Fires from PlayerInteraction.cs when the player enters a collision trigger
+    /// <summary>
+    /// Fires a check to see if the player's objectives (hidden or otherwise) require them to enter the given DestinationObject.
+    /// </summary>
     public void destinationEvent(DestinationObject destination) {
         List<Objective> objectivesToRemove = new List<Objective>();
         foreach (Objective objective in objectives) {
@@ -216,6 +233,9 @@ public class ObjectiveSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fires a check to see if the player's objectives (hidden or otherwise) require the player to talk to the given NPCIdentiferObject.
+    /// </summary>
     public void talkToEvent(NPCIdentifierObject npc) {
         List<Objective> objectivesToRemove = new List<Objective>();
         foreach (Objective objective in objectives) {
@@ -243,6 +263,9 @@ public class ObjectiveSystem : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Fires a check to see if the player's objectives (hidden or otherwise) contain this ObjectiveMisc, then sets its status to complete.
+    /// </summary>
     public void miscEvent(ObjectiveMisc obj) {
         List<Objective> objectivesToRemove = new List<Objective>();
         foreach (Objective objective in objectives) {
