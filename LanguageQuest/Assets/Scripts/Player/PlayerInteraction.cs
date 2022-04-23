@@ -39,6 +39,7 @@ public class PlayerInteraction : MonoBehaviour
         firstPersonPlayer = transform.parent;
         playerCamera = firstPersonPlayer.Find("Main Camera");
 
+        //DataStructs.populateGlobalDictionary();
         notebook = DataStructs.notebook;
         inventory = DataStructs.inventory;
     }
@@ -152,6 +153,9 @@ public class PlayerInteraction : MonoBehaviour
     private void OnApplicationQuit() {
         inventory.container.Clear();
         notebook.container.Clear();
+        foreach(ChapterSlot item in notebook.dictionary){
+            item.chap.Clear();
+        }
     }
 
     public static void disableInteraction(){

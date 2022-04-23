@@ -7,7 +7,7 @@ using TMPro;
 public class NotebookObject : ScriptableObject
 {
     public List<NotebookSlot> container = new List<NotebookSlot>();
-    public List<NotebookSlot>[] dictionary = new List<NotebookSlot>[37];//A-Z + 0-9 + Misc. Space
+    public ChapterSlot[] dictionary = new ChapterSlot[37];//A-Z + 0-9 + Misc. Space
     public GameObject objectiveUI;
     public GameObject panelUI;
 
@@ -19,22 +19,22 @@ public class NotebookObject : ScriptableObject
         }
         container.Add(new NotebookSlot(item));
         GameObject.Find("First Person Player").GetComponent<UpdateUI>().AddNotebookDisplay(item);
-
-        if(dictionary[mapper(item.englishName[0])]==null){
+        if(dictionary[mapper(item.englishName[0])].chap.Count==0){
             NotebookUI.enableCharButton(mapper(item.englishName[0]));
-            dictionary[mapper(item.englishName[0])] = new List<NotebookSlot>();
-            dictionary[mapper(item.englishName[0])].Add(new NotebookSlot(item));
+            Debug.Log("ADDING");
+            dictionary[mapper(item.englishName[0])].chap.Add(new NotebookSlot(item));
+            Debug.Log(dictionary[mapper(item.englishName[0])].chap.Count);
             return;
         }
 
         
-        for (int i = 0; i < dictionary[mapper(item.englishName[0])].Count; i++) {
-            if (System.String.Compare(item.englishName,dictionary[mapper(item.englishName[0])][i].item.englishName)<0) {
-                dictionary[mapper(item.englishName[0])].Insert(i,new NotebookSlot(item));
+        for (int i = 0; i < dictionary[mapper(item.englishName[0])].chap.Count; i++) {
+            if (System.String.Compare(item.englishName,dictionary[mapper(item.englishName[0])].chap[i].item.englishName)<0) {
+                dictionary[mapper(item.englishName[0])].chap.Insert(i,new NotebookSlot(item));
                 return;
             }
         }
-        dictionary[mapper(item.englishName[0])].Add(new NotebookSlot(item)); //this means that the word will be added to the end of the segment
+        dictionary[mapper(item.englishName[0])].chap.Add(new NotebookSlot(item)); //this means that the word will be added to the end of the segment
     }
 
     public void RemoveItem(ItemObject item) {
@@ -44,7 +44,7 @@ public class NotebookObject : ScriptableObject
             }
         }
 
-        List<NotebookSlot> nList = dictionary[mapper(item.name[0])];
+        List<NotebookSlot> nList = dictionary[mapper(item.name[0])].chap;
         for (int i = 0; i < nList.Count; i++) {
             if (item == nList[i].item) {
                 nList.RemoveAt(i);
@@ -77,7 +77,7 @@ public class NotebookObject : ScriptableObject
         for(int i = 0; i<dictionary.Length;i++){
                 Debug.Log("LETTER: "+((char)(i+65)));
                 if(dictionary[i]!=null){
-                    foreach(NotebookSlot thing in dictionary[i]){
+                    foreach(NotebookSlot thing in dictionary[i].chap){
                     Debug.Log(thing.item.englishName);
                     }
                 }
@@ -96,3 +96,12 @@ public class NotebookSlot
     }
 }
 
+[System.Serializable]
+public class ChapterSlot 
+{
+    public List<NotebookSlot> chap;
+
+    public ChapterSlot(List<NotebookSlot> newChap) {
+        this.chap = newChap;
+    }
+}
