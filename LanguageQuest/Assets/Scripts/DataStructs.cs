@@ -14,6 +14,18 @@ public static class DataStructs
     public static Vector3 playerPos;
     public static Quaternion playerRot;
     public static ChangeTimeOfDay.TimeType[] timeList = new ChangeTimeOfDay.TimeType[SceneManager.sceneCountInBuildSettings];
+    private static bool dictSet = false;
+
+    public static void populateGlobalDictionary(){
+        Debug.Log(dictSet);
+        if(!dictSet){
+            dictSet = true;
+            for(int i = 0;i<notebook.dictionary.Length;i++){
+                notebook.dictionary[i] = new ChapterSlot(new List<NotebookSlot>());
+            }
+        }
+        return;
+    }
 }
 
 public class SavedObjectiveDialogueGroup {

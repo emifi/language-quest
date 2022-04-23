@@ -58,6 +58,7 @@ public class DialogueUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //DataStructs.populateGlobalDictionary();
         notebook = DataStructs.notebook;
         inventory = DataStructs.inventory;
         //playerName = dataStructs.playerName;

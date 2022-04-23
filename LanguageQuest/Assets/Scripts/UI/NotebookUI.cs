@@ -25,8 +25,9 @@ public class NotebookUI : MonoBehaviour
     private int entriesPerPage; //Number of entries per page
 
     void Start() {
-        notebookUI.enabled = false;
+        //DataStructs.populateGlobalDictionary();
         notebook = DataStructs.notebook;
+        notebookUI.enabled = false;
         atHome = true;
         currPage = ' ';
         posPtr = 0;
@@ -43,13 +44,16 @@ public class NotebookUI : MonoBehaviour
         timeout = 0;
         entriesPerPage = 2;
 
+
         int i = 0;
         foreach(Button btn in buttons){ //While this IS flexible, any additional buttons 0th character
             if(btn.name.Length==1){     //will have to continue the ASCII sequence so that the array can remain squential 
                                         //- buttons can be renamed after this point
                 btn.onClick.AddListener(() => navToChapter(btn.name[0])); //Please note new logic will also need to be made in the dictionary
-                if(notebook.dictionary[i]==null){
+                if(notebook.dictionary[i].chap.Count==0){
                     btn.interactable = false;
+                }else{
+                    btn.interactable = true;
                 }
             }
             i++;
@@ -78,7 +82,7 @@ public class NotebookUI : MonoBehaviour
             }
         }else{ //Get posPtr to posPtr+(n-1) definitions on page. If there are more pages, display buttons
             str1+= $"<b>Words that start with \"{currPage}\":</b> \n";
-            List<NotebookSlot> dictionaryEntry = notebook.dictionary[NotebookObject.mapper(currPage)];
+            List<NotebookSlot> dictionaryEntry = notebook.dictionary[NotebookObject.mapper(currPage)].chap;
             if(currPage>=65&&currPage<=90&&dictionaryEntry!=null){
                 for(int i = 0; i<(2*entriesPerPage);i++){
                     if(posPtr + i < dictionaryEntry.Count){
