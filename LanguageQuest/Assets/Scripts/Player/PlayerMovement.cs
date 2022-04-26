@@ -59,11 +59,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         dialogueUI = GameObject.Find("DialogueUI").GetComponent<Canvas>();
-        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Terrain") && DataStructs.playerPos != null) {
+        if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("Terrain") && DataStructs.playerPos != null && DataStructs.playerPos != Vector3.zero) {
             player.transform.position = DataStructs.playerPos;
             player.transform.rotation = DataStructs.playerRot;
         } else {
             player.transform.position = spawnpoint.position;
+            Debug.Log("Else");
         }
     }
 
